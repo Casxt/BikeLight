@@ -1,0 +1,32 @@
+|CTC
+CTCclock => count[8].CLK
+CTCclock => count[7].CLK
+CTCclock => count[6].CLK
+CTCclock => count[5].CLK
+CTCclock => count[4].CLK
+CTCclock => count[3].CLK
+CTCclock => count[2].CLK
+CTCclock => count[1].CLK
+CTCclock => count[0].CLK
+CTCclock => outtmp.CLK
+enable => count[8].ACLR
+enable => count[7].ACLR
+enable => count[6].ACLR
+enable => count[5].ACLR
+enable => count[4].ACLR
+enable => count[3].ACLR
+enable => count[2].ACLR
+enable => count[1].ACLR
+enable => count[0].ACLR
+enable => outtmp.ACLR
+halfperoid[0] => Equal0.IN8
+halfperoid[1] => Equal0.IN7
+halfperoid[2] => Equal0.IN6
+halfperoid[3] => Equal0.IN5
+halfperoid[4] => Equal0.IN4
+halfperoid[5] => Equal0.IN3
+halfperoid[6] => Equal0.IN2
+halfperoid[7] => Equal0.IN1
+CTCoutput <= outtmp.DB_MAX_OUTPUT_PORT_TYPE
+
+

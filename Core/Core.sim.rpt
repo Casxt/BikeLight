@@ -1,0 +1,893 @@
+Simulator report for Core
+Sun Oct 29 15:04:48 2017
+Quartus II Version 9.1 Build 222 10/21/2009 SJ Full Version
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Simulator Summary
+  3. Simulator Settings
+  4. Simulation Waveforms
+  5. Coverage Summary
+  6. Complete 1/0-Value Coverage
+  7. Missing 1-Value Coverage
+  8. Missing 0-Value Coverage
+  9. Simulator INI Usage
+ 10. Simulator Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 1991-2009 Altera Corporation
+Your use of Altera Corporation's design tools, logic functions 
+and other software and tools, and its AMPP partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Altera Program License 
+Subscription Agreement, Altera MegaCore Function License 
+Agreement, or other applicable license agreement, including, 
+without limitation, that your use is for the sole purpose of 
+programming logic devices manufactured by Altera and sold by 
+Altera or its authorized distributors.  Please refer to the 
+applicable agreement for further details.
+
+
+
++---------------------------------------------+
+; Simulator Summary                           ;
++-----------------------------+---------------+
+; Type                        ; Value         ;
++-----------------------------+---------------+
+; Simulation Start Time       ; 0 ps          ;
+; Simulation End Time         ; 10.0 ms       ;
+; Simulation Netlist Size     ; 349 nodes     ;
+; Simulation Coverage         ;      35.67 %  ;
+; Total Number of Transitions ; 12198054      ;
+; Simulation Breakpoints      ; 0             ;
+; Family                      ; MAX II        ;
+; Device                      ; EPM1270T144C5 ;
++-----------------------------+---------------+
+
+
++-------------------------------------------------------------------------------------------------------------------------+
+; Simulator Settings                                                                                                      ;
++--------------------------------------------------------------------------------------------+------------+---------------+
+; Option                                                                                     ; Setting    ; Default Value ;
++--------------------------------------------------------------------------------------------+------------+---------------+
+; Simulation mode                                                                            ; Timing     ; Timing        ;
+; Start time                                                                                 ; 0 ns       ; 0 ns          ;
+; Simulation results format                                                                  ; CVWF       ;               ;
+; Add pins automatically to simulation output waveforms                                      ; On         ; On            ;
+; Check outputs                                                                              ; Off        ; Off           ;
+; Report simulation coverage                                                                 ; On         ; On            ;
+; Display complete 1/0 value coverage report                                                 ; On         ; On            ;
+; Display missing 1-value coverage report                                                    ; On         ; On            ;
+; Display missing 0-value coverage report                                                    ; On         ; On            ;
+; Detect setup and hold time violations                                                      ; Off        ; Off           ;
+; Detect glitches                                                                            ; Off        ; Off           ;
+; Disable timing delays in Timing Simulation                                                 ; Off        ; Off           ;
+; Generate Signal Activity File                                                              ; Off        ; Off           ;
+; Generate VCD File for PowerPlay Power Analyzer                                             ; Off        ; Off           ;
+; Group bus channels in simulation results                                                   ; Off        ; Off           ;
+; Preserve fewer signal transitions to reduce memory requirements                            ; On         ; On            ;
+; Trigger vector comparison with the specified mode                                          ; INPUT_EDGE ; INPUT_EDGE    ;
+; Disable setup and hold time violations detection in input registers of bi-directional pins ; Off        ; Off           ;
+; Overwrite Waveform Inputs With Simulation Outputs                                          ; Off        ;               ;
+; Perform Glitch Filtering in Timing Simulation                                              ; Auto       ; Auto          ;
++--------------------------------------------------------------------------------------------+------------+---------------+
+
+
++----------------------+
+; Simulation Waveforms ;
++----------------------+
+Waveform report data cannot be output to ASCII.
+Please use Quartus II to view the waveform report data.
+
+
++--------------------------------------------------------------------+
+; Coverage Summary                                                   ;
++-----------------------------------------------------+--------------+
+; Type                                                ; Value        ;
++-----------------------------------------------------+--------------+
+; Total coverage as a percentage                      ;      35.67 % ;
+; Total nodes checked                                 ; 349          ;
+; Total output ports checked                          ; 443          ;
+; Total output ports with complete 1/0-value coverage ; 158          ;
+; Total output ports with no 1/0-value coverage       ; 283          ;
+; Total output ports with no 1-value coverage         ; 284          ;
+; Total output ports with no 0-value coverage         ; 284          ;
++-----------------------------------------------------+--------------+
+
+
+The following table displays output ports that toggle between 1 and 0 during simulation.
++------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Complete 1/0-Value Coverage                                                                                                                                ;
++----------------------------------------------------------------+------------------------------------------------------------------------+------------------+
+; Node Name                                                      ; Output Port Name                                                       ; Output Port Type ;
++----------------------------------------------------------------+------------------------------------------------------------------------+------------------+
+; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|PWM:PWMGen|output       ; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|PWM:PWMGen|output               ; regout           ;
+; |Core|ClockDiv:C500|outtmp                                     ; |Core|ClockDiv:C500|outtmp                                             ; regout           ;
+; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|PWM:PWMGen|LessThan0~0  ; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|PWM:PWMGen|LessThan0~0          ; combout          ;
+; |Core|ClockDiv:C1M|outtmp                                      ; |Core|ClockDiv:C1M|outtmp                                              ; regout           ;
+; |Core|ClockDiv:C100K|outtmp                                    ; |Core|ClockDiv:C100K|outtmp                                            ; regout           ;
+; |Core|ClockDiv:C1K|outtmp                                      ; |Core|ClockDiv:C1K|outtmp                                              ; regout           ;
+; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|PWM:PWMGen|count[7]     ; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|PWM:PWMGen|count[7]             ; regout           ;
+; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|PWM:PWMGen|LessThan0~7  ; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|PWM:PWMGen|LessThan0~7          ; cout0            ;
+; |Core|ClockDiv:C1M|count[0]                                    ; |Core|ClockDiv:C1M|count[0]                                            ; regout           ;
+; |Core|ClockDiv:C1M|count[4]                                    ; |Core|ClockDiv:C1M|count[4]                                            ; regout           ;
+; |Core|ClockDiv:C1M|count[3]                                    ; |Core|ClockDiv:C1M|count[3]                                            ; regout           ;
+; |Core|ClockDiv:C1M|count[1]                                    ; |Core|ClockDiv:C1M|count[1]                                            ; regout           ;
+; |Core|ClockDiv:C1M|count[2]                                    ; |Core|ClockDiv:C1M|Equal0~0                                            ; combout          ;
+; |Core|ClockDiv:C1M|count[2]                                    ; |Core|ClockDiv:C1M|count[2]                                            ; regout           ;
+; |Core|ClockDiv:C170|outtmp                                     ; |Core|ClockDiv:C170|outtmp                                             ; regout           ;
+; |Core|ClockDiv:C100K|count[0]                                  ; |Core|ClockDiv:C100K|count[0]                                          ; regout           ;
+; |Core|ClockDiv:C100K|count[2]                                  ; |Core|ClockDiv:C100K|count[2]                                          ; regout           ;
+; |Core|ClockDiv:C100K|count[1]                                  ; |Core|ClockDiv:C100K|count[1]                                          ; regout           ;
+; |Core|ClockDiv:C100K|Equal0~0                                  ; |Core|ClockDiv:C100K|Equal0~0                                          ; combout          ;
+; |Core|ClockDiv:C1K|count[5]                                    ; |Core|ClockDiv:C1K|count[5]                                            ; regout           ;
+; |Core|ClockDiv:C1K|count[4]                                    ; |Core|ClockDiv:C1K|count[4]                                            ; regout           ;
+; |Core|ClockDiv:C1K|count[2]                                    ; |Core|ClockDiv:C1K|count[2]                                            ; regout           ;
+; |Core|ClockDiv:C1K|count[3]                                    ; |Core|ClockDiv:C1K|Equal0~0                                            ; combout          ;
+; |Core|ClockDiv:C1K|count[3]                                    ; |Core|ClockDiv:C1K|count[3]                                            ; regout           ;
+; |Core|ClockDiv:C1K|count[1]                                    ; |Core|ClockDiv:C1K|count[1]                                            ; regout           ;
+; |Core|ClockDiv:C1K|count[0]                                    ; |Core|ClockDiv:C1K|Equal0~1                                            ; combout          ;
+; |Core|ClockDiv:C1K|count[0]                                    ; |Core|ClockDiv:C1K|count[0]                                            ; regout           ;
+; |Core|ClockDiv:C8|count[2]                                     ; |Core|ClockDiv:C8|count[2]                                             ; regout           ;
+; |Core|ClockDiv:C8|count[1]                                     ; |Core|ClockDiv:C8|count[1]                                             ; regout           ;
+; |Core|ClockDiv:C8|count[0]                                     ; |Core|ClockDiv:C8|Equal0~1                                             ; combout          ;
+; |Core|ClockDiv:C8|count[0]                                     ; |Core|ClockDiv:C8|count[0]                                             ; regout           ;
+; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|PWM:PWMGen|count[6]     ; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|PWM:PWMGen|count[6]             ; regout           ;
+; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|PWM:PWMGen|count[6]     ; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|PWM:PWMGen|count[6]~3           ; cout0            ;
+; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|PWM:PWMGen|LessThan0~12 ; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|PWM:PWMGen|LessThan0~12         ; cout0            ;
+; |Core|ClockDiv:C1M|Add0~0                                      ; |Core|ClockDiv:C1M|Add0~0                                              ; combout          ;
+; |Core|ClockDiv:C1M|Add0~0                                      ; |Core|ClockDiv:C1M|Add0~2                                              ; cout0            ;
+; |Core|ClockDiv:C1M|Add0~0                                      ; |Core|ClockDiv:C1M|Add0~2COUT1_31                                      ; cout1            ;
+; |Core|ClockDiv:C1M|Add0~5                                      ; |Core|ClockDiv:C1M|Add0~5                                              ; combout          ;
+; |Core|ClockDiv:C1M|Add0~10                                     ; |Core|ClockDiv:C1M|Add0~10                                             ; combout          ;
+; |Core|ClockDiv:C1M|Add0~10                                     ; |Core|ClockDiv:C1M|Add0~12                                             ; cout0            ;
+; |Core|ClockDiv:C1M|Add0~10                                     ; |Core|ClockDiv:C1M|Add0~12COUT1_37                                     ; cout1            ;
+; |Core|ClockDiv:C1M|Add0~15                                     ; |Core|ClockDiv:C1M|Add0~15                                             ; combout          ;
+; |Core|ClockDiv:C1M|Add0~15                                     ; |Core|ClockDiv:C1M|Add0~17                                             ; cout0            ;
+; |Core|ClockDiv:C1M|Add0~15                                     ; |Core|ClockDiv:C1M|Add0~17COUT1_35                                     ; cout1            ;
+; |Core|ClockDiv:C1M|Add0~20                                     ; |Core|ClockDiv:C1M|Add0~20                                             ; combout          ;
+; |Core|ClockDiv:C1M|Add0~20                                     ; |Core|ClockDiv:C1M|Add0~22                                             ; cout0            ;
+; |Core|ClockDiv:C1M|Add0~20                                     ; |Core|ClockDiv:C1M|Add0~22COUT1_33                                     ; cout1            ;
+; |Core|ClockDiv:C170|count[0]                                   ; |Core|ClockDiv:C170|count[0]                                           ; regout           ;
+; |Core|ClockDiv:C170|Equal0~0                                   ; |Core|ClockDiv:C170|Equal0~0                                           ; combout          ;
+; |Core|ClockDiv:C170|count[17]                                  ; |Core|ClockDiv:C170|count[17]                                          ; regout           ;
+; |Core|ClockDiv:C170|count[15]                                  ; |Core|ClockDiv:C170|count[15]                                          ; regout           ;
+; |Core|ClockDiv:C170|count[14]                                  ; |Core|ClockDiv:C170|count[14]                                          ; regout           ;
+; |Core|ClockDiv:C170|count[16]                                  ; |Core|ClockDiv:C170|Equal0~1                                           ; combout          ;
+; |Core|ClockDiv:C170|count[16]                                  ; |Core|ClockDiv:C170|count[16]                                          ; regout           ;
+; |Core|ClockDiv:C170|count[13]                                  ; |Core|ClockDiv:C170|count[13]                                          ; regout           ;
+; |Core|ClockDiv:C170|count[12]                                  ; |Core|ClockDiv:C170|count[12]                                          ; regout           ;
+; |Core|ClockDiv:C170|count[11]                                  ; |Core|ClockDiv:C170|count[11]                                          ; regout           ;
+; |Core|ClockDiv:C170|count[10]                                  ; |Core|ClockDiv:C170|count[10]                                          ; regout           ;
+; |Core|ClockDiv:C170|Equal0~2                                   ; |Core|ClockDiv:C170|Equal0~2                                           ; combout          ;
+; |Core|ClockDiv:C170|count[9]                                   ; |Core|ClockDiv:C170|count[9]                                           ; regout           ;
+; |Core|ClockDiv:C170|count[6]                                   ; |Core|ClockDiv:C170|count[6]                                           ; regout           ;
+; |Core|ClockDiv:C170|count[7]                                   ; |Core|ClockDiv:C170|count[7]                                           ; regout           ;
+; |Core|ClockDiv:C170|count[8]                                   ; |Core|ClockDiv:C170|Equal0~3                                           ; combout          ;
+; |Core|ClockDiv:C170|count[8]                                   ; |Core|ClockDiv:C170|count[8]                                           ; regout           ;
+; |Core|ClockDiv:C170|count[5]                                   ; |Core|ClockDiv:C170|count[5]                                           ; regout           ;
+; |Core|ClockDiv:C170|count[4]                                   ; |Core|ClockDiv:C170|count[4]                                           ; regout           ;
+; |Core|ClockDiv:C170|count[2]                                   ; |Core|ClockDiv:C170|count[2]                                           ; regout           ;
+; |Core|ClockDiv:C170|count[3]                                   ; |Core|ClockDiv:C170|Equal0~4                                           ; combout          ;
+; |Core|ClockDiv:C170|count[3]                                   ; |Core|ClockDiv:C170|count[3]                                           ; regout           ;
+; |Core|ClockDiv:C170|Equal0~5                                   ; |Core|ClockDiv:C170|Equal0~5                                           ; combout          ;
+; |Core|ClockDiv:C1K|Add0~0                                      ; |Core|ClockDiv:C1K|Add0~0                                              ; combout          ;
+; |Core|ClockDiv:C1K|Add0~5                                      ; |Core|ClockDiv:C1K|Add0~5                                              ; combout          ;
+; |Core|ClockDiv:C1K|Add0~5                                      ; |Core|ClockDiv:C1K|Add0~7                                              ; cout0            ;
+; |Core|ClockDiv:C1K|Add0~10                                     ; |Core|ClockDiv:C1K|Add0~10                                             ; combout          ;
+; |Core|ClockDiv:C1K|Add0~10                                     ; |Core|ClockDiv:C1K|Add0~12                                             ; cout             ;
+; |Core|ClockDiv:C1K|Add0~15                                     ; |Core|ClockDiv:C1K|Add0~15                                             ; combout          ;
+; |Core|ClockDiv:C1K|Add0~15                                     ; |Core|ClockDiv:C1K|Add0~17                                             ; cout0            ;
+; |Core|ClockDiv:C1K|Add0~15                                     ; |Core|ClockDiv:C1K|Add0~17COUT1_40                                     ; cout1            ;
+; |Core|ClockDiv:C1K|Add0~20                                     ; |Core|ClockDiv:C1K|Add0~20                                             ; combout          ;
+; |Core|ClockDiv:C1K|Add0~20                                     ; |Core|ClockDiv:C1K|Add0~22                                             ; cout0            ;
+; |Core|ClockDiv:C1K|Add0~20                                     ; |Core|ClockDiv:C1K|Add0~22COUT1_36                                     ; cout1            ;
+; |Core|ClockDiv:C1K|Add0~25                                     ; |Core|ClockDiv:C1K|Add0~25                                             ; combout          ;
+; |Core|ClockDiv:C1K|Add0~25                                     ; |Core|ClockDiv:C1K|Add0~27                                             ; cout0            ;
+; |Core|ClockDiv:C1K|Add0~25                                     ; |Core|ClockDiv:C1K|Add0~27COUT1_38                                     ; cout1            ;
+; |Core|ClockDiv:C8|Add0~5                                       ; |Core|ClockDiv:C8|Add0~5                                               ; combout          ;
+; |Core|ClockDiv:C8|Add0~10                                      ; |Core|ClockDiv:C8|Add0~10                                              ; combout          ;
+; |Core|ClockDiv:C8|Add0~15                                      ; |Core|ClockDiv:C8|Add0~15                                              ; combout          ;
+; |Core|ClockDiv:C8|Add0~15                                      ; |Core|ClockDiv:C8|Add0~17                                              ; cout             ;
+; |Core|ClockDiv:C8|Add0~20                                      ; |Core|ClockDiv:C8|Add0~20                                              ; combout          ;
+; |Core|ClockDiv:C8|Add0~20                                      ; |Core|ClockDiv:C8|Add0~22                                              ; cout0            ;
+; |Core|ClockDiv:C8|Add0~20                                      ; |Core|ClockDiv:C8|Add0~22COUT1_36                                      ; cout1            ;
+; |Core|ClockDiv:C8|Add0~25                                      ; |Core|ClockDiv:C8|Add0~25                                              ; combout          ;
+; |Core|ClockDiv:C8|Add0~25                                      ; |Core|ClockDiv:C8|Add0~27                                              ; cout0            ;
+; |Core|ClockDiv:C8|Add0~25                                      ; |Core|ClockDiv:C8|Add0~27COUT1_38                                      ; cout1            ;
+; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|PWM:PWMGen|count[5]     ; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|PWM:PWMGen|count[5]             ; regout           ;
+; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|PWM:PWMGen|count[5]     ; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|PWM:PWMGen|count[5]~5           ; cout0            ;
+; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|PWM:PWMGen|LessThan0~17 ; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|PWM:PWMGen|LessThan0~17         ; cout             ;
+; |Core|ClockDiv:C170|Add0~0                                     ; |Core|ClockDiv:C170|Add0~0                                             ; combout          ;
+; |Core|ClockDiv:C170|Add0~0                                     ; |Core|ClockDiv:C170|Add0~2                                             ; cout0            ;
+; |Core|ClockDiv:C170|Add0~0                                     ; |Core|ClockDiv:C170|Add0~2COUT1_108                                    ; cout1            ;
+; |Core|ClockDiv:C170|Add0~5                                     ; |Core|ClockDiv:C170|Add0~5                                             ; combout          ;
+; |Core|ClockDiv:C170|Add0~5                                     ; |Core|ClockDiv:C170|Add0~7                                             ; cout0            ;
+; |Core|ClockDiv:C170|Add0~5                                     ; |Core|ClockDiv:C170|Add0~7COUT1_106                                    ; cout1            ;
+; |Core|ClockDiv:C170|Add0~10                                    ; |Core|ClockDiv:C170|Add0~10                                            ; combout          ;
+; |Core|ClockDiv:C170|Add0~15                                    ; |Core|ClockDiv:C170|Add0~15                                            ; combout          ;
+; |Core|ClockDiv:C170|Add0~15                                    ; |Core|ClockDiv:C170|Add0~17                                            ; cout0            ;
+; |Core|ClockDiv:C170|Add0~20                                    ; |Core|ClockDiv:C170|Add0~20                                            ; combout          ;
+; |Core|ClockDiv:C170|Add0~20                                    ; |Core|ClockDiv:C170|Add0~22                                            ; cout0            ;
+; |Core|ClockDiv:C170|Add0~25                                    ; |Core|ClockDiv:C170|Add0~25                                            ; combout          ;
+; |Core|ClockDiv:C170|Add0~25                                    ; |Core|ClockDiv:C170|Add0~27                                            ; cout0            ;
+; |Core|ClockDiv:C170|Add0~30                                    ; |Core|ClockDiv:C170|Add0~30                                            ; combout          ;
+; |Core|ClockDiv:C170|Add0~30                                    ; |Core|ClockDiv:C170|Add0~32                                            ; cout             ;
+; |Core|ClockDiv:C170|Add0~35                                    ; |Core|ClockDiv:C170|Add0~35                                            ; combout          ;
+; |Core|ClockDiv:C170|Add0~35                                    ; |Core|ClockDiv:C170|Add0~37COUT1_126                                   ; cout1            ;
+; |Core|ClockDiv:C170|Add0~40                                    ; |Core|ClockDiv:C170|Add0~40                                            ; combout          ;
+; |Core|ClockDiv:C170|Add0~40                                    ; |Core|ClockDiv:C170|Add0~42COUT1_124                                   ; cout1            ;
+; |Core|ClockDiv:C170|Add0~45                                    ; |Core|ClockDiv:C170|Add0~45                                            ; combout          ;
+; |Core|ClockDiv:C170|Add0~45                                    ; |Core|ClockDiv:C170|Add0~47COUT1_122                                   ; cout1            ;
+; |Core|ClockDiv:C170|Add0~50                                    ; |Core|ClockDiv:C170|Add0~50                                            ; combout          ;
+; |Core|ClockDiv:C170|Add0~50                                    ; |Core|ClockDiv:C170|Add0~52COUT1_120                                   ; cout1            ;
+; |Core|ClockDiv:C170|Add0~55                                    ; |Core|ClockDiv:C170|Add0~55                                            ; combout          ;
+; |Core|ClockDiv:C170|Add0~55                                    ; |Core|ClockDiv:C170|Add0~57                                            ; cout0            ;
+; |Core|ClockDiv:C170|Add0~60                                    ; |Core|ClockDiv:C170|Add0~60                                            ; combout          ;
+; |Core|ClockDiv:C170|Add0~60                                    ; |Core|ClockDiv:C170|Add0~62                                            ; cout             ;
+; |Core|ClockDiv:C170|Add0~65                                    ; |Core|ClockDiv:C170|Add0~65                                            ; combout          ;
+; |Core|ClockDiv:C170|Add0~65                                    ; |Core|ClockDiv:C170|Add0~67                                            ; cout0            ;
+; |Core|ClockDiv:C170|Add0~70                                    ; |Core|ClockDiv:C170|Add0~70                                            ; combout          ;
+; |Core|ClockDiv:C170|Add0~70                                    ; |Core|ClockDiv:C170|Add0~72                                            ; cout0            ;
+; |Core|ClockDiv:C170|Add0~75                                    ; |Core|ClockDiv:C170|Add0~75                                            ; combout          ;
+; |Core|ClockDiv:C170|Add0~75                                    ; |Core|ClockDiv:C170|Add0~77                                            ; cout0            ;
+; |Core|ClockDiv:C170|Add0~80                                    ; |Core|ClockDiv:C170|Add0~80                                            ; combout          ;
+; |Core|ClockDiv:C170|Add0~80                                    ; |Core|ClockDiv:C170|Add0~82                                            ; cout             ;
+; |Core|ClockDiv:C170|Add0~85                                    ; |Core|ClockDiv:C170|Add0~85                                            ; combout          ;
+; |Core|ClockDiv:C170|Add0~85                                    ; |Core|ClockDiv:C170|Add0~87                                            ; cout0            ;
+; |Core|ClockDiv:C170|Add0~85                                    ; |Core|ClockDiv:C170|Add0~87COUT1_110                                   ; cout1            ;
+; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|PWM:PWMGen|count[4]     ; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|PWM:PWMGen|count[4]             ; regout           ;
+; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|PWM:PWMGen|count[4]     ; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|PWM:PWMGen|count[4]~7           ; cout             ;
+; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|PWM:PWMGen|LessThan0~22 ; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|PWM:PWMGen|LessThan0~22         ; cout0            ;
+; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|PWM:PWMGen|LessThan0~22 ; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|PWM:PWMGen|LessThan0~22COUT1_54 ; cout1            ;
+; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|PWM:PWMGen|count[3]     ; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|PWM:PWMGen|count[3]             ; regout           ;
+; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|PWM:PWMGen|count[3]     ; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|PWM:PWMGen|count[3]~9           ; cout0            ;
+; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|PWM:PWMGen|count[3]     ; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|PWM:PWMGen|count[3]~9COUT1_26   ; cout1            ;
+; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|PWM:PWMGen|LessThan0~27 ; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|PWM:PWMGen|LessThan0~27         ; cout0            ;
+; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|PWM:PWMGen|LessThan0~27 ; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|PWM:PWMGen|LessThan0~27COUT1_52 ; cout1            ;
+; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|PWM:PWMGen|count[2]     ; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|PWM:PWMGen|count[2]             ; regout           ;
+; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|PWM:PWMGen|count[2]     ; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|PWM:PWMGen|count[2]~11          ; cout0            ;
+; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|PWM:PWMGen|count[2]     ; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|PWM:PWMGen|count[2]~11COUT1_24  ; cout1            ;
+; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|PWM:PWMGen|LessThan0~32 ; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|PWM:PWMGen|LessThan0~32         ; cout0            ;
+; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|PWM:PWMGen|LessThan0~32 ; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|PWM:PWMGen|LessThan0~32COUT1_50 ; cout1            ;
+; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|PWM:PWMGen|count[1]     ; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|PWM:PWMGen|count[1]             ; regout           ;
+; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|PWM:PWMGen|count[1]     ; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|PWM:PWMGen|count[1]~13          ; cout0            ;
+; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|PWM:PWMGen|count[1]     ; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|PWM:PWMGen|count[1]~13COUT1_22  ; cout1            ;
+; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|PWM:PWMGen|LessThan0~37 ; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|PWM:PWMGen|LessThan0~37         ; cout0            ;
+; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|PWM:PWMGen|LessThan0~37 ; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|PWM:PWMGen|LessThan0~37COUT1_48 ; cout1            ;
+; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|PWM:PWMGen|count[0]     ; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|PWM:PWMGen|count[0]             ; regout           ;
+; |Core|rawclock                                                 ; |Core|rawclock~corein                                                  ; combout          ;
+; |Core|LEDSel[0]                                                ; |Core|LEDSel[0]                                                        ; padio            ;
+; |Core|LEDSel[1]                                                ; |Core|LEDSel[1]                                                        ; padio            ;
++----------------------------------------------------------------+------------------------------------------------------------------------+------------------+
+
+
+The following table displays output ports that do not toggle to 1 during simulation.
++------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Missing 1-Value Coverage                                                                                                                                   ;
++----------------------------------------------------------------+------------------------------------------------------------------------+------------------+
+; Node Name                                                      ; Output Port Name                                                       ; Output Port Type ;
++----------------------------------------------------------------+------------------------------------------------------------------------+------------------+
+; |Core|TimeCount:LEDTimeCount|LEDNum[0]~0                       ; |Core|TimeCount:LEDTimeCount|LEDNum[0]~0                               ; combout          ;
+; |Core|TimeCount:LEDTimeCount|DNum:D1|n[1]                      ; |Core|TimeCount:LEDTimeCount|DNum:D1|n[1]                              ; regout           ;
+; |Core|TimeCount:LEDTimeCount|DNum:D0|n[1]                      ; |Core|TimeCount:LEDTimeCount|DNum:D0|n[1]                              ; regout           ;
+; |Core|TimeCount:LEDTimeCount|LEDNum[1]~1                       ; |Core|TimeCount:LEDTimeCount|LEDNum[1]~1                               ; combout          ;
+; |Core|TimeCount:LEDTimeCount|DNum:D1|n[2]                      ; |Core|TimeCount:LEDTimeCount|DNum:D1|n[2]                              ; regout           ;
+; |Core|TimeCount:LEDTimeCount|DNum:D0|n[2]                      ; |Core|TimeCount:LEDTimeCount|DNum:D0|n[2]                              ; regout           ;
+; |Core|TimeCount:LEDTimeCount|LEDNum[2]~2                       ; |Core|TimeCount:LEDTimeCount|LEDNum[2]~2                               ; combout          ;
+; |Core|TimeCount:LEDTimeCount|DNum:D1|n[3]                      ; |Core|TimeCount:LEDTimeCount|DNum:D1|n[3]                              ; regout           ;
+; |Core|TimeCount:LEDTimeCount|DNum:D0|n[3]                      ; |Core|TimeCount:LEDTimeCount|DNum:D0|n[3]                              ; regout           ;
+; |Core|TimeCount:LEDTimeCount|LEDNum[3]~3                       ; |Core|TimeCount:LEDTimeCount|LEDNum[3]~3                               ; combout          ;
+; |Core|TimeCount:LEDTimeCount|LedShowe:LED|Mux6~0               ; |Core|TimeCount:LEDTimeCount|LedShowe:LED|Mux6~0                       ; combout          ;
+; |Core|TimeCount:LEDTimeCount|LedShowe:LED|Mux5~0               ; |Core|TimeCount:LEDTimeCount|LedShowe:LED|Mux5~0                       ; combout          ;
+; |Core|TimeCount:LEDTimeCount|LedShowe:LED|Mux4~0               ; |Core|TimeCount:LEDTimeCount|LedShowe:LED|Mux4~0                       ; combout          ;
+; |Core|TimeCount:LEDTimeCount|LedShowe:LED|Mux3~0               ; |Core|TimeCount:LEDTimeCount|LedShowe:LED|Mux3~0                       ; combout          ;
+; |Core|TimeCount:LEDTimeCount|LedShowe:LED|Mux2~0               ; |Core|TimeCount:LEDTimeCount|LedShowe:LED|Mux2~0                       ; combout          ;
+; |Core|TimeCount:LEDTimeCount|LedShowe:LED|Mux1~0               ; |Core|TimeCount:LEDTimeCount|LedShowe:LED|Mux1~0                       ; combout          ;
+; |Core|TimeCount:LEDTimeCount|LedShowe:LED|Mux0~0               ; |Core|TimeCount:LEDTimeCount|LedShowe:LED|Mux0~0                       ; combout          ;
+; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|lcount[0]               ; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|lcount[0]                       ; regout           ;
+; |Core|LEDEnable                                                ; |Core|LEDEnable                                                        ; regout           ;
+; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|process_0~0             ; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|process_0~0                     ; combout          ;
+; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|Lineout[0]~8            ; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|Lineout[0]~8                    ; combout          ;
+; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|Lineout[1]~9            ; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|Lineout[1]~9                    ; combout          ;
+; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|Lineout[2]~10           ; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|Lineout[2]~10                   ; combout          ;
+; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|Mux26~0                 ; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|Mux26~0                         ; combout          ;
+; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|Lineout[4]~11           ; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|Lineout[4]~11                   ; combout          ;
+; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|Lineout[5]~12           ; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|Lineout[5]~12                   ; combout          ;
+; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|Lineout[6]~13           ; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|Lineout[6]~13                   ; combout          ;
+; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|Columnout[9]~16         ; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|Columnout[9]~16                 ; combout          ;
+; |Core|LEDCtrl:LEDP|IMGSel[1]                                   ; |Core|LEDCtrl:LEDP|IMGSel[1]                                           ; regout           ;
+; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|Mux1~0                  ; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|Mux1~0                          ; combout          ;
+; |Core|LEDCtrl:LEDP|IMGSel[0]                                   ; |Core|LEDCtrl:LEDP|IMGSel[0]                                           ; regout           ;
+; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|Mux0~0                  ; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|Mux0~0                          ; combout          ;
+; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|Columnout[0]~17         ; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|Columnout[0]~17                 ; combout          ;
+; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|Columnout[0]~18         ; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|Columnout[0]~18                 ; combout          ;
+; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|Mux13~0                 ; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|Mux13~0                         ; combout          ;
+; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|Mux1~1                  ; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|Mux1~1                          ; combout          ;
+; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|Columnout[1]~19         ; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|Columnout[1]~19                 ; combout          ;
+; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|Columnout[1]~20         ; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|Columnout[1]~20                 ; combout          ;
+; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|Columnout[2]~21         ; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|Columnout[2]~21                 ; combout          ;
+; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|Columnout[2]~22         ; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|Columnout[2]~22                 ; combout          ;
+; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|Columnout[3]~23         ; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|Columnout[3]~23                 ; combout          ;
+; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|Columnout[5]~24         ; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|Columnout[5]~24                 ; combout          ;
+; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|Columnout[3]~25         ; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|Columnout[3]~25                 ; combout          ;
+; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|Columnout[4]~26         ; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|Columnout[4]~26                 ; combout          ;
+; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|Columnout[4]~27         ; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|Columnout[4]~27                 ; combout          ;
+; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|Mux6~0                  ; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|Mux6~0                          ; combout          ;
+; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|Columnout[5]~28         ; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|Columnout[5]~28                 ; combout          ;
+; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|Columnout[6]~29         ; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|Columnout[6]~29                 ; combout          ;
+; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|Columnout[6]~30         ; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|Columnout[6]~30                 ; combout          ;
+; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|Mux12~0                 ; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|Mux12~0                         ; combout          ;
+; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|Columnout[7]~31         ; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|Columnout[7]~31                 ; combout          ;
+; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|Columnout[8]~32         ; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|Columnout[8]~32                 ; combout          ;
+; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|Mux15~0                 ; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|Mux15~0                         ; combout          ;
+; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|Columnout[8]~33         ; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|Columnout[8]~33                 ; combout          ;
+; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|Mux15~1                 ; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|Mux15~1                         ; combout          ;
+; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|Mux16~0                 ; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|Mux16~0                         ; combout          ;
+; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|Mux23~0                 ; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|Mux23~0                         ; combout          ;
+; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|Mux16~1                 ; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|Mux16~1                         ; combout          ;
+; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|Mux26~1                 ; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|Mux26~1                         ; combout          ;
+; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|Mux16~2                 ; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|Mux16~2                         ; combout          ;
+; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|Mux15~2                 ; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|Mux15~2                         ; combout          ;
+; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|Mux16~3                 ; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|Mux16~3                         ; combout          ;
+; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|Mux21~0                 ; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|Mux21~0                         ; combout          ;
+; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|Mux17~0                 ; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|Mux17~0                         ; combout          ;
+; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|Mux17~1                 ; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|Mux17~1                         ; combout          ;
+; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|Mux19~0                 ; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|Mux19~0                         ; combout          ;
+; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|Mux18~0                 ; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|Mux18~0                         ; combout          ;
+; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|Mux18~1                 ; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|Mux18~1                         ; combout          ;
+; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|Mux10~0                 ; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|Mux10~0                         ; combout          ;
+; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|Mux20~0                 ; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|Mux20~0                         ; combout          ;
+; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|Mux20~1                 ; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|Mux20~1                         ; combout          ;
+; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|Mux22~0                 ; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|Mux22~0                         ; combout          ;
+; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|Mux22~1                 ; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|Mux22~1                         ; combout          ;
+; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|Mux25~0                 ; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|Mux25~0                         ; combout          ;
+; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|Mux25~1                 ; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|Mux25~1                         ; combout          ;
+; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|Columnout[15]~34        ; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|Columnout[15]~34                ; combout          ;
+; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|Columnout[15]~35        ; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|Columnout[15]~35                ; combout          ;
+; |Core|TimeCount:LEDTimeCount|DNum:D0|c1                        ; |Core|TimeCount:LEDTimeCount|DNum:D0|c1                                ; regout           ;
+; |Core|ClockDiv:C1|outtmp                                       ; |Core|ClockDiv:C1|outtmp                                               ; regout           ;
+; |Core|SoundCount[2]                                            ; |Core|SoundCount[2]                                                    ; regout           ;
+; |Core|SoundCount[1]                                            ; |Core|SoundCount[1]                                                    ; regout           ;
+; |Core|LEDCtrl:LEDP|RsvCount                                    ; |Core|LEDCtrl:LEDP|RsvCount                                            ; regout           ;
+; |Core|State[1]                                                 ; |Core|State[1]                                                         ; regout           ;
+; |Core|State[0]                                                 ; |Core|State[0]                                                         ; regout           ;
+; |Core|LEDCtrl:LEDP|RsvCount~0                                  ; |Core|LEDCtrl:LEDP|RsvCount~0                                          ; combout          ;
+; |Core|LEDCtrl:LEDP|Equal4~0                                    ; |Core|LEDCtrl:LEDP|Equal4~0                                            ; combout          ;
+; |Core|LEDCtrl:LEDP|IMGSel[0]~2                                 ; |Core|LEDCtrl:LEDP|IMGSel[0]~2                                         ; combout          ;
+; |Core|LEDCtrl:LEDP|Equal4~1                                    ; |Core|LEDCtrl:LEDP|Equal4~1                                            ; combout          ;
+; |Core|Sound:StartSound|SoundFrep[0]                            ; |Core|Sound:StartSound|SoundFrep[0]                                    ; regout           ;
+; |Core|Sound:StartSound|SoundFrep[1]                            ; |Core|Sound:StartSound|SoundFrep[1]                                    ; regout           ;
+; |Core|Sound:StartSound|CTC:CTCWaveGen|count[1]                 ; |Core|Sound:StartSound|CTC:CTCWaveGen|count[1]~1                       ; cout0            ;
+; |Core|Sound:StartSound|CTC:CTCWaveGen|count[1]                 ; |Core|Sound:StartSound|CTC:CTCWaveGen|count[1]~1COUT1_29               ; cout1            ;
+; |Core|Sound:StartSound|CTC:CTCWaveGen|count[0]                 ; |Core|Sound:StartSound|CTC:CTCWaveGen|count[0]~3                       ; cout0            ;
+; |Core|Sound:StartSound|CTC:CTCWaveGen|count[0]                 ; |Core|Sound:StartSound|CTC:CTCWaveGen|count[0]~3COUT1_27               ; cout1            ;
+; |Core|Sound:StartSound|CTC:CTCWaveGen|Equal0~0                 ; |Core|Sound:StartSound|CTC:CTCWaveGen|Equal0~0                         ; combout          ;
+; |Core|Sound:StartSound|SoundFrep[2]                            ; |Core|Sound:StartSound|SoundFrep[2]                                    ; regout           ;
+; |Core|Sound:StartSound|SoundFrep[3]                            ; |Core|Sound:StartSound|SoundFrep[3]                                    ; regout           ;
+; |Core|Sound:StartSound|CTC:CTCWaveGen|count[3]                 ; |Core|Sound:StartSound|CTC:CTCWaveGen|count[3]~5                       ; cout0            ;
+; |Core|Sound:StartSound|CTC:CTCWaveGen|count[3]                 ; |Core|Sound:StartSound|CTC:CTCWaveGen|count[3]~5COUT1_33               ; cout1            ;
+; |Core|Sound:StartSound|CTC:CTCWaveGen|count[2]                 ; |Core|Sound:StartSound|CTC:CTCWaveGen|count[2]~7                       ; cout0            ;
+; |Core|Sound:StartSound|CTC:CTCWaveGen|count[2]                 ; |Core|Sound:StartSound|CTC:CTCWaveGen|count[2]~7COUT1_31               ; cout1            ;
+; |Core|Sound:StartSound|CTC:CTCWaveGen|Equal0~1                 ; |Core|Sound:StartSound|CTC:CTCWaveGen|Equal0~1                         ; combout          ;
+; |Core|Sound:StartSound|SoundFrep[4]                            ; |Core|Sound:StartSound|SoundFrep[4]                                    ; regout           ;
+; |Core|Sound:StartSound|SoundFrep[5]                            ; |Core|Sound:StartSound|SoundFrep[5]                                    ; regout           ;
+; |Core|Sound:StartSound|CTC:CTCWaveGen|count[5]                 ; |Core|Sound:StartSound|CTC:CTCWaveGen|count[5]~9                       ; cout0            ;
+; |Core|Sound:StartSound|CTC:CTCWaveGen|count[5]                 ; |Core|Sound:StartSound|CTC:CTCWaveGen|count[5]~9COUT1_35               ; cout1            ;
+; |Core|Sound:StartSound|CTC:CTCWaveGen|count[4]                 ; |Core|Sound:StartSound|CTC:CTCWaveGen|count[4]~11                      ; cout             ;
+; |Core|Sound:StartSound|CTC:CTCWaveGen|Equal0~2                 ; |Core|Sound:StartSound|CTC:CTCWaveGen|Equal0~2                         ; combout          ;
+; |Core|Sound:StartSound|SoundFrep[6]                            ; |Core|Sound:StartSound|SoundFrep[6]                                    ; regout           ;
+; |Core|Sound:StartSound|CTC:CTCWaveGen|count[6]                 ; |Core|Sound:StartSound|CTC:CTCWaveGen|count[6]~13                      ; cout0            ;
+; |Core|Sound:StartSound|CTC:CTCWaveGen|count[6]                 ; |Core|Sound:StartSound|CTC:CTCWaveGen|count[6]~13COUT1_37              ; cout1            ;
+; |Core|Sound:StartSound|CTC:CTCWaveGen|count[7]                 ; |Core|Sound:StartSound|CTC:CTCWaveGen|count[7]~15                      ; cout0            ;
+; |Core|Sound:StartSound|CTC:CTCWaveGen|count[7]                 ; |Core|Sound:StartSound|CTC:CTCWaveGen|count[7]~15COUT1_39              ; cout1            ;
+; |Core|Sound:StartSound|CTC:CTCWaveGen|Equal0~3                 ; |Core|Sound:StartSound|CTC:CTCWaveGen|Equal0~3                         ; combout          ;
+; |Core|Sound:StartSound|CTC:CTCWaveGen|Equal0~4                 ; |Core|Sound:StartSound|CTC:CTCWaveGen|Equal0~4                         ; combout          ;
+; |Core|Sound:StartSound|CTCEnable                               ; |Core|Sound:StartSound|CTCEnable                                       ; regout           ;
+; |Core|ClockDiv:C1|count[1]                                     ; |Core|ClockDiv:C1|count[1]                                             ; regout           ;
+; |Core|ClockDiv:C1|count[0]                                     ; |Core|ClockDiv:C1|count[0]                                             ; regout           ;
+; |Core|ClockDiv:C8|outtmp                                       ; |Core|ClockDiv:C8|outtmp                                               ; regout           ;
+; |Core|SoundCount[0]                                            ; |Core|SoundCount[0]                                                    ; regout           ;
+; |Core|LEDCtrl:LEDP|BreathCount[7]                              ; |Core|LEDCtrl:LEDP|BreathCount[7]                                      ; regout           ;
+; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|PWM:PWMGen|LessThan0~7  ; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|PWM:PWMGen|LessThan0~7COUT1_58  ; cout1            ;
+; |Core|LEDCtrl:LEDP|BreathCount[6]                              ; |Core|LEDCtrl:LEDP|BreathCount[6]                                      ; regout           ;
+; |Core|LEDCtrl:LEDP|BreathCount[5]                              ; |Core|LEDCtrl:LEDP|BreathCount[5]                                      ; regout           ;
+; |Core|LEDCtrl:LEDP|BreathCount[8]                              ; |Core|LEDCtrl:LEDP|Equal1~0                                            ; combout          ;
+; |Core|LEDCtrl:LEDP|BreathCount[8]                              ; |Core|LEDCtrl:LEDP|BreathCount[8]                                      ; regout           ;
+; |Core|LEDCtrl:LEDP|BreathCount[0]                              ; |Core|LEDCtrl:LEDP|BreathCount[0]                                      ; regout           ;
+; |Core|LEDCtrl:LEDP|BreathCount[4]                              ; |Core|LEDCtrl:LEDP|BreathCount[4]                                      ; regout           ;
+; |Core|LEDCtrl:LEDP|BreathCount[3]                              ; |Core|LEDCtrl:LEDP|BreathCount[3]                                      ; regout           ;
+; |Core|LEDCtrl:LEDP|BreathCount[2]                              ; |Core|LEDCtrl:LEDP|BreathCount[2]                                      ; regout           ;
+; |Core|LEDCtrl:LEDP|BreathCount[1]                              ; |Core|LEDCtrl:LEDP|BreathCount[1]                                      ; regout           ;
+; |Core|LEDCtrl:LEDP|Equal1~1                                    ; |Core|LEDCtrl:LEDP|Equal1~1                                            ; combout          ;
+; |Core|LEDCtrl:LEDP|Equal1~2                                    ; |Core|LEDCtrl:LEDP|Equal1~2                                            ; combout          ;
+; |Core|LEDCtrl:LEDP|Equal2~0                                    ; |Core|LEDCtrl:LEDP|Equal2~0                                            ; combout          ;
+; |Core|LEDCtrl:LEDP|Equal2~1                                    ; |Core|LEDCtrl:LEDP|Equal2~1                                            ; combout          ;
+; |Core|LEDCtrl:LEDP|Equal2~2                                    ; |Core|LEDCtrl:LEDP|Equal2~2                                            ; combout          ;
+; |Core|LEDCount[0]                                              ; |Core|LEDCount[0]                                                      ; regout           ;
+; |Core|State~0                                                  ; |Core|State~0                                                          ; combout          ;
+; |Core|Equal0~0                                                 ; |Core|Equal0~0                                                         ; combout          ;
+; |Core|State[0]~1                                               ; |Core|State[0]~1                                                       ; combout          ;
+; |Core|Sound:StartSound|count[3]                                ; |Core|Sound:StartSound|count[3]~1                                      ; cout             ;
+; |Core|Sound:StartSound|count[1]                                ; |Core|Sound:StartSound|count[1]~3                                      ; cout0            ;
+; |Core|Sound:StartSound|count[1]                                ; |Core|Sound:StartSound|count[1]~3COUT1_20                              ; cout1            ;
+; |Core|Sound:StartSound|count[2]                                ; |Core|Sound:StartSound|count[2]~5                                      ; cout0            ;
+; |Core|Sound:StartSound|count[2]                                ; |Core|Sound:StartSound|count[2]~5COUT1_22                              ; cout1            ;
+; |Core|Sound:StartSound|process_0~0                             ; |Core|Sound:StartSound|process_0~0                                     ; combout          ;
+; |Core|Sound:StartSound|count[0]                                ; |Core|Sound:StartSound|count[0]~9                                      ; cout0            ;
+; |Core|Sound:StartSound|count[0]                                ; |Core|Sound:StartSound|count[0]~9COUT1_18                              ; cout1            ;
+; |Core|Sound:StartSound|count[4]                                ; |Core|Sound:StartSound|count[4]~11                                     ; cout0            ;
+; |Core|Sound:StartSound|count[4]                                ; |Core|Sound:StartSound|count[4]~11COUT1_24                             ; cout1            ;
+; |Core|Sound:StartSound|process_0~1                             ; |Core|Sound:StartSound|process_0~1                                     ; combout          ;
+; |Core|Sound:StartSound|process_0~2                             ; |Core|Sound:StartSound|process_0~2                                     ; combout          ;
+; |Core|Sound:StartSound|process_0~3                             ; |Core|Sound:StartSound|process_0~3                                     ; combout          ;
+; |Core|Sound:StartSound|process_0~4                             ; |Core|Sound:StartSound|process_0~4                                     ; combout          ;
+; |Core|Sound:StartSound|Mux1~0                                  ; |Core|Sound:StartSound|Mux1~0                                          ; combout          ;
+; |Core|Sound:StartSound|process_0~5                             ; |Core|Sound:StartSound|process_0~5                                     ; combout          ;
+; |Core|Sound:StartSound|process_0~6                             ; |Core|Sound:StartSound|process_0~6                                     ; combout          ;
+; |Core|Sound:StartSound|Mux11~0                                 ; |Core|Sound:StartSound|Mux11~0                                         ; combout          ;
+; |Core|Sound:StartSound|process_0~7                             ; |Core|Sound:StartSound|process_0~7                                     ; combout          ;
+; |Core|Sound:StartSound|process_0~8                             ; |Core|Sound:StartSound|process_0~8                                     ; combout          ;
+; |Core|Sound:StartSound|SoundFrep~13                            ; |Core|Sound:StartSound|SoundFrep~13                                    ; combout          ;
+; |Core|Sound:StartSound|process_0~9                             ; |Core|Sound:StartSound|process_0~9                                     ; combout          ;
+; |Core|Sound:StartSound|Mux11~1                                 ; |Core|Sound:StartSound|Mux11~1                                         ; combout          ;
+; |Core|SoundEnable                                              ; |Core|SoundEnable                                                      ; regout           ;
+; |Core|Sound:StartSound|process_0~10                            ; |Core|Sound:StartSound|process_0~10                                    ; combout          ;
+; |Core|Sound:StartSound|Mux10~0                                 ; |Core|Sound:StartSound|Mux10~0                                         ; combout          ;
+; |Core|Sound:StartSound|Mux9~0                                  ; |Core|Sound:StartSound|Mux9~0                                          ; combout          ;
+; |Core|Sound:StartSound|Mux8~0                                  ; |Core|Sound:StartSound|Mux8~0                                          ; combout          ;
+; |Core|Sound:StartSound|Mux7~0                                  ; |Core|Sound:StartSound|Mux7~0                                          ; combout          ;
+; |Core|Sound:StartSound|Mux7~1                                  ; |Core|Sound:StartSound|Mux7~1                                          ; combout          ;
+; |Core|Sound:StartSound|Mux6~0                                  ; |Core|Sound:StartSound|Mux6~0                                          ; combout          ;
+; |Core|Sound:StartSound|Mux5~0                                  ; |Core|Sound:StartSound|Mux5~0                                          ; combout          ;
+; |Core|Sound:StartSound|CTCEnable~9                             ; |Core|Sound:StartSound|CTCEnable~9                                     ; combout          ;
+; |Core|ClockDiv:C8|count[5]                                     ; |Core|ClockDiv:C8|count[5]                                             ; regout           ;
+; |Core|ClockDiv:C8|count[4]                                     ; |Core|ClockDiv:C8|count[4]                                             ; regout           ;
+; |Core|ClockDiv:C8|Equal0~0                                     ; |Core|ClockDiv:C8|Equal0~0                                             ; combout          ;
+; |Core|LEDCtrl:LEDP|Add0~1                                      ; |Core|LEDCtrl:LEDP|Add0~1                                              ; combout          ;
+; |Core|LEDCtrl:LEDP|Add0~1                                      ; |Core|LEDCtrl:LEDP|Add0~3                                              ; cout0            ;
+; |Core|LEDCtrl:LEDP|Add0~1                                      ; |Core|LEDCtrl:LEDP|Add0~3COUT1_68                                      ; cout1            ;
+; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|PWM:PWMGen|count[6]     ; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|PWM:PWMGen|count[6]~3COUT1_30   ; cout1            ;
+; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|PWM:PWMGen|LessThan0~12 ; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|PWM:PWMGen|LessThan0~12COUT1_56 ; cout1            ;
+; |Core|LEDCtrl:LEDP|Add0~6                                      ; |Core|LEDCtrl:LEDP|Add0~6                                              ; combout          ;
+; |Core|LEDCtrl:LEDP|Add0~6                                      ; |Core|LEDCtrl:LEDP|Add0~8                                              ; cout0            ;
+; |Core|LEDCtrl:LEDP|Add0~6                                      ; |Core|LEDCtrl:LEDP|Add0~8COUT1_66                                      ; cout1            ;
+; |Core|LEDCtrl:LEDP|Add0~11                                     ; |Core|LEDCtrl:LEDP|Add0~11                                             ; combout          ;
+; |Core|LEDCtrl:LEDP|Add0~11                                     ; |Core|LEDCtrl:LEDP|Add0~13                                             ; cout0            ;
+; |Core|LEDCtrl:LEDP|Add0~11                                     ; |Core|LEDCtrl:LEDP|Add0~13COUT1_64                                     ; cout1            ;
+; |Core|LEDCtrl:LEDP|Add0~16                                     ; |Core|LEDCtrl:LEDP|Add0~16                                             ; combout          ;
+; |Core|LEDCtrl:LEDP|Add0~21                                     ; |Core|LEDCtrl:LEDP|Add0~21                                             ; combout          ;
+; |Core|LEDCtrl:LEDP|Add0~21                                     ; |Core|LEDCtrl:LEDP|Add0~23                                             ; cout0            ;
+; |Core|LEDCtrl:LEDP|Add0~21                                     ; |Core|LEDCtrl:LEDP|Add0~23COUT1_56                                     ; cout1            ;
+; |Core|LEDCtrl:LEDP|Add0~26                                     ; |Core|LEDCtrl:LEDP|Add0~26                                             ; combout          ;
+; |Core|LEDCtrl:LEDP|Add0~26                                     ; |Core|LEDCtrl:LEDP|Add0~28                                             ; cout             ;
+; |Core|LEDCtrl:LEDP|Add0~31                                     ; |Core|LEDCtrl:LEDP|Add0~31                                             ; combout          ;
+; |Core|LEDCtrl:LEDP|Add0~31                                     ; |Core|LEDCtrl:LEDP|Add0~33                                             ; cout0            ;
+; |Core|LEDCtrl:LEDP|Add0~31                                     ; |Core|LEDCtrl:LEDP|Add0~33COUT1_62                                     ; cout1            ;
+; |Core|LEDCtrl:LEDP|Add0~36                                     ; |Core|LEDCtrl:LEDP|Add0~36                                             ; combout          ;
+; |Core|LEDCtrl:LEDP|Add0~36                                     ; |Core|LEDCtrl:LEDP|Add0~38                                             ; cout0            ;
+; |Core|LEDCtrl:LEDP|Add0~36                                     ; |Core|LEDCtrl:LEDP|Add0~38COUT1_60                                     ; cout1            ;
+; |Core|LEDCtrl:LEDP|Add0~41                                     ; |Core|LEDCtrl:LEDP|Add0~41                                             ; combout          ;
+; |Core|LEDCtrl:LEDP|Add0~41                                     ; |Core|LEDCtrl:LEDP|Add0~43                                             ; cout0            ;
+; |Core|LEDCtrl:LEDP|Add0~41                                     ; |Core|LEDCtrl:LEDP|Add0~43COUT1_58                                     ; cout1            ;
+; |Core|Add1~0                                                   ; |Core|Add1~0                                                           ; combout          ;
+; |Core|ClockDiv:C1K|Add0~5                                      ; |Core|ClockDiv:C1K|Add0~7COUT1_42                                      ; cout1            ;
+; |Core|ClockDiv:C8|Add0~0                                       ; |Core|ClockDiv:C8|Add0~0                                               ; combout          ;
+; |Core|ClockDiv:C8|Add0~5                                       ; |Core|ClockDiv:C8|Add0~7                                               ; cout0            ;
+; |Core|ClockDiv:C8|Add0~5                                       ; |Core|ClockDiv:C8|Add0~7COUT1_42                                       ; cout1            ;
+; |Core|ClockDiv:C8|Add0~10                                      ; |Core|ClockDiv:C8|Add0~12                                              ; cout0            ;
+; |Core|ClockDiv:C8|Add0~10                                      ; |Core|ClockDiv:C8|Add0~12COUT1_40                                      ; cout1            ;
+; |Core|LEDCtrl:LEDP|Add0~46                                     ; |Core|LEDCtrl:LEDP|Add0~46                                             ; combout          ;
+; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|PWM:PWMGen|count[5]     ; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|PWM:PWMGen|count[5]~5COUT1_28   ; cout1            ;
+; |Core|ClockDiv:C170|Add0~15                                    ; |Core|ClockDiv:C170|Add0~17COUT1_132                                   ; cout1            ;
+; |Core|ClockDiv:C170|Add0~20                                    ; |Core|ClockDiv:C170|Add0~22COUT1_130                                   ; cout1            ;
+; |Core|ClockDiv:C170|Add0~25                                    ; |Core|ClockDiv:C170|Add0~27COUT1_128                                   ; cout1            ;
+; |Core|ClockDiv:C170|Add0~35                                    ; |Core|ClockDiv:C170|Add0~37                                            ; cout0            ;
+; |Core|ClockDiv:C170|Add0~40                                    ; |Core|ClockDiv:C170|Add0~42                                            ; cout0            ;
+; |Core|ClockDiv:C170|Add0~45                                    ; |Core|ClockDiv:C170|Add0~47                                            ; cout0            ;
+; |Core|ClockDiv:C170|Add0~50                                    ; |Core|ClockDiv:C170|Add0~52                                            ; cout0            ;
+; |Core|ClockDiv:C170|Add0~55                                    ; |Core|ClockDiv:C170|Add0~57COUT1_116                                   ; cout1            ;
+; |Core|ClockDiv:C170|Add0~65                                    ; |Core|ClockDiv:C170|Add0~67COUT1_118                                   ; cout1            ;
+; |Core|ClockDiv:C170|Add0~70                                    ; |Core|ClockDiv:C170|Add0~72COUT1_114                                   ; cout1            ;
+; |Core|ClockDiv:C170|Add0~75                                    ; |Core|ClockDiv:C170|Add0~77COUT1_112                                   ; cout1            ;
+; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|Lineout[3]~14           ; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|Lineout[3]~14                   ; combout          ;
+; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|Lineout[7]~15           ; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|Lineout[7]~15                   ; combout          ;
+; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|Columnout[8]~36         ; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|Columnout[8]~36                 ; combout          ;
+; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|Columnout[9]~37         ; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|Columnout[9]~37                 ; combout          ;
+; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|Columnout[10]~38        ; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|Columnout[10]~38                ; combout          ;
+; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|Columnout[11]~39        ; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|Columnout[11]~39                ; combout          ;
+; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|Columnout[12]~40        ; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|Columnout[12]~40                ; combout          ;
+; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|Columnout[13]~41        ; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|Columnout[13]~41                ; combout          ;
+; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|Columnout[14]~42        ; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|Columnout[14]~42                ; combout          ;
+; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|Columnout[15]~43        ; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|Columnout[15]~43                ; combout          ;
+; |Core|Sound:StartSound|SoundFrep~21                            ; |Core|Sound:StartSound|SoundFrep~21                                    ; combout          ;
+; |Core|Sound:StartSound|process_0~11                            ; |Core|Sound:StartSound|process_0~11                                    ; combout          ;
+; |Core|Sound:StartSound|process_0~12                            ; |Core|Sound:StartSound|process_0~12                                    ; combout          ;
+; |Core|Sound:StartSound|process_0~13                            ; |Core|Sound:StartSound|process_0~13                                    ; combout          ;
+; |Core|Sound:StartSound|SoundFrep~7                             ; |Core|Sound:StartSound|SoundFrep~7                                     ; combout          ;
+; |Core|Sound:StartSound|SoundFrep~22                            ; |Core|Sound:StartSound|SoundFrep~22                                    ; combout          ;
+; |Core|Sound:StartSound|Equal0~12                               ; |Core|Sound:StartSound|Equal0~12                                       ; combout          ;
+; |Core|Sound:StartSound|Equal0~3                                ; |Core|Sound:StartSound|Equal0~3                                        ; combout          ;
+; |Core|Sound:StartSound|CTCEnable~4                             ; |Core|Sound:StartSound|CTCEnable~4                                     ; combout          ;
+; |Core|Sound:StartSound|CTCEnable~10                            ; |Core|Sound:StartSound|CTCEnable~10                                    ; combout          ;
+; |Core|reset                                                    ; |Core|reset~corein                                                     ; combout          ;
+; |Core|Stop                                                     ; |Core|Stop~corein                                                      ; combout          ;
+; |Core|TurnRight                                                ; |Core|TurnRight~corein                                                 ; combout          ;
+; |Core|TurnLeft                                                 ; |Core|TurnLeft~corein                                                  ; combout          ;
+; |Core|LEDSel[2]                                                ; |Core|LEDSel[2]                                                        ; padio            ;
+; |Core|LEDSel[3]                                                ; |Core|LEDSel[3]                                                        ; padio            ;
+; |Core|LEDSel[4]                                                ; |Core|LEDSel[4]                                                        ; padio            ;
+; |Core|LEDSel[5]                                                ; |Core|LEDSel[5]                                                        ; padio            ;
+; |Core|LEDSel[6]                                                ; |Core|LEDSel[6]                                                        ; padio            ;
+; |Core|LEDSel[7]                                                ; |Core|LEDSel[7]                                                        ; padio            ;
+; |Core|LEDData[0]                                               ; |Core|LEDData[0]                                                       ; padio            ;
+; |Core|LEDData[1]                                               ; |Core|LEDData[1]                                                       ; padio            ;
+; |Core|LEDData[2]                                               ; |Core|LEDData[2]                                                       ; padio            ;
+; |Core|LEDData[3]                                               ; |Core|LEDData[3]                                                       ; padio            ;
+; |Core|LEDData[4]                                               ; |Core|LEDData[4]                                                       ; padio            ;
+; |Core|LEDData[5]                                               ; |Core|LEDData[5]                                                       ; padio            ;
+; |Core|LEDData[6]                                               ; |Core|LEDData[6]                                                       ; padio            ;
+; |Core|LEDLineSel[0]                                            ; |Core|LEDLineSel[0]                                                    ; padio            ;
+; |Core|LEDLineSel[1]                                            ; |Core|LEDLineSel[1]                                                    ; padio            ;
+; |Core|LEDLineSel[2]                                            ; |Core|LEDLineSel[2]                                                    ; padio            ;
+; |Core|LEDLineSel[3]                                            ; |Core|LEDLineSel[3]                                                    ; padio            ;
+; |Core|LEDLineSel[4]                                            ; |Core|LEDLineSel[4]                                                    ; padio            ;
+; |Core|LEDLineSel[5]                                            ; |Core|LEDLineSel[5]                                                    ; padio            ;
+; |Core|LEDLineSel[6]                                            ; |Core|LEDLineSel[6]                                                    ; padio            ;
+; |Core|LEDLineSel[7]                                            ; |Core|LEDLineSel[7]                                                    ; padio            ;
+; |Core|LEDColumn[0]                                             ; |Core|LEDColumn[0]                                                     ; padio            ;
+; |Core|LEDColumn[1]                                             ; |Core|LEDColumn[1]                                                     ; padio            ;
+; |Core|LEDColumn[2]                                             ; |Core|LEDColumn[2]                                                     ; padio            ;
+; |Core|LEDColumn[3]                                             ; |Core|LEDColumn[3]                                                     ; padio            ;
+; |Core|LEDColumn[4]                                             ; |Core|LEDColumn[4]                                                     ; padio            ;
+; |Core|LEDColumn[5]                                             ; |Core|LEDColumn[5]                                                     ; padio            ;
+; |Core|LEDColumn[6]                                             ; |Core|LEDColumn[6]                                                     ; padio            ;
+; |Core|LEDColumn[7]                                             ; |Core|LEDColumn[7]                                                     ; padio            ;
+; |Core|LEDColumn[8]                                             ; |Core|LEDColumn[8]                                                     ; padio            ;
+; |Core|LEDColumn[9]                                             ; |Core|LEDColumn[9]                                                     ; padio            ;
+; |Core|LEDColumn[10]                                            ; |Core|LEDColumn[10]                                                    ; padio            ;
+; |Core|LEDColumn[11]                                            ; |Core|LEDColumn[11]                                                    ; padio            ;
+; |Core|LEDColumn[12]                                            ; |Core|LEDColumn[12]                                                    ; padio            ;
+; |Core|LEDColumn[13]                                            ; |Core|LEDColumn[13]                                                    ; padio            ;
+; |Core|LEDColumn[14]                                            ; |Core|LEDColumn[14]                                                    ; padio            ;
+; |Core|LEDColumn[15]                                            ; |Core|LEDColumn[15]                                                    ; padio            ;
+; |Core|SoundOut                                                 ; |Core|SoundOut                                                         ; padio            ;
++----------------------------------------------------------------+------------------------------------------------------------------------+------------------+
+
+
+The following table displays output ports that do not toggle to 0 during simulation.
++------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Missing 0-Value Coverage                                                                                                                                   ;
++----------------------------------------------------------------+------------------------------------------------------------------------+------------------+
+; Node Name                                                      ; Output Port Name                                                       ; Output Port Type ;
++----------------------------------------------------------------+------------------------------------------------------------------------+------------------+
+; |Core|TimeCount:LEDTimeCount|LEDNum[0]~0                       ; |Core|TimeCount:LEDTimeCount|LEDNum[0]~0                               ; combout          ;
+; |Core|TimeCount:LEDTimeCount|DNum:D1|n[1]                      ; |Core|TimeCount:LEDTimeCount|DNum:D1|n[1]                              ; regout           ;
+; |Core|TimeCount:LEDTimeCount|DNum:D0|n[1]                      ; |Core|TimeCount:LEDTimeCount|DNum:D0|n[1]                              ; regout           ;
+; |Core|TimeCount:LEDTimeCount|LEDNum[1]~1                       ; |Core|TimeCount:LEDTimeCount|LEDNum[1]~1                               ; combout          ;
+; |Core|TimeCount:LEDTimeCount|DNum:D1|n[2]                      ; |Core|TimeCount:LEDTimeCount|DNum:D1|n[2]                              ; regout           ;
+; |Core|TimeCount:LEDTimeCount|DNum:D0|n[2]                      ; |Core|TimeCount:LEDTimeCount|DNum:D0|n[2]                              ; regout           ;
+; |Core|TimeCount:LEDTimeCount|LEDNum[2]~2                       ; |Core|TimeCount:LEDTimeCount|LEDNum[2]~2                               ; combout          ;
+; |Core|TimeCount:LEDTimeCount|DNum:D1|n[3]                      ; |Core|TimeCount:LEDTimeCount|DNum:D1|n[3]                              ; regout           ;
+; |Core|TimeCount:LEDTimeCount|DNum:D0|n[3]                      ; |Core|TimeCount:LEDTimeCount|DNum:D0|n[3]                              ; regout           ;
+; |Core|TimeCount:LEDTimeCount|LEDNum[3]~3                       ; |Core|TimeCount:LEDTimeCount|LEDNum[3]~3                               ; combout          ;
+; |Core|TimeCount:LEDTimeCount|LedShowe:LED|Mux6~0               ; |Core|TimeCount:LEDTimeCount|LedShowe:LED|Mux6~0                       ; combout          ;
+; |Core|TimeCount:LEDTimeCount|LedShowe:LED|Mux5~0               ; |Core|TimeCount:LEDTimeCount|LedShowe:LED|Mux5~0                       ; combout          ;
+; |Core|TimeCount:LEDTimeCount|LedShowe:LED|Mux4~0               ; |Core|TimeCount:LEDTimeCount|LedShowe:LED|Mux4~0                       ; combout          ;
+; |Core|TimeCount:LEDTimeCount|LedShowe:LED|Mux3~0               ; |Core|TimeCount:LEDTimeCount|LedShowe:LED|Mux3~0                       ; combout          ;
+; |Core|TimeCount:LEDTimeCount|LedShowe:LED|Mux2~0               ; |Core|TimeCount:LEDTimeCount|LedShowe:LED|Mux2~0                       ; combout          ;
+; |Core|TimeCount:LEDTimeCount|LedShowe:LED|Mux1~0               ; |Core|TimeCount:LEDTimeCount|LedShowe:LED|Mux1~0                       ; combout          ;
+; |Core|TimeCount:LEDTimeCount|LedShowe:LED|Mux0~0               ; |Core|TimeCount:LEDTimeCount|LedShowe:LED|Mux0~0                       ; combout          ;
+; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|lcount[0]               ; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|lcount[0]                       ; regout           ;
+; |Core|LEDEnable                                                ; |Core|LEDEnable                                                        ; regout           ;
+; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|process_0~0             ; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|process_0~0                     ; combout          ;
+; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|Lineout[0]~8            ; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|Lineout[0]~8                    ; combout          ;
+; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|Lineout[1]~9            ; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|Lineout[1]~9                    ; combout          ;
+; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|Lineout[2]~10           ; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|Lineout[2]~10                   ; combout          ;
+; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|Mux26~0                 ; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|Mux26~0                         ; combout          ;
+; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|Lineout[4]~11           ; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|Lineout[4]~11                   ; combout          ;
+; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|Lineout[5]~12           ; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|Lineout[5]~12                   ; combout          ;
+; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|Lineout[6]~13           ; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|Lineout[6]~13                   ; combout          ;
+; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|Columnout[9]~16         ; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|Columnout[9]~16                 ; combout          ;
+; |Core|LEDCtrl:LEDP|IMGSel[1]                                   ; |Core|LEDCtrl:LEDP|IMGSel[1]                                           ; regout           ;
+; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|Mux1~0                  ; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|Mux1~0                          ; combout          ;
+; |Core|LEDCtrl:LEDP|IMGSel[0]                                   ; |Core|LEDCtrl:LEDP|IMGSel[0]                                           ; regout           ;
+; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|Mux0~0                  ; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|Mux0~0                          ; combout          ;
+; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|Columnout[0]~17         ; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|Columnout[0]~17                 ; combout          ;
+; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|Columnout[0]~18         ; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|Columnout[0]~18                 ; combout          ;
+; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|Mux13~0                 ; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|Mux13~0                         ; combout          ;
+; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|Mux1~1                  ; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|Mux1~1                          ; combout          ;
+; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|Columnout[1]~19         ; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|Columnout[1]~19                 ; combout          ;
+; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|Columnout[1]~20         ; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|Columnout[1]~20                 ; combout          ;
+; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|Columnout[2]~21         ; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|Columnout[2]~21                 ; combout          ;
+; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|Columnout[2]~22         ; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|Columnout[2]~22                 ; combout          ;
+; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|Columnout[3]~23         ; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|Columnout[3]~23                 ; combout          ;
+; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|Columnout[5]~24         ; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|Columnout[5]~24                 ; combout          ;
+; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|Columnout[3]~25         ; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|Columnout[3]~25                 ; combout          ;
+; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|Columnout[4]~26         ; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|Columnout[4]~26                 ; combout          ;
+; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|Columnout[4]~27         ; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|Columnout[4]~27                 ; combout          ;
+; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|Mux6~0                  ; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|Mux6~0                          ; combout          ;
+; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|Columnout[5]~28         ; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|Columnout[5]~28                 ; combout          ;
+; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|Columnout[6]~29         ; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|Columnout[6]~29                 ; combout          ;
+; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|Columnout[6]~30         ; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|Columnout[6]~30                 ; combout          ;
+; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|Mux12~0                 ; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|Mux12~0                         ; combout          ;
+; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|Columnout[7]~31         ; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|Columnout[7]~31                 ; combout          ;
+; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|Columnout[8]~32         ; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|Columnout[8]~32                 ; combout          ;
+; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|Mux15~0                 ; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|Mux15~0                         ; combout          ;
+; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|Columnout[8]~33         ; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|Columnout[8]~33                 ; combout          ;
+; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|Mux15~1                 ; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|Mux15~1                         ; combout          ;
+; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|Mux16~0                 ; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|Mux16~0                         ; combout          ;
+; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|Mux23~0                 ; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|Mux23~0                         ; combout          ;
+; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|Mux16~1                 ; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|Mux16~1                         ; combout          ;
+; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|Mux26~1                 ; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|Mux26~1                         ; combout          ;
+; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|Mux16~2                 ; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|Mux16~2                         ; combout          ;
+; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|Mux15~2                 ; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|Mux15~2                         ; combout          ;
+; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|Mux16~3                 ; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|Mux16~3                         ; combout          ;
+; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|Mux21~0                 ; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|Mux21~0                         ; combout          ;
+; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|Mux17~0                 ; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|Mux17~0                         ; combout          ;
+; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|Mux17~1                 ; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|Mux17~1                         ; combout          ;
+; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|Mux19~0                 ; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|Mux19~0                         ; combout          ;
+; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|Mux18~0                 ; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|Mux18~0                         ; combout          ;
+; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|Mux18~1                 ; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|Mux18~1                         ; combout          ;
+; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|Mux10~0                 ; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|Mux10~0                         ; combout          ;
+; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|Mux20~0                 ; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|Mux20~0                         ; combout          ;
+; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|Mux20~1                 ; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|Mux20~1                         ; combout          ;
+; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|Mux22~0                 ; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|Mux22~0                         ; combout          ;
+; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|Mux22~1                 ; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|Mux22~1                         ; combout          ;
+; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|Mux25~0                 ; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|Mux25~0                         ; combout          ;
+; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|Mux25~1                 ; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|Mux25~1                         ; combout          ;
+; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|Columnout[15]~34        ; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|Columnout[15]~34                ; combout          ;
+; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|Columnout[15]~35        ; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|Columnout[15]~35                ; combout          ;
+; |Core|TimeCount:LEDTimeCount|DNum:D0|c1                        ; |Core|TimeCount:LEDTimeCount|DNum:D0|c1                                ; regout           ;
+; |Core|ClockDiv:C1|outtmp                                       ; |Core|ClockDiv:C1|outtmp                                               ; regout           ;
+; |Core|SoundCount[2]                                            ; |Core|SoundCount[2]                                                    ; regout           ;
+; |Core|SoundCount[1]                                            ; |Core|SoundCount[1]                                                    ; regout           ;
+; |Core|LEDCtrl:LEDP|RsvCount                                    ; |Core|LEDCtrl:LEDP|RsvCount                                            ; regout           ;
+; |Core|State[1]                                                 ; |Core|State[1]                                                         ; regout           ;
+; |Core|State[0]                                                 ; |Core|State[0]                                                         ; regout           ;
+; |Core|LEDCtrl:LEDP|RsvCount~0                                  ; |Core|LEDCtrl:LEDP|RsvCount~0                                          ; combout          ;
+; |Core|LEDCtrl:LEDP|Equal4~0                                    ; |Core|LEDCtrl:LEDP|Equal4~0                                            ; combout          ;
+; |Core|LEDCtrl:LEDP|IMGSel[0]~2                                 ; |Core|LEDCtrl:LEDP|IMGSel[0]~2                                         ; combout          ;
+; |Core|LEDCtrl:LEDP|Equal4~1                                    ; |Core|LEDCtrl:LEDP|Equal4~1                                            ; combout          ;
+; |Core|Sound:StartSound|SoundFrep[0]                            ; |Core|Sound:StartSound|SoundFrep[0]                                    ; regout           ;
+; |Core|Sound:StartSound|SoundFrep[1]                            ; |Core|Sound:StartSound|SoundFrep[1]                                    ; regout           ;
+; |Core|Sound:StartSound|CTC:CTCWaveGen|count[1]                 ; |Core|Sound:StartSound|CTC:CTCWaveGen|count[1]~1                       ; cout0            ;
+; |Core|Sound:StartSound|CTC:CTCWaveGen|count[1]                 ; |Core|Sound:StartSound|CTC:CTCWaveGen|count[1]~1COUT1_29               ; cout1            ;
+; |Core|Sound:StartSound|CTC:CTCWaveGen|count[0]                 ; |Core|Sound:StartSound|CTC:CTCWaveGen|count[0]~3                       ; cout0            ;
+; |Core|Sound:StartSound|CTC:CTCWaveGen|count[0]                 ; |Core|Sound:StartSound|CTC:CTCWaveGen|count[0]~3COUT1_27               ; cout1            ;
+; |Core|Sound:StartSound|CTC:CTCWaveGen|Equal0~0                 ; |Core|Sound:StartSound|CTC:CTCWaveGen|Equal0~0                         ; combout          ;
+; |Core|Sound:StartSound|SoundFrep[2]                            ; |Core|Sound:StartSound|SoundFrep[2]                                    ; regout           ;
+; |Core|Sound:StartSound|SoundFrep[3]                            ; |Core|Sound:StartSound|SoundFrep[3]                                    ; regout           ;
+; |Core|Sound:StartSound|CTC:CTCWaveGen|count[3]                 ; |Core|Sound:StartSound|CTC:CTCWaveGen|count[3]~5                       ; cout0            ;
+; |Core|Sound:StartSound|CTC:CTCWaveGen|count[3]                 ; |Core|Sound:StartSound|CTC:CTCWaveGen|count[3]~5COUT1_33               ; cout1            ;
+; |Core|Sound:StartSound|CTC:CTCWaveGen|count[2]                 ; |Core|Sound:StartSound|CTC:CTCWaveGen|count[2]~7                       ; cout0            ;
+; |Core|Sound:StartSound|CTC:CTCWaveGen|count[2]                 ; |Core|Sound:StartSound|CTC:CTCWaveGen|count[2]~7COUT1_31               ; cout1            ;
+; |Core|Sound:StartSound|CTC:CTCWaveGen|Equal0~1                 ; |Core|Sound:StartSound|CTC:CTCWaveGen|Equal0~1                         ; combout          ;
+; |Core|Sound:StartSound|SoundFrep[4]                            ; |Core|Sound:StartSound|SoundFrep[4]                                    ; regout           ;
+; |Core|Sound:StartSound|SoundFrep[5]                            ; |Core|Sound:StartSound|SoundFrep[5]                                    ; regout           ;
+; |Core|Sound:StartSound|CTC:CTCWaveGen|count[5]                 ; |Core|Sound:StartSound|CTC:CTCWaveGen|count[5]~9                       ; cout0            ;
+; |Core|Sound:StartSound|CTC:CTCWaveGen|count[5]                 ; |Core|Sound:StartSound|CTC:CTCWaveGen|count[5]~9COUT1_35               ; cout1            ;
+; |Core|Sound:StartSound|CTC:CTCWaveGen|count[4]                 ; |Core|Sound:StartSound|CTC:CTCWaveGen|count[4]~11                      ; cout             ;
+; |Core|Sound:StartSound|CTC:CTCWaveGen|Equal0~2                 ; |Core|Sound:StartSound|CTC:CTCWaveGen|Equal0~2                         ; combout          ;
+; |Core|Sound:StartSound|SoundFrep[6]                            ; |Core|Sound:StartSound|SoundFrep[6]                                    ; regout           ;
+; |Core|Sound:StartSound|CTC:CTCWaveGen|count[6]                 ; |Core|Sound:StartSound|CTC:CTCWaveGen|count[6]~13                      ; cout0            ;
+; |Core|Sound:StartSound|CTC:CTCWaveGen|count[6]                 ; |Core|Sound:StartSound|CTC:CTCWaveGen|count[6]~13COUT1_37              ; cout1            ;
+; |Core|Sound:StartSound|CTC:CTCWaveGen|count[7]                 ; |Core|Sound:StartSound|CTC:CTCWaveGen|count[7]~15                      ; cout0            ;
+; |Core|Sound:StartSound|CTC:CTCWaveGen|count[7]                 ; |Core|Sound:StartSound|CTC:CTCWaveGen|count[7]~15COUT1_39              ; cout1            ;
+; |Core|Sound:StartSound|CTC:CTCWaveGen|Equal0~3                 ; |Core|Sound:StartSound|CTC:CTCWaveGen|Equal0~3                         ; combout          ;
+; |Core|Sound:StartSound|CTC:CTCWaveGen|Equal0~4                 ; |Core|Sound:StartSound|CTC:CTCWaveGen|Equal0~4                         ; combout          ;
+; |Core|Sound:StartSound|CTCEnable                               ; |Core|Sound:StartSound|CTCEnable                                       ; regout           ;
+; |Core|ClockDiv:C1|count[1]                                     ; |Core|ClockDiv:C1|count[1]                                             ; regout           ;
+; |Core|ClockDiv:C1|count[0]                                     ; |Core|ClockDiv:C1|count[0]                                             ; regout           ;
+; |Core|ClockDiv:C8|outtmp                                       ; |Core|ClockDiv:C8|outtmp                                               ; regout           ;
+; |Core|SoundCount[0]                                            ; |Core|SoundCount[0]                                                    ; regout           ;
+; |Core|LEDCtrl:LEDP|BreathCount[7]                              ; |Core|LEDCtrl:LEDP|BreathCount[7]                                      ; regout           ;
+; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|PWM:PWMGen|LessThan0~7  ; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|PWM:PWMGen|LessThan0~7COUT1_58  ; cout1            ;
+; |Core|LEDCtrl:LEDP|BreathCount[6]                              ; |Core|LEDCtrl:LEDP|BreathCount[6]                                      ; regout           ;
+; |Core|LEDCtrl:LEDP|BreathCount[5]                              ; |Core|LEDCtrl:LEDP|BreathCount[5]                                      ; regout           ;
+; |Core|LEDCtrl:LEDP|BreathCount[8]                              ; |Core|LEDCtrl:LEDP|Equal1~0                                            ; combout          ;
+; |Core|LEDCtrl:LEDP|BreathCount[8]                              ; |Core|LEDCtrl:LEDP|BreathCount[8]                                      ; regout           ;
+; |Core|LEDCtrl:LEDP|BreathCount[0]                              ; |Core|LEDCtrl:LEDP|BreathCount[0]                                      ; regout           ;
+; |Core|LEDCtrl:LEDP|BreathCount[4]                              ; |Core|LEDCtrl:LEDP|BreathCount[4]                                      ; regout           ;
+; |Core|LEDCtrl:LEDP|BreathCount[3]                              ; |Core|LEDCtrl:LEDP|BreathCount[3]                                      ; regout           ;
+; |Core|LEDCtrl:LEDP|BreathCount[2]                              ; |Core|LEDCtrl:LEDP|BreathCount[2]                                      ; regout           ;
+; |Core|LEDCtrl:LEDP|BreathCount[1]                              ; |Core|LEDCtrl:LEDP|BreathCount[1]                                      ; regout           ;
+; |Core|LEDCtrl:LEDP|Equal1~1                                    ; |Core|LEDCtrl:LEDP|Equal1~1                                            ; combout          ;
+; |Core|LEDCtrl:LEDP|Equal1~2                                    ; |Core|LEDCtrl:LEDP|Equal1~2                                            ; combout          ;
+; |Core|LEDCtrl:LEDP|Equal2~0                                    ; |Core|LEDCtrl:LEDP|Equal2~0                                            ; combout          ;
+; |Core|LEDCtrl:LEDP|Equal2~1                                    ; |Core|LEDCtrl:LEDP|Equal2~1                                            ; combout          ;
+; |Core|LEDCtrl:LEDP|Equal2~2                                    ; |Core|LEDCtrl:LEDP|Equal2~2                                            ; combout          ;
+; |Core|LEDCount[0]                                              ; |Core|LEDCount[0]                                                      ; regout           ;
+; |Core|State~0                                                  ; |Core|State~0                                                          ; combout          ;
+; |Core|Equal0~0                                                 ; |Core|Equal0~0                                                         ; combout          ;
+; |Core|State[0]~1                                               ; |Core|State[0]~1                                                       ; combout          ;
+; |Core|Sound:StartSound|count[3]                                ; |Core|Sound:StartSound|count[3]~1                                      ; cout             ;
+; |Core|Sound:StartSound|count[1]                                ; |Core|Sound:StartSound|count[1]~3                                      ; cout0            ;
+; |Core|Sound:StartSound|count[1]                                ; |Core|Sound:StartSound|count[1]~3COUT1_20                              ; cout1            ;
+; |Core|Sound:StartSound|count[2]                                ; |Core|Sound:StartSound|count[2]~5                                      ; cout0            ;
+; |Core|Sound:StartSound|count[2]                                ; |Core|Sound:StartSound|count[2]~5COUT1_22                              ; cout1            ;
+; |Core|Sound:StartSound|process_0~0                             ; |Core|Sound:StartSound|process_0~0                                     ; combout          ;
+; |Core|Sound:StartSound|count[0]                                ; |Core|Sound:StartSound|count[0]~9                                      ; cout0            ;
+; |Core|Sound:StartSound|count[0]                                ; |Core|Sound:StartSound|count[0]~9COUT1_18                              ; cout1            ;
+; |Core|Sound:StartSound|count[4]                                ; |Core|Sound:StartSound|count[4]~11                                     ; cout0            ;
+; |Core|Sound:StartSound|count[4]                                ; |Core|Sound:StartSound|count[4]~11COUT1_24                             ; cout1            ;
+; |Core|Sound:StartSound|process_0~1                             ; |Core|Sound:StartSound|process_0~1                                     ; combout          ;
+; |Core|Sound:StartSound|process_0~2                             ; |Core|Sound:StartSound|process_0~2                                     ; combout          ;
+; |Core|Sound:StartSound|process_0~3                             ; |Core|Sound:StartSound|process_0~3                                     ; combout          ;
+; |Core|Sound:StartSound|process_0~4                             ; |Core|Sound:StartSound|process_0~4                                     ; combout          ;
+; |Core|Sound:StartSound|Mux1~0                                  ; |Core|Sound:StartSound|Mux1~0                                          ; combout          ;
+; |Core|Sound:StartSound|process_0~5                             ; |Core|Sound:StartSound|process_0~5                                     ; combout          ;
+; |Core|Sound:StartSound|process_0~6                             ; |Core|Sound:StartSound|process_0~6                                     ; combout          ;
+; |Core|Sound:StartSound|Mux11~0                                 ; |Core|Sound:StartSound|Mux11~0                                         ; combout          ;
+; |Core|Sound:StartSound|process_0~7                             ; |Core|Sound:StartSound|process_0~7                                     ; combout          ;
+; |Core|Sound:StartSound|process_0~8                             ; |Core|Sound:StartSound|process_0~8                                     ; combout          ;
+; |Core|Sound:StartSound|SoundFrep~13                            ; |Core|Sound:StartSound|SoundFrep~13                                    ; combout          ;
+; |Core|Sound:StartSound|process_0~9                             ; |Core|Sound:StartSound|process_0~9                                     ; combout          ;
+; |Core|Sound:StartSound|Mux11~1                                 ; |Core|Sound:StartSound|Mux11~1                                         ; combout          ;
+; |Core|SoundEnable                                              ; |Core|SoundEnable                                                      ; regout           ;
+; |Core|Sound:StartSound|process_0~10                            ; |Core|Sound:StartSound|process_0~10                                    ; combout          ;
+; |Core|Sound:StartSound|Mux10~0                                 ; |Core|Sound:StartSound|Mux10~0                                         ; combout          ;
+; |Core|Sound:StartSound|Mux9~0                                  ; |Core|Sound:StartSound|Mux9~0                                          ; combout          ;
+; |Core|Sound:StartSound|Mux8~0                                  ; |Core|Sound:StartSound|Mux8~0                                          ; combout          ;
+; |Core|Sound:StartSound|Mux7~0                                  ; |Core|Sound:StartSound|Mux7~0                                          ; combout          ;
+; |Core|Sound:StartSound|Mux7~1                                  ; |Core|Sound:StartSound|Mux7~1                                          ; combout          ;
+; |Core|Sound:StartSound|Mux6~0                                  ; |Core|Sound:StartSound|Mux6~0                                          ; combout          ;
+; |Core|Sound:StartSound|Mux5~0                                  ; |Core|Sound:StartSound|Mux5~0                                          ; combout          ;
+; |Core|Sound:StartSound|CTCEnable~9                             ; |Core|Sound:StartSound|CTCEnable~9                                     ; combout          ;
+; |Core|ClockDiv:C8|count[5]                                     ; |Core|ClockDiv:C8|count[5]                                             ; regout           ;
+; |Core|ClockDiv:C8|count[4]                                     ; |Core|ClockDiv:C8|count[4]                                             ; regout           ;
+; |Core|ClockDiv:C8|count[3]                                     ; |Core|ClockDiv:C8|count[3]                                             ; regout           ;
+; |Core|ClockDiv:C8|Equal0~0                                     ; |Core|ClockDiv:C8|Equal0~0                                             ; combout          ;
+; |Core|LEDCtrl:LEDP|Add0~1                                      ; |Core|LEDCtrl:LEDP|Add0~1                                              ; combout          ;
+; |Core|LEDCtrl:LEDP|Add0~1                                      ; |Core|LEDCtrl:LEDP|Add0~3                                              ; cout0            ;
+; |Core|LEDCtrl:LEDP|Add0~1                                      ; |Core|LEDCtrl:LEDP|Add0~3COUT1_68                                      ; cout1            ;
+; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|PWM:PWMGen|count[6]     ; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|PWM:PWMGen|count[6]~3COUT1_30   ; cout1            ;
+; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|PWM:PWMGen|LessThan0~12 ; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|PWM:PWMGen|LessThan0~12COUT1_56 ; cout1            ;
+; |Core|LEDCtrl:LEDP|Add0~6                                      ; |Core|LEDCtrl:LEDP|Add0~6                                              ; combout          ;
+; |Core|LEDCtrl:LEDP|Add0~6                                      ; |Core|LEDCtrl:LEDP|Add0~8                                              ; cout0            ;
+; |Core|LEDCtrl:LEDP|Add0~6                                      ; |Core|LEDCtrl:LEDP|Add0~8COUT1_66                                      ; cout1            ;
+; |Core|LEDCtrl:LEDP|Add0~11                                     ; |Core|LEDCtrl:LEDP|Add0~11                                             ; combout          ;
+; |Core|LEDCtrl:LEDP|Add0~11                                     ; |Core|LEDCtrl:LEDP|Add0~13                                             ; cout0            ;
+; |Core|LEDCtrl:LEDP|Add0~11                                     ; |Core|LEDCtrl:LEDP|Add0~13COUT1_64                                     ; cout1            ;
+; |Core|LEDCtrl:LEDP|Add0~16                                     ; |Core|LEDCtrl:LEDP|Add0~16                                             ; combout          ;
+; |Core|LEDCtrl:LEDP|Add0~21                                     ; |Core|LEDCtrl:LEDP|Add0~21                                             ; combout          ;
+; |Core|LEDCtrl:LEDP|Add0~21                                     ; |Core|LEDCtrl:LEDP|Add0~23                                             ; cout0            ;
+; |Core|LEDCtrl:LEDP|Add0~21                                     ; |Core|LEDCtrl:LEDP|Add0~23COUT1_56                                     ; cout1            ;
+; |Core|LEDCtrl:LEDP|Add0~26                                     ; |Core|LEDCtrl:LEDP|Add0~26                                             ; combout          ;
+; |Core|LEDCtrl:LEDP|Add0~26                                     ; |Core|LEDCtrl:LEDP|Add0~28                                             ; cout             ;
+; |Core|LEDCtrl:LEDP|Add0~31                                     ; |Core|LEDCtrl:LEDP|Add0~31                                             ; combout          ;
+; |Core|LEDCtrl:LEDP|Add0~31                                     ; |Core|LEDCtrl:LEDP|Add0~33                                             ; cout0            ;
+; |Core|LEDCtrl:LEDP|Add0~31                                     ; |Core|LEDCtrl:LEDP|Add0~33COUT1_62                                     ; cout1            ;
+; |Core|LEDCtrl:LEDP|Add0~36                                     ; |Core|LEDCtrl:LEDP|Add0~36                                             ; combout          ;
+; |Core|LEDCtrl:LEDP|Add0~36                                     ; |Core|LEDCtrl:LEDP|Add0~38                                             ; cout0            ;
+; |Core|LEDCtrl:LEDP|Add0~36                                     ; |Core|LEDCtrl:LEDP|Add0~38COUT1_60                                     ; cout1            ;
+; |Core|LEDCtrl:LEDP|Add0~41                                     ; |Core|LEDCtrl:LEDP|Add0~41                                             ; combout          ;
+; |Core|LEDCtrl:LEDP|Add0~41                                     ; |Core|LEDCtrl:LEDP|Add0~43                                             ; cout0            ;
+; |Core|LEDCtrl:LEDP|Add0~41                                     ; |Core|LEDCtrl:LEDP|Add0~43COUT1_58                                     ; cout1            ;
+; |Core|Add1~0                                                   ; |Core|Add1~0                                                           ; combout          ;
+; |Core|ClockDiv:C1K|Add0~5                                      ; |Core|ClockDiv:C1K|Add0~7COUT1_42                                      ; cout1            ;
+; |Core|ClockDiv:C8|Add0~0                                       ; |Core|ClockDiv:C8|Add0~0                                               ; combout          ;
+; |Core|ClockDiv:C8|Add0~5                                       ; |Core|ClockDiv:C8|Add0~7                                               ; cout0            ;
+; |Core|ClockDiv:C8|Add0~5                                       ; |Core|ClockDiv:C8|Add0~7COUT1_42                                       ; cout1            ;
+; |Core|ClockDiv:C8|Add0~10                                      ; |Core|ClockDiv:C8|Add0~12                                              ; cout0            ;
+; |Core|LEDCtrl:LEDP|Add0~46                                     ; |Core|LEDCtrl:LEDP|Add0~46                                             ; combout          ;
+; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|PWM:PWMGen|count[5]     ; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|PWM:PWMGen|count[5]~5COUT1_28   ; cout1            ;
+; |Core|ClockDiv:C170|Add0~15                                    ; |Core|ClockDiv:C170|Add0~17COUT1_132                                   ; cout1            ;
+; |Core|ClockDiv:C170|Add0~20                                    ; |Core|ClockDiv:C170|Add0~22COUT1_130                                   ; cout1            ;
+; |Core|ClockDiv:C170|Add0~25                                    ; |Core|ClockDiv:C170|Add0~27COUT1_128                                   ; cout1            ;
+; |Core|ClockDiv:C170|Add0~35                                    ; |Core|ClockDiv:C170|Add0~37                                            ; cout0            ;
+; |Core|ClockDiv:C170|Add0~40                                    ; |Core|ClockDiv:C170|Add0~42                                            ; cout0            ;
+; |Core|ClockDiv:C170|Add0~45                                    ; |Core|ClockDiv:C170|Add0~47                                            ; cout0            ;
+; |Core|ClockDiv:C170|Add0~50                                    ; |Core|ClockDiv:C170|Add0~52                                            ; cout0            ;
+; |Core|ClockDiv:C170|Add0~55                                    ; |Core|ClockDiv:C170|Add0~57COUT1_116                                   ; cout1            ;
+; |Core|ClockDiv:C170|Add0~65                                    ; |Core|ClockDiv:C170|Add0~67COUT1_118                                   ; cout1            ;
+; |Core|ClockDiv:C170|Add0~70                                    ; |Core|ClockDiv:C170|Add0~72COUT1_114                                   ; cout1            ;
+; |Core|ClockDiv:C170|Add0~75                                    ; |Core|ClockDiv:C170|Add0~77COUT1_112                                   ; cout1            ;
+; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|Lineout[3]~14           ; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|Lineout[3]~14                   ; combout          ;
+; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|Lineout[7]~15           ; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|Lineout[7]~15                   ; combout          ;
+; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|Columnout[8]~36         ; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|Columnout[8]~36                 ; combout          ;
+; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|Columnout[9]~37         ; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|Columnout[9]~37                 ; combout          ;
+; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|Columnout[10]~38        ; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|Columnout[10]~38                ; combout          ;
+; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|Columnout[11]~39        ; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|Columnout[11]~39                ; combout          ;
+; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|Columnout[12]~40        ; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|Columnout[12]~40                ; combout          ;
+; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|Columnout[13]~41        ; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|Columnout[13]~41                ; combout          ;
+; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|Columnout[14]~42        ; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|Columnout[14]~42                ; combout          ;
+; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|Columnout[15]~43        ; |Core|LEDCtrl:LEDP|LEDRefresh:LEDPoint|Columnout[15]~43                ; combout          ;
+; |Core|Sound:StartSound|SoundFrep~21                            ; |Core|Sound:StartSound|SoundFrep~21                                    ; combout          ;
+; |Core|Sound:StartSound|process_0~11                            ; |Core|Sound:StartSound|process_0~11                                    ; combout          ;
+; |Core|Sound:StartSound|process_0~12                            ; |Core|Sound:StartSound|process_0~12                                    ; combout          ;
+; |Core|Sound:StartSound|process_0~13                            ; |Core|Sound:StartSound|process_0~13                                    ; combout          ;
+; |Core|Sound:StartSound|SoundFrep~7                             ; |Core|Sound:StartSound|SoundFrep~7                                     ; combout          ;
+; |Core|Sound:StartSound|SoundFrep~22                            ; |Core|Sound:StartSound|SoundFrep~22                                    ; combout          ;
+; |Core|Sound:StartSound|Equal0~12                               ; |Core|Sound:StartSound|Equal0~12                                       ; combout          ;
+; |Core|Sound:StartSound|Equal0~3                                ; |Core|Sound:StartSound|Equal0~3                                        ; combout          ;
+; |Core|Sound:StartSound|CTCEnable~4                             ; |Core|Sound:StartSound|CTCEnable~4                                     ; combout          ;
+; |Core|Sound:StartSound|CTCEnable~10                            ; |Core|Sound:StartSound|CTCEnable~10                                    ; combout          ;
+; |Core|reset                                                    ; |Core|reset~corein                                                     ; combout          ;
+; |Core|Stop                                                     ; |Core|Stop~corein                                                      ; combout          ;
+; |Core|TurnRight                                                ; |Core|TurnRight~corein                                                 ; combout          ;
+; |Core|TurnLeft                                                 ; |Core|TurnLeft~corein                                                  ; combout          ;
+; |Core|LEDSel[2]                                                ; |Core|LEDSel[2]                                                        ; padio            ;
+; |Core|LEDSel[3]                                                ; |Core|LEDSel[3]                                                        ; padio            ;
+; |Core|LEDSel[4]                                                ; |Core|LEDSel[4]                                                        ; padio            ;
+; |Core|LEDSel[5]                                                ; |Core|LEDSel[5]                                                        ; padio            ;
+; |Core|LEDSel[6]                                                ; |Core|LEDSel[6]                                                        ; padio            ;
+; |Core|LEDSel[7]                                                ; |Core|LEDSel[7]                                                        ; padio            ;
+; |Core|LEDData[0]                                               ; |Core|LEDData[0]                                                       ; padio            ;
+; |Core|LEDData[1]                                               ; |Core|LEDData[1]                                                       ; padio            ;
+; |Core|LEDData[2]                                               ; |Core|LEDData[2]                                                       ; padio            ;
+; |Core|LEDData[3]                                               ; |Core|LEDData[3]                                                       ; padio            ;
+; |Core|LEDData[4]                                               ; |Core|LEDData[4]                                                       ; padio            ;
+; |Core|LEDData[5]                                               ; |Core|LEDData[5]                                                       ; padio            ;
+; |Core|LEDData[6]                                               ; |Core|LEDData[6]                                                       ; padio            ;
+; |Core|LEDLineSel[0]                                            ; |Core|LEDLineSel[0]                                                    ; padio            ;
+; |Core|LEDLineSel[1]                                            ; |Core|LEDLineSel[1]                                                    ; padio            ;
+; |Core|LEDLineSel[2]                                            ; |Core|LEDLineSel[2]                                                    ; padio            ;
+; |Core|LEDLineSel[3]                                            ; |Core|LEDLineSel[3]                                                    ; padio            ;
+; |Core|LEDLineSel[4]                                            ; |Core|LEDLineSel[4]                                                    ; padio            ;
+; |Core|LEDLineSel[5]                                            ; |Core|LEDLineSel[5]                                                    ; padio            ;
+; |Core|LEDLineSel[6]                                            ; |Core|LEDLineSel[6]                                                    ; padio            ;
+; |Core|LEDLineSel[7]                                            ; |Core|LEDLineSel[7]                                                    ; padio            ;
+; |Core|LEDColumn[0]                                             ; |Core|LEDColumn[0]                                                     ; padio            ;
+; |Core|LEDColumn[1]                                             ; |Core|LEDColumn[1]                                                     ; padio            ;
+; |Core|LEDColumn[2]                                             ; |Core|LEDColumn[2]                                                     ; padio            ;
+; |Core|LEDColumn[3]                                             ; |Core|LEDColumn[3]                                                     ; padio            ;
+; |Core|LEDColumn[4]                                             ; |Core|LEDColumn[4]                                                     ; padio            ;
+; |Core|LEDColumn[5]                                             ; |Core|LEDColumn[5]                                                     ; padio            ;
+; |Core|LEDColumn[6]                                             ; |Core|LEDColumn[6]                                                     ; padio            ;
+; |Core|LEDColumn[7]                                             ; |Core|LEDColumn[7]                                                     ; padio            ;
+; |Core|LEDColumn[8]                                             ; |Core|LEDColumn[8]                                                     ; padio            ;
+; |Core|LEDColumn[9]                                             ; |Core|LEDColumn[9]                                                     ; padio            ;
+; |Core|LEDColumn[10]                                            ; |Core|LEDColumn[10]                                                    ; padio            ;
+; |Core|LEDColumn[11]                                            ; |Core|LEDColumn[11]                                                    ; padio            ;
+; |Core|LEDColumn[12]                                            ; |Core|LEDColumn[12]                                                    ; padio            ;
+; |Core|LEDColumn[13]                                            ; |Core|LEDColumn[13]                                                    ; padio            ;
+; |Core|LEDColumn[14]                                            ; |Core|LEDColumn[14]                                                    ; padio            ;
+; |Core|LEDColumn[15]                                            ; |Core|LEDColumn[15]                                                    ; padio            ;
+; |Core|SoundOut                                                 ; |Core|SoundOut                                                         ; padio            ;
++----------------------------------------------------------------+------------------------------------------------------------------------+------------------+
+
+
++---------------------+
+; Simulator INI Usage ;
++--------+------------+
+; Option ; Usage      ;
++--------+------------+
+
+
++--------------------+
+; Simulator Messages ;
++--------------------+
+Info: *******************************************************************
+Info: Running Quartus II Simulator
+    Info: Version 9.1 Build 222 10/21/2009 SJ Full Version
+    Info: Processing started: Sun Oct 29 15:04:11 2017
+Info: Command: quartus_sim --read_settings_files=on --write_settings_files=off Core -c Core
+Info: Using vector source file "C:/Users/Administrator/Desktop/bike/Core/Core.vwf"
+Warning: Can't find signal in vector source file for input pin "|Core|Night"
+Warning: Can't find signal in vector source file for input pin "|Core|Stop"
+Warning: Can't find signal in vector source file for input pin "|Core|TurnRight"
+Warning: Can't find signal in vector source file for input pin "|Core|TurnLeft"
+Info: Inverted registers were found during simulation
+    Info: Register: |Core|TimeCount:LEDTimeCount|DNum:D0|c1
+Info: Option to preserve fewer signal transitions to reduce memory requirements is enabled
+    Info: Simulation has been partitioned into sub-simulations according to the maximum transition count determined by the engine. Transitions from memory will be flushed out to disk at the end of each sub-simulation to reduce memory requirements.
+Info: Simulation partitioned into 1 sub-simulations
+Info: Simulation coverage is      35.67 %
+Info: Number of transitions in simulation is 12198054
+Info: Quartus II Simulator was successful. 0 errors, 4 warnings
+    Info: Peak virtual memory: 144 megabytes
+    Info: Processing ended: Sun Oct 29 15:04:48 2017
+    Info: Elapsed time: 00:00:37
+    Info: Total CPU time (on all processors): 00:00:38
+
+

@@ -1,0 +1,46 @@
+LIBRARY IEEE;
+USE IEEE.STD_LOGIC_1164.ALL;
+USE IEEE.STD_LOGIC_UNSIGNED.ALL;
+USE IEEE.STD_LOGIC_ARITH.ALL;
+ENTITY MeasureLevel IS
+	GENERIC (CountRange : INTEGER := 1024);                 --可测10M
+	PORT(Countclock:IN STD_LOGIC;                           --计数时钟2941分频,每计数1cm
+		reset:IN STD_LOGIC;                                 --复位
+        Level:IN STD_LOGIC;                                 --待测电平信号
+		n0:OUT STD_LOGIC_VECTOR(3 DOWNTO 0);    --输出信号
+        n1:OUT STD_LOGIC_VECTOR(3 DOWNTO 0);
+        n2:OUT STD_LOGIC_VECTOR(3 DOWNTO 0);
+        n3:OUT STD_LOGIC_VECTOR(3 DOWNTO 0));
+END MeasureLevel;
+ARCHITECTURE Measurer OF MeasureLevel IS
+    COMPONENT EdgeToLevel
+        PORT(reset:IN STD_LOGIC;    --重置
+            Input:IN STD_LOGIC;     --输入信号(上升沿有效) 
+            Output:OUT STD_LOGIC);  --输出信号(电平有效) 
+    END COMPONENT;
+    COMPONENT DNum
+        PORT(clock,reset:IN STD_LOGIC;
+            output: OUT STD_LOGIC_VECTOR(3 DOWNTO 0);
+            c1: OUT STD_LOGIC);
+	END COMPONENT;
+	SIGNAL count:INTEGER RANGE 0 TO CountRange-1;
+    SIGNAL UpEdge:STD_LOGIC;
+    SIGNAL DNumreset:STD_LOGIC;
+    SIGNAL DNumclock:STD_LOGIC;
+    SIGNAL c0:STD_LOGIC;
+    SIGNAL c1:STD_LOGIC;
+    SIGNAL c2:STD_LOGIC;
+    --SIGNAL n0:STD_LOGIC_VECTOR(3 DOWNTO 0);
+    --SIGNAL n1:STD_LOGIC_VECTOR(3 DOWNTO 0);
+    --SIGNAL n2:STD_LOGIC_VECTOR(3 DOWNTO 0);
+    --SIGNAL n3:STD_LOGIC_VECTOR(3 DOWNTO 0);
+BEGIN
+    ToUpLevel : EdgeToLevel PORT MAP (reset=>reset, Input=>Level, Output=>UpEdge);
+    DNumreset<=reset OR UpEdge;
+    DNumclock<=Level AND Countclock;
+    D0 : DNum PORT MAP (clock=>DNumclock,reset=>DNumreset,output=>n0,c1=>c0);
+    D1 : DNum PORT MAP (clock=>c0,reset=>DNumreset,output=>n1,c1=>c1);
+    D2 : DNum PORT MAP (clock=>c1,reset=>DNumreset,output=>n2,c1=>c2);
+    D3 : DNum PORT MAP (clock=>c2,reset=>DNumreset,output=>n3,c1=>OPEN);
+	output<=count;
+END Measurer;

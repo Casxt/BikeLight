@@ -1,0 +1,86 @@
+--------------------------------------------------------------------------------------
+Timing Analyzer Summary
+--------------------------------------------------------------------------------------
+
+Type           : Worst-case tsu
+Slack          : N/A
+Required Time  : None
+Actual Time    : 9.505 ns
+From           : DataSel[1]
+To             : Data[1][0][12]
+From Clock     : --
+To Clock       : Rollclock
+Failed Paths   : 0
+
+Type           : Worst-case tco
+Slack          : N/A
+Required Time  : None
+Actual Time    : 19.245 ns
+From           : lcount[1]
+To             : Columnout[6]
+From Clock     : Switchclock
+To Clock       : --
+Failed Paths   : 0
+
+Type           : Worst-case tpd
+Slack          : N/A
+Required Time  : None
+Actual Time    : 20.182 ns
+From           : DataSel[1]
+To             : Columnout[6]
+From Clock     : --
+To Clock       : --
+Failed Paths   : 0
+
+Type           : Worst-case th
+Slack          : N/A
+Required Time  : None
+Actual Time    : -1.276 ns
+From           : DataSel[1]
+To             : Data[1][6][7]
+From Clock     : --
+To Clock       : Rollclock
+Failed Paths   : 0
+
+Type           : Clock Setup: 'Rollclock'
+Slack          : N/A
+Required Time  : None
+Actual Time    : 116.86 MHz ( period = 8.557 ns )
+From           : Data[1][2][5]
+To             : Data[0][2][6]
+From Clock     : Rollclock
+To Clock       : Rollclock
+Failed Paths   : 0
+
+Type           : Clock Setup: 'PWMclock'
+Slack          : N/A
+Required Time  : None
+Actual Time    : 183.82 MHz ( period = 5.440 ns )
+From           : PWM:PWMGen|count[0]
+To             : PWM:PWMGen|count[5]
+From Clock     : PWMclock
+To Clock       : PWMclock
+Failed Paths   : 0
+
+Type           : Clock Setup: 'Switchclock'
+Slack          : N/A
+Required Time  : None
+Actual Time    : Restricted to 304.04 MHz ( period = 3.289 ns )
+From           : lcount[2]
+To             : lcount[2]
+From Clock     : Switchclock
+To Clock       : Switchclock
+Failed Paths   : 0
+
+Type           : Total number of failed paths
+Slack          : 
+Required Time  : 
+Actual Time    : 
+From           : 
+To             : 
+From Clock     : 
+To Clock       : 
+Failed Paths   : 0
+
+--------------------------------------------------------------------------------------
+

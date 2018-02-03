@@ -1,0 +1,73 @@
+|UltrasonicRanging
+Triclock => EdgeToLevel:EL.Input
+Countclock => MeasureLevel:ML.Countclock
+reset => EdgeToLevel:EL.reset
+reset => MeasureLevel:ML.reset
+Echo => MeasureLevel:ML.Level
+Tri <= comb~0.DB_MAX_OUTPUT_PORT_TYPE
+Distance[0] <= MeasureLevel:ML.output[0]
+Distance[1] <= MeasureLevel:ML.output[1]
+Distance[2] <= MeasureLevel:ML.output[2]
+Distance[3] <= MeasureLevel:ML.output[3]
+Distance[4] <= MeasureLevel:ML.output[4]
+Distance[5] <= MeasureLevel:ML.output[5]
+Distance[6] <= MeasureLevel:ML.output[6]
+Distance[7] <= MeasureLevel:ML.output[7]
+Distance[8] <= MeasureLevel:ML.output[8]
+Distance[9] <= MeasureLevel:ML.output[9]
+
+
+|UltrasonicRanging|MeasureLevel:ML
+Countclock => count[9].CLK
+Countclock => count[8].CLK
+Countclock => count[7].CLK
+Countclock => count[6].CLK
+Countclock => count[5].CLK
+Countclock => count[4].CLK
+Countclock => count[3].CLK
+Countclock => count[2].CLK
+Countclock => count[1].CLK
+Countclock => count[0].CLK
+reset => EdgeToLevel:ToUpLevel.reset
+reset => process_0~0.IN1
+Level => EdgeToLevel:ToUpLevel.Input
+Level => count[9].ENA
+Level => count[8].ENA
+Level => count[7].ENA
+Level => count[6].ENA
+Level => count[5].ENA
+Level => count[4].ENA
+Level => count[3].ENA
+Level => count[2].ENA
+Level => count[1].ENA
+Level => count[0].ENA
+output[0] <= count[0].DB_MAX_OUTPUT_PORT_TYPE
+output[1] <= count[1].DB_MAX_OUTPUT_PORT_TYPE
+output[2] <= count[2].DB_MAX_OUTPUT_PORT_TYPE
+output[3] <= count[3].DB_MAX_OUTPUT_PORT_TYPE
+output[4] <= count[4].DB_MAX_OUTPUT_PORT_TYPE
+output[5] <= count[5].DB_MAX_OUTPUT_PORT_TYPE
+output[6] <= count[6].DB_MAX_OUTPUT_PORT_TYPE
+output[7] <= count[7].DB_MAX_OUTPUT_PORT_TYPE
+output[8] <= count[8].DB_MAX_OUTPUT_PORT_TYPE
+output[9] <= count[9].DB_MAX_OUTPUT_PORT_TYPE
+
+
+|UltrasonicRanging|MeasureLevel:ML|EdgeToLevel:ToUpLevel
+reset => Si.ACLR
+reset => Output$latch.LATCH_ENABLE
+reset => St.LATCH_ENABLE
+reset => So.LATCH_ENABLE
+Input => Si.CLK
+Output <= comb~0
+
+
+|UltrasonicRanging|EdgeToLevel:EL
+reset => Si.ACLR
+reset => Output$latch.LATCH_ENABLE
+reset => St.LATCH_ENABLE
+reset => So.LATCH_ENABLE
+Input => Si.CLK
+Output <= comb~0
+
+

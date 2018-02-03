@@ -1,0 +1,30 @@
+|PWM
+clock => count[7].CLK
+clock => count[6].CLK
+clock => count[5].CLK
+clock => count[4].CLK
+clock => count[3].CLK
+clock => count[2].CLK
+clock => count[1].CLK
+clock => count[0].CLK
+clock => output~reg0.CLK
+clear => count[7].ACLR
+clear => count[6].ACLR
+clear => count[5].ACLR
+clear => count[4].ACLR
+clear => count[3].ACLR
+clear => count[2].ACLR
+clear => count[1].ACLR
+clear => count[0].ACLR
+clear => output~reg0.ACLR
+div[0] => LessThan0.IN8
+div[1] => LessThan0.IN7
+div[2] => LessThan0.IN6
+div[3] => LessThan0.IN5
+div[4] => LessThan0.IN4
+div[5] => LessThan0.IN3
+div[6] => LessThan0.IN2
+div[7] => LessThan0.IN1
+output <= output~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+

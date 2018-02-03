@@ -1,0 +1,40 @@
+LIBRARY IEEE;
+USE IEEE.STD_LOGIC_1164.ALL;
+USE IEEE.STD_LOGIC_UNSIGNED.ALL;
+USE IEEE.STD_LOGIC_ARITH.ALL;
+--*********************
+--
+--
+--
+--*********************
+ENTITY CTC IS
+	GENERIC (n : INTEGER := 255);           --最大输出周期5.12ms
+	PORT(CTCclock:IN STD_LOGIC;             --严格为100KHz，10us
+		reset:IN STD_LOGIC;                 --重置
+		halfperoid:IN INTEGER  RANGE 0 TO n;--输出半周期(0.01ms的halfperoidperoid倍),周期为0.01ms的2*halfperoidperoid倍
+		CTCoutput:OUT STD_LOGIC);              --输出
+END CTC;
+
+ARCHITECTURE CTCGenerater OF CTC IS
+	SIGNAL count:INTEGER RANGE 0 TO n*2;
+    SIGNAL outtmp:STD_LOGIC;
+BEGIN
+	PROCESS(CTCclock,count,outtmp,halfperoid,reset)
+	BEGIN
+    
+		IF(reset='1')THEN
+			count<=0;
+			outtmp<='0';
+		ELSIF(CTCclock'event AND CTCclock='1')THEN
+			IF(count=halfperoid)THEN
+				count<=0;
+				outtmp<=NOT outtmp;
+			ELSE
+				count<=count+1;
+			END IF;
+			--count<=count+1;
+		END IF;
+        
+	END PROCESS;
+    output <= outtmp;
+END CTCGenerater;

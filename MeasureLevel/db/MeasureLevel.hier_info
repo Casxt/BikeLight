@@ -1,0 +1,56 @@
+|MeasureLevel
+Countclock => count[13].CLK
+Countclock => count[12].CLK
+Countclock => count[11].CLK
+Countclock => count[10].CLK
+Countclock => count[9].CLK
+Countclock => count[8].CLK
+Countclock => count[7].CLK
+Countclock => count[6].CLK
+Countclock => count[5].CLK
+Countclock => count[4].CLK
+Countclock => count[3].CLK
+Countclock => count[2].CLK
+Countclock => count[1].CLK
+Countclock => count[0].CLK
+reset => EdgeToLevel:ToUpLevel.reset
+reset => process_0~0.IN1
+Level => EdgeToLevel:ToUpLevel.Input
+Level => count[13].ENA
+Level => count[12].ENA
+Level => count[11].ENA
+Level => count[10].ENA
+Level => count[9].ENA
+Level => count[8].ENA
+Level => count[7].ENA
+Level => count[6].ENA
+Level => count[5].ENA
+Level => count[4].ENA
+Level => count[3].ENA
+Level => count[2].ENA
+Level => count[1].ENA
+Level => count[0].ENA
+output[0] <= count[0].DB_MAX_OUTPUT_PORT_TYPE
+output[1] <= count[1].DB_MAX_OUTPUT_PORT_TYPE
+output[2] <= count[2].DB_MAX_OUTPUT_PORT_TYPE
+output[3] <= count[3].DB_MAX_OUTPUT_PORT_TYPE
+output[4] <= count[4].DB_MAX_OUTPUT_PORT_TYPE
+output[5] <= count[5].DB_MAX_OUTPUT_PORT_TYPE
+output[6] <= count[6].DB_MAX_OUTPUT_PORT_TYPE
+output[7] <= count[7].DB_MAX_OUTPUT_PORT_TYPE
+output[8] <= count[8].DB_MAX_OUTPUT_PORT_TYPE
+output[9] <= count[9].DB_MAX_OUTPUT_PORT_TYPE
+output[10] <= count[10].DB_MAX_OUTPUT_PORT_TYPE
+output[11] <= count[11].DB_MAX_OUTPUT_PORT_TYPE
+output[12] <= count[12].DB_MAX_OUTPUT_PORT_TYPE
+output[13] <= count[13].DB_MAX_OUTPUT_PORT_TYPE
+
+
+|MeasureLevel|EdgeToLevel:ToUpLevel
+reset => Si.ACLR
+reset => So.LATCH_ENABLE
+reset => St.LATCH_ENABLE
+Input => Si.CLK
+Output <= Output~0.DB_MAX_OUTPUT_PORT_TYPE
+
+

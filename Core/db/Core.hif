@@ -1,0 +1,983 @@
+Version 9.0 Build 235 06/17/2009 Service Pack 2 SJ Web Edition
+42
+3099
+OFF
+OFF
+OFF
+ON
+ON
+OFF
+FV_OFF
+Level2
+0
+0
+VRSM_ON
+VHSM_ON
+altsyn.lmf
+-- Start Library Paths --
+-- End Library Paths --
+-- Start VHDL Libraries --
+-- End VHDL Libraries --
+# entity
+Core
+# storage
+db|Core.(0).cnf
+db|Core.(0).cnf
+# logic_option {
+AUTO_RAM_RECOGNITION
+ON
+}
+# case_insensitive
+# source_file
+Core.vhd
+7518f1843930d35545c4825eb57ac93
+5
+# internal_option {
+HDL_INITIAL_FANOUT_LIMIT
+OFF
+AUTO_RESOURCE_SHARING
+OFF
+AUTO_RAM_RECOGNITION
+ON
+AUTO_ROM_RECOGNITION
+ON
+}
+# hierarchies {
+|
+}
+# lmf
+..|..|..|altera|90sp2|quartus|lmf|maxplus2.lmf
+9a59d39b0706640b4b2718e8a1ff1f
+# macro_sequence
+
+# end
+# entity
+ClockDiv
+# storage
+db|Core.(1).cnf
+db|Core.(1).cnf
+# logic_option {
+AUTO_RAM_RECOGNITION
+ON
+}
+# case_insensitive
+# source_file
+..|ClockDiv|ClockDiv.vhd
+196a6d17eb2f4c7b8bb17c585b132e7b
+5
+# internal_option {
+HDL_INITIAL_FANOUT_LIMIT
+OFF
+AUTO_RESOURCE_SHARING
+OFF
+AUTO_RAM_RECOGNITION
+ON
+AUTO_ROM_RECOGNITION
+ON
+}
+# user_parameter {
+div
+50
+PARAMETER_SIGNED_DEC
+USR
+}
+# hierarchies {
+ClockDiv:C1M
+}
+# lmf
+..|..|..|altera|90sp2|quartus|lmf|maxplus2.lmf
+9a59d39b0706640b4b2718e8a1ff1f
+# macro_sequence
+
+# end
+# entity
+ClockDiv
+# storage
+db|Core.(2).cnf
+db|Core.(2).cnf
+# logic_option {
+AUTO_RAM_RECOGNITION
+ON
+}
+# case_insensitive
+# source_file
+..|ClockDiv|ClockDiv.vhd
+196a6d17eb2f4c7b8bb17c585b132e7b
+5
+# internal_option {
+HDL_INITIAL_FANOUT_LIMIT
+OFF
+AUTO_RESOURCE_SHARING
+OFF
+AUTO_RAM_RECOGNITION
+ON
+AUTO_ROM_RECOGNITION
+ON
+}
+# user_parameter {
+div
+10
+PARAMETER_SIGNED_DEC
+USR
+}
+# hierarchies {
+ClockDiv:C100K
+}
+# lmf
+..|..|..|altera|90sp2|quartus|lmf|maxplus2.lmf
+9a59d39b0706640b4b2718e8a1ff1f
+# macro_sequence
+
+# end
+# entity
+ClockDiv
+# storage
+db|Core.(3).cnf
+db|Core.(3).cnf
+# logic_option {
+AUTO_RAM_RECOGNITION
+ON
+}
+# case_insensitive
+# source_file
+..|ClockDiv|ClockDiv.vhd
+196a6d17eb2f4c7b8bb17c585b132e7b
+5
+# internal_option {
+HDL_INITIAL_FANOUT_LIMIT
+OFF
+AUTO_RESOURCE_SHARING
+OFF
+AUTO_RAM_RECOGNITION
+ON
+AUTO_ROM_RECOGNITION
+ON
+}
+# user_parameter {
+div
+2941
+PARAMETER_SIGNED_DEC
+USR
+}
+# hierarchies {
+ClockDiv:C17K
+}
+# lmf
+..|..|..|altera|90sp2|quartus|lmf|maxplus2.lmf
+9a59d39b0706640b4b2718e8a1ff1f
+# macro_sequence
+
+# end
+# entity
+ClockDiv
+# storage
+db|Core.(4).cnf
+db|Core.(4).cnf
+# logic_option {
+AUTO_RAM_RECOGNITION
+ON
+}
+# case_insensitive
+# source_file
+..|ClockDiv|ClockDiv.vhd
+196a6d17eb2f4c7b8bb17c585b132e7b
+5
+# internal_option {
+HDL_INITIAL_FANOUT_LIMIT
+OFF
+AUTO_RESOURCE_SHARING
+OFF
+AUTO_RAM_RECOGNITION
+ON
+AUTO_ROM_RECOGNITION
+ON
+}
+# user_parameter {
+div
+50000
+PARAMETER_SIGNED_DEC
+USR
+}
+# hierarchies {
+ClockDiv:C1K
+}
+# lmf
+..|..|..|altera|90sp2|quartus|lmf|maxplus2.lmf
+9a59d39b0706640b4b2718e8a1ff1f
+# macro_sequence
+
+# end
+# entity
+ClockDiv
+# storage
+db|Core.(5).cnf
+db|Core.(5).cnf
+# logic_option {
+AUTO_RAM_RECOGNITION
+ON
+}
+# case_insensitive
+# source_file
+..|ClockDiv|ClockDiv.vhd
+196a6d17eb2f4c7b8bb17c585b132e7b
+5
+# internal_option {
+HDL_INITIAL_FANOUT_LIMIT
+OFF
+AUTO_RESOURCE_SHARING
+OFF
+AUTO_RAM_RECOGNITION
+ON
+AUTO_ROM_RECOGNITION
+ON
+}
+# user_parameter {
+div
+2
+PARAMETER_SIGNED_DEC
+USR
+}
+# hierarchies {
+ClockDiv:C500
+}
+# lmf
+..|..|..|altera|90sp2|quartus|lmf|maxplus2.lmf
+9a59d39b0706640b4b2718e8a1ff1f
+# macro_sequence
+
+# end
+# entity
+ClockDiv
+# storage
+db|Core.(6).cnf
+db|Core.(6).cnf
+# logic_option {
+AUTO_RAM_RECOGNITION
+ON
+}
+# case_insensitive
+# source_file
+..|ClockDiv|ClockDiv.vhd
+196a6d17eb2f4c7b8bb17c585b132e7b
+5
+# internal_option {
+HDL_INITIAL_FANOUT_LIMIT
+OFF
+AUTO_RESOURCE_SHARING
+OFF
+AUTO_RAM_RECOGNITION
+ON
+AUTO_ROM_RECOGNITION
+ON
+}
+# user_parameter {
+div
+294118
+PARAMETER_SIGNED_DEC
+USR
+}
+# hierarchies {
+ClockDiv:C170
+}
+# lmf
+..|..|..|altera|90sp2|quartus|lmf|maxplus2.lmf
+9a59d39b0706640b4b2718e8a1ff1f
+# macro_sequence
+
+# end
+# entity
+ClockDiv
+# storage
+db|Core.(7).cnf
+db|Core.(7).cnf
+# logic_option {
+AUTO_RAM_RECOGNITION
+ON
+}
+# case_insensitive
+# source_file
+..|ClockDiv|ClockDiv.vhd
+196a6d17eb2f4c7b8bb17c585b132e7b
+5
+# internal_option {
+HDL_INITIAL_FANOUT_LIMIT
+OFF
+AUTO_RESOURCE_SHARING
+OFF
+AUTO_RAM_RECOGNITION
+ON
+AUTO_ROM_RECOGNITION
+ON
+}
+# user_parameter {
+div
+125
+PARAMETER_SIGNED_DEC
+USR
+}
+# hierarchies {
+ClockDiv:C4
+ClockDiv:C8
+}
+# lmf
+..|..|..|altera|90sp2|quartus|lmf|maxplus2.lmf
+9a59d39b0706640b4b2718e8a1ff1f
+# macro_sequence
+
+# end
+# entity
+ClockDiv
+# storage
+db|Core.(8).cnf
+db|Core.(8).cnf
+# logic_option {
+AUTO_RAM_RECOGNITION
+ON
+}
+# case_insensitive
+# source_file
+..|ClockDiv|ClockDiv.vhd
+196a6d17eb2f4c7b8bb17c585b132e7b
+5
+# internal_option {
+HDL_INITIAL_FANOUT_LIMIT
+OFF
+AUTO_RESOURCE_SHARING
+OFF
+AUTO_RAM_RECOGNITION
+ON
+AUTO_ROM_RECOGNITION
+ON
+}
+# user_parameter {
+div
+8
+PARAMETER_SIGNED_DEC
+USR
+}
+# hierarchies {
+ClockDiv:C1
+}
+# lmf
+..|..|..|altera|90sp2|quartus|lmf|maxplus2.lmf
+9a59d39b0706640b4b2718e8a1ff1f
+# macro_sequence
+
+# end
+# entity
+TimeCount
+# storage
+db|Core.(9).cnf
+db|Core.(9).cnf
+# logic_option {
+AUTO_RAM_RECOGNITION
+ON
+}
+# case_insensitive
+# source_file
+..|TimeCount|TimeCount.vhd
+ec49b0efba4e53d8a1fa3e39c0b8b8c
+5
+# internal_option {
+HDL_INITIAL_FANOUT_LIMIT
+OFF
+AUTO_RESOURCE_SHARING
+OFF
+AUTO_RAM_RECOGNITION
+ON
+AUTO_ROM_RECOGNITION
+ON
+}
+# user_parameter {
+CountRange
+1024
+PARAMETER_SIGNED_DEC
+DEF
+ constraint(ledsel)
+7 downto 0
+PARAMETER_STRING
+USR
+ constraint(leddata)
+7 downto 0
+PARAMETER_STRING
+USR
+}
+# hierarchies {
+TimeCount:LEDTimeCount
+}
+# lmf
+..|..|..|altera|90sp2|quartus|lmf|maxplus2.lmf
+9a59d39b0706640b4b2718e8a1ff1f
+# macro_sequence
+
+# end
+# entity
+DNum
+# storage
+db|Core.(10).cnf
+db|Core.(10).cnf
+# logic_option {
+AUTO_RAM_RECOGNITION
+ON
+}
+# case_insensitive
+# source_file
+..|DNum|DNum.vhd
+eb9a5f7c2d513d9d4d53e30b95958
+5
+# internal_option {
+HDL_INITIAL_FANOUT_LIMIT
+OFF
+AUTO_RESOURCE_SHARING
+OFF
+AUTO_RAM_RECOGNITION
+ON
+AUTO_ROM_RECOGNITION
+ON
+}
+# user_parameter {
+ constraint(output)
+3 downto 0
+PARAMETER_STRING
+USR
+}
+# hierarchies {
+TimeCount:LEDTimeCount|DNum:D0
+TimeCount:LEDTimeCount|DNum:D1
+TimeCount:LEDTimeCount|UltrasonicRanging:UR|MeasureLevel:ML|DNum:D0
+TimeCount:LEDTimeCount|UltrasonicRanging:UR|MeasureLevel:ML|DNum:D1
+TimeCount:LEDTimeCount|UltrasonicRanging:UR|MeasureLevel:ML|DNum:D2
+TimeCount:LEDTimeCount|UltrasonicRanging:UR|MeasureLevel:ML|DNum:D3
+}
+# lmf
+..|..|..|altera|90sp2|quartus|lmf|maxplus2.lmf
+9a59d39b0706640b4b2718e8a1ff1f
+# macro_sequence
+
+# end
+# entity
+LedShowe
+# storage
+db|Core.(11).cnf
+db|Core.(11).cnf
+# logic_option {
+AUTO_RAM_RECOGNITION
+ON
+}
+# case_insensitive
+# source_file
+..|LedShowe|LedShowe.vhd
+fd51d7d98e59b62bd617c0db336d6b44
+5
+# internal_option {
+HDL_INITIAL_FANOUT_LIMIT
+OFF
+AUTO_RESOURCE_SHARING
+OFF
+AUTO_RAM_RECOGNITION
+ON
+AUTO_ROM_RECOGNITION
+ON
+}
+# user_parameter {
+ constraint(input)
+4 downto 0
+PARAMETER_STRING
+USR
+ constraint(output)
+7 downto 0
+PARAMETER_STRING
+USR
+}
+# hierarchies {
+TimeCount:LEDTimeCount|LedShowe:LED
+}
+# lmf
+..|..|..|altera|90sp2|quartus|lmf|maxplus2.lmf
+9a59d39b0706640b4b2718e8a1ff1f
+# macro_sequence
+
+# end
+# entity
+UltrasonicRanging
+# storage
+db|Core.(12).cnf
+db|Core.(12).cnf
+# logic_option {
+AUTO_RAM_RECOGNITION
+ON
+}
+# case_insensitive
+# source_file
+..|UltrasonicRanging|UltrasonicRanging.vhd
+e14d9567e7b2f36eb48e26f589ef7ab
+5
+# internal_option {
+HDL_INITIAL_FANOUT_LIMIT
+OFF
+AUTO_RESOURCE_SHARING
+OFF
+AUTO_RAM_RECOGNITION
+ON
+AUTO_ROM_RECOGNITION
+ON
+}
+# user_parameter {
+countrange
+1024
+PARAMETER_SIGNED_DEC
+USR
+ constraint(n0)
+3 downto 0
+PARAMETER_STRING
+USR
+ constraint(n1)
+3 downto 0
+PARAMETER_STRING
+USR
+ constraint(n2)
+3 downto 0
+PARAMETER_STRING
+USR
+ constraint(n3)
+3 downto 0
+PARAMETER_STRING
+USR
+}
+# hierarchies {
+TimeCount:LEDTimeCount|UltrasonicRanging:UR
+}
+# lmf
+..|..|..|altera|90sp2|quartus|lmf|maxplus2.lmf
+9a59d39b0706640b4b2718e8a1ff1f
+# macro_sequence
+
+# end
+# entity
+MeasureLevel
+# storage
+db|Core.(13).cnf
+db|Core.(13).cnf
+# logic_option {
+AUTO_RAM_RECOGNITION
+ON
+}
+# case_insensitive
+# source_file
+..|MeasureLevel|MeasureLevel.vhd
+2ed127b0e5e98c568a75c7a5960f2
+5
+# internal_option {
+HDL_INITIAL_FANOUT_LIMIT
+OFF
+AUTO_RESOURCE_SHARING
+OFF
+AUTO_RAM_RECOGNITION
+ON
+AUTO_ROM_RECOGNITION
+ON
+}
+# user_parameter {
+countrange
+1024
+PARAMETER_SIGNED_DEC
+USR
+ constraint(n0)
+3 downto 0
+PARAMETER_STRING
+USR
+ constraint(n1)
+3 downto 0
+PARAMETER_STRING
+USR
+ constraint(n2)
+3 downto 0
+PARAMETER_STRING
+USR
+ constraint(n3)
+3 downto 0
+PARAMETER_STRING
+USR
+}
+# hierarchies {
+TimeCount:LEDTimeCount|UltrasonicRanging:UR|MeasureLevel:ML
+}
+# lmf
+..|..|..|altera|90sp2|quartus|lmf|maxplus2.lmf
+9a59d39b0706640b4b2718e8a1ff1f
+# macro_sequence
+
+# end
+# entity
+EdgeToLevel
+# storage
+db|Core.(14).cnf
+db|Core.(14).cnf
+# logic_option {
+AUTO_RAM_RECOGNITION
+ON
+}
+# case_insensitive
+# source_file
+..|EdgeToLevel|EdgeToLevel.vhd
+804cc9f3991e8da73699ed079416d
+5
+# internal_option {
+HDL_INITIAL_FANOUT_LIMIT
+OFF
+AUTO_RESOURCE_SHARING
+OFF
+AUTO_RAM_RECOGNITION
+ON
+AUTO_ROM_RECOGNITION
+ON
+}
+# hierarchies {
+TimeCount:LEDTimeCount|UltrasonicRanging:UR|MeasureLevel:ML|EdgeToLevel:ToUpLevel
+EdgeToLevel:ToRightLevel
+EdgeToLevel:ToLeftLevel
+EdgeToLevel:ToStopLevel
+}
+# lmf
+..|..|..|altera|90sp2|quartus|lmf|maxplus2.lmf
+9a59d39b0706640b4b2718e8a1ff1f
+# macro_sequence
+
+# end
+# entity
+Sound
+# storage
+db|Core.(15).cnf
+db|Core.(15).cnf
+# logic_option {
+AUTO_RAM_RECOGNITION
+ON
+}
+# case_insensitive
+# source_file
+..|Sound|Sound.vhd
+fcdcd7390cec938851ba6997e969dc5
+5
+# internal_option {
+HDL_INITIAL_FANOUT_LIMIT
+OFF
+AUTO_RESOURCE_SHARING
+OFF
+AUTO_RAM_RECOGNITION
+ON
+AUTO_ROM_RECOGNITION
+ON
+}
+# user_parameter {
+soundnum
+2
+PARAMETER_SIGNED_DEC
+USR
+n
+255
+PARAMETER_SIGNED_DEC
+USR
+}
+# hierarchies {
+Sound:StartSound
+}
+# lmf
+..|..|..|altera|90sp2|quartus|lmf|maxplus2.lmf
+9a59d39b0706640b4b2718e8a1ff1f
+# macro_sequence
+
+# end
+# entity
+CTC
+# storage
+db|Core.(16).cnf
+db|Core.(16).cnf
+# logic_option {
+AUTO_RAM_RECOGNITION
+ON
+}
+# case_insensitive
+# source_file
+..|CTC|CTC.vhd
+d66496bfb1366966c9e8b1c9fa1bb
+5
+# internal_option {
+HDL_INITIAL_FANOUT_LIMIT
+OFF
+AUTO_RESOURCE_SHARING
+OFF
+AUTO_RAM_RECOGNITION
+ON
+AUTO_ROM_RECOGNITION
+ON
+}
+# user_parameter {
+n
+255
+PARAMETER_SIGNED_DEC
+USR
+}
+# hierarchies {
+Sound:StartSound|CTC:CTCWaveGen
+}
+# lmf
+..|..|..|altera|90sp2|quartus|lmf|maxplus2.lmf
+9a59d39b0706640b4b2718e8a1ff1f
+# macro_sequence
+
+# end
+# entity
+LEDCtrl
+# storage
+db|Core.(17).cnf
+db|Core.(17).cnf
+# logic_option {
+AUTO_RAM_RECOGNITION
+ON
+}
+# case_insensitive
+# source_file
+..|LEDCtrl|LEDCtrl.vhd
+c04186f0e9659cae578d15c132454122
+5
+# internal_option {
+HDL_INITIAL_FANOUT_LIMIT
+OFF
+AUTO_RESOURCE_SHARING
+OFF
+AUTO_RAM_RECOGNITION
+ON
+AUTO_ROM_RECOGNITION
+ON
+}
+# user_parameter {
+ constraint(lineout)
+7 downto 0
+PARAMETER_STRING
+USR
+ constraint(columnout)
+15 downto 0
+PARAMETER_STRING
+USR
+}
+# hierarchies {
+LEDCtrl:LEDP
+}
+# lmf
+..|..|..|altera|90sp2|quartus|lmf|maxplus2.lmf
+9a59d39b0706640b4b2718e8a1ff1f
+# macro_sequence
+
+# end
+# entity
+LEDRefresh
+# storage
+db|Core.(18).cnf
+db|Core.(18).cnf
+# logic_option {
+AUTO_RAM_RECOGNITION
+ON
+}
+# case_insensitive
+# source_file
+..|LEDRefresh|LEDRefresh.vhd
+454127d51691eb664b3b298a5bf295
+5
+# internal_option {
+HDL_INITIAL_FANOUT_LIMIT
+OFF
+AUTO_RESOURCE_SHARING
+OFF
+AUTO_RAM_RECOGNITION
+ON
+AUTO_ROM_RECOGNITION
+ON
+}
+# user_parameter {
+imgnum
+6
+PARAMETER_SIGNED_DEC
+USR
+ constraint(lineout)
+7 downto 0
+PARAMETER_STRING
+USR
+ constraint(columnout)
+15 downto 0
+PARAMETER_STRING
+USR
+}
+# hierarchies {
+LEDCtrl:LEDP|LEDRefresh:LEDPoint
+}
+# lmf
+..|..|..|altera|90sp2|quartus|lmf|maxplus2.lmf
+9a59d39b0706640b4b2718e8a1ff1f
+# macro_sequence
+
+# end
+# entity
+PWM
+# storage
+db|Core.(19).cnf
+db|Core.(19).cnf
+# logic_option {
+AUTO_RAM_RECOGNITION
+ON
+}
+# case_insensitive
+# source_file
+..|PWM|PWM.vhd
+55879a99739a8f1ac3f8a08e63c924
+5
+# internal_option {
+HDL_INITIAL_FANOUT_LIMIT
+OFF
+AUTO_RESOURCE_SHARING
+OFF
+AUTO_RAM_RECOGNITION
+ON
+AUTO_ROM_RECOGNITION
+ON
+}
+# user_parameter {
+n
+255
+PARAMETER_SIGNED_DEC
+USR
+}
+# hierarchies {
+LEDCtrl:LEDP|LEDRefresh:LEDPoint|PWM:PWMGen
+}
+# lmf
+..|..|..|altera|90sp2|quartus|lmf|maxplus2.lmf
+9a59d39b0706640b4b2718e8a1ff1f
+# macro_sequence
+
+# end
+# entity
+RollGate
+# storage
+db|Core.(20).cnf
+db|Core.(20).cnf
+# logic_option {
+AUTO_RAM_RECOGNITION
+ON
+}
+# case_insensitive
+# source_file
+..|RollGate|RollGate.vhd
+6d89528266fa3bbd347a5c4372343f2
+5
+# internal_option {
+HDL_INITIAL_FANOUT_LIMIT
+OFF
+AUTO_RESOURCE_SHARING
+OFF
+AUTO_RAM_RECOGNITION
+ON
+AUTO_ROM_RECOGNITION
+ON
+}
+# user_parameter {
+ constraint(input)
+7 downto 0
+PARAMETER_STRING
+USR
+ constraint(output)
+7 downto 0
+PARAMETER_STRING
+USR
+}
+# hierarchies {
+LEDCtrl:LEDP|LEDRefresh:LEDPoint|RollGate:RedLEDP
+LEDCtrl:LEDP|LEDRefresh:LEDPoint|RollGate:GreenLEDP
+}
+# lmf
+..|..|..|altera|90sp2|quartus|lmf|maxplus2.lmf
+9a59d39b0706640b4b2718e8a1ff1f
+# macro_sequence
+
+# end
+# entity
+EliminationBuffeting
+# storage
+db|Core.(21).cnf
+db|Core.(21).cnf
+# logic_option {
+AUTO_RAM_RECOGNITION
+ON
+}
+# case_insensitive
+# source_file
+..|EliminationBuffeting|EliminationBuffeting.vhd
+26e55bf556f4959bb2f9048943eda39
+5
+# internal_option {
+HDL_INITIAL_FANOUT_LIMIT
+OFF
+AUTO_RESOURCE_SHARING
+OFF
+AUTO_RAM_RECOGNITION
+ON
+AUTO_ROM_RECOGNITION
+ON
+}
+# user_parameter {
+countrange
+128
+PARAMETER_SIGNED_DEC
+USR
+}
+# hierarchies {
+EliminationBuffeting:ToRightEB
+EliminationBuffeting:ToLeftEB
+EliminationBuffeting:ToStopEB
+}
+# lmf
+..|..|..|altera|90sp2|quartus|lmf|maxplus2.lmf
+9a59d39b0706640b4b2718e8a1ff1f
+# macro_sequence
+
+# end
+# entity
+EliminationBuffeting
+# storage
+db|Core.(22).cnf
+db|Core.(22).cnf
+# logic_option {
+AUTO_RAM_RECOGNITION
+ON
+}
+# case_insensitive
+# source_file
+..|EliminationBuffeting|EliminationBuffeting.vhd
+26e55bf556f4959bb2f9048943eda39
+5
+# internal_option {
+HDL_INITIAL_FANOUT_LIMIT
+OFF
+AUTO_RESOURCE_SHARING
+OFF
+AUTO_RAM_RECOGNITION
+ON
+AUTO_ROM_RECOGNITION
+ON
+}
+# user_parameter {
+countrange
+1500000
+PARAMETER_SIGNED_DEC
+USR
+}
+# hierarchies {
+EliminationBuffeting:ToResetEB
+}
+# lmf
+..|..|..|altera|90sp2|quartus|lmf|maxplus2.lmf
+9a59d39b0706640b4b2718e8a1ff1f
+# macro_sequence
+
+# end
+# complete
+

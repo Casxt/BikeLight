@@ -1,0 +1,9 @@
+|EdgeToLevel
+reset => Si.ACLR
+reset => Output$latch.LATCH_ENABLE
+reset => St.LATCH_ENABLE
+reset => So.LATCH_ENABLE
+Input => Si.CLK
+Output <= comb~0
+
+

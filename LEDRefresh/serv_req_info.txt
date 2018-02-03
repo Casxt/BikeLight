@@ -1,0 +1,42 @@
+<internal_error>
+	<executable>quartus.exe</executable>
+	<sub_system>unknown</sub_system>
+	<file>unknown</file>
+	<line>0</line>
+	<callstack>
+	0x761108b2: KERNELBASE + 0x1008b2 (RaiseException + 0x62)
+	0x7374df5f: MSVCR90 + 0x5df5f (_CxxThrowException + 0x47)
+	0x0444a68d: dinkum_alt + 0x4a68d (_Dinkum_std::_String_base::_Xran + 0x5d)
+	0x12a0cb53: edt_wed + 0x2cb53 (edt_wed_dll_get_template_classes + 0x16073)
+	0x12a16862: edt_wed + 0x36862 (edt_wed_dll_get_template_classes + 0x1fd82)
+	0x12a6c1bd: edt_wed + 0x8c1bd (?wed_wsf_parser_yyparse@@YAHPAVFlexLexer@@PAX@Z + 0xbbdd)
+	</callstack>
+	<error>Current editor: WED, RPW</error>
+	<date>Wed Nov 08 21:54:12 2017</date>
+	<version>Quartus II Version 9.0 Build 235 06/17/2009 Service Pack 2 SJ Web Edition</version>
+	<full_error>Uncaught C++ Exception
+Current editor: WED, RPW
+Quartus II Version 9.0 Build 235 06/17/2009 Service Pack 2 SJ Web Edition </full_error>
+</internal_error>
+
+<internal_error>
+	<executable>quartus.exe</executable>
+	<sub_system>unknown</sub_system>
+	<file>unknown</file>
+	<line>0</line>
+	<callstack>
+	0x761108b2: KERNELBASE + 0x1008b2 (RaiseException + 0x62)
+	0x7374df5f: MSVCR90 + 0x5df5f (_CxxThrowException + 0x47)
+	0x0444a68d: dinkum_alt + 0x4a68d (_Dinkum_std::_String_base::_Xran + 0x5d)
+	0x0bd0cb53: edt_wed + 0x2cb53 (edt_wed_dll_get_template_classes + 0x16073)
+	0x0bd16862: edt_wed + 0x36862 (edt_wed_dll_get_template_classes + 0x1fd82)
+	0x0bd6c1bd: edt_wed + 0x8c1bd (?wed_wsf_parser_yyparse@@YAHPAVFlexLexer@@PAX@Z + 0xbbdd)
+	</callstack>
+	<error>Current editor: WED</error>
+	<date>Wed Nov 08 21:55:32 2017</date>
+	<version>Quartus II Version 9.0 Build 235 06/17/2009 Service Pack 2 SJ Web Edition</version>
+	<full_error>Uncaught C++ Exception
+Current editor: WED
+Quartus II Version 9.0 Build 235 06/17/2009 Service Pack 2 SJ Web Edition </full_error>
+</internal_error>
+

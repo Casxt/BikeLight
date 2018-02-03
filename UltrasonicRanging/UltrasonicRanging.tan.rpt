@@ -1,0 +1,372 @@
+Classic Timing Analyzer report for UltrasonicRanging
+Fri Nov 03 10:31:29 2017
+Quartus II Version 9.0 Build 235 06/17/2009 Service Pack 2 SJ Web Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Timing Analyzer Summary
+  3. Timing Analyzer Settings
+  4. Clock Settings Summary
+  5. Parallel Compilation
+  6. Clock Setup: 'Countclock'
+  7. Clock Setup: 'Echo'
+  8. Clock Setup: 'reset'
+  9. tsu
+ 10. tco
+ 11. th
+ 12. Timing Analyzer Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 1991-2009 Altera Corporation
+Your use of Altera Corporation's design tools, logic functions 
+and other software and tools, and its AMPP partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Altera Program License 
+Subscription Agreement, Altera MegaCore Function License 
+Agreement, or other applicable license agreement, including, 
+without limitation, that your use is for the sole purpose of 
+programming logic devices manufactured by Altera and sold by 
+Altera or its authorized distributors.  Please refer to the 
+applicable agreement for further details.
+
+
+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Timing Analyzer Summary                                                                                                                                                                                                              ;
++------------------------------+-------+---------------+------------------------------------------------+------------------------------------------+------------------------------------------+------------+------------+--------------+
+; Type                         ; Slack ; Required Time ; Actual Time                                    ; From                                     ; To                                       ; From Clock ; To Clock   ; Failed Paths ;
++------------------------------+-------+---------------+------------------------------------------------+------------------------------------------+------------------------------------------+------------+------------+--------------+
+; Worst-case tsu               ; N/A   ; None          ; 2.684 ns                                       ; Echo                                     ; MeasureLevel:ML|count[9]                 ; --         ; Countclock ; 0            ;
+; Worst-case tco               ; N/A   ; None          ; 9.819 ns                                       ; MeasureLevel:ML|count[4]                 ; Distance[4]                              ; Countclock ; --         ; 0            ;
+; Worst-case th                ; N/A   ; None          ; -1.521 ns                                      ; Echo                                     ; MeasureLevel:ML|count[0]                 ; --         ; Countclock ; 0            ;
+; Clock Setup: 'Countclock'    ; N/A   ; None          ; 177.87 MHz ( period = 5.622 ns )               ; MeasureLevel:ML|count[0]                 ; MeasureLevel:ML|count[9]                 ; Countclock ; Countclock ; 0            ;
+; Clock Setup: 'reset'         ; N/A   ; None          ; Restricted to 304.04 MHz ( period = 3.289 ns ) ; MeasureLevel:ML|EdgeToLevel:ToUpLevel|St ; MeasureLevel:ML|EdgeToLevel:ToUpLevel|So ; reset      ; reset      ; 0            ;
+; Clock Setup: 'Echo'          ; N/A   ; None          ; Restricted to 304.04 MHz ( period = 3.289 ns ) ; MeasureLevel:ML|EdgeToLevel:ToUpLevel|Si ; MeasureLevel:ML|EdgeToLevel:ToUpLevel|Si ; Echo       ; Echo       ; 0            ;
+; Total number of failed paths ;       ;               ;                                                ;                                          ;                                          ;            ;            ; 0            ;
++------------------------------+-------+---------------+------------------------------------------------+------------------------------------------+------------------------------------------+------------+------------+--------------+
+
+
++--------------------------------------------------------------------------------------------------------------------+
+; Timing Analyzer Settings                                                                                           ;
++---------------------------------------------------------------------+--------------------+------+----+-------------+
+; Option                                                              ; Setting            ; From ; To ; Entity Name ;
++---------------------------------------------------------------------+--------------------+------+----+-------------+
+; Device Name                                                         ; EPM1270T144C5      ;      ;    ;             ;
+; Timing Models                                                       ; Final              ;      ;    ;             ;
+; Default hold multicycle                                             ; Same as Multicycle ;      ;    ;             ;
+; Cut paths between unrelated clock domains                           ; On                 ;      ;    ;             ;
+; Cut off read during write signal paths                              ; On                 ;      ;    ;             ;
+; Cut off feedback from I/O pins                                      ; On                 ;      ;    ;             ;
+; Report Combined Fast/Slow Timing                                    ; Off                ;      ;    ;             ;
+; Ignore Clock Settings                                               ; Off                ;      ;    ;             ;
+; Analyze latches as synchronous elements                             ; On                 ;      ;    ;             ;
+; Enable Recovery/Removal analysis                                    ; Off                ;      ;    ;             ;
+; Enable Clock Latency                                                ; Off                ;      ;    ;             ;
+; Use TimeQuest Timing Analyzer                                       ; Off                ;      ;    ;             ;
+; Minimum Core Junction Temperature                                   ; 0                  ;      ;    ;             ;
+; Maximum Core Junction Temperature                                   ; 85                 ;      ;    ;             ;
+; Number of source nodes to report per destination node               ; 10                 ;      ;    ;             ;
+; Number of destination nodes to report                               ; 10                 ;      ;    ;             ;
+; Number of paths to report                                           ; 200                ;      ;    ;             ;
+; Report Minimum Timing Checks                                        ; Off                ;      ;    ;             ;
+; Use Fast Timing Models                                              ; Off                ;      ;    ;             ;
+; Report IO Paths Separately                                          ; Off                ;      ;    ;             ;
+; Perform Multicorner Analysis                                        ; Off                ;      ;    ;             ;
+; Reports the worst-case path for each clock domain and analysis      ; Off                ;      ;    ;             ;
+; Removes common clock path pessimism (CCPP) during slack computation ; Off                ;      ;    ;             ;
+; Output I/O Timing Endpoint                                          ; Near End           ;      ;    ;             ;
++---------------------------------------------------------------------+--------------------+------+----+-------------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Clock Settings Summary                                                                                                                                                             ;
++-----------------+--------------------+----------+------------------+---------------+--------------+----------+-----------------------+---------------------+--------+--------------+
+; Clock Node Name ; Clock Setting Name ; Type     ; Fmax Requirement ; Early Latency ; Late Latency ; Based on ; Multiply Base Fmax by ; Divide Base Fmax by ; Offset ; Phase offset ;
++-----------------+--------------------+----------+------------------+---------------+--------------+----------+-----------------------+---------------------+--------+--------------+
+; Countclock      ;                    ; User Pin ; None             ; 0.000 ns      ; 0.000 ns     ; --       ; N/A                   ; N/A                 ; N/A    ;              ;
+; Echo            ;                    ; User Pin ; None             ; 0.000 ns      ; 0.000 ns     ; --       ; N/A                   ; N/A                 ; N/A    ;              ;
+; reset           ;                    ; User Pin ; None             ; 0.000 ns      ; 0.000 ns     ; --       ; N/A                   ; N/A                 ; N/A    ;              ;
++-----------------+--------------------+----------+------------------+---------------+--------------+----------+-----------------------+---------------------+--------+--------------+
+
+
+Parallel compilation was disabled, but you have multiple processors available. Enable parallel compilation to reduce compilation time.
++-------------------------------------+
+; Parallel Compilation                ;
++----------------------------+--------+
+; Processors                 ; Number ;
++----------------------------+--------+
+; Number detected on machine ; 4      ;
+; Maximum allowed            ; 1      ;
++----------------------------+--------+
+
+
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Clock Setup: 'Countclock'                                                                                                                                                                                                  ;
++-------+------------------------------------------------+--------------------------+--------------------------+------------+------------+-----------------------------+---------------------------+-------------------------+
+; Slack ; Actual fmax (period)                           ; From                     ; To                       ; From Clock ; To Clock   ; Required Setup Relationship ; Required Longest P2P Time ; Actual Longest P2P Time ;
++-------+------------------------------------------------+--------------------------+--------------------------+------------+------------+-----------------------------+---------------------------+-------------------------+
+; N/A   ; 177.87 MHz ( period = 5.622 ns )               ; MeasureLevel:ML|count[0] ; MeasureLevel:ML|count[6] ; Countclock ; Countclock ; None                        ; None                      ; 4.913 ns                ;
+; N/A   ; 177.87 MHz ( period = 5.622 ns )               ; MeasureLevel:ML|count[0] ; MeasureLevel:ML|count[7] ; Countclock ; Countclock ; None                        ; None                      ; 4.913 ns                ;
+; N/A   ; 177.87 MHz ( period = 5.622 ns )               ; MeasureLevel:ML|count[0] ; MeasureLevel:ML|count[8] ; Countclock ; Countclock ; None                        ; None                      ; 4.913 ns                ;
+; N/A   ; 177.87 MHz ( period = 5.622 ns )               ; MeasureLevel:ML|count[0] ; MeasureLevel:ML|count[9] ; Countclock ; Countclock ; None                        ; None                      ; 4.913 ns                ;
+; N/A   ; 193.99 MHz ( period = 5.155 ns )               ; MeasureLevel:ML|count[0] ; MeasureLevel:ML|count[5] ; Countclock ; Countclock ; None                        ; None                      ; 4.446 ns                ;
+; N/A   ; 198.73 MHz ( period = 5.032 ns )               ; MeasureLevel:ML|count[0] ; MeasureLevel:ML|count[4] ; Countclock ; Countclock ; None                        ; None                      ; 4.323 ns                ;
+; N/A   ; 203.71 MHz ( period = 4.909 ns )               ; MeasureLevel:ML|count[0] ; MeasureLevel:ML|count[3] ; Countclock ; Countclock ; None                        ; None                      ; 4.200 ns                ;
+; N/A   ; 208.94 MHz ( period = 4.786 ns )               ; MeasureLevel:ML|count[0] ; MeasureLevel:ML|count[2] ; Countclock ; Countclock ; None                        ; None                      ; 4.077 ns                ;
+; N/A   ; 228.10 MHz ( period = 4.384 ns )               ; MeasureLevel:ML|count[6] ; MeasureLevel:ML|count[9] ; Countclock ; Countclock ; None                        ; None                      ; 3.675 ns                ;
+; N/A   ; 229.73 MHz ( period = 4.353 ns )               ; MeasureLevel:ML|count[1] ; MeasureLevel:ML|count[6] ; Countclock ; Countclock ; None                        ; None                      ; 3.644 ns                ;
+; N/A   ; 229.73 MHz ( period = 4.353 ns )               ; MeasureLevel:ML|count[1] ; MeasureLevel:ML|count[7] ; Countclock ; Countclock ; None                        ; None                      ; 3.644 ns                ;
+; N/A   ; 229.73 MHz ( period = 4.353 ns )               ; MeasureLevel:ML|count[1] ; MeasureLevel:ML|count[8] ; Countclock ; Countclock ; None                        ; None                      ; 3.644 ns                ;
+; N/A   ; 229.73 MHz ( period = 4.353 ns )               ; MeasureLevel:ML|count[1] ; MeasureLevel:ML|count[9] ; Countclock ; Countclock ; None                        ; None                      ; 3.644 ns                ;
+; N/A   ; 234.69 MHz ( period = 4.261 ns )               ; MeasureLevel:ML|count[6] ; MeasureLevel:ML|count[8] ; Countclock ; Countclock ; None                        ; None                      ; 3.552 ns                ;
+; N/A   ; 235.85 MHz ( period = 4.240 ns )               ; MeasureLevel:ML|count[2] ; MeasureLevel:ML|count[6] ; Countclock ; Countclock ; None                        ; None                      ; 3.531 ns                ;
+; N/A   ; 235.85 MHz ( period = 4.240 ns )               ; MeasureLevel:ML|count[2] ; MeasureLevel:ML|count[7] ; Countclock ; Countclock ; None                        ; None                      ; 3.531 ns                ;
+; N/A   ; 235.85 MHz ( period = 4.240 ns )               ; MeasureLevel:ML|count[2] ; MeasureLevel:ML|count[8] ; Countclock ; Countclock ; None                        ; None                      ; 3.531 ns                ;
+; N/A   ; 235.85 MHz ( period = 4.240 ns )               ; MeasureLevel:ML|count[2] ; MeasureLevel:ML|count[9] ; Countclock ; Countclock ; None                        ; None                      ; 3.531 ns                ;
+; N/A   ; 238.72 MHz ( period = 4.189 ns )               ; MeasureLevel:ML|count[4] ; MeasureLevel:ML|count[6] ; Countclock ; Countclock ; None                        ; None                      ; 3.480 ns                ;
+; N/A   ; 238.72 MHz ( period = 4.189 ns )               ; MeasureLevel:ML|count[4] ; MeasureLevel:ML|count[7] ; Countclock ; Countclock ; None                        ; None                      ; 3.480 ns                ;
+; N/A   ; 238.72 MHz ( period = 4.189 ns )               ; MeasureLevel:ML|count[4] ; MeasureLevel:ML|count[8] ; Countclock ; Countclock ; None                        ; None                      ; 3.480 ns                ;
+; N/A   ; 238.72 MHz ( period = 4.189 ns )               ; MeasureLevel:ML|count[4] ; MeasureLevel:ML|count[9] ; Countclock ; Countclock ; None                        ; None                      ; 3.480 ns                ;
+; N/A   ; 241.66 MHz ( period = 4.138 ns )               ; MeasureLevel:ML|count[6] ; MeasureLevel:ML|count[7] ; Countclock ; Countclock ; None                        ; None                      ; 3.429 ns                ;
+; N/A   ; 242.90 MHz ( period = 4.117 ns )               ; MeasureLevel:ML|count[3] ; MeasureLevel:ML|count[6] ; Countclock ; Countclock ; None                        ; None                      ; 3.408 ns                ;
+; N/A   ; 242.90 MHz ( period = 4.117 ns )               ; MeasureLevel:ML|count[3] ; MeasureLevel:ML|count[7] ; Countclock ; Countclock ; None                        ; None                      ; 3.408 ns                ;
+; N/A   ; 242.90 MHz ( period = 4.117 ns )               ; MeasureLevel:ML|count[3] ; MeasureLevel:ML|count[8] ; Countclock ; Countclock ; None                        ; None                      ; 3.408 ns                ;
+; N/A   ; 242.90 MHz ( period = 4.117 ns )               ; MeasureLevel:ML|count[3] ; MeasureLevel:ML|count[9] ; Countclock ; Countclock ; None                        ; None                      ; 3.408 ns                ;
+; N/A   ; 246.79 MHz ( period = 4.052 ns )               ; MeasureLevel:ML|count[7] ; MeasureLevel:ML|count[9] ; Countclock ; Countclock ; None                        ; None                      ; 3.343 ns                ;
+; N/A   ; 248.26 MHz ( period = 4.028 ns )               ; MeasureLevel:ML|count[5] ; MeasureLevel:ML|count[6] ; Countclock ; Countclock ; None                        ; None                      ; 3.319 ns                ;
+; N/A   ; 248.26 MHz ( period = 4.028 ns )               ; MeasureLevel:ML|count[5] ; MeasureLevel:ML|count[7] ; Countclock ; Countclock ; None                        ; None                      ; 3.319 ns                ;
+; N/A   ; 248.26 MHz ( period = 4.028 ns )               ; MeasureLevel:ML|count[5] ; MeasureLevel:ML|count[8] ; Countclock ; Countclock ; None                        ; None                      ; 3.319 ns                ;
+; N/A   ; 248.26 MHz ( period = 4.028 ns )               ; MeasureLevel:ML|count[5] ; MeasureLevel:ML|count[9] ; Countclock ; Countclock ; None                        ; None                      ; 3.319 ns                ;
+; N/A   ; 254.52 MHz ( period = 3.929 ns )               ; MeasureLevel:ML|count[7] ; MeasureLevel:ML|count[8] ; Countclock ; Countclock ; None                        ; None                      ; 3.220 ns                ;
+; N/A   ; 257.33 MHz ( period = 3.886 ns )               ; MeasureLevel:ML|count[1] ; MeasureLevel:ML|count[5] ; Countclock ; Countclock ; None                        ; None                      ; 3.177 ns                ;
+; N/A   ; 261.10 MHz ( period = 3.830 ns )               ; MeasureLevel:ML|count[0] ; MeasureLevel:ML|count[1] ; Countclock ; Countclock ; None                        ; None                      ; 3.121 ns                ;
+; N/A   ; 265.04 MHz ( period = 3.773 ns )               ; MeasureLevel:ML|count[2] ; MeasureLevel:ML|count[5] ; Countclock ; Countclock ; None                        ; None                      ; 3.064 ns                ;
+; N/A   ; 265.75 MHz ( period = 3.763 ns )               ; MeasureLevel:ML|count[1] ; MeasureLevel:ML|count[4] ; Countclock ; Countclock ; None                        ; None                      ; 3.054 ns                ;
+; N/A   ; 268.67 MHz ( period = 3.722 ns )               ; MeasureLevel:ML|count[4] ; MeasureLevel:ML|count[5] ; Countclock ; Countclock ; None                        ; None                      ; 3.013 ns                ;
+; N/A   ; 273.97 MHz ( period = 3.650 ns )               ; MeasureLevel:ML|count[2] ; MeasureLevel:ML|count[4] ; Countclock ; Countclock ; None                        ; None                      ; 2.941 ns                ;
+; N/A   ; 273.97 MHz ( period = 3.650 ns )               ; MeasureLevel:ML|count[3] ; MeasureLevel:ML|count[5] ; Countclock ; Countclock ; None                        ; None                      ; 2.941 ns                ;
+; N/A   ; 274.73 MHz ( period = 3.640 ns )               ; MeasureLevel:ML|count[1] ; MeasureLevel:ML|count[3] ; Countclock ; Countclock ; None                        ; None                      ; 2.931 ns                ;
+; N/A   ; 283.53 MHz ( period = 3.527 ns )               ; MeasureLevel:ML|count[2] ; MeasureLevel:ML|count[3] ; Countclock ; Countclock ; None                        ; None                      ; 2.818 ns                ;
+; N/A   ; 283.53 MHz ( period = 3.527 ns )               ; MeasureLevel:ML|count[3] ; MeasureLevel:ML|count[4] ; Countclock ; Countclock ; None                        ; None                      ; 2.818 ns                ;
+; N/A   ; 284.25 MHz ( period = 3.518 ns )               ; MeasureLevel:ML|count[8] ; MeasureLevel:ML|count[9] ; Countclock ; Countclock ; None                        ; None                      ; 2.809 ns                ;
+; N/A   ; 284.33 MHz ( period = 3.517 ns )               ; MeasureLevel:ML|count[1] ; MeasureLevel:ML|count[2] ; Countclock ; Countclock ; None                        ; None                      ; 2.808 ns                ;
+; N/A   ; Restricted to 304.04 MHz ( period = 3.289 ns ) ; MeasureLevel:ML|count[6] ; MeasureLevel:ML|count[6] ; Countclock ; Countclock ; None                        ; None                      ; 2.473 ns                ;
+; N/A   ; Restricted to 304.04 MHz ( period = 3.289 ns ) ; MeasureLevel:ML|count[7] ; MeasureLevel:ML|count[7] ; Countclock ; Countclock ; None                        ; None                      ; 2.373 ns                ;
+; N/A   ; Restricted to 304.04 MHz ( period = 3.289 ns ) ; MeasureLevel:ML|count[5] ; MeasureLevel:ML|count[5] ; Countclock ; Countclock ; None                        ; None                      ; 2.058 ns                ;
+; N/A   ; Restricted to 304.04 MHz ( period = 3.289 ns ) ; MeasureLevel:ML|count[4] ; MeasureLevel:ML|count[4] ; Countclock ; Countclock ; None                        ; None                      ; 2.057 ns                ;
+; N/A   ; Restricted to 304.04 MHz ( period = 3.289 ns ) ; MeasureLevel:ML|count[0] ; MeasureLevel:ML|count[0] ; Countclock ; Countclock ; None                        ; None                      ; 1.971 ns                ;
+; N/A   ; Restricted to 304.04 MHz ( period = 3.289 ns ) ; MeasureLevel:ML|count[2] ; MeasureLevel:ML|count[2] ; Countclock ; Countclock ; None                        ; None                      ; 1.971 ns                ;
+; N/A   ; Restricted to 304.04 MHz ( period = 3.289 ns ) ; MeasureLevel:ML|count[3] ; MeasureLevel:ML|count[3] ; Countclock ; Countclock ; None                        ; None                      ; 1.971 ns                ;
+; N/A   ; Restricted to 304.04 MHz ( period = 3.289 ns ) ; MeasureLevel:ML|count[8] ; MeasureLevel:ML|count[8] ; Countclock ; Countclock ; None                        ; None                      ; 1.962 ns                ;
+; N/A   ; Restricted to 304.04 MHz ( period = 3.289 ns ) ; MeasureLevel:ML|count[1] ; MeasureLevel:ML|count[1] ; Countclock ; Countclock ; None                        ; None                      ; 1.961 ns                ;
+; N/A   ; Restricted to 304.04 MHz ( period = 3.289 ns ) ; MeasureLevel:ML|count[9] ; MeasureLevel:ML|count[9] ; Countclock ; Countclock ; None                        ; None                      ; 1.908 ns                ;
++-------+------------------------------------------------+--------------------------+--------------------------+------------+------------+-----------------------------+---------------------------+-------------------------+
+
+
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Clock Setup: 'Echo'                                                                                                                                                                                                                                      ;
++-------+------------------------------------------------+------------------------------------------+------------------------------------------+------------+----------+-----------------------------+---------------------------+-------------------------+
+; Slack ; Actual fmax (period)                           ; From                                     ; To                                       ; From Clock ; To Clock ; Required Setup Relationship ; Required Longest P2P Time ; Actual Longest P2P Time ;
++-------+------------------------------------------------+------------------------------------------+------------------------------------------+------------+----------+-----------------------------+---------------------------+-------------------------+
+; N/A   ; Restricted to 304.04 MHz ( period = 3.289 ns ) ; MeasureLevel:ML|EdgeToLevel:ToUpLevel|Si ; MeasureLevel:ML|EdgeToLevel:ToUpLevel|Si ; Echo       ; Echo     ; None                        ; None                      ; 1.521 ns                ;
++-------+------------------------------------------------+------------------------------------------+------------------------------------------+------------+----------+-----------------------------+---------------------------+-------------------------+
+
+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Clock Setup: 'reset'                                                                                                                                                                                                                                               ;
++-------+------------------------------------------------+------------------------------------------+----------------------------------------------------+------------+----------+-----------------------------+---------------------------+-------------------------+
+; Slack ; Actual fmax (period)                           ; From                                     ; To                                                 ; From Clock ; To Clock ; Required Setup Relationship ; Required Longest P2P Time ; Actual Longest P2P Time ;
++-------+------------------------------------------------+------------------------------------------+----------------------------------------------------+------------+----------+-----------------------------+---------------------------+-------------------------+
+; N/A   ; Restricted to 304.04 MHz ( period = 3.289 ns ) ; MeasureLevel:ML|EdgeToLevel:ToUpLevel|St ; MeasureLevel:ML|EdgeToLevel:ToUpLevel|So           ; reset      ; reset    ; None                        ; None                      ; 1.291 ns                ;
+; N/A   ; Restricted to 304.04 MHz ( period = 3.289 ns ) ; MeasureLevel:ML|EdgeToLevel:ToUpLevel|So ; MeasureLevel:ML|EdgeToLevel:ToUpLevel|Output$latch ; reset      ; reset    ; None                        ; None                      ; 1.239 ns                ;
++-------+------------------------------------------------+------------------------------------------+----------------------------------------------------+------------+----------+-----------------------------+---------------------------+-------------------------+
+
+
++----------------------------------------------------------------------------------+
+; tsu                                                                              ;
++-------+--------------+------------+------+--------------------------+------------+
+; Slack ; Required tsu ; Actual tsu ; From ; To                       ; To Clock   ;
++-------+--------------+------------+------+--------------------------+------------+
+; N/A   ; None         ; 2.684 ns   ; Echo ; MeasureLevel:ML|count[1] ; Countclock ;
+; N/A   ; None         ; 2.684 ns   ; Echo ; MeasureLevel:ML|count[2] ; Countclock ;
+; N/A   ; None         ; 2.684 ns   ; Echo ; MeasureLevel:ML|count[3] ; Countclock ;
+; N/A   ; None         ; 2.684 ns   ; Echo ; MeasureLevel:ML|count[4] ; Countclock ;
+; N/A   ; None         ; 2.684 ns   ; Echo ; MeasureLevel:ML|count[5] ; Countclock ;
+; N/A   ; None         ; 2.684 ns   ; Echo ; MeasureLevel:ML|count[6] ; Countclock ;
+; N/A   ; None         ; 2.684 ns   ; Echo ; MeasureLevel:ML|count[7] ; Countclock ;
+; N/A   ; None         ; 2.684 ns   ; Echo ; MeasureLevel:ML|count[8] ; Countclock ;
+; N/A   ; None         ; 2.684 ns   ; Echo ; MeasureLevel:ML|count[9] ; Countclock ;
+; N/A   ; None         ; 2.075 ns   ; Echo ; MeasureLevel:ML|count[0] ; Countclock ;
++-------+--------------+------------+------+--------------------------+------------+
+
+
++-----------------------------------------------------------------------------------------+
+; tco                                                                                     ;
++-------+--------------+------------+--------------------------+-------------+------------+
+; Slack ; Required tco ; Actual tco ; From                     ; To          ; From Clock ;
++-------+--------------+------------+--------------------------+-------------+------------+
+; N/A   ; None         ; 9.819 ns   ; MeasureLevel:ML|count[4] ; Distance[4] ; Countclock ;
+; N/A   ; None         ; 9.531 ns   ; MeasureLevel:ML|count[5] ; Distance[5] ; Countclock ;
+; N/A   ; None         ; 9.273 ns   ; MeasureLevel:ML|count[0] ; Distance[0] ; Countclock ;
+; N/A   ; None         ; 9.234 ns   ; MeasureLevel:ML|count[3] ; Distance[3] ; Countclock ;
+; N/A   ; None         ; 9.083 ns   ; MeasureLevel:ML|count[9] ; Distance[9] ; Countclock ;
+; N/A   ; None         ; 9.037 ns   ; MeasureLevel:ML|count[1] ; Distance[1] ; Countclock ;
+; N/A   ; None         ; 8.983 ns   ; MeasureLevel:ML|count[2] ; Distance[2] ; Countclock ;
+; N/A   ; None         ; 8.454 ns   ; MeasureLevel:ML|count[6] ; Distance[6] ; Countclock ;
+; N/A   ; None         ; 8.426 ns   ; MeasureLevel:ML|count[7] ; Distance[7] ; Countclock ;
+; N/A   ; None         ; 8.403 ns   ; MeasureLevel:ML|count[8] ; Distance[8] ; Countclock ;
++-------+--------------+------------+--------------------------+-------------+------------+
+
+
++----------------------------------------------------------------------------------------+
+; th                                                                                     ;
++---------------+-------------+-----------+------+--------------------------+------------+
+; Minimum Slack ; Required th ; Actual th ; From ; To                       ; To Clock   ;
++---------------+-------------+-----------+------+--------------------------+------------+
+; N/A           ; None        ; -1.521 ns ; Echo ; MeasureLevel:ML|count[0] ; Countclock ;
+; N/A           ; None        ; -2.130 ns ; Echo ; MeasureLevel:ML|count[1] ; Countclock ;
+; N/A           ; None        ; -2.130 ns ; Echo ; MeasureLevel:ML|count[2] ; Countclock ;
+; N/A           ; None        ; -2.130 ns ; Echo ; MeasureLevel:ML|count[3] ; Countclock ;
+; N/A           ; None        ; -2.130 ns ; Echo ; MeasureLevel:ML|count[4] ; Countclock ;
+; N/A           ; None        ; -2.130 ns ; Echo ; MeasureLevel:ML|count[5] ; Countclock ;
+; N/A           ; None        ; -2.130 ns ; Echo ; MeasureLevel:ML|count[6] ; Countclock ;
+; N/A           ; None        ; -2.130 ns ; Echo ; MeasureLevel:ML|count[7] ; Countclock ;
+; N/A           ; None        ; -2.130 ns ; Echo ; MeasureLevel:ML|count[8] ; Countclock ;
+; N/A           ; None        ; -2.130 ns ; Echo ; MeasureLevel:ML|count[9] ; Countclock ;
++---------------+-------------+-----------+------+--------------------------+------------+
+
+
++--------------------------+
+; Timing Analyzer Messages ;
++--------------------------+
+Info: *******************************************************************
+Info: Running Quartus II Classic Timing Analyzer
+    Info: Version 9.0 Build 235 06/17/2009 Service Pack 2 SJ Web Edition
+    Info: Processing started: Fri Nov 03 10:31:29 2017
+Info: Command: quartus_tan --read_settings_files=off --write_settings_files=off UltrasonicRanging -c UltrasonicRanging
+Info: Started post-fitting delay annotation
+Info: Delay annotation completed successfully
+Warning: Timing Analysis is analyzing one or more combinational loops as latches
+    Warning: Node "MeasureLevel:ML|EdgeToLevel:ToUpLevel|Output$latch" is a latch
+    Warning: Node "MeasureLevel:ML|EdgeToLevel:ToUpLevel|So" is a latch
+    Warning: Node "MeasureLevel:ML|EdgeToLevel:ToUpLevel|St" is a latch
+Warning: Found pins functioning as undefined clocks and/or memory enables
+    Info: Assuming node "Countclock" is an undefined clock
+    Info: Assuming node "Echo" is an undefined clock
+    Info: Assuming node "reset" is a latch enable and/or memory write/read enable. Will not compute fmax for this pin.
+Info: Clock "Countclock" has Internal fmax of 177.87 MHz between source register "MeasureLevel:ML|count[0]" and destination register "MeasureLevel:ML|count[6]" (period= 5.622 ns)
+    Info: + Longest register to register delay is 4.913 ns
+        Info: 1: + IC(0.000 ns) + CELL(0.000 ns) = 0.000 ns; Loc. = LC_X2_Y9_N9; Fanout = 5; REG Node = 'MeasureLevel:ML|count[0]'
+        Info: 2: + IC(1.938 ns) + CELL(0.978 ns) = 2.916 ns; Loc. = LC_X2_Y9_N0; Fanout = 2; COMB Node = 'MeasureLevel:ML|count[1]~1'
+        Info: 3: + IC(0.000 ns) + CELL(0.123 ns) = 3.039 ns; Loc. = LC_X2_Y9_N1; Fanout = 2; COMB Node = 'MeasureLevel:ML|count[2]~3'
+        Info: 4: + IC(0.000 ns) + CELL(0.123 ns) = 3.162 ns; Loc. = LC_X2_Y9_N2; Fanout = 2; COMB Node = 'MeasureLevel:ML|count[3]~5'
+        Info: 5: + IC(0.000 ns) + CELL(0.123 ns) = 3.285 ns; Loc. = LC_X2_Y9_N3; Fanout = 2; COMB Node = 'MeasureLevel:ML|count[4]~7'
+        Info: 6: + IC(0.000 ns) + CELL(0.261 ns) = 3.546 ns; Loc. = LC_X2_Y9_N4; Fanout = 4; COMB Node = 'MeasureLevel:ML|count[5]~9'
+        Info: 7: + IC(0.000 ns) + CELL(1.367 ns) = 4.913 ns; Loc. = LC_X2_Y9_N5; Fanout = 4; REG Node = 'MeasureLevel:ML|count[6]'
+        Info: Total cell delay = 2.975 ns ( 60.55 % )
+        Info: Total interconnect delay = 1.938 ns ( 39.45 % )
+    Info: - Smallest clock skew is 0.000 ns
+        Info: + Shortest clock path from clock "Countclock" to destination register is 3.819 ns
+            Info: 1: + IC(0.000 ns) + CELL(1.163 ns) = 1.163 ns; Loc. = PIN_18; Fanout = 10; CLK Node = 'Countclock'
+            Info: 2: + IC(1.738 ns) + CELL(0.918 ns) = 3.819 ns; Loc. = LC_X2_Y9_N5; Fanout = 4; REG Node = 'MeasureLevel:ML|count[6]'
+            Info: Total cell delay = 2.081 ns ( 54.49 % )
+            Info: Total interconnect delay = 1.738 ns ( 45.51 % )
+        Info: - Longest clock path from clock "Countclock" to source register is 3.819 ns
+            Info: 1: + IC(0.000 ns) + CELL(1.163 ns) = 1.163 ns; Loc. = PIN_18; Fanout = 10; CLK Node = 'Countclock'
+            Info: 2: + IC(1.738 ns) + CELL(0.918 ns) = 3.819 ns; Loc. = LC_X2_Y9_N9; Fanout = 5; REG Node = 'MeasureLevel:ML|count[0]'
+            Info: Total cell delay = 2.081 ns ( 54.49 % )
+            Info: Total interconnect delay = 1.738 ns ( 45.51 % )
+    Info: + Micro clock to output delay of source is 0.376 ns
+    Info: + Micro setup delay of destination is 0.333 ns
+Info: Clock "Echo" Internal fmax is restricted to 304.04 MHz between source register "MeasureLevel:ML|EdgeToLevel:ToUpLevel|Si" and destination register "MeasureLevel:ML|EdgeToLevel:ToUpLevel|Si"
+    Info: fmax restricted to clock pin edge rate 3.289 ns. Expand message to see actual delay path.
+        Info: + Longest register to register delay is 1.521 ns
+            Info: 1: + IC(0.000 ns) + CELL(0.000 ns) = 0.000 ns; Loc. = LC_X9_Y4_N2; Fanout = 3; REG Node = 'MeasureLevel:ML|EdgeToLevel:ToUpLevel|Si'
+            Info: 2: + IC(0.930 ns) + CELL(0.591 ns) = 1.521 ns; Loc. = LC_X9_Y4_N2; Fanout = 3; REG Node = 'MeasureLevel:ML|EdgeToLevel:ToUpLevel|Si'
+            Info: Total cell delay = 0.591 ns ( 38.86 % )
+            Info: Total interconnect delay = 0.930 ns ( 61.14 % )
+        Info: - Smallest clock skew is 0.000 ns
+            Info: + Shortest clock path from clock "Echo" to destination register is 5.438 ns
+                Info: 1: + IC(0.000 ns) + CELL(1.132 ns) = 1.132 ns; Loc. = PIN_29; Fanout = 11; CLK Node = 'Echo'
+                Info: 2: + IC(3.388 ns) + CELL(0.918 ns) = 5.438 ns; Loc. = LC_X9_Y4_N2; Fanout = 3; REG Node = 'MeasureLevel:ML|EdgeToLevel:ToUpLevel|Si'
+                Info: Total cell delay = 2.050 ns ( 37.70 % )
+                Info: Total interconnect delay = 3.388 ns ( 62.30 % )
+            Info: - Longest clock path from clock "Echo" to source register is 5.438 ns
+                Info: 1: + IC(0.000 ns) + CELL(1.132 ns) = 1.132 ns; Loc. = PIN_29; Fanout = 11; CLK Node = 'Echo'
+                Info: 2: + IC(3.388 ns) + CELL(0.918 ns) = 5.438 ns; Loc. = LC_X9_Y4_N2; Fanout = 3; REG Node = 'MeasureLevel:ML|EdgeToLevel:ToUpLevel|Si'
+                Info: Total cell delay = 2.050 ns ( 37.70 % )
+                Info: Total interconnect delay = 3.388 ns ( 62.30 % )
+        Info: + Micro clock to output delay of source is 0.376 ns
+        Info: + Micro setup delay of destination is 0.333 ns
+Info: Clock "reset" Internal fmax is restricted to 304.04 MHz between source register "MeasureLevel:ML|EdgeToLevel:ToUpLevel|St" and destination register "MeasureLevel:ML|EdgeToLevel:ToUpLevel|So"
+    Info: fmax restricted to clock pin edge rate 3.289 ns. Expand message to see actual delay path.
+        Info: + Longest register to register delay is 1.291 ns
+            Info: 1: + IC(0.000 ns) + CELL(0.000 ns) = 0.000 ns; Loc. = LC_X9_Y4_N0; Fanout = 1; REG Node = 'MeasureLevel:ML|EdgeToLevel:ToUpLevel|St'
+            Info: 2: + IC(0.780 ns) + CELL(0.511 ns) = 1.291 ns; Loc. = LC_X9_Y4_N4; Fanout = 1; REG Node = 'MeasureLevel:ML|EdgeToLevel:ToUpLevel|So'
+            Info: Total cell delay = 0.511 ns ( 39.58 % )
+            Info: Total interconnect delay = 0.780 ns ( 60.42 % )
+        Info: - Smallest clock skew is 0.000 ns
+            Info: + Shortest clock path from clock "reset" to destination register is 3.954 ns
+                Info: 1: + IC(0.000 ns) + CELL(1.163 ns) = 1.163 ns; Loc. = PIN_20; Fanout = 5; CLK Node = 'reset'
+                Info: 2: + IC(2.591 ns) + CELL(0.200 ns) = 3.954 ns; Loc. = LC_X9_Y4_N4; Fanout = 1; REG Node = 'MeasureLevel:ML|EdgeToLevel:ToUpLevel|So'
+                Info: Total cell delay = 1.363 ns ( 34.47 % )
+                Info: Total interconnect delay = 2.591 ns ( 65.53 % )
+            Info: - Longest clock path from clock "reset" to source register is 3.954 ns
+                Info: 1: + IC(0.000 ns) + CELL(1.163 ns) = 1.163 ns; Loc. = PIN_20; Fanout = 5; CLK Node = 'reset'
+                Info: 2: + IC(2.591 ns) + CELL(0.200 ns) = 3.954 ns; Loc. = LC_X9_Y4_N0; Fanout = 1; REG Node = 'MeasureLevel:ML|EdgeToLevel:ToUpLevel|St'
+                Info: Total cell delay = 1.363 ns ( 34.47 % )
+                Info: Total interconnect delay = 2.591 ns ( 65.53 % )
+        Info: + Micro clock to output delay of source is 0.000 ns
+        Info: + Micro setup delay of destination is 1.813 ns
+Info: tsu for register "MeasureLevel:ML|count[1]" (data pin = "Echo", clock pin = "Countclock") is 2.684 ns
+    Info: + Longest pin to register delay is 6.170 ns
+        Info: 1: + IC(0.000 ns) + CELL(1.132 ns) = 1.132 ns; Loc. = PIN_29; Fanout = 11; CLK Node = 'Echo'
+        Info: 2: + IC(3.795 ns) + CELL(1.243 ns) = 6.170 ns; Loc. = LC_X2_Y9_N0; Fanout = 4; REG Node = 'MeasureLevel:ML|count[1]'
+        Info: Total cell delay = 2.375 ns ( 38.49 % )
+        Info: Total interconnect delay = 3.795 ns ( 61.51 % )
+    Info: + Micro setup delay of destination is 0.333 ns
+    Info: - Shortest clock path from clock "Countclock" to destination register is 3.819 ns
+        Info: 1: + IC(0.000 ns) + CELL(1.163 ns) = 1.163 ns; Loc. = PIN_18; Fanout = 10; CLK Node = 'Countclock'
+        Info: 2: + IC(1.738 ns) + CELL(0.918 ns) = 3.819 ns; Loc. = LC_X2_Y9_N0; Fanout = 4; REG Node = 'MeasureLevel:ML|count[1]'
+        Info: Total cell delay = 2.081 ns ( 54.49 % )
+        Info: Total interconnect delay = 1.738 ns ( 45.51 % )
+Info: tco from clock "Countclock" to destination pin "Distance[4]" through register "MeasureLevel:ML|count[4]" is 9.819 ns
+    Info: + Longest clock path from clock "Countclock" to source register is 3.819 ns
+        Info: 1: + IC(0.000 ns) + CELL(1.163 ns) = 1.163 ns; Loc. = PIN_18; Fanout = 10; CLK Node = 'Countclock'
+        Info: 2: + IC(1.738 ns) + CELL(0.918 ns) = 3.819 ns; Loc. = LC_X2_Y9_N3; Fanout = 4; REG Node = 'MeasureLevel:ML|count[4]'
+        Info: Total cell delay = 2.081 ns ( 54.49 % )
+        Info: Total interconnect delay = 1.738 ns ( 45.51 % )
+    Info: + Micro clock to output delay of source is 0.376 ns
+    Info: + Longest register to pin delay is 5.624 ns
+        Info: 1: + IC(0.000 ns) + CELL(0.000 ns) = 0.000 ns; Loc. = LC_X2_Y9_N3; Fanout = 4; REG Node = 'MeasureLevel:ML|count[4]'
+        Info: 2: + IC(3.302 ns) + CELL(2.322 ns) = 5.624 ns; Loc. = PIN_40; Fanout = 0; PIN Node = 'Distance[4]'
+        Info: Total cell delay = 2.322 ns ( 41.29 % )
+        Info: Total interconnect delay = 3.302 ns ( 58.71 % )
+Info: th for register "MeasureLevel:ML|count[0]" (data pin = "Echo", clock pin = "Countclock") is -1.521 ns
+    Info: + Longest clock path from clock "Countclock" to destination register is 3.819 ns
+        Info: 1: + IC(0.000 ns) + CELL(1.163 ns) = 1.163 ns; Loc. = PIN_18; Fanout = 10; CLK Node = 'Countclock'
+        Info: 2: + IC(1.738 ns) + CELL(0.918 ns) = 3.819 ns; Loc. = LC_X2_Y9_N9; Fanout = 5; REG Node = 'MeasureLevel:ML|count[0]'
+        Info: Total cell delay = 2.081 ns ( 54.49 % )
+        Info: Total interconnect delay = 1.738 ns ( 45.51 % )
+    Info: + Micro hold delay of destination is 0.221 ns
+    Info: - Shortest pin to register delay is 5.561 ns
+        Info: 1: + IC(0.000 ns) + CELL(1.132 ns) = 1.132 ns; Loc. = PIN_29; Fanout = 11; CLK Node = 'Echo'
+        Info: 2: + IC(3.838 ns) + CELL(0.591 ns) = 5.561 ns; Loc. = LC_X2_Y9_N9; Fanout = 5; REG Node = 'MeasureLevel:ML|count[0]'
+        Info: Total cell delay = 1.723 ns ( 30.98 % )
+        Info: Total interconnect delay = 3.838 ns ( 69.02 % )
+Info: Quartus II Classic Timing Analyzer was successful. 0 errors, 5 warnings
+    Info: Peak virtual memory: 229 megabytes
+    Info: Processing ended: Fri Nov 03 10:31:30 2017
+    Info: Elapsed time: 00:00:01
+    Info: Total CPU time (on all processors): 00:00:00
+
+

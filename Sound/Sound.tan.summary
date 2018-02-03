@@ -1,0 +1,66 @@
+--------------------------------------------------------------------------------------
+Timing Analyzer Summary
+--------------------------------------------------------------------------------------
+
+Type           : Worst-case tsu
+Slack          : N/A
+Required Time  : None
+Actual Time    : 10.724 ns
+From           : SoundSel
+To             : count[5]
+From Clock     : --
+To Clock       : Soundclock
+Failed Paths   : 0
+
+Type           : Worst-case tco
+Slack          : N/A
+Required Time  : None
+Actual Time    : 9.243 ns
+From           : CTC:CTCWaveGen|outtmp
+To             : Soundout
+From Clock     : CTCclock
+To Clock       : --
+Failed Paths   : 0
+
+Type           : Worst-case th
+Slack          : N/A
+Required Time  : None
+Actual Time    : -4.227 ns
+From           : SoundSel
+To             : SoundFrep[5]
+From Clock     : --
+To Clock       : Soundclock
+Failed Paths   : 0
+
+Type           : Clock Setup: 'Soundclock'
+Slack          : N/A
+Required Time  : None
+Actual Time    : 82.25 MHz ( period = 12.158 ns )
+From           : count[3]
+To             : count[5]
+From Clock     : Soundclock
+To Clock       : Soundclock
+Failed Paths   : 0
+
+Type           : Clock Setup: 'CTCclock'
+Slack          : N/A
+Required Time  : None
+Actual Time    : 119.76 MHz ( period = 8.350 ns )
+From           : CTC:CTCWaveGen|count[3]
+To             : CTC:CTCWaveGen|count[8]
+From Clock     : CTCclock
+To Clock       : CTCclock
+Failed Paths   : 0
+
+Type           : Total number of failed paths
+Slack          : 
+Required Time  : 
+Actual Time    : 
+From           : 
+To             : 
+From Clock     : 
+To Clock       : 
+Failed Paths   : 0
+
+--------------------------------------------------------------------------------------
+

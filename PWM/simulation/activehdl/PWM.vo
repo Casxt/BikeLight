@@ -1,0 +1,858 @@
+// Copyright (C) 1991-2009 Altera Corporation
+// Your use of Altera Corporation's design tools, logic functions 
+// and other software and tools, and its AMPP partner logic 
+// functions, and any output files from any of the foregoing 
+// (including device programming or simulation files), and any 
+// associated documentation or information are expressly subject 
+// to the terms and conditions of the Altera Program License 
+// Subscription Agreement, Altera MegaCore Function License 
+// Agreement, or other applicable license agreement, including, 
+// without limitation, that your use is for the sole purpose of 
+// programming logic devices manufactured by Altera and sold by 
+// Altera or its authorized distributors.  Please refer to the 
+// applicable agreement for further details.
+
+// VENDOR "Altera"
+// PROGRAM "Quartus II"
+// VERSION "Version 9.0 Build 235 06/17/2009 Service Pack 2 SJ Web Edition"
+
+// DATE "10/25/2017 08:30:58"
+
+// 
+// Device: Altera EPM1270T144C5 Package TQFP144
+// 
+
+// 
+// This Verilog file should be used for Active-HDL (Verilog) only
+// 
+
+`timescale 1 ps/ 1 ps
+
+module PWM (
+	clock,
+	clear,
+	div,
+	\output );
+input 	clock;
+input 	clear;
+input 	[7:0] div;
+output 	\output ;
+
+wire gnd = 1'b0;
+wire vcc = 1'b1;
+
+tri1 devclrn;
+tri1 devpor;
+tri1 devoe;
+// synopsys translate_off
+initial $sdf_annotate("PWM_v.sdo");
+// synopsys translate_on
+
+wire \LessThan0~5 ;
+wire \LessThan0~10 ;
+wire \LessThan0~15 ;
+wire \LessThan0~20 ;
+wire \LessThan0~25 ;
+wire \LessThan0~30 ;
+wire \LessThan0~35 ;
+wire \clock~combout ;
+wire \clear~combout ;
+wire \count[1]~13 ;
+wire \count[1]~13COUT1_22 ;
+wire \count[2]~11 ;
+wire \count[2]~11COUT1_24 ;
+wire \count[3]~9 ;
+wire \count[3]~9COUT1_26 ;
+wire \count[4]~7 ;
+wire \count[5]~5 ;
+wire \count[5]~5COUT1_28 ;
+wire \count[6]~3 ;
+wire \count[6]~3COUT1_30 ;
+wire \LessThan0~37_cout0 ;
+wire \LessThan0~37COUT1_48 ;
+wire \LessThan0~32_cout0 ;
+wire \LessThan0~32COUT1_50 ;
+wire \LessThan0~27_cout0 ;
+wire \LessThan0~27COUT1_52 ;
+wire \LessThan0~22_cout0 ;
+wire \LessThan0~22COUT1_54 ;
+wire \LessThan0~17_cout ;
+wire \LessThan0~12_cout0 ;
+wire \LessThan0~12COUT1_56 ;
+wire \LessThan0~7_cout0 ;
+wire \LessThan0~7COUT1_58 ;
+wire \LessThan0~0_combout ;
+wire \output~reg0_regout ;
+wire [7:0] count;
+wire [7:0] \div~combout ;
+
+
+// atom is at PIN_18
+maxii_io \clock~I (
+	.datain(gnd),
+	.oe(gnd),
+	.combout(\clock~combout ),
+	.padio(clock));
+// synopsys translate_off
+defparam \clock~I .operation_mode = "input";
+// synopsys translate_on
+
+// atom is at PIN_20
+maxii_io \clear~I (
+	.datain(gnd),
+	.oe(gnd),
+	.combout(\clear~combout ),
+	.padio(clear));
+// synopsys translate_off
+defparam \clear~I .operation_mode = "input";
+// synopsys translate_on
+
+// atom is at LC_X1_Y8_N8
+maxii_lcell \count[0] (
+// Equation(s):
+// count[0] = DFFEAS(!count[0], GLOBAL(\clock~combout ), !GLOBAL(\clear~combout ), , , , , , )
+
+	.clk(\clock~combout ),
+	.dataa(vcc),
+	.datab(vcc),
+	.datac(vcc),
+	.datad(count[0]),
+	.aclr(\clear~combout ),
+	.aload(gnd),
+	.sclr(gnd),
+	.sload(gnd),
+	.ena(vcc),
+	.cin(gnd),
+	.cin0(gnd),
+	.cin1(vcc),
+	.inverta(gnd),
+	.regcascin(gnd),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(),
+	.regout(count[0]),
+	.cout(),
+	.cout0(),
+	.cout1());
+// synopsys translate_off
+defparam \count[0] .lut_mask = "00ff";
+defparam \count[0] .operation_mode = "normal";
+defparam \count[0] .output_mode = "reg_only";
+defparam \count[0] .register_cascade_mode = "off";
+defparam \count[0] .sum_lutc_input = "datac";
+defparam \count[0] .synch_mode = "off";
+// synopsys translate_on
+
+// atom is at LC_X2_Y8_N1
+maxii_lcell \count[1] (
+// Equation(s):
+// count[1] = DFFEAS(count[0] $ count[1], GLOBAL(\clock~combout ), !GLOBAL(\clear~combout ), , , , , , )
+// \count[1]~13  = CARRY(count[0] & count[1])
+// \count[1]~13COUT1_22  = CARRY(count[0] & count[1])
+
+	.clk(\clock~combout ),
+	.dataa(count[0]),
+	.datab(count[1]),
+	.datac(vcc),
+	.datad(vcc),
+	.aclr(\clear~combout ),
+	.aload(gnd),
+	.sclr(gnd),
+	.sload(gnd),
+	.ena(vcc),
+	.cin(gnd),
+	.cin0(gnd),
+	.cin1(vcc),
+	.inverta(gnd),
+	.regcascin(gnd),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(),
+	.regout(count[1]),
+	.cout(),
+	.cout0(\count[1]~13 ),
+	.cout1(\count[1]~13COUT1_22 ));
+// synopsys translate_off
+defparam \count[1] .lut_mask = "6688";
+defparam \count[1] .operation_mode = "arithmetic";
+defparam \count[1] .output_mode = "reg_only";
+defparam \count[1] .register_cascade_mode = "off";
+defparam \count[1] .sum_lutc_input = "datac";
+defparam \count[1] .synch_mode = "off";
+// synopsys translate_on
+
+// atom is at LC_X2_Y8_N2
+maxii_lcell \count[2] (
+// Equation(s):
+// count[2] = DFFEAS(count[2] $ \count[1]~13 , GLOBAL(\clock~combout ), !GLOBAL(\clear~combout ), , , , , , )
+// \count[2]~11  = CARRY(!\count[1]~13  # !count[2])
+// \count[2]~11COUT1_24  = CARRY(!\count[1]~13COUT1_22  # !count[2])
+
+	.clk(\clock~combout ),
+	.dataa(vcc),
+	.datab(count[2]),
+	.datac(vcc),
+	.datad(vcc),
+	.aclr(\clear~combout ),
+	.aload(gnd),
+	.sclr(gnd),
+	.sload(gnd),
+	.ena(vcc),
+	.cin(gnd),
+	.cin0(\count[1]~13 ),
+	.cin1(\count[1]~13COUT1_22 ),
+	.inverta(gnd),
+	.regcascin(gnd),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(),
+	.regout(count[2]),
+	.cout(),
+	.cout0(\count[2]~11 ),
+	.cout1(\count[2]~11COUT1_24 ));
+// synopsys translate_off
+defparam \count[2] .cin0_used = "true";
+defparam \count[2] .cin1_used = "true";
+defparam \count[2] .lut_mask = "3c3f";
+defparam \count[2] .operation_mode = "arithmetic";
+defparam \count[2] .output_mode = "reg_only";
+defparam \count[2] .register_cascade_mode = "off";
+defparam \count[2] .sum_lutc_input = "cin";
+defparam \count[2] .synch_mode = "off";
+// synopsys translate_on
+
+// atom is at LC_X2_Y8_N3
+maxii_lcell \count[3] (
+// Equation(s):
+// count[3] = DFFEAS(count[3] $ (!\count[2]~11 ), GLOBAL(\clock~combout ), !GLOBAL(\clear~combout ), , , , , , )
+// \count[3]~9  = CARRY(count[3] & (!\count[2]~11 ))
+// \count[3]~9COUT1_26  = CARRY(count[3] & (!\count[2]~11COUT1_24 ))
+
+	.clk(\clock~combout ),
+	.dataa(count[3]),
+	.datab(vcc),
+	.datac(vcc),
+	.datad(vcc),
+	.aclr(\clear~combout ),
+	.aload(gnd),
+	.sclr(gnd),
+	.sload(gnd),
+	.ena(vcc),
+	.cin(gnd),
+	.cin0(\count[2]~11 ),
+	.cin1(\count[2]~11COUT1_24 ),
+	.inverta(gnd),
+	.regcascin(gnd),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(),
+	.regout(count[3]),
+	.cout(),
+	.cout0(\count[3]~9 ),
+	.cout1(\count[3]~9COUT1_26 ));
+// synopsys translate_off
+defparam \count[3] .cin0_used = "true";
+defparam \count[3] .cin1_used = "true";
+defparam \count[3] .lut_mask = "a50a";
+defparam \count[3] .operation_mode = "arithmetic";
+defparam \count[3] .output_mode = "reg_only";
+defparam \count[3] .register_cascade_mode = "off";
+defparam \count[3] .sum_lutc_input = "cin";
+defparam \count[3] .synch_mode = "off";
+// synopsys translate_on
+
+// atom is at LC_X2_Y8_N4
+maxii_lcell \count[4] (
+// Equation(s):
+// count[4] = DFFEAS(count[4] $ (\count[3]~9 ), GLOBAL(\clock~combout ), !GLOBAL(\clear~combout ), , , , , , )
+// \count[4]~7  = CARRY(!\count[3]~9COUT1_26  # !count[4])
+
+	.clk(\clock~combout ),
+	.dataa(count[4]),
+	.datab(vcc),
+	.datac(vcc),
+	.datad(vcc),
+	.aclr(\clear~combout ),
+	.aload(gnd),
+	.sclr(gnd),
+	.sload(gnd),
+	.ena(vcc),
+	.cin(gnd),
+	.cin0(\count[3]~9 ),
+	.cin1(\count[3]~9COUT1_26 ),
+	.inverta(gnd),
+	.regcascin(gnd),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(),
+	.regout(count[4]),
+	.cout(\count[4]~7 ),
+	.cout0(),
+	.cout1());
+// synopsys translate_off
+defparam \count[4] .cin0_used = "true";
+defparam \count[4] .cin1_used = "true";
+defparam \count[4] .lut_mask = "5a5f";
+defparam \count[4] .operation_mode = "arithmetic";
+defparam \count[4] .output_mode = "reg_only";
+defparam \count[4] .register_cascade_mode = "off";
+defparam \count[4] .sum_lutc_input = "cin";
+defparam \count[4] .synch_mode = "off";
+// synopsys translate_on
+
+// atom is at LC_X2_Y8_N5
+maxii_lcell \count[5] (
+// Equation(s):
+// count[5] = DFFEAS(count[5] $ (!\count[4]~7 ), GLOBAL(\clock~combout ), !GLOBAL(\clear~combout ), , , , , , )
+// \count[5]~5  = CARRY(count[5] & (!\count[4]~7 ))
+// \count[5]~5COUT1_28  = CARRY(count[5] & (!\count[4]~7 ))
+
+	.clk(\clock~combout ),
+	.dataa(count[5]),
+	.datab(vcc),
+	.datac(vcc),
+	.datad(vcc),
+	.aclr(\clear~combout ),
+	.aload(gnd),
+	.sclr(gnd),
+	.sload(gnd),
+	.ena(vcc),
+	.cin(\count[4]~7 ),
+	.cin0(gnd),
+	.cin1(vcc),
+	.inverta(gnd),
+	.regcascin(gnd),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(),
+	.regout(count[5]),
+	.cout(),
+	.cout0(\count[5]~5 ),
+	.cout1(\count[5]~5COUT1_28 ));
+// synopsys translate_off
+defparam \count[5] .cin_used = "true";
+defparam \count[5] .lut_mask = "a50a";
+defparam \count[5] .operation_mode = "arithmetic";
+defparam \count[5] .output_mode = "reg_only";
+defparam \count[5] .register_cascade_mode = "off";
+defparam \count[5] .sum_lutc_input = "cin";
+defparam \count[5] .synch_mode = "off";
+// synopsys translate_on
+
+// atom is at LC_X2_Y8_N6
+maxii_lcell \count[6] (
+// Equation(s):
+// count[6] = DFFEAS(count[6] $ ((!\count[4]~7  & \count[5]~5 ) # (\count[4]~7  & \count[5]~5COUT1_28 )), GLOBAL(\clock~combout ), !GLOBAL(\clear~combout ), , , , , , )
+// \count[6]~3  = CARRY(!\count[5]~5  # !count[6])
+// \count[6]~3COUT1_30  = CARRY(!\count[5]~5COUT1_28  # !count[6])
+
+	.clk(\clock~combout ),
+	.dataa(count[6]),
+	.datab(vcc),
+	.datac(vcc),
+	.datad(vcc),
+	.aclr(\clear~combout ),
+	.aload(gnd),
+	.sclr(gnd),
+	.sload(gnd),
+	.ena(vcc),
+	.cin(\count[4]~7 ),
+	.cin0(\count[5]~5 ),
+	.cin1(\count[5]~5COUT1_28 ),
+	.inverta(gnd),
+	.regcascin(gnd),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(),
+	.regout(count[6]),
+	.cout(),
+	.cout0(\count[6]~3 ),
+	.cout1(\count[6]~3COUT1_30 ));
+// synopsys translate_off
+defparam \count[6] .cin0_used = "true";
+defparam \count[6] .cin1_used = "true";
+defparam \count[6] .cin_used = "true";
+defparam \count[6] .lut_mask = "5a5f";
+defparam \count[6] .operation_mode = "arithmetic";
+defparam \count[6] .output_mode = "reg_only";
+defparam \count[6] .register_cascade_mode = "off";
+defparam \count[6] .sum_lutc_input = "cin";
+defparam \count[6] .synch_mode = "off";
+// synopsys translate_on
+
+// atom is at LC_X2_Y8_N7
+maxii_lcell \count[7] (
+// Equation(s):
+// count[7] = DFFEAS(count[7] $ !(!\count[4]~7  & \count[6]~3 ) # (\count[4]~7  & \count[6]~3COUT1_30 ), GLOBAL(\clock~combout ), !GLOBAL(\clear~combout ), , , , , , )
+
+	.clk(\clock~combout ),
+	.dataa(vcc),
+	.datab(count[7]),
+	.datac(vcc),
+	.datad(vcc),
+	.aclr(\clear~combout ),
+	.aload(gnd),
+	.sclr(gnd),
+	.sload(gnd),
+	.ena(vcc),
+	.cin(\count[4]~7 ),
+	.cin0(\count[6]~3 ),
+	.cin1(\count[6]~3COUT1_30 ),
+	.inverta(gnd),
+	.regcascin(gnd),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(),
+	.regout(count[7]),
+	.cout(),
+	.cout0(),
+	.cout1());
+// synopsys translate_off
+defparam \count[7] .cin0_used = "true";
+defparam \count[7] .cin1_used = "true";
+defparam \count[7] .cin_used = "true";
+defparam \count[7] .lut_mask = "c3c3";
+defparam \count[7] .operation_mode = "normal";
+defparam \count[7] .output_mode = "reg_only";
+defparam \count[7] .register_cascade_mode = "off";
+defparam \count[7] .sum_lutc_input = "cin";
+defparam \count[7] .synch_mode = "off";
+// synopsys translate_on
+
+// atom is at PIN_98
+maxii_io \div[7]~I (
+	.datain(gnd),
+	.oe(gnd),
+	.combout(\div~combout [7]),
+	.padio(div[7]));
+// synopsys translate_off
+defparam \div[7]~I .operation_mode = "input";
+// synopsys translate_on
+
+// atom is at PIN_21
+maxii_io \div[4]~I (
+	.datain(gnd),
+	.oe(gnd),
+	.combout(\div~combout [4]),
+	.padio(div[4]));
+// synopsys translate_off
+defparam \div[4]~I .operation_mode = "input";
+// synopsys translate_on
+
+// atom is at PIN_11
+maxii_io \div[3]~I (
+	.datain(gnd),
+	.oe(gnd),
+	.combout(\div~combout [3]),
+	.padio(div[3]));
+// synopsys translate_off
+defparam \div[3]~I .operation_mode = "input";
+// synopsys translate_on
+
+// atom is at PIN_7
+maxii_io \div[2]~I (
+	.datain(gnd),
+	.oe(gnd),
+	.combout(\div~combout [2]),
+	.padio(div[2]));
+// synopsys translate_off
+defparam \div[2]~I .operation_mode = "input";
+// synopsys translate_on
+
+// atom is at PIN_103
+maxii_io \div[1]~I (
+	.datain(gnd),
+	.oe(gnd),
+	.combout(\div~combout [1]),
+	.padio(div[1]));
+// synopsys translate_off
+defparam \div[1]~I .operation_mode = "input";
+// synopsys translate_on
+
+// atom is at PIN_144
+maxii_io \div[0]~I (
+	.datain(gnd),
+	.oe(gnd),
+	.combout(\div~combout [0]),
+	.padio(div[0]));
+// synopsys translate_off
+defparam \div[0]~I .operation_mode = "input";
+// synopsys translate_on
+
+// atom is at LC_X1_Y8_N0
+maxii_lcell \LessThan0~37 (
+// Equation(s):
+// \LessThan0~37_cout0  = CARRY(!\div~combout [0] & count[0])
+// \LessThan0~37COUT1_48  = CARRY(!\div~combout [0] & count[0])
+
+	.clk(gnd),
+	.dataa(\div~combout [0]),
+	.datab(count[0]),
+	.datac(vcc),
+	.datad(vcc),
+	.aclr(gnd),
+	.aload(gnd),
+	.sclr(gnd),
+	.sload(gnd),
+	.ena(vcc),
+	.cin(gnd),
+	.cin0(gnd),
+	.cin1(vcc),
+	.inverta(gnd),
+	.regcascin(gnd),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(\LessThan0~35 ),
+	.regout(),
+	.cout(),
+	.cout0(\LessThan0~37_cout0 ),
+	.cout1(\LessThan0~37COUT1_48 ));
+// synopsys translate_off
+defparam \LessThan0~37 .lut_mask = "ff44";
+defparam \LessThan0~37 .operation_mode = "arithmetic";
+defparam \LessThan0~37 .output_mode = "none";
+defparam \LessThan0~37 .register_cascade_mode = "off";
+defparam \LessThan0~37 .sum_lutc_input = "datac";
+defparam \LessThan0~37 .synch_mode = "off";
+// synopsys translate_on
+
+// atom is at LC_X1_Y8_N1
+maxii_lcell \LessThan0~32 (
+// Equation(s):
+// \LessThan0~32_cout0  = CARRY(count[1] & \div~combout [1] & !\LessThan0~37_cout0  # !count[1] & (\div~combout [1] # !\LessThan0~37_cout0 ))
+// \LessThan0~32COUT1_50  = CARRY(count[1] & \div~combout [1] & !\LessThan0~37COUT1_48  # !count[1] & (\div~combout [1] # !\LessThan0~37COUT1_48 ))
+
+	.clk(gnd),
+	.dataa(count[1]),
+	.datab(\div~combout [1]),
+	.datac(vcc),
+	.datad(vcc),
+	.aclr(gnd),
+	.aload(gnd),
+	.sclr(gnd),
+	.sload(gnd),
+	.ena(vcc),
+	.cin(gnd),
+	.cin0(\LessThan0~37_cout0 ),
+	.cin1(\LessThan0~37COUT1_48 ),
+	.inverta(gnd),
+	.regcascin(gnd),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(\LessThan0~30 ),
+	.regout(),
+	.cout(),
+	.cout0(\LessThan0~32_cout0 ),
+	.cout1(\LessThan0~32COUT1_50 ));
+// synopsys translate_off
+defparam \LessThan0~32 .cin0_used = "true";
+defparam \LessThan0~32 .cin1_used = "true";
+defparam \LessThan0~32 .lut_mask = "ff4d";
+defparam \LessThan0~32 .operation_mode = "arithmetic";
+defparam \LessThan0~32 .output_mode = "none";
+defparam \LessThan0~32 .register_cascade_mode = "off";
+defparam \LessThan0~32 .sum_lutc_input = "cin";
+defparam \LessThan0~32 .synch_mode = "off";
+// synopsys translate_on
+
+// atom is at LC_X1_Y8_N2
+maxii_lcell \LessThan0~27 (
+// Equation(s):
+// \LessThan0~27_cout0  = CARRY(\div~combout [2] & count[2] & !\LessThan0~32_cout0  # !\div~combout [2] & (count[2] # !\LessThan0~32_cout0 ))
+// \LessThan0~27COUT1_52  = CARRY(\div~combout [2] & count[2] & !\LessThan0~32COUT1_50  # !\div~combout [2] & (count[2] # !\LessThan0~32COUT1_50 ))
+
+	.clk(gnd),
+	.dataa(\div~combout [2]),
+	.datab(count[2]),
+	.datac(vcc),
+	.datad(vcc),
+	.aclr(gnd),
+	.aload(gnd),
+	.sclr(gnd),
+	.sload(gnd),
+	.ena(vcc),
+	.cin(gnd),
+	.cin0(\LessThan0~32_cout0 ),
+	.cin1(\LessThan0~32COUT1_50 ),
+	.inverta(gnd),
+	.regcascin(gnd),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(\LessThan0~25 ),
+	.regout(),
+	.cout(),
+	.cout0(\LessThan0~27_cout0 ),
+	.cout1(\LessThan0~27COUT1_52 ));
+// synopsys translate_off
+defparam \LessThan0~27 .cin0_used = "true";
+defparam \LessThan0~27 .cin1_used = "true";
+defparam \LessThan0~27 .lut_mask = "ff4d";
+defparam \LessThan0~27 .operation_mode = "arithmetic";
+defparam \LessThan0~27 .output_mode = "none";
+defparam \LessThan0~27 .register_cascade_mode = "off";
+defparam \LessThan0~27 .sum_lutc_input = "cin";
+defparam \LessThan0~27 .synch_mode = "off";
+// synopsys translate_on
+
+// atom is at LC_X1_Y8_N3
+maxii_lcell \LessThan0~22 (
+// Equation(s):
+// \LessThan0~22_cout0  = CARRY(count[3] & \div~combout [3] & !\LessThan0~27_cout0  # !count[3] & (\div~combout [3] # !\LessThan0~27_cout0 ))
+// \LessThan0~22COUT1_54  = CARRY(count[3] & \div~combout [3] & !\LessThan0~27COUT1_52  # !count[3] & (\div~combout [3] # !\LessThan0~27COUT1_52 ))
+
+	.clk(gnd),
+	.dataa(count[3]),
+	.datab(\div~combout [3]),
+	.datac(vcc),
+	.datad(vcc),
+	.aclr(gnd),
+	.aload(gnd),
+	.sclr(gnd),
+	.sload(gnd),
+	.ena(vcc),
+	.cin(gnd),
+	.cin0(\LessThan0~27_cout0 ),
+	.cin1(\LessThan0~27COUT1_52 ),
+	.inverta(gnd),
+	.regcascin(gnd),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(\LessThan0~20 ),
+	.regout(),
+	.cout(),
+	.cout0(\LessThan0~22_cout0 ),
+	.cout1(\LessThan0~22COUT1_54 ));
+// synopsys translate_off
+defparam \LessThan0~22 .cin0_used = "true";
+defparam \LessThan0~22 .cin1_used = "true";
+defparam \LessThan0~22 .lut_mask = "ff4d";
+defparam \LessThan0~22 .operation_mode = "arithmetic";
+defparam \LessThan0~22 .output_mode = "none";
+defparam \LessThan0~22 .register_cascade_mode = "off";
+defparam \LessThan0~22 .sum_lutc_input = "cin";
+defparam \LessThan0~22 .synch_mode = "off";
+// synopsys translate_on
+
+// atom is at LC_X1_Y8_N4
+maxii_lcell \LessThan0~17 (
+// Equation(s):
+// \LessThan0~17_cout  = CARRY(\div~combout [4] & count[4] & !\LessThan0~22COUT1_54  # !\div~combout [4] & (count[4] # !\LessThan0~22COUT1_54 ))
+
+	.clk(gnd),
+	.dataa(\div~combout [4]),
+	.datab(count[4]),
+	.datac(vcc),
+	.datad(vcc),
+	.aclr(gnd),
+	.aload(gnd),
+	.sclr(gnd),
+	.sload(gnd),
+	.ena(vcc),
+	.cin(gnd),
+	.cin0(\LessThan0~22_cout0 ),
+	.cin1(\LessThan0~22COUT1_54 ),
+	.inverta(gnd),
+	.regcascin(gnd),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(\LessThan0~15 ),
+	.regout(),
+	.cout(\LessThan0~17_cout ),
+	.cout0(),
+	.cout1());
+// synopsys translate_off
+defparam \LessThan0~17 .cin0_used = "true";
+defparam \LessThan0~17 .cin1_used = "true";
+defparam \LessThan0~17 .lut_mask = "ff4d";
+defparam \LessThan0~17 .operation_mode = "arithmetic";
+defparam \LessThan0~17 .output_mode = "none";
+defparam \LessThan0~17 .register_cascade_mode = "off";
+defparam \LessThan0~17 .sum_lutc_input = "cin";
+defparam \LessThan0~17 .synch_mode = "off";
+// synopsys translate_on
+
+// atom is at PIN_4
+maxii_io \div[6]~I (
+	.datain(gnd),
+	.oe(gnd),
+	.combout(\div~combout [6]),
+	.padio(div[6]));
+// synopsys translate_off
+defparam \div[6]~I .operation_mode = "input";
+// synopsys translate_on
+
+// atom is at PIN_102
+maxii_io \div[5]~I (
+	.datain(gnd),
+	.oe(gnd),
+	.combout(\div~combout [5]),
+	.padio(div[5]));
+// synopsys translate_off
+defparam \div[5]~I .operation_mode = "input";
+// synopsys translate_on
+
+// atom is at LC_X1_Y8_N5
+maxii_lcell \LessThan0~12 (
+// Equation(s):
+// \LessThan0~12_cout0  = CARRY(\div~combout [5] & (!\LessThan0~17_cout  # !count[5]) # !\div~combout [5] & !count[5] & !\LessThan0~17_cout )
+// \LessThan0~12COUT1_56  = CARRY(\div~combout [5] & (!\LessThan0~17_cout  # !count[5]) # !\div~combout [5] & !count[5] & !\LessThan0~17_cout )
+
+	.clk(gnd),
+	.dataa(\div~combout [5]),
+	.datab(count[5]),
+	.datac(vcc),
+	.datad(vcc),
+	.aclr(gnd),
+	.aload(gnd),
+	.sclr(gnd),
+	.sload(gnd),
+	.ena(vcc),
+	.cin(\LessThan0~17_cout ),
+	.cin0(gnd),
+	.cin1(vcc),
+	.inverta(gnd),
+	.regcascin(gnd),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(\LessThan0~10 ),
+	.regout(),
+	.cout(),
+	.cout0(\LessThan0~12_cout0 ),
+	.cout1(\LessThan0~12COUT1_56 ));
+// synopsys translate_off
+defparam \LessThan0~12 .cin_used = "true";
+defparam \LessThan0~12 .lut_mask = "ff2b";
+defparam \LessThan0~12 .operation_mode = "arithmetic";
+defparam \LessThan0~12 .output_mode = "none";
+defparam \LessThan0~12 .register_cascade_mode = "off";
+defparam \LessThan0~12 .sum_lutc_input = "cin";
+defparam \LessThan0~12 .synch_mode = "off";
+// synopsys translate_on
+
+// atom is at LC_X1_Y8_N6
+maxii_lcell \LessThan0~7 (
+// Equation(s):
+// \LessThan0~7_cout0  = CARRY(count[6] & (!\LessThan0~12_cout0  # !\div~combout [6]) # !count[6] & !\div~combout [6] & !\LessThan0~12_cout0 )
+// \LessThan0~7COUT1_58  = CARRY(count[6] & (!\LessThan0~12COUT1_56  # !\div~combout [6]) # !count[6] & !\div~combout [6] & !\LessThan0~12COUT1_56 )
+
+	.clk(gnd),
+	.dataa(count[6]),
+	.datab(\div~combout [6]),
+	.datac(vcc),
+	.datad(vcc),
+	.aclr(gnd),
+	.aload(gnd),
+	.sclr(gnd),
+	.sload(gnd),
+	.ena(vcc),
+	.cin(\LessThan0~17_cout ),
+	.cin0(\LessThan0~12_cout0 ),
+	.cin1(\LessThan0~12COUT1_56 ),
+	.inverta(gnd),
+	.regcascin(gnd),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(\LessThan0~5 ),
+	.regout(),
+	.cout(),
+	.cout0(\LessThan0~7_cout0 ),
+	.cout1(\LessThan0~7COUT1_58 ));
+// synopsys translate_off
+defparam \LessThan0~7 .cin0_used = "true";
+defparam \LessThan0~7 .cin1_used = "true";
+defparam \LessThan0~7 .cin_used = "true";
+defparam \LessThan0~7 .lut_mask = "ff2b";
+defparam \LessThan0~7 .operation_mode = "arithmetic";
+defparam \LessThan0~7 .output_mode = "none";
+defparam \LessThan0~7 .register_cascade_mode = "off";
+defparam \LessThan0~7 .sum_lutc_input = "cin";
+defparam \LessThan0~7 .synch_mode = "off";
+// synopsys translate_on
+
+// atom is at LC_X1_Y8_N7
+maxii_lcell \LessThan0~0 (
+// Equation(s):
+// \LessThan0~0_combout  = count[7] & ((!\LessThan0~17_cout  & \LessThan0~7_cout0 ) # (\LessThan0~17_cout  & \LessThan0~7COUT1_58 ) # !\div~combout [7]) # !count[7] & !\div~combout [7] & (!\LessThan0~17_cout  & \LessThan0~7_cout0 ) # (\LessThan0~17_cout  & 
+// \LessThan0~7COUT1_58 )
+
+	.clk(gnd),
+	.dataa(count[7]),
+	.datab(\div~combout [7]),
+	.datac(vcc),
+	.datad(vcc),
+	.aclr(gnd),
+	.aload(gnd),
+	.sclr(gnd),
+	.sload(gnd),
+	.ena(vcc),
+	.cin(\LessThan0~17_cout ),
+	.cin0(\LessThan0~7_cout0 ),
+	.cin1(\LessThan0~7COUT1_58 ),
+	.inverta(gnd),
+	.regcascin(gnd),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(\LessThan0~0_combout ),
+	.regout(),
+	.cout(),
+	.cout0(),
+	.cout1());
+// synopsys translate_off
+defparam \LessThan0~0 .cin0_used = "true";
+defparam \LessThan0~0 .cin1_used = "true";
+defparam \LessThan0~0 .cin_used = "true";
+defparam \LessThan0~0 .lut_mask = "b2b2";
+defparam \LessThan0~0 .operation_mode = "normal";
+defparam \LessThan0~0 .output_mode = "comb_only";
+defparam \LessThan0~0 .register_cascade_mode = "off";
+defparam \LessThan0~0 .sum_lutc_input = "cin";
+defparam \LessThan0~0 .synch_mode = "off";
+// synopsys translate_on
+
+// atom is at LC_X1_Y8_N9
+maxii_lcell \output~reg0 (
+// Equation(s):
+// \output~reg0_regout  = DFFEAS(!\LessThan0~0_combout , GLOBAL(\clock~combout ), !GLOBAL(\clear~combout ), , , , , , )
+
+	.clk(\clock~combout ),
+	.dataa(vcc),
+	.datab(vcc),
+	.datac(\LessThan0~0_combout ),
+	.datad(vcc),
+	.aclr(\clear~combout ),
+	.aload(gnd),
+	.sclr(gnd),
+	.sload(gnd),
+	.ena(vcc),
+	.cin(gnd),
+	.cin0(gnd),
+	.cin1(vcc),
+	.inverta(gnd),
+	.regcascin(gnd),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(),
+	.regout(\output~reg0_regout ),
+	.cout(),
+	.cout0(),
+	.cout1());
+// synopsys translate_off
+defparam \output~reg0 .lut_mask = "0f0f";
+defparam \output~reg0 .operation_mode = "normal";
+defparam \output~reg0 .output_mode = "reg_only";
+defparam \output~reg0 .register_cascade_mode = "off";
+defparam \output~reg0 .sum_lutc_input = "datac";
+defparam \output~reg0 .synch_mode = "off";
+// synopsys translate_on
+
+// atom is at PIN_24
+maxii_io \output~I (
+	.datain(\output~reg0_regout ),
+	.oe(vcc),
+	.combout(),
+	.padio(\output ));
+// synopsys translate_off
+defparam \output~I .operation_mode = "output";
+// synopsys translate_on
+
+endmodule

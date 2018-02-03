@@ -1,0 +1,266 @@
+Simulator report for Sound
+Thu Nov 09 21:43:54 2017
+Quartus II Version 9.0 Build 235 06/17/2009 Service Pack 2 SJ Web Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Simulator Summary
+  3. Simulator Settings
+  4. Simulation Waveforms
+  5. Coverage Summary
+  6. Complete 1/0-Value Coverage
+  7. Missing 1-Value Coverage
+  8. Missing 0-Value Coverage
+  9. Simulator INI Usage
+ 10. Simulator Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 1991-2009 Altera Corporation
+Your use of Altera Corporation's design tools, logic functions 
+and other software and tools, and its AMPP partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Altera Program License 
+Subscription Agreement, Altera MegaCore Function License 
+Agreement, or other applicable license agreement, including, 
+without limitation, that your use is for the sole purpose of 
+programming logic devices manufactured by Altera and sold by 
+Altera or its authorized distributors.  Please refer to the 
+applicable agreement for further details.
+
+
+
++---------------------------------------------+
+; Simulator Summary                           ;
++-----------------------------+---------------+
+; Type                        ; Value         ;
++-----------------------------+---------------+
+; Simulation Start Time       ; 0 ps          ;
+; Simulation End Time         ; 1.0 s         ;
+; Simulation Netlist Size     ; 63 nodes      ;
+; Simulation Coverage         ;      42.25 %  ;
+; Total Number of Transitions ; 719903        ;
+; Simulation Breakpoints      ; 0             ;
+; Family                      ; MAX II        ;
+; Device                      ; EPM1270M256C5 ;
++-----------------------------+---------------+
+
+
++-------------------------------------------------------------------------------------------------------------------------+
+; Simulator Settings                                                                                                      ;
++--------------------------------------------------------------------------------------------+------------+---------------+
+; Option                                                                                     ; Setting    ; Default Value ;
++--------------------------------------------------------------------------------------------+------------+---------------+
+; Simulation mode                                                                            ; Timing     ; Timing        ;
+; Start time                                                                                 ; 0 ns       ; 0 ns          ;
+; Simulation results format                                                                  ; CVWF       ;               ;
+; Add pins automatically to simulation output waveforms                                      ; On         ; On            ;
+; Check outputs                                                                              ; Off        ; Off           ;
+; Report simulation coverage                                                                 ; On         ; On            ;
+; Display complete 1/0 value coverage report                                                 ; On         ; On            ;
+; Display missing 1-value coverage report                                                    ; On         ; On            ;
+; Display missing 0-value coverage report                                                    ; On         ; On            ;
+; Detect setup and hold time violations                                                      ; Off        ; Off           ;
+; Detect glitches                                                                            ; Off        ; Off           ;
+; Disable timing delays in Timing Simulation                                                 ; Off        ; Off           ;
+; Generate Signal Activity File                                                              ; Off        ; Off           ;
+; Generate VCD File for PowerPlay Power Analyzer                                             ; Off        ; Off           ;
+; Group bus channels in simulation results                                                   ; Off        ; Off           ;
+; Preserve fewer signal transitions to reduce memory requirements                            ; On         ; On            ;
+; Trigger vector comparison with the specified mode                                          ; INPUT_EDGE ; INPUT_EDGE    ;
+; Disable setup and hold time violations detection in input registers of bi-directional pins ; Off        ; Off           ;
+; Overwrite Waveform Inputs With Simulation Outputs                                          ; Off        ;               ;
+; Perform Glitch Filtering in Timing Simulation                                              ; Auto       ; Auto          ;
++--------------------------------------------------------------------------------------------+------------+---------------+
+
+
++----------------------+
+; Simulation Waveforms ;
++----------------------+
+Waveform report data cannot be output to ASCII.
+Please use Quartus II to view the waveform report data.
+
+
++--------------------------------------------------------------------+
+; Coverage Summary                                                   ;
++-----------------------------------------------------+--------------+
+; Type                                                ; Value        ;
++-----------------------------------------------------+--------------+
+; Total coverage as a percentage                      ;      42.25 % ;
+; Total nodes checked                                 ; 63           ;
+; Total output ports checked                          ; 71           ;
+; Total output ports with complete 1/0-value coverage ; 30           ;
+; Total output ports with no 1/0-value coverage       ; 34           ;
+; Total output ports with no 1-value coverage         ; 35           ;
+; Total output ports with no 0-value coverage         ; 40           ;
++-----------------------------------------------------+--------------+
+
+
+The following table displays output ports that toggle between 1 and 0 during simulation.
++-----------------------------------------------------------------------------------------------+
+; Complete 1/0-Value Coverage                                                                   ;
++--------------------------------+-------------------------------------------+------------------+
+; Node Name                      ; Output Port Name                          ; Output Port Type ;
++--------------------------------+-------------------------------------------+------------------+
+; |Sound|CTC:CTCWaveGen|count[1] ; |Sound|CTC:CTCWaveGen|count[1]~12         ; cout0            ;
+; |Sound|CTC:CTCWaveGen|count[1] ; |Sound|CTC:CTCWaveGen|count[1]~12COUT1_38 ; cout1            ;
+; |Sound|CTC:CTCWaveGen|Equal0~0 ; |Sound|CTC:CTCWaveGen|Equal0~0            ; combout          ;
+; |Sound|CTC:CTCWaveGen|count[3] ; |Sound|CTC:CTCWaveGen|count[3]~14         ; cout0            ;
+; |Sound|CTC:CTCWaveGen|count[3] ; |Sound|CTC:CTCWaveGen|count[3]~14COUT1_42 ; cout1            ;
+; |Sound|CTC:CTCWaveGen|count[5] ; |Sound|CTC:CTCWaveGen|count[5]~16COUT1_44 ; cout1            ;
+; |Sound|CTC:CTCWaveGen|Equal0~1 ; |Sound|CTC:CTCWaveGen|Equal0~1            ; combout          ;
+; |Sound|CTC:CTCWaveGen|count[4] ; |Sound|CTC:CTCWaveGen|count[4]~18         ; cout             ;
+; |Sound|CTC:CTCWaveGen|count[2] ; |Sound|CTC:CTCWaveGen|count[2]~20         ; cout0            ;
+; |Sound|CTC:CTCWaveGen|count[2] ; |Sound|CTC:CTCWaveGen|count[2]~20COUT1_40 ; cout1            ;
+; |Sound|CTC:CTCWaveGen|Equal0~2 ; |Sound|CTC:CTCWaveGen|Equal0~2            ; combout          ;
+; |Sound|CTC:CTCWaveGen|count[0] ; |Sound|CTC:CTCWaveGen|count[0]~22         ; cout0            ;
+; |Sound|CTC:CTCWaveGen|count[0] ; |Sound|CTC:CTCWaveGen|count[0]~22COUT1_36 ; cout1            ;
+; |Sound|CTC:CTCWaveGen|Equal0~3 ; |Sound|CTC:CTCWaveGen|Equal0~3            ; combout          ;
+; |Sound|CTC:CTCWaveGen|Equal0~4 ; |Sound|CTC:CTCWaveGen|Equal0~4            ; combout          ;
+; |Sound|count[0]                ; |Sound|count[0]~9                         ; cout0            ;
+; |Sound|count[0]                ; |Sound|count[0]~9COUT1_24                 ; cout1            ;
+; |Sound|count[1]                ; |Sound|count[1]~13                        ; cout0            ;
+; |Sound|count[1]                ; |Sound|count[1]~13COUT1_26                ; cout1            ;
+; |Sound|Mux4~1                  ; |Sound|Mux4~1                             ; combout          ;
+; |Sound|Mux3~2                  ; |Sound|Mux3~2                             ; combout          ;
+; |Sound|Mux10~10                ; |Sound|Mux10~10                           ; combout          ;
+; |Sound|Mux5~0                  ; |Sound|Mux5~0                             ; combout          ;
+; |Sound|Mux6~9                  ; |Sound|Mux6~9                             ; combout          ;
+; |Sound|Mux8~10                 ; |Sound|Mux8~10                            ; combout          ;
+; |Sound|Mux9~0                  ; |Sound|Mux9~0                             ; combout          ;
+; |Sound|Mux7~11                 ; |Sound|Mux7~11                            ; combout          ;
+; |Sound|CTCclock                ; |Sound|CTCclock~corein                    ; combout          ;
+; |Sound|Soundclock              ; |Sound|Soundclock~corein                  ; combout          ;
+; |Sound|Soundout                ; |Sound|Soundout                           ; padio            ;
++--------------------------------+-------------------------------------------+------------------+
+
+
+The following table displays output ports that do not toggle to 1 during simulation.
++-----------------------------------------------------------------------------------------------+
+; Missing 1-Value Coverage                                                                      ;
++--------------------------------+-------------------------------------------+------------------+
+; Node Name                      ; Output Port Name                          ; Output Port Type ;
++--------------------------------+-------------------------------------------+------------------+
+; |Sound|SoundFrep[1]            ; |Sound|SoundFrep[1]                       ; regout           ;
+; |Sound|CTC:CTCWaveGen|count[6] ; |Sound|CTC:CTCWaveGen|count[6]~10         ; cout0            ;
+; |Sound|CTC:CTCWaveGen|count[6] ; |Sound|CTC:CTCWaveGen|count[6]~10COUT1_46 ; cout1            ;
+; |Sound|SoundFrep[5]            ; |Sound|SoundFrep[5]                       ; regout           ;
+; |Sound|SoundFrep[3]            ; |Sound|SoundFrep[3]                       ; regout           ;
+; |Sound|CTC:CTCWaveGen|count[5] ; |Sound|CTC:CTCWaveGen|count[5]~16         ; cout0            ;
+; |Sound|SoundFrep[4]            ; |Sound|SoundFrep[4]                       ; regout           ;
+; |Sound|SoundFrep[0]            ; |Sound|SoundFrep[0]                       ; regout           ;
+; |Sound|CTC:CTCWaveGen|count[7] ; |Sound|CTC:CTCWaveGen|count[7]~24         ; cout0            ;
+; |Sound|CTC:CTCWaveGen|count[7] ; |Sound|CTC:CTCWaveGen|count[7]~24COUT1_48 ; cout1            ;
+; |Sound|count[4]                ; |Sound|count[4]~7                         ; cout0            ;
+; |Sound|count[4]                ; |Sound|count[4]~7COUT1_30                 ; cout1            ;
+; |Sound|SoundFrep~7             ; |Sound|SoundFrep~7                        ; combout          ;
+; |Sound|count[3]                ; |Sound|count[3]~15                        ; cout             ;
+; |Sound|SoundFrep~8             ; |Sound|SoundFrep~8                        ; combout          ;
+; |Sound|Mux4~0                  ; |Sound|Mux4~0                             ; combout          ;
+; |Sound|Mux3~0                  ; |Sound|Mux3~0                             ; combout          ;
+; |Sound|Mux3~1                  ; |Sound|Mux3~1                             ; combout          ;
+; |Sound|Mux2~0                  ; |Sound|Mux2~0                             ; combout          ;
+; |Sound|Mux0~0                  ; |Sound|Mux0~0                             ; combout          ;
+; |Sound|Mux0~1                  ; |Sound|Mux0~1                             ; combout          ;
+; |Sound|Mux4~2                  ; |Sound|Mux4~2                             ; combout          ;
+; |Sound|Mux1~0                  ; |Sound|Mux1~0                             ; combout          ;
+; |Sound|Equal0~0                ; |Sound|Equal0~0                           ; combout          ;
+; |Sound|Equal0~1                ; |Sound|Equal0~1                           ; combout          ;
+; |Sound|process_0~0             ; |Sound|process_0~0                        ; combout          ;
+; |Sound|SoundFrep~11            ; |Sound|SoundFrep~11                       ; combout          ;
+; |Sound|Mux7~10                 ; |Sound|Mux7~10                            ; combout          ;
+; |Sound|Mux11~10                ; |Sound|Mux11~10                           ; combout          ;
+; |Sound|Mux11~11                ; |Sound|Mux11~11                           ; combout          ;
+; |Sound|Mux4~3                  ; |Sound|Mux4~3                             ; combout          ;
+; |Sound|CTCEnable~4             ; |Sound|CTCEnable~4                        ; combout          ;
+; |Sound|SoundSel                ; |Sound|SoundSel~corein                    ; combout          ;
+; |Sound|reset                   ; |Sound|reset~corein                       ; combout          ;
+; |Sound|enable                  ; |Sound|enable~corein                      ; combout          ;
++--------------------------------+-------------------------------------------+------------------+
+
+
+The following table displays output ports that do not toggle to 0 during simulation.
++-----------------------------------------------------------------------------------------------+
+; Missing 0-Value Coverage                                                                      ;
++--------------------------------+-------------------------------------------+------------------+
+; Node Name                      ; Output Port Name                          ; Output Port Type ;
++--------------------------------+-------------------------------------------+------------------+
+; |Sound|SoundFrep[1]            ; |Sound|SoundFrep[1]                       ; regout           ;
+; |Sound|SoundFrep[6]            ; |Sound|SoundFrep[6]                       ; regout           ;
+; |Sound|CTC:CTCWaveGen|count[6] ; |Sound|CTC:CTCWaveGen|count[6]~10         ; cout0            ;
+; |Sound|CTC:CTCWaveGen|count[6] ; |Sound|CTC:CTCWaveGen|count[6]~10COUT1_46 ; cout1            ;
+; |Sound|SoundFrep[5]            ; |Sound|SoundFrep[5]                       ; regout           ;
+; |Sound|SoundFrep[3]            ; |Sound|SoundFrep[3]                       ; regout           ;
+; |Sound|CTC:CTCWaveGen|count[5] ; |Sound|CTC:CTCWaveGen|count[5]~16         ; cout0            ;
+; |Sound|SoundFrep[2]            ; |Sound|SoundFrep[2]                       ; regout           ;
+; |Sound|SoundFrep[4]            ; |Sound|SoundFrep[4]                       ; regout           ;
+; |Sound|SoundFrep[0]            ; |Sound|SoundFrep[0]                       ; regout           ;
+; |Sound|CTC:CTCWaveGen|count[7] ; |Sound|CTC:CTCWaveGen|count[7]~24         ; cout0            ;
+; |Sound|CTC:CTCWaveGen|count[7] ; |Sound|CTC:CTCWaveGen|count[7]~24COUT1_48 ; cout1            ;
+; |Sound|CTCEnable               ; |Sound|CTCEnable                          ; regout           ;
+; |Sound|count[4]                ; |Sound|count[4]~7                         ; cout0            ;
+; |Sound|count[4]                ; |Sound|count[4]~7COUT1_30                 ; cout1            ;
+; |Sound|SoundFrep~7             ; |Sound|SoundFrep~7                        ; combout          ;
+; |Sound|count[2]                ; |Sound|count[2]~11                        ; cout0            ;
+; |Sound|count[2]                ; |Sound|count[2]~11COUT1_28                ; cout1            ;
+; |Sound|count[3]                ; |Sound|count[3]~15                        ; cout             ;
+; |Sound|SoundFrep~8             ; |Sound|SoundFrep~8                        ; combout          ;
+; |Sound|Mux4~0                  ; |Sound|Mux4~0                             ; combout          ;
+; |Sound|Mux3~0                  ; |Sound|Mux3~0                             ; combout          ;
+; |Sound|Mux3~1                  ; |Sound|Mux3~1                             ; combout          ;
+; |Sound|Mux0~0                  ; |Sound|Mux0~0                             ; combout          ;
+; |Sound|Mux0~1                  ; |Sound|Mux0~1                             ; combout          ;
+; |Sound|Mux4~2                  ; |Sound|Mux4~2                             ; combout          ;
+; |Sound|Mux3~3                  ; |Sound|Mux3~3                             ; combout          ;
+; |Sound|Mux1~0                  ; |Sound|Mux1~0                             ; combout          ;
+; |Sound|Equal0~0                ; |Sound|Equal0~0                           ; combout          ;
+; |Sound|Equal0~1                ; |Sound|Equal0~1                           ; combout          ;
+; |Sound|process_0~0             ; |Sound|process_0~0                        ; combout          ;
+; |Sound|SoundFrep~11            ; |Sound|SoundFrep~11                       ; combout          ;
+; |Sound|Mux7~10                 ; |Sound|Mux7~10                            ; combout          ;
+; |Sound|Mux11~10                ; |Sound|Mux11~10                           ; combout          ;
+; |Sound|Mux11~11                ; |Sound|Mux11~11                           ; combout          ;
+; |Sound|Mux4~3                  ; |Sound|Mux4~3                             ; combout          ;
+; |Sound|CTCEnable~4             ; |Sound|CTCEnable~4                        ; combout          ;
+; |Sound|SoundSel                ; |Sound|SoundSel~corein                    ; combout          ;
+; |Sound|reset                   ; |Sound|reset~corein                       ; combout          ;
+; |Sound|enable                  ; |Sound|enable~corein                      ; combout          ;
++--------------------------------+-------------------------------------------+------------------+
+
+
++---------------------+
+; Simulator INI Usage ;
++--------+------------+
+; Option ; Usage      ;
++--------+------------+
+
+
++--------------------+
+; Simulator Messages ;
++--------------------+
+Info: *******************************************************************
+Info: Running Quartus II Simulator
+    Info: Version 9.0 Build 235 06/17/2009 Service Pack 2 SJ Web Edition
+    Info: Processing started: Thu Nov 09 21:43:50 2017
+Info: Command: quartus_sim --read_settings_files=on --write_settings_files=off Sound -c Sound
+Info: Using vector source file "D:/quartus/bike/Sound/Sound.vwf"
+Info: Option to preserve fewer signal transitions to reduce memory requirements is enabled
+    Info: Simulation has been partitioned into sub-simulations according to the maximum transition count determined by the engine. Transitions from memory will be flushed out to disk at the end of each sub-simulation to reduce memory requirements.
+Info: Simulation partitioned into 1 sub-simulations
+Info: Simulation coverage is      42.25 %
+Info: Number of transitions in simulation is 719903
+Info: Quartus II Simulator was successful. 0 errors, 0 warnings
+    Info: Peak virtual memory: 207 megabytes
+    Info: Processing ended: Thu Nov 09 21:43:54 2017
+    Info: Elapsed time: 00:00:04
+    Info: Total CPU time (on all processors): 00:00:04
+
+

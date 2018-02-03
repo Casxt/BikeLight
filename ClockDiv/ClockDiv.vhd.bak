@@ -1,0 +1,33 @@
+LIBRARY IEEE;
+USE IEEE.STD_LOGIC_1164.ALL;
+USE IEEE.STD_LOGIC_UNSIGNED.ALL;
+USE IEEE.STD_LOGIC_ARITH.ALL;
+ENTITY ClockDiv IS
+	--只允许双数分频比
+	GENERIC (div : INTEGER := 6);
+	PORT(clock:IN STD_LOGIC;
+		reset:IN STD_LOGIC;
+		output:INOUT STD_LOGIC);
+END ClockDiv;
+
+ARCHITECTURE ClockDivider OF ClockDiv IS
+	SIGNAL count:INTEGER RANGE 0 TO div/2-1;
+	SIGNAL outtmp:STD_LOGIC;
+BEGIN
+	PROCESS(clock,reset)
+	BEGIN
+		IF(reset='1')THEN
+			count<=0;
+		ELSIF(clock'event AND clock='0')THEN
+			IF(count=div/2-1)THEN
+				count<=0;
+                --output <= NOT output;
+				outtmp<=NOT outtmp;
+				--output<=outtmp;
+			ELSE
+				count<=count+1;
+			END IF;
+		END IF;
+	END PROCESS;
+	output<=outtmp;
+END ClockDivider;

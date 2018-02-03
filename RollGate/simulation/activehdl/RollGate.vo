@@ -1,0 +1,1322 @@
+// Copyright (C) 1991-2009 Altera Corporation
+// Your use of Altera Corporation's design tools, logic functions 
+// and other software and tools, and its AMPP partner logic 
+// functions, and any output files from any of the foregoing 
+// (including device programming or simulation files), and any 
+// associated documentation or information are expressly subject 
+// to the terms and conditions of the Altera Program License 
+// Subscription Agreement, Altera MegaCore Function License 
+// Agreement, or other applicable license agreement, including, 
+// without limitation, that your use is for the sole purpose of 
+// programming logic devices manufactured by Altera and sold by 
+// Altera or its authorized distributors.  Please refer to the 
+// applicable agreement for further details.
+
+// VENDOR "Altera"
+// PROGRAM "Quartus II"
+// VERSION "Version 9.0 Build 235 06/17/2009 Service Pack 2 SJ Web Edition"
+
+// DATE "11/01/2017 00:17:49"
+
+// 
+// Device: Altera EPM1270T144C5 Package TQFP144
+// 
+
+// 
+// This Verilog file should be used for Active-HDL (Verilog) only
+// 
+
+`timescale 1 ps/ 1 ps
+
+module RollGate (
+	Rollclock,
+	reset,
+	Enable,
+	\input ,
+	\output );
+input 	Rollclock;
+input 	reset;
+input 	Enable;
+input 	[7:0] \input ;
+output 	[7:0] \output ;
+
+wire gnd = 1'b0;
+wire vcc = 1'b1;
+
+tri1 devclrn;
+tri1 devpor;
+tri1 devoe;
+// synopsys translate_off
+initial $sdf_annotate("RollGate_v.sdo");
+// synopsys translate_on
+
+wire \Rollclock~combout ;
+wire \reset~combout ;
+wire \Enable~combout ;
+wire \process_0~0_combout ;
+wire \Mux0~3_combout ;
+wire \Mux0~0_combout ;
+wire \Mux0~1_combout ;
+wire \Mux0~2_combout ;
+wire \Mux0~4_combout ;
+wire \Add0~1 ;
+wire \Mux1~10_combout ;
+wire \Mux1~11_combout ;
+wire \Mux1~14_combout ;
+wire \Mux1~9_combout ;
+wire \Mux1~8_combout ;
+wire \Mux1~13_combout ;
+wire \Mux1~12_combout ;
+wire \Mux0~7_combout ;
+wire \Mux0~8_combout ;
+wire \Mux0~5_combout ;
+wire \Mux0~6_combout ;
+wire \Mux2~0_combout ;
+wire \Add2~0_combout ;
+wire \Mux1~15_combout ;
+wire \Mux1~16_combout ;
+wire \Mux3~0_combout ;
+wire \Mux4~0_combout ;
+wire \Mux5~0_combout ;
+wire \Mux6~0_combout ;
+wire \Mux7~0_combout ;
+wire [2:0] RollCount;
+wire [7:0] \input~combout ;
+
+
+// atom is at PIN_18
+maxii_io \Rollclock~I (
+	.datain(gnd),
+	.oe(gnd),
+	.combout(\Rollclock~combout ),
+	.padio(Rollclock));
+// synopsys translate_off
+defparam \Rollclock~I .operation_mode = "input";
+// synopsys translate_on
+
+// atom is at PIN_31
+maxii_io \reset~I (
+	.datain(gnd),
+	.oe(gnd),
+	.combout(\reset~combout ),
+	.padio(reset));
+// synopsys translate_off
+defparam \reset~I .operation_mode = "input";
+// synopsys translate_on
+
+// atom is at PIN_32
+maxii_io \Enable~I (
+	.datain(gnd),
+	.oe(gnd),
+	.combout(\Enable~combout ),
+	.padio(Enable));
+// synopsys translate_off
+defparam \Enable~I .operation_mode = "input";
+// synopsys translate_on
+
+// atom is at LC_X2_Y4_N2
+maxii_lcell \process_0~0 (
+// Equation(s):
+// \process_0~0_combout  = \reset~combout  # !\Enable~combout 
+
+	.clk(gnd),
+	.dataa(vcc),
+	.datab(vcc),
+	.datac(\reset~combout ),
+	.datad(\Enable~combout ),
+	.aclr(gnd),
+	.aload(gnd),
+	.sclr(gnd),
+	.sload(gnd),
+	.ena(vcc),
+	.cin(gnd),
+	.cin0(gnd),
+	.cin1(vcc),
+	.inverta(gnd),
+	.regcascin(gnd),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(\process_0~0_combout ),
+	.regout(),
+	.cout(),
+	.cout0(),
+	.cout1());
+// synopsys translate_off
+defparam \process_0~0 .lut_mask = "f0ff";
+defparam \process_0~0 .operation_mode = "normal";
+defparam \process_0~0 .output_mode = "comb_only";
+defparam \process_0~0 .register_cascade_mode = "off";
+defparam \process_0~0 .sum_lutc_input = "datac";
+defparam \process_0~0 .synch_mode = "off";
+// synopsys translate_on
+
+// atom is at LC_X1_Y7_N3
+maxii_lcell \RollCount[0] (
+// Equation(s):
+// RollCount[0] = DFFEAS(!RollCount[0], !GLOBAL(\Rollclock~combout ), !GLOBAL(\process_0~0_combout ), , , , , , )
+
+	.clk(!\Rollclock~combout ),
+	.dataa(vcc),
+	.datab(vcc),
+	.datac(vcc),
+	.datad(RollCount[0]),
+	.aclr(\process_0~0_combout ),
+	.aload(gnd),
+	.sclr(gnd),
+	.sload(gnd),
+	.ena(vcc),
+	.cin(gnd),
+	.cin0(gnd),
+	.cin1(vcc),
+	.inverta(gnd),
+	.regcascin(gnd),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(),
+	.regout(RollCount[0]),
+	.cout(),
+	.cout0(),
+	.cout1());
+// synopsys translate_off
+defparam \RollCount[0] .lut_mask = "00ff";
+defparam \RollCount[0] .operation_mode = "normal";
+defparam \RollCount[0] .output_mode = "reg_only";
+defparam \RollCount[0] .register_cascade_mode = "off";
+defparam \RollCount[0] .sum_lutc_input = "datac";
+defparam \RollCount[0] .synch_mode = "off";
+// synopsys translate_on
+
+// atom is at LC_X1_Y7_N9
+maxii_lcell \RollCount[1] (
+// Equation(s):
+// RollCount[1] = DFFEAS(RollCount[0] $ (RollCount[1]), !GLOBAL(\Rollclock~combout ), !GLOBAL(\process_0~0_combout ), , , , , , )
+
+	.clk(!\Rollclock~combout ),
+	.dataa(RollCount[0]),
+	.datab(vcc),
+	.datac(vcc),
+	.datad(RollCount[1]),
+	.aclr(\process_0~0_combout ),
+	.aload(gnd),
+	.sclr(gnd),
+	.sload(gnd),
+	.ena(vcc),
+	.cin(gnd),
+	.cin0(gnd),
+	.cin1(vcc),
+	.inverta(gnd),
+	.regcascin(gnd),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(),
+	.regout(RollCount[1]),
+	.cout(),
+	.cout0(),
+	.cout1());
+// synopsys translate_off
+defparam \RollCount[1] .lut_mask = "55aa";
+defparam \RollCount[1] .operation_mode = "normal";
+defparam \RollCount[1] .output_mode = "reg_only";
+defparam \RollCount[1] .register_cascade_mode = "off";
+defparam \RollCount[1] .sum_lutc_input = "datac";
+defparam \RollCount[1] .synch_mode = "off";
+// synopsys translate_on
+
+// atom is at PIN_16
+maxii_io \input[0]~I (
+	.datain(gnd),
+	.oe(gnd),
+	.combout(\input~combout [0]),
+	.padio(\input [0]));
+// synopsys translate_off
+defparam \input[0]~I .operation_mode = "input";
+// synopsys translate_on
+
+// atom is at PIN_30
+maxii_io \input[2]~I (
+	.datain(gnd),
+	.oe(gnd),
+	.combout(\input~combout [2]),
+	.padio(\input [2]));
+// synopsys translate_off
+defparam \input[2]~I .operation_mode = "input";
+// synopsys translate_on
+
+// atom is at LC_X2_Y7_N8
+maxii_lcell \Mux0~3 (
+// Equation(s):
+// \Mux0~3_combout  = !RollCount[0] & (RollCount[1] & (\input~combout [2]) # !RollCount[1] & \input~combout [0])
+
+	.clk(gnd),
+	.dataa(RollCount[1]),
+	.datab(\input~combout [0]),
+	.datac(\input~combout [2]),
+	.datad(RollCount[0]),
+	.aclr(gnd),
+	.aload(gnd),
+	.sclr(gnd),
+	.sload(gnd),
+	.ena(vcc),
+	.cin(gnd),
+	.cin0(gnd),
+	.cin1(vcc),
+	.inverta(gnd),
+	.regcascin(gnd),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(\Mux0~3_combout ),
+	.regout(),
+	.cout(),
+	.cout0(),
+	.cout1());
+// synopsys translate_off
+defparam \Mux0~3 .lut_mask = "00e4";
+defparam \Mux0~3 .operation_mode = "normal";
+defparam \Mux0~3 .output_mode = "comb_only";
+defparam \Mux0~3 .register_cascade_mode = "off";
+defparam \Mux0~3 .sum_lutc_input = "datac";
+defparam \Mux0~3 .synch_mode = "off";
+// synopsys translate_on
+
+// atom is at LC_X1_Y7_N7
+maxii_lcell \RollCount[2] (
+// Equation(s):
+// \Add0~1  = RollCount[2] $ (RollCount[0] & RollCount[1])
+// RollCount[2] = DFFEAS(\Add0~1 , !GLOBAL(\Rollclock~combout ), !GLOBAL(\process_0~0_combout ), , , , , , )
+
+	.clk(!\Rollclock~combout ),
+	.dataa(RollCount[0]),
+	.datab(vcc),
+	.datac(vcc),
+	.datad(RollCount[1]),
+	.aclr(\process_0~0_combout ),
+	.aload(gnd),
+	.sclr(gnd),
+	.sload(gnd),
+	.ena(vcc),
+	.cin(gnd),
+	.cin0(gnd),
+	.cin1(vcc),
+	.inverta(gnd),
+	.regcascin(gnd),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(\Add0~1 ),
+	.regout(RollCount[2]),
+	.cout(),
+	.cout0(),
+	.cout1());
+// synopsys translate_off
+defparam \RollCount[2] .lut_mask = "5af0";
+defparam \RollCount[2] .operation_mode = "normal";
+defparam \RollCount[2] .output_mode = "reg_and_comb";
+defparam \RollCount[2] .register_cascade_mode = "off";
+defparam \RollCount[2] .sum_lutc_input = "qfbk";
+defparam \RollCount[2] .synch_mode = "off";
+// synopsys translate_on
+
+// atom is at PIN_12
+maxii_io \input[5]~I (
+	.datain(gnd),
+	.oe(gnd),
+	.combout(\input~combout [5]),
+	.padio(\input [5]));
+// synopsys translate_off
+defparam \input[5]~I .operation_mode = "input";
+// synopsys translate_on
+
+// atom is at PIN_37
+maxii_io \input[4]~I (
+	.datain(gnd),
+	.oe(gnd),
+	.combout(\input~combout [4]),
+	.padio(\input [4]));
+// synopsys translate_off
+defparam \input[4]~I .operation_mode = "input";
+// synopsys translate_on
+
+// atom is at PIN_5
+maxii_io \input[6]~I (
+	.datain(gnd),
+	.oe(gnd),
+	.combout(\input~combout [6]),
+	.padio(\input [6]));
+// synopsys translate_off
+defparam \input[6]~I .operation_mode = "input";
+// synopsys translate_on
+
+// atom is at PIN_15
+maxii_io \input[7]~I (
+	.datain(gnd),
+	.oe(gnd),
+	.combout(\input~combout [7]),
+	.padio(\input [7]));
+// synopsys translate_off
+defparam \input[7]~I .operation_mode = "input";
+// synopsys translate_on
+
+// atom is at LC_X1_Y7_N8
+maxii_lcell \Mux0~0 (
+// Equation(s):
+// \Mux0~0_combout  = RollCount[0] & (\input~combout [7] # !RollCount[1]) # !RollCount[0] & \input~combout [6] & (RollCount[1])
+
+	.clk(gnd),
+	.dataa(\input~combout [6]),
+	.datab(\input~combout [7]),
+	.datac(RollCount[0]),
+	.datad(RollCount[1]),
+	.aclr(gnd),
+	.aload(gnd),
+	.sclr(gnd),
+	.sload(gnd),
+	.ena(vcc),
+	.cin(gnd),
+	.cin0(gnd),
+	.cin1(vcc),
+	.inverta(gnd),
+	.regcascin(gnd),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(\Mux0~0_combout ),
+	.regout(),
+	.cout(),
+	.cout0(),
+	.cout1());
+// synopsys translate_off
+defparam \Mux0~0 .lut_mask = "caf0";
+defparam \Mux0~0 .operation_mode = "normal";
+defparam \Mux0~0 .output_mode = "comb_only";
+defparam \Mux0~0 .register_cascade_mode = "off";
+defparam \Mux0~0 .sum_lutc_input = "datac";
+defparam \Mux0~0 .synch_mode = "off";
+// synopsys translate_on
+
+// atom is at LC_X1_Y7_N0
+maxii_lcell \Mux0~1 (
+// Equation(s):
+// \Mux0~1_combout  = RollCount[1] & (\Mux0~0_combout ) # !RollCount[1] & (\Mux0~0_combout  & \input~combout [5] # !\Mux0~0_combout  & (\input~combout [4]))
+
+	.clk(gnd),
+	.dataa(\input~combout [5]),
+	.datab(RollCount[1]),
+	.datac(\input~combout [4]),
+	.datad(\Mux0~0_combout ),
+	.aclr(gnd),
+	.aload(gnd),
+	.sclr(gnd),
+	.sload(gnd),
+	.ena(vcc),
+	.cin(gnd),
+	.cin0(gnd),
+	.cin1(vcc),
+	.inverta(gnd),
+	.regcascin(gnd),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(\Mux0~1_combout ),
+	.regout(),
+	.cout(),
+	.cout0(),
+	.cout1());
+// synopsys translate_off
+defparam \Mux0~1 .lut_mask = "ee30";
+defparam \Mux0~1 .operation_mode = "normal";
+defparam \Mux0~1 .output_mode = "comb_only";
+defparam \Mux0~1 .register_cascade_mode = "off";
+defparam \Mux0~1 .sum_lutc_input = "datac";
+defparam \Mux0~1 .synch_mode = "off";
+// synopsys translate_on
+
+// atom is at PIN_14
+maxii_io \input[3]~I (
+	.datain(gnd),
+	.oe(gnd),
+	.combout(\input~combout [3]),
+	.padio(\input [3]));
+// synopsys translate_off
+defparam \input[3]~I .operation_mode = "input";
+// synopsys translate_on
+
+// atom is at PIN_114
+maxii_io \input[1]~I (
+	.datain(gnd),
+	.oe(gnd),
+	.combout(\input~combout [1]),
+	.padio(\input [1]));
+// synopsys translate_off
+defparam \input[1]~I .operation_mode = "input";
+// synopsys translate_on
+
+// atom is at LC_X2_Y7_N6
+maxii_lcell \Mux0~2 (
+// Equation(s):
+// \Mux0~2_combout  = RollCount[0] & (RollCount[1] & \input~combout [3] # !RollCount[1] & (\input~combout [1]))
+
+	.clk(gnd),
+	.dataa(RollCount[1]),
+	.datab(\input~combout [3]),
+	.datac(\input~combout [1]),
+	.datad(RollCount[0]),
+	.aclr(gnd),
+	.aload(gnd),
+	.sclr(gnd),
+	.sload(gnd),
+	.ena(vcc),
+	.cin(gnd),
+	.cin0(gnd),
+	.cin1(vcc),
+	.inverta(gnd),
+	.regcascin(gnd),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(\Mux0~2_combout ),
+	.regout(),
+	.cout(),
+	.cout0(),
+	.cout1());
+// synopsys translate_off
+defparam \Mux0~2 .lut_mask = "d800";
+defparam \Mux0~2 .operation_mode = "normal";
+defparam \Mux0~2 .output_mode = "comb_only";
+defparam \Mux0~2 .register_cascade_mode = "off";
+defparam \Mux0~2 .sum_lutc_input = "datac";
+defparam \Mux0~2 .synch_mode = "off";
+// synopsys translate_on
+
+// atom is at LC_X1_Y7_N4
+maxii_lcell \Mux0~4 (
+// Equation(s):
+// \Mux0~4_combout  = RollCount[2] & (\Mux0~1_combout ) # !RollCount[2] & (\Mux0~3_combout  # \Mux0~2_combout )
+
+	.clk(gnd),
+	.dataa(\Mux0~3_combout ),
+	.datab(RollCount[2]),
+	.datac(\Mux0~1_combout ),
+	.datad(\Mux0~2_combout ),
+	.aclr(gnd),
+	.aload(gnd),
+	.sclr(gnd),
+	.sload(gnd),
+	.ena(vcc),
+	.cin(gnd),
+	.cin0(gnd),
+	.cin1(vcc),
+	.inverta(gnd),
+	.regcascin(gnd),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(\Mux0~4_combout ),
+	.regout(),
+	.cout(),
+	.cout0(),
+	.cout1());
+// synopsys translate_off
+defparam \Mux0~4 .lut_mask = "f3e2";
+defparam \Mux0~4 .operation_mode = "normal";
+defparam \Mux0~4 .output_mode = "comb_only";
+defparam \Mux0~4 .register_cascade_mode = "off";
+defparam \Mux0~4 .sum_lutc_input = "datac";
+defparam \Mux0~4 .synch_mode = "off";
+// synopsys translate_on
+
+// atom is at LC_X1_Y7_N6
+maxii_lcell \Mux1~10 (
+// Equation(s):
+// \Mux1~10_combout  = RollCount[0] & \input~combout [2] # !RollCount[0] & (\input~combout [3])
+
+	.clk(gnd),
+	.dataa(\input~combout [2]),
+	.datab(\input~combout [3]),
+	.datac(vcc),
+	.datad(RollCount[0]),
+	.aclr(gnd),
+	.aload(gnd),
+	.sclr(gnd),
+	.sload(gnd),
+	.ena(vcc),
+	.cin(gnd),
+	.cin0(gnd),
+	.cin1(vcc),
+	.inverta(gnd),
+	.regcascin(gnd),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(\Mux1~10_combout ),
+	.regout(),
+	.cout(),
+	.cout0(),
+	.cout1());
+// synopsys translate_off
+defparam \Mux1~10 .lut_mask = "aacc";
+defparam \Mux1~10 .operation_mode = "normal";
+defparam \Mux1~10 .output_mode = "comb_only";
+defparam \Mux1~10 .register_cascade_mode = "off";
+defparam \Mux1~10 .sum_lutc_input = "datac";
+defparam \Mux1~10 .synch_mode = "off";
+// synopsys translate_on
+
+// atom is at LC_X2_Y7_N7
+maxii_lcell \Mux1~11 (
+// Equation(s):
+// \Mux1~11_combout  = RollCount[0] & \input~combout [0] # !RollCount[0] & (\input~combout [1])
+
+	.clk(gnd),
+	.dataa(\input~combout [0]),
+	.datab(vcc),
+	.datac(\input~combout [1]),
+	.datad(RollCount[0]),
+	.aclr(gnd),
+	.aload(gnd),
+	.sclr(gnd),
+	.sload(gnd),
+	.ena(vcc),
+	.cin(gnd),
+	.cin0(gnd),
+	.cin1(vcc),
+	.inverta(gnd),
+	.regcascin(gnd),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(\Mux1~11_combout ),
+	.regout(),
+	.cout(),
+	.cout0(),
+	.cout1());
+// synopsys translate_off
+defparam \Mux1~11 .lut_mask = "aaf0";
+defparam \Mux1~11 .operation_mode = "normal";
+defparam \Mux1~11 .output_mode = "comb_only";
+defparam \Mux1~11 .register_cascade_mode = "off";
+defparam \Mux1~11 .sum_lutc_input = "datac";
+defparam \Mux1~11 .synch_mode = "off";
+// synopsys translate_on
+
+// atom is at LC_X2_Y7_N5
+maxii_lcell \Mux1~14 (
+// Equation(s):
+// \Mux1~14_combout  = RollCount[1] & (RollCount[0] & (\Mux1~11_combout ) # !RollCount[0] & \Mux1~10_combout ) # !RollCount[1] & (RollCount[0] & \Mux1~10_combout  # !RollCount[0] & (\Mux1~11_combout ))
+
+	.clk(gnd),
+	.dataa(RollCount[1]),
+	.datab(\Mux1~10_combout ),
+	.datac(\Mux1~11_combout ),
+	.datad(RollCount[0]),
+	.aclr(gnd),
+	.aload(gnd),
+	.sclr(gnd),
+	.sload(gnd),
+	.ena(vcc),
+	.cin(gnd),
+	.cin0(gnd),
+	.cin1(vcc),
+	.inverta(gnd),
+	.regcascin(gnd),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(\Mux1~14_combout ),
+	.regout(),
+	.cout(),
+	.cout0(),
+	.cout1());
+// synopsys translate_off
+defparam \Mux1~14 .lut_mask = "e4d8";
+defparam \Mux1~14 .operation_mode = "normal";
+defparam \Mux1~14 .output_mode = "comb_only";
+defparam \Mux1~14 .register_cascade_mode = "off";
+defparam \Mux1~14 .sum_lutc_input = "datac";
+defparam \Mux1~14 .synch_mode = "off";
+// synopsys translate_on
+
+// atom is at LC_X1_Y7_N2
+maxii_lcell \Mux1~9 (
+// Equation(s):
+// \Mux1~9_combout  = RollCount[0] & (\input~combout [4]) # !RollCount[0] & \input~combout [5]
+
+	.clk(gnd),
+	.dataa(\input~combout [5]),
+	.datab(\input~combout [4]),
+	.datac(vcc),
+	.datad(RollCount[0]),
+	.aclr(gnd),
+	.aload(gnd),
+	.sclr(gnd),
+	.sload(gnd),
+	.ena(vcc),
+	.cin(gnd),
+	.cin0(gnd),
+	.cin1(vcc),
+	.inverta(gnd),
+	.regcascin(gnd),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(\Mux1~9_combout ),
+	.regout(),
+	.cout(),
+	.cout0(),
+	.cout1());
+// synopsys translate_off
+defparam \Mux1~9 .lut_mask = "ccaa";
+defparam \Mux1~9 .operation_mode = "normal";
+defparam \Mux1~9 .output_mode = "comb_only";
+defparam \Mux1~9 .register_cascade_mode = "off";
+defparam \Mux1~9 .sum_lutc_input = "datac";
+defparam \Mux1~9 .synch_mode = "off";
+// synopsys translate_on
+
+// atom is at LC_X1_Y7_N5
+maxii_lcell \Mux1~8 (
+// Equation(s):
+// \Mux1~8_combout  = RollCount[0] & (\input~combout [6]) # !RollCount[0] & \input~combout [7]
+
+	.clk(gnd),
+	.dataa(vcc),
+	.datab(\input~combout [7]),
+	.datac(\input~combout [6]),
+	.datad(RollCount[0]),
+	.aclr(gnd),
+	.aload(gnd),
+	.sclr(gnd),
+	.sload(gnd),
+	.ena(vcc),
+	.cin(gnd),
+	.cin0(gnd),
+	.cin1(vcc),
+	.inverta(gnd),
+	.regcascin(gnd),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(\Mux1~8_combout ),
+	.regout(),
+	.cout(),
+	.cout0(),
+	.cout1());
+// synopsys translate_off
+defparam \Mux1~8 .lut_mask = "f0cc";
+defparam \Mux1~8 .operation_mode = "normal";
+defparam \Mux1~8 .output_mode = "comb_only";
+defparam \Mux1~8 .register_cascade_mode = "off";
+defparam \Mux1~8 .sum_lutc_input = "datac";
+defparam \Mux1~8 .synch_mode = "off";
+// synopsys translate_on
+
+// atom is at LC_X2_Y6_N2
+maxii_lcell \Mux1~13 (
+// Equation(s):
+// \Mux1~13_combout  = RollCount[1] & (RollCount[0] & \Mux1~9_combout  # !RollCount[0] & (\Mux1~8_combout )) # !RollCount[1] & (RollCount[0] & (\Mux1~8_combout ) # !RollCount[0] & \Mux1~9_combout )
+
+	.clk(gnd),
+	.dataa(RollCount[1]),
+	.datab(RollCount[0]),
+	.datac(\Mux1~9_combout ),
+	.datad(\Mux1~8_combout ),
+	.aclr(gnd),
+	.aload(gnd),
+	.sclr(gnd),
+	.sload(gnd),
+	.ena(vcc),
+	.cin(gnd),
+	.cin0(gnd),
+	.cin1(vcc),
+	.inverta(gnd),
+	.regcascin(gnd),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(\Mux1~13_combout ),
+	.regout(),
+	.cout(),
+	.cout0(),
+	.cout1());
+// synopsys translate_off
+defparam \Mux1~13 .lut_mask = "f690";
+defparam \Mux1~13 .operation_mode = "normal";
+defparam \Mux1~13 .output_mode = "comb_only";
+defparam \Mux1~13 .register_cascade_mode = "off";
+defparam \Mux1~13 .sum_lutc_input = "datac";
+defparam \Mux1~13 .synch_mode = "off";
+// synopsys translate_on
+
+// atom is at LC_X2_Y6_N8
+maxii_lcell \Mux1~12 (
+// Equation(s):
+// \Mux1~12_combout  = \Add0~1  & (\Mux1~13_combout ) # !\Add0~1  & (\Mux1~14_combout )
+
+	.clk(gnd),
+	.dataa(\Add0~1 ),
+	.datab(vcc),
+	.datac(\Mux1~14_combout ),
+	.datad(\Mux1~13_combout ),
+	.aclr(gnd),
+	.aload(gnd),
+	.sclr(gnd),
+	.sload(gnd),
+	.ena(vcc),
+	.cin(gnd),
+	.cin0(gnd),
+	.cin1(vcc),
+	.inverta(gnd),
+	.regcascin(gnd),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(\Mux1~12_combout ),
+	.regout(),
+	.cout(),
+	.cout0(),
+	.cout1());
+// synopsys translate_off
+defparam \Mux1~12 .lut_mask = "fa50";
+defparam \Mux1~12 .operation_mode = "normal";
+defparam \Mux1~12 .output_mode = "comb_only";
+defparam \Mux1~12 .register_cascade_mode = "off";
+defparam \Mux1~12 .sum_lutc_input = "datac";
+defparam \Mux1~12 .synch_mode = "off";
+// synopsys translate_on
+
+// atom is at LC_X2_Y7_N9
+maxii_lcell \Mux0~7 (
+// Equation(s):
+// \Mux0~7_combout  = RollCount[1] & (RollCount[0] & \input~combout [5] # !RollCount[0] & (\input~combout [4])) # !RollCount[1] & (RollCount[0])
+
+	.clk(gnd),
+	.dataa(\input~combout [5]),
+	.datab(\input~combout [4]),
+	.datac(RollCount[1]),
+	.datad(RollCount[0]),
+	.aclr(gnd),
+	.aload(gnd),
+	.sclr(gnd),
+	.sload(gnd),
+	.ena(vcc),
+	.cin(gnd),
+	.cin0(gnd),
+	.cin1(vcc),
+	.inverta(gnd),
+	.regcascin(gnd),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(\Mux0~7_combout ),
+	.regout(),
+	.cout(),
+	.cout0(),
+	.cout1());
+// synopsys translate_off
+defparam \Mux0~7 .lut_mask = "afc0";
+defparam \Mux0~7 .operation_mode = "normal";
+defparam \Mux0~7 .output_mode = "comb_only";
+defparam \Mux0~7 .register_cascade_mode = "off";
+defparam \Mux0~7 .sum_lutc_input = "datac";
+defparam \Mux0~7 .synch_mode = "off";
+// synopsys translate_on
+
+// atom is at LC_X2_Y7_N0
+maxii_lcell \Mux0~8 (
+// Equation(s):
+// \Mux0~8_combout  = RollCount[1] & (\Mux0~7_combout ) # !RollCount[1] & (\Mux0~7_combout  & \input~combout [7] # !\Mux0~7_combout  & (\input~combout [6]))
+
+	.clk(gnd),
+	.dataa(\input~combout [7]),
+	.datab(\input~combout [6]),
+	.datac(RollCount[1]),
+	.datad(\Mux0~7_combout ),
+	.aclr(gnd),
+	.aload(gnd),
+	.sclr(gnd),
+	.sload(gnd),
+	.ena(vcc),
+	.cin(gnd),
+	.cin0(gnd),
+	.cin1(vcc),
+	.inverta(gnd),
+	.regcascin(gnd),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(\Mux0~8_combout ),
+	.regout(),
+	.cout(),
+	.cout0(),
+	.cout1());
+// synopsys translate_off
+defparam \Mux0~8 .lut_mask = "fa0c";
+defparam \Mux0~8 .operation_mode = "normal";
+defparam \Mux0~8 .output_mode = "comb_only";
+defparam \Mux0~8 .register_cascade_mode = "off";
+defparam \Mux0~8 .sum_lutc_input = "datac";
+defparam \Mux0~8 .synch_mode = "off";
+// synopsys translate_on
+
+// atom is at LC_X2_Y7_N2
+maxii_lcell \Mux0~5 (
+// Equation(s):
+// \Mux0~5_combout  = RollCount[1] & (RollCount[0] & (\input~combout [1]) # !RollCount[0] & \input~combout [0]) # !RollCount[1] & (RollCount[0])
+
+	.clk(gnd),
+	.dataa(\input~combout [0]),
+	.datab(\input~combout [1]),
+	.datac(RollCount[1]),
+	.datad(RollCount[0]),
+	.aclr(gnd),
+	.aload(gnd),
+	.sclr(gnd),
+	.sload(gnd),
+	.ena(vcc),
+	.cin(gnd),
+	.cin0(gnd),
+	.cin1(vcc),
+	.inverta(gnd),
+	.regcascin(gnd),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(\Mux0~5_combout ),
+	.regout(),
+	.cout(),
+	.cout0(),
+	.cout1());
+// synopsys translate_off
+defparam \Mux0~5 .lut_mask = "cfa0";
+defparam \Mux0~5 .operation_mode = "normal";
+defparam \Mux0~5 .output_mode = "comb_only";
+defparam \Mux0~5 .register_cascade_mode = "off";
+defparam \Mux0~5 .sum_lutc_input = "datac";
+defparam \Mux0~5 .synch_mode = "off";
+// synopsys translate_on
+
+// atom is at LC_X2_Y7_N3
+maxii_lcell \Mux0~6 (
+// Equation(s):
+// \Mux0~6_combout  = RollCount[1] & (\Mux0~5_combout ) # !RollCount[1] & (\Mux0~5_combout  & (\input~combout [3]) # !\Mux0~5_combout  & \input~combout [2])
+
+	.clk(gnd),
+	.dataa(RollCount[1]),
+	.datab(\input~combout [2]),
+	.datac(\input~combout [3]),
+	.datad(\Mux0~5_combout ),
+	.aclr(gnd),
+	.aload(gnd),
+	.sclr(gnd),
+	.sload(gnd),
+	.ena(vcc),
+	.cin(gnd),
+	.cin0(gnd),
+	.cin1(vcc),
+	.inverta(gnd),
+	.regcascin(gnd),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(\Mux0~6_combout ),
+	.regout(),
+	.cout(),
+	.cout0(),
+	.cout1());
+// synopsys translate_off
+defparam \Mux0~6 .lut_mask = "fa44";
+defparam \Mux0~6 .operation_mode = "normal";
+defparam \Mux0~6 .output_mode = "comb_only";
+defparam \Mux0~6 .register_cascade_mode = "off";
+defparam \Mux0~6 .sum_lutc_input = "datac";
+defparam \Mux0~6 .synch_mode = "off";
+// synopsys translate_on
+
+// atom is at LC_X2_Y7_N4
+maxii_lcell \Mux2~0 (
+// Equation(s):
+// \Mux2~0_combout  = RollCount[2] & (RollCount[1] & (\Mux0~6_combout ) # !RollCount[1] & \Mux0~8_combout ) # !RollCount[2] & (RollCount[1] & \Mux0~8_combout  # !RollCount[1] & (\Mux0~6_combout ))
+
+	.clk(gnd),
+	.dataa(RollCount[2]),
+	.datab(RollCount[1]),
+	.datac(\Mux0~8_combout ),
+	.datad(\Mux0~6_combout ),
+	.aclr(gnd),
+	.aload(gnd),
+	.sclr(gnd),
+	.sload(gnd),
+	.ena(vcc),
+	.cin(gnd),
+	.cin0(gnd),
+	.cin1(vcc),
+	.inverta(gnd),
+	.regcascin(gnd),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(\Mux2~0_combout ),
+	.regout(),
+	.cout(),
+	.cout0(),
+	.cout1());
+// synopsys translate_off
+defparam \Mux2~0 .lut_mask = "f960";
+defparam \Mux2~0 .operation_mode = "normal";
+defparam \Mux2~0 .output_mode = "comb_only";
+defparam \Mux2~0 .register_cascade_mode = "off";
+defparam \Mux2~0 .sum_lutc_input = "datac";
+defparam \Mux2~0 .synch_mode = "off";
+// synopsys translate_on
+
+// atom is at LC_X2_Y6_N4
+maxii_lcell \Add2~0 (
+// Equation(s):
+// \Add2~0_combout  = RollCount[2] $ (RollCount[1] # RollCount[0])
+
+	.clk(gnd),
+	.dataa(vcc),
+	.datab(RollCount[1]),
+	.datac(RollCount[2]),
+	.datad(RollCount[0]),
+	.aclr(gnd),
+	.aload(gnd),
+	.sclr(gnd),
+	.sload(gnd),
+	.ena(vcc),
+	.cin(gnd),
+	.cin0(gnd),
+	.cin1(vcc),
+	.inverta(gnd),
+	.regcascin(gnd),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(\Add2~0_combout ),
+	.regout(),
+	.cout(),
+	.cout0(),
+	.cout1());
+// synopsys translate_off
+defparam \Add2~0 .lut_mask = "0f3c";
+defparam \Add2~0 .operation_mode = "normal";
+defparam \Add2~0 .output_mode = "comb_only";
+defparam \Add2~0 .register_cascade_mode = "off";
+defparam \Add2~0 .sum_lutc_input = "datac";
+defparam \Add2~0 .synch_mode = "off";
+// synopsys translate_on
+
+// atom is at LC_X2_Y6_N6
+maxii_lcell \Mux1~15 (
+// Equation(s):
+// \Mux1~15_combout  = RollCount[1] & (RollCount[0] & \Mux1~8_combout  # !RollCount[0] & (\Mux1~9_combout )) # !RollCount[1] & (RollCount[0] & (\Mux1~9_combout ) # !RollCount[0] & \Mux1~8_combout )
+
+	.clk(gnd),
+	.dataa(RollCount[1]),
+	.datab(RollCount[0]),
+	.datac(\Mux1~8_combout ),
+	.datad(\Mux1~9_combout ),
+	.aclr(gnd),
+	.aload(gnd),
+	.sclr(gnd),
+	.sload(gnd),
+	.ena(vcc),
+	.cin(gnd),
+	.cin0(gnd),
+	.cin1(vcc),
+	.inverta(gnd),
+	.regcascin(gnd),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(\Mux1~15_combout ),
+	.regout(),
+	.cout(),
+	.cout0(),
+	.cout1());
+// synopsys translate_off
+defparam \Mux1~15 .lut_mask = "f690";
+defparam \Mux1~15 .operation_mode = "normal";
+defparam \Mux1~15 .output_mode = "comb_only";
+defparam \Mux1~15 .register_cascade_mode = "off";
+defparam \Mux1~15 .sum_lutc_input = "datac";
+defparam \Mux1~15 .synch_mode = "off";
+// synopsys translate_on
+
+// atom is at LC_X2_Y6_N0
+maxii_lcell \Mux1~16 (
+// Equation(s):
+// \Mux1~16_combout  = RollCount[1] & (RollCount[0] & \Mux1~10_combout  # !RollCount[0] & (\Mux1~11_combout )) # !RollCount[1] & (RollCount[0] & (\Mux1~11_combout ) # !RollCount[0] & \Mux1~10_combout )
+
+	.clk(gnd),
+	.dataa(RollCount[1]),
+	.datab(RollCount[0]),
+	.datac(\Mux1~10_combout ),
+	.datad(\Mux1~11_combout ),
+	.aclr(gnd),
+	.aload(gnd),
+	.sclr(gnd),
+	.sload(gnd),
+	.ena(vcc),
+	.cin(gnd),
+	.cin0(gnd),
+	.cin1(vcc),
+	.inverta(gnd),
+	.regcascin(gnd),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(\Mux1~16_combout ),
+	.regout(),
+	.cout(),
+	.cout0(),
+	.cout1());
+// synopsys translate_off
+defparam \Mux1~16 .lut_mask = "f690";
+defparam \Mux1~16 .operation_mode = "normal";
+defparam \Mux1~16 .output_mode = "comb_only";
+defparam \Mux1~16 .register_cascade_mode = "off";
+defparam \Mux1~16 .sum_lutc_input = "datac";
+defparam \Mux1~16 .synch_mode = "off";
+// synopsys translate_on
+
+// atom is at LC_X2_Y6_N1
+maxii_lcell \Mux3~0 (
+// Equation(s):
+// \Mux3~0_combout  = \Add2~0_combout  & (\Mux1~15_combout ) # !\Add2~0_combout  & (\Mux1~16_combout )
+
+	.clk(gnd),
+	.dataa(\Add2~0_combout ),
+	.datab(vcc),
+	.datac(\Mux1~15_combout ),
+	.datad(\Mux1~16_combout ),
+	.aclr(gnd),
+	.aload(gnd),
+	.sclr(gnd),
+	.sload(gnd),
+	.ena(vcc),
+	.cin(gnd),
+	.cin0(gnd),
+	.cin1(vcc),
+	.inverta(gnd),
+	.regcascin(gnd),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(\Mux3~0_combout ),
+	.regout(),
+	.cout(),
+	.cout0(),
+	.cout1());
+// synopsys translate_off
+defparam \Mux3~0 .lut_mask = "f5a0";
+defparam \Mux3~0 .operation_mode = "normal";
+defparam \Mux3~0 .output_mode = "comb_only";
+defparam \Mux3~0 .register_cascade_mode = "off";
+defparam \Mux3~0 .sum_lutc_input = "datac";
+defparam \Mux3~0 .synch_mode = "off";
+// synopsys translate_on
+
+// atom is at LC_X1_Y7_N1
+maxii_lcell \Mux4~0 (
+// Equation(s):
+// \Mux4~0_combout  = RollCount[2] & (\Mux0~3_combout  # \Mux0~2_combout ) # !RollCount[2] & (\Mux0~1_combout )
+
+	.clk(gnd),
+	.dataa(RollCount[2]),
+	.datab(\Mux0~3_combout ),
+	.datac(\Mux0~2_combout ),
+	.datad(\Mux0~1_combout ),
+	.aclr(gnd),
+	.aload(gnd),
+	.sclr(gnd),
+	.sload(gnd),
+	.ena(vcc),
+	.cin(gnd),
+	.cin0(gnd),
+	.cin1(vcc),
+	.inverta(gnd),
+	.regcascin(gnd),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(\Mux4~0_combout ),
+	.regout(),
+	.cout(),
+	.cout0(),
+	.cout1());
+// synopsys translate_off
+defparam \Mux4~0 .lut_mask = "fda8";
+defparam \Mux4~0 .operation_mode = "normal";
+defparam \Mux4~0 .output_mode = "comb_only";
+defparam \Mux4~0 .register_cascade_mode = "off";
+defparam \Mux4~0 .sum_lutc_input = "datac";
+defparam \Mux4~0 .synch_mode = "off";
+// synopsys translate_on
+
+// atom is at LC_X2_Y6_N3
+maxii_lcell \Mux5~0 (
+// Equation(s):
+// \Mux5~0_combout  = \Add0~1  & (\Mux1~14_combout ) # !\Add0~1  & (\Mux1~13_combout )
+
+	.clk(gnd),
+	.dataa(\Add0~1 ),
+	.datab(vcc),
+	.datac(\Mux1~14_combout ),
+	.datad(\Mux1~13_combout ),
+	.aclr(gnd),
+	.aload(gnd),
+	.sclr(gnd),
+	.sload(gnd),
+	.ena(vcc),
+	.cin(gnd),
+	.cin0(gnd),
+	.cin1(vcc),
+	.inverta(gnd),
+	.regcascin(gnd),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(\Mux5~0_combout ),
+	.regout(),
+	.cout(),
+	.cout0(),
+	.cout1());
+// synopsys translate_off
+defparam \Mux5~0 .lut_mask = "f5a0";
+defparam \Mux5~0 .operation_mode = "normal";
+defparam \Mux5~0 .output_mode = "comb_only";
+defparam \Mux5~0 .register_cascade_mode = "off";
+defparam \Mux5~0 .sum_lutc_input = "datac";
+defparam \Mux5~0 .synch_mode = "off";
+// synopsys translate_on
+
+// atom is at LC_X2_Y7_N1
+maxii_lcell \Mux6~0 (
+// Equation(s):
+// \Mux6~0_combout  = RollCount[2] & (RollCount[1] & \Mux0~8_combout  # !RollCount[1] & (\Mux0~6_combout )) # !RollCount[2] & (RollCount[1] & (\Mux0~6_combout ) # !RollCount[1] & \Mux0~8_combout )
+
+	.clk(gnd),
+	.dataa(RollCount[2]),
+	.datab(RollCount[1]),
+	.datac(\Mux0~8_combout ),
+	.datad(\Mux0~6_combout ),
+	.aclr(gnd),
+	.aload(gnd),
+	.sclr(gnd),
+	.sload(gnd),
+	.ena(vcc),
+	.cin(gnd),
+	.cin0(gnd),
+	.cin1(vcc),
+	.inverta(gnd),
+	.regcascin(gnd),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(\Mux6~0_combout ),
+	.regout(),
+	.cout(),
+	.cout0(),
+	.cout1());
+// synopsys translate_off
+defparam \Mux6~0 .lut_mask = "f690";
+defparam \Mux6~0 .operation_mode = "normal";
+defparam \Mux6~0 .output_mode = "comb_only";
+defparam \Mux6~0 .register_cascade_mode = "off";
+defparam \Mux6~0 .sum_lutc_input = "datac";
+defparam \Mux6~0 .synch_mode = "off";
+// synopsys translate_on
+
+// atom is at LC_X2_Y6_N9
+maxii_lcell \Mux7~0 (
+// Equation(s):
+// \Mux7~0_combout  = \Add2~0_combout  & (\Mux1~16_combout ) # !\Add2~0_combout  & (\Mux1~15_combout )
+
+	.clk(gnd),
+	.dataa(\Add2~0_combout ),
+	.datab(vcc),
+	.datac(\Mux1~16_combout ),
+	.datad(\Mux1~15_combout ),
+	.aclr(gnd),
+	.aload(gnd),
+	.sclr(gnd),
+	.sload(gnd),
+	.ena(vcc),
+	.cin(gnd),
+	.cin0(gnd),
+	.cin1(vcc),
+	.inverta(gnd),
+	.regcascin(gnd),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(\Mux7~0_combout ),
+	.regout(),
+	.cout(),
+	.cout0(),
+	.cout1());
+// synopsys translate_off
+defparam \Mux7~0 .lut_mask = "f5a0";
+defparam \Mux7~0 .operation_mode = "normal";
+defparam \Mux7~0 .output_mode = "comb_only";
+defparam \Mux7~0 .register_cascade_mode = "off";
+defparam \Mux7~0 .sum_lutc_input = "datac";
+defparam \Mux7~0 .synch_mode = "off";
+// synopsys translate_on
+
+// atom is at PIN_3
+maxii_io \output[0]~I (
+	.datain(\Mux0~4_combout ),
+	.oe(vcc),
+	.combout(),
+	.padio(\output [0]));
+// synopsys translate_off
+defparam \output[0]~I .operation_mode = "output";
+// synopsys translate_on
+
+// atom is at PIN_49
+maxii_io \output[1]~I (
+	.datain(\Mux1~12_combout ),
+	.oe(vcc),
+	.combout(),
+	.padio(\output [1]));
+// synopsys translate_off
+defparam \output[1]~I .operation_mode = "output";
+// synopsys translate_on
+
+// atom is at PIN_102
+maxii_io \output[2]~I (
+	.datain(\Mux2~0_combout ),
+	.oe(vcc),
+	.combout(),
+	.padio(\output [2]));
+// synopsys translate_off
+defparam \output[2]~I .operation_mode = "output";
+// synopsys translate_on
+
+// atom is at PIN_55
+maxii_io \output[3]~I (
+	.datain(\Mux3~0_combout ),
+	.oe(vcc),
+	.combout(),
+	.padio(\output [3]));
+// synopsys translate_off
+defparam \output[3]~I .operation_mode = "output";
+// synopsys translate_on
+
+// atom is at PIN_108
+maxii_io \output[4]~I (
+	.datain(\Mux4~0_combout ),
+	.oe(vcc),
+	.combout(),
+	.padio(\output [4]));
+// synopsys translate_off
+defparam \output[4]~I .operation_mode = "output";
+// synopsys translate_on
+
+// atom is at PIN_142
+maxii_io \output[5]~I (
+	.datain(\Mux5~0_combout ),
+	.oe(vcc),
+	.combout(),
+	.padio(\output [5]));
+// synopsys translate_off
+defparam \output[5]~I .operation_mode = "output";
+// synopsys translate_on
+
+// atom is at PIN_61
+maxii_io \output[6]~I (
+	.datain(\Mux6~0_combout ),
+	.oe(vcc),
+	.combout(),
+	.padio(\output [6]));
+// synopsys translate_off
+defparam \output[6]~I .operation_mode = "output";
+// synopsys translate_on
+
+// atom is at PIN_27
+maxii_io \output[7]~I (
+	.datain(\Mux7~0_combout ),
+	.oe(vcc),
+	.combout(),
+	.padio(\output [7]));
+// synopsys translate_off
+defparam \output[7]~I .operation_mode = "output";
+// synopsys translate_on
+
+endmodule

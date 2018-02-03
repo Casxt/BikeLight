@@ -1,0 +1,193 @@
+// Copyright (C) 1991-2009 Altera Corporation
+// Your use of Altera Corporation's design tools, logic functions 
+// and other software and tools, and its AMPP partner logic 
+// functions, and any output files from any of the foregoing 
+// (including device programming or simulation files), and any 
+// associated documentation or information are expressly subject 
+// to the terms and conditions of the Altera Program License 
+// Subscription Agreement, Altera MegaCore Function License 
+// Agreement, or other applicable license agreement, including, 
+// without limitation, that your use is for the sole purpose of 
+// programming logic devices manufactured by Altera and sold by 
+// Altera or its authorized distributors.  Please refer to the 
+// applicable agreement for further details.
+
+// VENDOR "Altera"
+// PROGRAM "Quartus II"
+// VERSION "Version 9.0 Build 235 06/17/2009 Service Pack 2 SJ Web Edition"
+
+// DATE "11/08/2017 21:33:06"
+
+// 
+// Device: Altera EPM1270T144C5 Package TQFP144
+// 
+
+// 
+// This Verilog file should be used for Active-HDL (Verilog) only
+// 
+
+`timescale 1 ps/ 1 ps
+
+module ClockDiv (
+	clock,
+	reset,
+	\output );
+input 	clock;
+input 	reset;
+inout 	\output ;
+
+wire gnd = 1'b0;
+wire vcc = 1'b1;
+
+tri1 devclrn;
+tri1 devpor;
+tri1 devoe;
+// synopsys translate_off
+initial $sdf_annotate("ClockDiv_v.sdo");
+// synopsys translate_on
+
+wire \clock~combout ;
+wire \reset~combout ;
+wire \output~reg0_regout ;
+wire [1:0] count;
+
+
+// atom is at PIN_18
+maxii_io \clock~I (
+	.datain(gnd),
+	.oe(gnd),
+	.combout(\clock~combout ),
+	.padio(clock));
+// synopsys translate_off
+defparam \clock~I .operation_mode = "input";
+// synopsys translate_on
+
+// atom is at PIN_20
+maxii_io \reset~I (
+	.datain(gnd),
+	.oe(gnd),
+	.combout(\reset~combout ),
+	.padio(reset));
+// synopsys translate_off
+defparam \reset~I .operation_mode = "input";
+// synopsys translate_on
+
+// atom is at LC_X1_Y7_N6
+maxii_lcell \count[1] (
+// Equation(s):
+// count[1] = DFFEAS(!count[1] & count[0], !GLOBAL(\clock~combout ), !GLOBAL(\reset~combout ), , , , , , )
+
+	.clk(!\clock~combout ),
+	.dataa(vcc),
+	.datab(vcc),
+	.datac(count[1]),
+	.datad(count[0]),
+	.aclr(\reset~combout ),
+	.aload(gnd),
+	.sclr(gnd),
+	.sload(gnd),
+	.ena(vcc),
+	.cin(gnd),
+	.cin0(gnd),
+	.cin1(vcc),
+	.inverta(gnd),
+	.regcascin(gnd),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(),
+	.regout(count[1]),
+	.cout(),
+	.cout0(),
+	.cout1());
+// synopsys translate_off
+defparam \count[1] .lut_mask = "0f00";
+defparam \count[1] .operation_mode = "normal";
+defparam \count[1] .output_mode = "reg_only";
+defparam \count[1] .register_cascade_mode = "off";
+defparam \count[1] .sum_lutc_input = "datac";
+defparam \count[1] .synch_mode = "off";
+// synopsys translate_on
+
+// atom is at LC_X1_Y7_N9
+maxii_lcell \count[0] (
+// Equation(s):
+// count[0] = DFFEAS(!count[1] & !count[0], !GLOBAL(\clock~combout ), !GLOBAL(\reset~combout ), , , , , , )
+
+	.clk(!\clock~combout ),
+	.dataa(vcc),
+	.datab(vcc),
+	.datac(count[1]),
+	.datad(count[0]),
+	.aclr(\reset~combout ),
+	.aload(gnd),
+	.sclr(gnd),
+	.sload(gnd),
+	.ena(vcc),
+	.cin(gnd),
+	.cin0(gnd),
+	.cin1(vcc),
+	.inverta(gnd),
+	.regcascin(gnd),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(),
+	.regout(count[0]),
+	.cout(),
+	.cout0(),
+	.cout1());
+// synopsys translate_off
+defparam \count[0] .lut_mask = "000f";
+defparam \count[0] .operation_mode = "normal";
+defparam \count[0] .output_mode = "reg_only";
+defparam \count[0] .register_cascade_mode = "off";
+defparam \count[0] .sum_lutc_input = "datac";
+defparam \count[0] .synch_mode = "off";
+// synopsys translate_on
+
+// atom is at LC_X1_Y7_N8
+maxii_lcell \output~reg0 (
+// Equation(s):
+// \output~reg0_regout  = DFFEAS(\output~reg0_regout  $ (!count[0] & count[1] & !\reset~combout ), !GLOBAL(\clock~combout ), VCC, , , , , , )
+
+	.clk(!\clock~combout ),
+	.dataa(\output~reg0_regout ),
+	.datab(count[0]),
+	.datac(count[1]),
+	.datad(\reset~combout ),
+	.aclr(gnd),
+	.aload(gnd),
+	.sclr(gnd),
+	.sload(gnd),
+	.ena(vcc),
+	.cin(gnd),
+	.cin0(gnd),
+	.cin1(vcc),
+	.inverta(gnd),
+	.regcascin(gnd),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(),
+	.regout(\output~reg0_regout ),
+	.cout(),
+	.cout0(),
+	.cout1());
+// synopsys translate_off
+defparam \output~reg0 .lut_mask = "aa9a";
+defparam \output~reg0 .operation_mode = "normal";
+defparam \output~reg0 .output_mode = "reg_only";
+defparam \output~reg0 .register_cascade_mode = "off";
+defparam \output~reg0 .sum_lutc_input = "datac";
+defparam \output~reg0 .synch_mode = "off";
+// synopsys translate_on
+
+// atom is at PIN_16
+maxii_io \output~I (
+	.datain(\output~reg0_regout ),
+	.oe(vcc),
+	.combout(),
+	.padio(\output ));
+// synopsys translate_off
+defparam \output~I .operation_mode = "bidir";
+// synopsys translate_on
+
+endmodule

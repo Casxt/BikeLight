@@ -1,0 +1,11 @@
+Fitter Status : Successful - Wed Oct 25 08:30:56 2017
+Quartus II Version : 9.0 Build 235 06/17/2009 SP 2 SJ Web Edition
+Revision Name : PWM
+Top-level Entity Name : PWM
+Family : MAX II
+Device : EPM1270T144C5
+Timing Models : Final
+Total logic elements : 17 / 1,270 ( 1 % )
+Total pins : 11 / 116 ( 9 % )
+Total virtual pins : 0
+UFM blocks : 0 / 1 ( 0 % )

@@ -1,0 +1,46 @@
+--------------------------------------------------------------------------------------
+Timing Analyzer Summary
+--------------------------------------------------------------------------------------
+
+Type           : Worst-case tco
+Slack          : N/A
+Required Time  : None
+Actual Time    : 21.784 ns
+From           : DNum:D1|n[2]
+To             : LEDData[6]
+From Clock     : Timeclock
+To Clock       : --
+Failed Paths   : 0
+
+Type           : Clock Setup: 'Timeclock'
+Slack          : N/A
+Required Time  : None
+Actual Time    : 238.21 MHz ( period = 4.198 ns )
+From           : DNum:D1|n[3]
+To             : DNum:D1|n[3]
+From Clock     : Timeclock
+To Clock       : Timeclock
+Failed Paths   : 0
+
+Type           : Clock Setup: 'Freshclock'
+Slack          : N/A
+Required Time  : None
+Actual Time    : Restricted to 304.04 MHz ( period = 3.289 ns )
+From           : count[2]
+To             : count[2]
+From Clock     : Freshclock
+To Clock       : Freshclock
+Failed Paths   : 0
+
+Type           : Total number of failed paths
+Slack          : 
+Required Time  : 
+Actual Time    : 
+From           : 
+To             : 
+From Clock     : 
+To Clock       : 
+Failed Paths   : 0
+
+--------------------------------------------------------------------------------------
+

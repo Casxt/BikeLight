@@ -1,0 +1,10 @@
+|ClockDiv
+clock => count[1].CLK
+clock => count[0].CLK
+clock => output~reg0.CLK
+reset => count[1].ACLR
+reset => count[0].ACLR
+reset => output~1.OUTPUTSELECT
+output <= comb~1
+
+

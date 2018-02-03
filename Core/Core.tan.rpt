@@ -1,0 +1,951 @@
+Classic Timing Analyzer report for Core
+Tue Nov 14 10:29:12 2017
+Quartus II Version 9.0 Build 235 06/17/2009 Service Pack 2 SJ Web Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Timing Analyzer Summary
+  3. Timing Analyzer Settings
+  4. Clock Settings Summary
+  5. Parallel Compilation
+  6. Clock Setup: 'rawclock'
+  7. Clock Setup: 'Echo'
+  8. Clock Hold: 'rawclock'
+  9. tsu
+ 10. tco
+ 11. tpd
+ 12. th
+ 13. Timing Analyzer Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 1991-2009 Altera Corporation
+Your use of Altera Corporation's design tools, logic functions 
+and other software and tools, and its AMPP partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Altera Program License 
+Subscription Agreement, Altera MegaCore Function License 
+Agreement, or other applicable license agreement, including, 
+without limitation, that your use is for the sole purpose of 
+programming logic devices manufactured by Altera and sold by 
+Altera or its authorized distributors.  Please refer to the 
+applicable agreement for further details.
+
+
+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Timing Analyzer Summary                                                                                                                                                                                                                                                                                                                 ;
++------------------------------+------------------------------------------+---------------+------------------------------------------------+------------------------------------------------------------------------------+------------------------------------------------------------------------+------------+----------+--------------+
+; Type                         ; Slack                                    ; Required Time ; Actual Time                                    ; From                                                                         ; To                                                                     ; From Clock ; To Clock ; Failed Paths ;
++------------------------------+------------------------------------------+---------------+------------------------------------------------+------------------------------------------------------------------------------+------------------------------------------------------------------------+------------+----------+--------------+
+; Worst-case tsu               ; N/A                                      ; None          ; 4.361 ns                                       ; userreset                                                                    ; EliminationBuffeting:ToResetEB|Timeing[4]                              ; --         ; rawclock ; 0            ;
+; Worst-case tco               ; N/A                                      ; None          ; 30.492 ns                                      ; TimeCount:LEDTimeCount|UltrasonicRanging:UR|MeasureLevel:ML|DNum:D3|count[3] ; LEDData[7]                                                             ; rawclock   ; --       ; 0            ;
+; Worst-case tpd               ; N/A                                      ; None          ; 15.356 ns                                      ; Night                                                                        ; LEDColumn[1]                                                           ; --         ; --       ; 0            ;
+; Worst-case th                ; N/A                                      ; None          ; 6.749 ns                                       ; Night                                                                        ; LEDCtrl:LEDP|LEDRefresh:LEDPoint|lcount[0]                             ; --         ; rawclock ; 0            ;
+; Clock Setup: 'rawclock'      ; N/A                                      ; None          ; 53.76 MHz ( period = 18.602 ns )               ; OnOff                                                                        ; ClockDiv:C1K|output~reg0                                               ; rawclock   ; rawclock ; 0            ;
+; Clock Setup: 'Echo'          ; N/A                                      ; None          ; Restricted to 304.04 MHz ( period = 3.289 ns ) ; TimeCount:LEDTimeCount|UltrasonicRanging:UR|MeasureLevel:ML|DNum:D2|count[1] ; TimeCount:LEDTimeCount|UltrasonicRanging:UR|MeasureLevel:ML|DNum:D2|c1 ; Echo       ; Echo     ; 0            ;
+; Clock Hold: 'rawclock'       ; Not operational: Clock Skew > Data Delay ; None          ; N/A                                            ; LEDCtrl:LEDP|BreathCount[7]                                                  ; LEDCtrl:LEDP|LEDRefresh:LEDPoint|PWM:PWMGen|output                     ; rawclock   ; rawclock ; 16           ;
+; Total number of failed paths ;                                          ;               ;                                                ;                                                                              ;                                                                        ;            ;          ; 16           ;
++------------------------------+------------------------------------------+---------------+------------------------------------------------+------------------------------------------------------------------------------+------------------------------------------------------------------------+------------+----------+--------------+
+
+
++--------------------------------------------------------------------------------------------------------------------+
+; Timing Analyzer Settings                                                                                           ;
++---------------------------------------------------------------------+--------------------+------+----+-------------+
+; Option                                                              ; Setting            ; From ; To ; Entity Name ;
++---------------------------------------------------------------------+--------------------+------+----+-------------+
+; Device Name                                                         ; EPM1270T144C5      ;      ;    ;             ;
+; Timing Models                                                       ; Final              ;      ;    ;             ;
+; Default hold multicycle                                             ; Same as Multicycle ;      ;    ;             ;
+; Cut paths between unrelated clock domains                           ; On                 ;      ;    ;             ;
+; Cut off read during write signal paths                              ; On                 ;      ;    ;             ;
+; Cut off feedback from I/O pins                                      ; On                 ;      ;    ;             ;
+; Report Combined Fast/Slow Timing                                    ; Off                ;      ;    ;             ;
+; Ignore Clock Settings                                               ; Off                ;      ;    ;             ;
+; Analyze latches as synchronous elements                             ; On                 ;      ;    ;             ;
+; Enable Recovery/Removal analysis                                    ; Off                ;      ;    ;             ;
+; Enable Clock Latency                                                ; Off                ;      ;    ;             ;
+; Use TimeQuest Timing Analyzer                                       ; Off                ;      ;    ;             ;
+; Minimum Core Junction Temperature                                   ; 0                  ;      ;    ;             ;
+; Maximum Core Junction Temperature                                   ; 85                 ;      ;    ;             ;
+; Number of source nodes to report per destination node               ; 10                 ;      ;    ;             ;
+; Number of destination nodes to report                               ; 10                 ;      ;    ;             ;
+; Number of paths to report                                           ; 200                ;      ;    ;             ;
+; Report Minimum Timing Checks                                        ; Off                ;      ;    ;             ;
+; Use Fast Timing Models                                              ; Off                ;      ;    ;             ;
+; Report IO Paths Separately                                          ; Off                ;      ;    ;             ;
+; Perform Multicorner Analysis                                        ; Off                ;      ;    ;             ;
+; Reports the worst-case path for each clock domain and analysis      ; Off                ;      ;    ;             ;
+; Removes common clock path pessimism (CCPP) during slack computation ; Off                ;      ;    ;             ;
+; Output I/O Timing Endpoint                                          ; Near End           ;      ;    ;             ;
++---------------------------------------------------------------------+--------------------+------+----+-------------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Clock Settings Summary                                                                                                                                                             ;
++-----------------+--------------------+----------+------------------+---------------+--------------+----------+-----------------------+---------------------+--------+--------------+
+; Clock Node Name ; Clock Setting Name ; Type     ; Fmax Requirement ; Early Latency ; Late Latency ; Based on ; Multiply Base Fmax by ; Divide Base Fmax by ; Offset ; Phase offset ;
++-----------------+--------------------+----------+------------------+---------------+--------------+----------+-----------------------+---------------------+--------+--------------+
+; rawclock        ;                    ; User Pin ; None             ; 0.000 ns      ; 0.000 ns     ; --       ; N/A                   ; N/A                 ; N/A    ;              ;
+; Echo            ;                    ; User Pin ; None             ; 0.000 ns      ; 0.000 ns     ; --       ; N/A                   ; N/A                 ; N/A    ;              ;
++-----------------+--------------------+----------+------------------+---------------+--------------+----------+-----------------------+---------------------+--------+--------------+
+
+
+Parallel compilation was disabled, but you have multiple processors available. Enable parallel compilation to reduce compilation time.
++-------------------------------------+
+; Parallel Compilation                ;
++----------------------------+--------+
+; Processors                 ; Number ;
++----------------------------+--------+
+; Number detected on machine ; 4      ;
+; Maximum allowed            ; 1      ;
++----------------------------+--------+
+
+
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Clock Setup: 'rawclock'                                                                                                                                                                                                                                                                                 ;
++-----------------------------------------+-----------------------------------------------------+--------------------------------------------+------------------------------------------------+------------+----------+-----------------------------+---------------------------+-------------------------+
+; Slack                                   ; Actual fmax (period)                                ; From                                       ; To                                             ; From Clock ; To Clock ; Required Setup Relationship ; Required Longest P2P Time ; Actual Longest P2P Time ;
++-----------------------------------------+-----------------------------------------------------+--------------------------------------------+------------------------------------------------+------------+----------+-----------------------------+---------------------------+-------------------------+
+; N/A                                     ; 53.76 MHz ( period = 18.602 ns )                    ; OnOff                                      ; ClockDiv:C1K|output~reg0                       ; rawclock   ; rawclock ; None                        ; None                      ; 4.742 ns                ;
+; N/A                                     ; 54.22 MHz ( period = 18.442 ns )                    ; OnOff                                      ; ClockDiv:C170|output~reg0                      ; rawclock   ; rawclock ; None                        ; None                      ; 4.662 ns                ;
+; N/A                                     ; 54.22 MHz ( period = 18.442 ns )                    ; EdgeToLevel:ToStopLevel|Si                 ; EdgeToLevel:ToStopLevel|Output$latch           ; rawclock   ; rawclock ; None                        ; None                      ; 2.028 ns                ;
+; N/A                                     ; 55.63 MHz ( period = 17.976 ns )                    ; OnOff                                      ; ClockDiv:C17K|output~reg0                      ; rawclock   ; rawclock ; None                        ; None                      ; 4.429 ns                ;
+; N/A                                     ; 58.02 MHz ( period = 17.236 ns )                    ; OnOff                                      ; ClockDiv:C1M|output~reg0                       ; rawclock   ; rawclock ; None                        ; None                      ; 4.059 ns                ;
+; N/A                                     ; 63.10 MHz ( period = 15.848 ns )                    ; EdgeToLevel:ToLeftLevel|Si                 ; EdgeToLevel:ToLeftLevel|Output$latch           ; rawclock   ; rawclock ; None                        ; None                      ; 2.437 ns                ;
+; N/A                                     ; 69.98 MHz ( period = 14.290 ns )                    ; EdgeToLevel:ToRightLevel|Si                ; EdgeToLevel:ToRightLevel|Output$latch          ; rawclock   ; rawclock ; None                        ; None                      ; 2.431 ns                ;
+; N/A                                     ; 75.59 MHz ( period = 13.230 ns )                    ; OnOff                                      ; ClockDiv:C8|output~reg0                        ; rawclock   ; rawclock ; None                        ; None                      ; 5.343 ns                ;
+; N/A                                     ; 76.10 MHz ( period = 13.140 ns )                    ; OnOff                                      ; ClockDiv:C100K|output~reg0                     ; rawclock   ; rawclock ; None                        ; None                      ; 5.322 ns                ;
+; N/A                                     ; 77.76 MHz ( period = 12.860 ns )                    ; OnOff                                      ; ClockDiv:C500|output~reg0                      ; rawclock   ; rawclock ; None                        ; None                      ; 5.294 ns                ;
+; N/A                                     ; 88.14 MHz ( period = 11.345 ns )                    ; EliminationBuffeting:ToResetEB|Timeing[10] ; EliminationBuffeting:ToResetEB|Timeing[15]     ; rawclock   ; rawclock ; None                        ; None                      ; 10.636 ns               ;
+; N/A                                     ; 88.14 MHz ( period = 11.345 ns )                    ; EliminationBuffeting:ToResetEB|Timeing[10] ; EliminationBuffeting:ToResetEB|Timeing[17]     ; rawclock   ; rawclock ; None                        ; None                      ; 10.636 ns               ;
+; N/A                                     ; 88.14 MHz ( period = 11.345 ns )                    ; EliminationBuffeting:ToResetEB|Timeing[10] ; EliminationBuffeting:ToResetEB|Timeing[16]     ; rawclock   ; rawclock ; None                        ; None                      ; 10.636 ns               ;
+; N/A                                     ; 88.14 MHz ( period = 11.345 ns )                    ; EliminationBuffeting:ToResetEB|Timeing[10] ; EliminationBuffeting:ToResetEB|Timeing[18]     ; rawclock   ; rawclock ; None                        ; None                      ; 10.636 ns               ;
+; N/A                                     ; 88.14 MHz ( period = 11.345 ns )                    ; EliminationBuffeting:ToResetEB|Timeing[10] ; EliminationBuffeting:ToResetEB|Timeing[19]     ; rawclock   ; rawclock ; None                        ; None                      ; 10.636 ns               ;
+; N/A                                     ; 88.25 MHz ( period = 11.332 ns )                    ; EliminationBuffeting:ToResetEB|Timeing[10] ; EliminationBuffeting:ToResetEB|Timeing[20]     ; rawclock   ; rawclock ; None                        ; None                      ; 10.623 ns               ;
+; N/A                                     ; 88.85 MHz ( period = 11.255 ns )                    ; EliminationBuffeting:ToResetEB|Timeing[9]  ; EliminationBuffeting:ToResetEB|Timeing[15]     ; rawclock   ; rawclock ; None                        ; None                      ; 10.546 ns               ;
+; N/A                                     ; 88.85 MHz ( period = 11.255 ns )                    ; EliminationBuffeting:ToResetEB|Timeing[9]  ; EliminationBuffeting:ToResetEB|Timeing[17]     ; rawclock   ; rawclock ; None                        ; None                      ; 10.546 ns               ;
+; N/A                                     ; 88.85 MHz ( period = 11.255 ns )                    ; EliminationBuffeting:ToResetEB|Timeing[9]  ; EliminationBuffeting:ToResetEB|Timeing[16]     ; rawclock   ; rawclock ; None                        ; None                      ; 10.546 ns               ;
+; N/A                                     ; 88.85 MHz ( period = 11.255 ns )                    ; EliminationBuffeting:ToResetEB|Timeing[9]  ; EliminationBuffeting:ToResetEB|Timeing[18]     ; rawclock   ; rawclock ; None                        ; None                      ; 10.546 ns               ;
+; N/A                                     ; 88.85 MHz ( period = 11.255 ns )                    ; EliminationBuffeting:ToResetEB|Timeing[9]  ; EliminationBuffeting:ToResetEB|Timeing[19]     ; rawclock   ; rawclock ; None                        ; None                      ; 10.546 ns               ;
+; N/A                                     ; 88.95 MHz ( period = 11.242 ns )                    ; EliminationBuffeting:ToResetEB|Timeing[9]  ; EliminationBuffeting:ToResetEB|Timeing[20]     ; rawclock   ; rawclock ; None                        ; None                      ; 10.533 ns               ;
+; N/A                                     ; 90.86 MHz ( period = 11.006 ns )                    ; EdgeToLevel:ToStopLevel|Si                 ; EdgeToLevel:ToStopLevel|St                     ; rawclock   ; rawclock ; None                        ; None                      ; 2.136 ns                ;
+; N/A                                     ; 91.03 MHz ( period = 10.985 ns )                    ; LEDCtrl:LEDP|BreathCount[7]                ; LEDCtrl:LEDP|BreathCount[7]                    ; rawclock   ; rawclock ; None                        ; None                      ; 10.276 ns               ;
+; N/A                                     ; 91.03 MHz ( period = 10.985 ns )                    ; LEDCtrl:LEDP|BreathCount[7]                ; LEDCtrl:LEDP|BreathCount[8]                    ; rawclock   ; rawclock ; None                        ; None                      ; 10.276 ns               ;
+; N/A                                     ; 91.03 MHz ( period = 10.985 ns )                    ; LEDCtrl:LEDP|BreathCount[7]                ; LEDCtrl:LEDP|BreathCount[6]                    ; rawclock   ; rawclock ; None                        ; None                      ; 10.276 ns               ;
+; N/A                                     ; 91.03 MHz ( period = 10.985 ns )                    ; LEDCtrl:LEDP|BreathCount[7]                ; LEDCtrl:LEDP|BreathCount[5]                    ; rawclock   ; rawclock ; None                        ; None                      ; 10.276 ns               ;
+; N/A                                     ; 92.23 MHz ( period = 10.843 ns )                    ; LEDCtrl:LEDP|BreathCount[2]                ; LEDCtrl:LEDP|BreathCount[7]                    ; rawclock   ; rawclock ; None                        ; None                      ; 10.134 ns               ;
+; N/A                                     ; 92.23 MHz ( period = 10.843 ns )                    ; LEDCtrl:LEDP|BreathCount[2]                ; LEDCtrl:LEDP|BreathCount[8]                    ; rawclock   ; rawclock ; None                        ; None                      ; 10.134 ns               ;
+; N/A                                     ; 92.23 MHz ( period = 10.843 ns )                    ; LEDCtrl:LEDP|BreathCount[2]                ; LEDCtrl:LEDP|BreathCount[6]                    ; rawclock   ; rawclock ; None                        ; None                      ; 10.134 ns               ;
+; N/A                                     ; 92.23 MHz ( period = 10.843 ns )                    ; LEDCtrl:LEDP|BreathCount[2]                ; LEDCtrl:LEDP|BreathCount[5]                    ; rawclock   ; rawclock ; None                        ; None                      ; 10.134 ns               ;
+; N/A                                     ; 93.02 MHz ( period = 10.750 ns )                    ; EliminationBuffeting:ToResetEB|Timeing[10] ; EliminationBuffeting:ToResetEB|Timeing[6]      ; rawclock   ; rawclock ; None                        ; None                      ; 10.041 ns               ;
+; N/A                                     ; 93.02 MHz ( period = 10.750 ns )                    ; EliminationBuffeting:ToResetEB|Timeing[10] ; EliminationBuffeting:ToResetEB|Timeing[5]      ; rawclock   ; rawclock ; None                        ; None                      ; 10.041 ns               ;
+; N/A                                     ; 93.02 MHz ( period = 10.750 ns )                    ; EliminationBuffeting:ToResetEB|Timeing[10] ; EliminationBuffeting:ToResetEB|Timeing[7]      ; rawclock   ; rawclock ; None                        ; None                      ; 10.041 ns               ;
+; N/A                                     ; 93.02 MHz ( period = 10.750 ns )                    ; EliminationBuffeting:ToResetEB|Timeing[10] ; EliminationBuffeting:ToResetEB|Timeing[8]      ; rawclock   ; rawclock ; None                        ; None                      ; 10.041 ns               ;
+; N/A                                     ; 93.02 MHz ( period = 10.750 ns )                    ; EliminationBuffeting:ToResetEB|Timeing[10] ; EliminationBuffeting:ToResetEB|Timeing[9]      ; rawclock   ; rawclock ; None                        ; None                      ; 10.041 ns               ;
+; N/A                                     ; 93.14 MHz ( period = 10.737 ns )                    ; EliminationBuffeting:ToResetEB|Timeing[10] ; EliminationBuffeting:ToResetEB|Timeing[10]     ; rawclock   ; rawclock ; None                        ; None                      ; 10.028 ns               ;
+; N/A                                     ; 93.14 MHz ( period = 10.737 ns )                    ; EliminationBuffeting:ToResetEB|Timeing[10] ; EliminationBuffeting:ToResetEB|Timeing[11]     ; rawclock   ; rawclock ; None                        ; None                      ; 10.028 ns               ;
+; N/A                                     ; 93.14 MHz ( period = 10.737 ns )                    ; EliminationBuffeting:ToResetEB|Timeing[10] ; EliminationBuffeting:ToResetEB|Timeing[13]     ; rawclock   ; rawclock ; None                        ; None                      ; 10.028 ns               ;
+; N/A                                     ; 93.14 MHz ( period = 10.737 ns )                    ; EliminationBuffeting:ToResetEB|Timeing[10] ; EliminationBuffeting:ToResetEB|Timeing[12]     ; rawclock   ; rawclock ; None                        ; None                      ; 10.028 ns               ;
+; N/A                                     ; 93.14 MHz ( period = 10.737 ns )                    ; EliminationBuffeting:ToResetEB|Timeing[10] ; EliminationBuffeting:ToResetEB|Timeing[14]     ; rawclock   ; rawclock ; None                        ; None                      ; 10.028 ns               ;
+; N/A                                     ; 93.17 MHz ( period = 10.733 ns )                    ; EliminationBuffeting:ToResetEB|Timeing[11] ; EliminationBuffeting:ToResetEB|Timeing[15]     ; rawclock   ; rawclock ; None                        ; None                      ; 10.024 ns               ;
+; N/A                                     ; 93.17 MHz ( period = 10.733 ns )                    ; EliminationBuffeting:ToResetEB|Timeing[11] ; EliminationBuffeting:ToResetEB|Timeing[17]     ; rawclock   ; rawclock ; None                        ; None                      ; 10.024 ns               ;
+; N/A                                     ; 93.17 MHz ( period = 10.733 ns )                    ; EliminationBuffeting:ToResetEB|Timeing[11] ; EliminationBuffeting:ToResetEB|Timeing[16]     ; rawclock   ; rawclock ; None                        ; None                      ; 10.024 ns               ;
+; N/A                                     ; 93.17 MHz ( period = 10.733 ns )                    ; EliminationBuffeting:ToResetEB|Timeing[11] ; EliminationBuffeting:ToResetEB|Timeing[18]     ; rawclock   ; rawclock ; None                        ; None                      ; 10.024 ns               ;
+; N/A                                     ; 93.17 MHz ( period = 10.733 ns )                    ; EliminationBuffeting:ToResetEB|Timeing[11] ; EliminationBuffeting:ToResetEB|Timeing[19]     ; rawclock   ; rawclock ; None                        ; None                      ; 10.024 ns               ;
+; N/A                                     ; 93.28 MHz ( period = 10.720 ns )                    ; EliminationBuffeting:ToResetEB|Timeing[11] ; EliminationBuffeting:ToResetEB|Timeing[20]     ; rawclock   ; rawclock ; None                        ; None                      ; 10.011 ns               ;
+; N/A                                     ; 93.81 MHz ( period = 10.660 ns )                    ; EliminationBuffeting:ToResetEB|Timeing[9]  ; EliminationBuffeting:ToResetEB|Timeing[6]      ; rawclock   ; rawclock ; None                        ; None                      ; 9.951 ns                ;
+; N/A                                     ; 93.81 MHz ( period = 10.660 ns )                    ; EliminationBuffeting:ToResetEB|Timeing[9]  ; EliminationBuffeting:ToResetEB|Timeing[5]      ; rawclock   ; rawclock ; None                        ; None                      ; 9.951 ns                ;
+; N/A                                     ; 93.81 MHz ( period = 10.660 ns )                    ; EliminationBuffeting:ToResetEB|Timeing[9]  ; EliminationBuffeting:ToResetEB|Timeing[7]      ; rawclock   ; rawclock ; None                        ; None                      ; 9.951 ns                ;
+; N/A                                     ; 93.81 MHz ( period = 10.660 ns )                    ; EliminationBuffeting:ToResetEB|Timeing[9]  ; EliminationBuffeting:ToResetEB|Timeing[8]      ; rawclock   ; rawclock ; None                        ; None                      ; 9.951 ns                ;
+; N/A                                     ; 93.81 MHz ( period = 10.660 ns )                    ; EliminationBuffeting:ToResetEB|Timeing[9]  ; EliminationBuffeting:ToResetEB|Timeing[9]      ; rawclock   ; rawclock ; None                        ; None                      ; 9.951 ns                ;
+; N/A                                     ; 93.92 MHz ( period = 10.647 ns )                    ; EliminationBuffeting:ToResetEB|Timeing[9]  ; EliminationBuffeting:ToResetEB|Timeing[10]     ; rawclock   ; rawclock ; None                        ; None                      ; 9.938 ns                ;
+; N/A                                     ; 93.92 MHz ( period = 10.647 ns )                    ; EliminationBuffeting:ToResetEB|Timeing[9]  ; EliminationBuffeting:ToResetEB|Timeing[11]     ; rawclock   ; rawclock ; None                        ; None                      ; 9.938 ns                ;
+; N/A                                     ; 93.92 MHz ( period = 10.647 ns )                    ; EliminationBuffeting:ToResetEB|Timeing[9]  ; EliminationBuffeting:ToResetEB|Timeing[13]     ; rawclock   ; rawclock ; None                        ; None                      ; 9.938 ns                ;
+; N/A                                     ; 93.92 MHz ( period = 10.647 ns )                    ; EliminationBuffeting:ToResetEB|Timeing[9]  ; EliminationBuffeting:ToResetEB|Timeing[12]     ; rawclock   ; rawclock ; None                        ; None                      ; 9.938 ns                ;
+; N/A                                     ; 93.92 MHz ( period = 10.647 ns )                    ; EliminationBuffeting:ToResetEB|Timeing[9]  ; EliminationBuffeting:ToResetEB|Timeing[14]     ; rawclock   ; rawclock ; None                        ; None                      ; 9.938 ns                ;
+; N/A                                     ; 93.96 MHz ( period = 10.643 ns )                    ; LEDCtrl:LEDP|BreathCount[3]                ; LEDCtrl:LEDP|BreathCount[7]                    ; rawclock   ; rawclock ; None                        ; None                      ; 9.934 ns                ;
+; N/A                                     ; 93.96 MHz ( period = 10.643 ns )                    ; LEDCtrl:LEDP|BreathCount[3]                ; LEDCtrl:LEDP|BreathCount[8]                    ; rawclock   ; rawclock ; None                        ; None                      ; 9.934 ns                ;
+; N/A                                     ; 93.96 MHz ( period = 10.643 ns )                    ; LEDCtrl:LEDP|BreathCount[3]                ; LEDCtrl:LEDP|BreathCount[6]                    ; rawclock   ; rawclock ; None                        ; None                      ; 9.934 ns                ;
+; N/A                                     ; 93.96 MHz ( period = 10.643 ns )                    ; LEDCtrl:LEDP|BreathCount[3]                ; LEDCtrl:LEDP|BreathCount[5]                    ; rawclock   ; rawclock ; None                        ; None                      ; 9.934 ns                ;
+; N/A                                     ; 94.14 MHz ( period = 10.622 ns )                    ; LEDCtrl:LEDP|BreathCount[1]                ; LEDCtrl:LEDP|BreathCount[7]                    ; rawclock   ; rawclock ; None                        ; None                      ; 9.913 ns                ;
+; N/A                                     ; 94.14 MHz ( period = 10.622 ns )                    ; LEDCtrl:LEDP|BreathCount[1]                ; LEDCtrl:LEDP|BreathCount[8]                    ; rawclock   ; rawclock ; None                        ; None                      ; 9.913 ns                ;
+; N/A                                     ; 94.14 MHz ( period = 10.622 ns )                    ; LEDCtrl:LEDP|BreathCount[1]                ; LEDCtrl:LEDP|BreathCount[6]                    ; rawclock   ; rawclock ; None                        ; None                      ; 9.913 ns                ;
+; N/A                                     ; 94.14 MHz ( period = 10.622 ns )                    ; LEDCtrl:LEDP|BreathCount[1]                ; LEDCtrl:LEDP|BreathCount[5]                    ; rawclock   ; rawclock ; None                        ; None                      ; 9.913 ns                ;
+; N/A                                     ; 94.27 MHz ( period = 10.608 ns )                    ; LEDCtrl:LEDP|BreathCount[5]                ; LEDCtrl:LEDP|BreathCount[7]                    ; rawclock   ; rawclock ; None                        ; None                      ; 9.899 ns                ;
+; N/A                                     ; 94.27 MHz ( period = 10.608 ns )                    ; LEDCtrl:LEDP|BreathCount[5]                ; LEDCtrl:LEDP|BreathCount[8]                    ; rawclock   ; rawclock ; None                        ; None                      ; 9.899 ns                ;
+; N/A                                     ; 94.27 MHz ( period = 10.608 ns )                    ; LEDCtrl:LEDP|BreathCount[5]                ; LEDCtrl:LEDP|BreathCount[6]                    ; rawclock   ; rawclock ; None                        ; None                      ; 9.899 ns                ;
+; N/A                                     ; 94.27 MHz ( period = 10.608 ns )                    ; LEDCtrl:LEDP|BreathCount[5]                ; LEDCtrl:LEDP|BreathCount[5]                    ; rawclock   ; rawclock ; None                        ; None                      ; 9.899 ns                ;
+; N/A                                     ; 94.59 MHz ( period = 10.572 ns )                    ; ClockDiv:C17K|count[0]                     ; ClockDiv:C17K|count[1]                         ; rawclock   ; rawclock ; None                        ; None                      ; 9.863 ns                ;
+; N/A                                     ; 94.62 MHz ( period = 10.569 ns )                    ; ClockDiv:C17K|count[0]                     ; ClockDiv:C17K|count[5]                         ; rawclock   ; rawclock ; None                        ; None                      ; 9.860 ns                ;
+; N/A                                     ; 94.68 MHz ( period = 10.562 ns )                    ; ClockDiv:C17K|count[0]                     ; ClockDiv:C17K|count[3]                         ; rawclock   ; rawclock ; None                        ; None                      ; 9.853 ns                ;
+; N/A                                     ; 94.74 MHz ( period = 10.555 ns )                    ; ClockDiv:C17K|count[0]                     ; ClockDiv:C17K|count[10]                        ; rawclock   ; rawclock ; None                        ; None                      ; 9.846 ns                ;
+; N/A                                     ; 94.75 MHz ( period = 10.554 ns )                    ; ClockDiv:C17K|count[0]                     ; ClockDiv:C17K|count[7]                         ; rawclock   ; rawclock ; None                        ; None                      ; 9.845 ns                ;
+; N/A                                     ; 94.76 MHz ( period = 10.553 ns )                    ; EliminationBuffeting:ToResetEB|Timeing[8]  ; EliminationBuffeting:ToResetEB|Timeing[15]     ; rawclock   ; rawclock ; None                        ; None                      ; 9.844 ns                ;
+; N/A                                     ; 94.76 MHz ( period = 10.553 ns )                    ; EliminationBuffeting:ToResetEB|Timeing[8]  ; EliminationBuffeting:ToResetEB|Timeing[17]     ; rawclock   ; rawclock ; None                        ; None                      ; 9.844 ns                ;
+; N/A                                     ; 94.76 MHz ( period = 10.553 ns )                    ; EliminationBuffeting:ToResetEB|Timeing[8]  ; EliminationBuffeting:ToResetEB|Timeing[16]     ; rawclock   ; rawclock ; None                        ; None                      ; 9.844 ns                ;
+; N/A                                     ; 94.76 MHz ( period = 10.553 ns )                    ; EliminationBuffeting:ToResetEB|Timeing[8]  ; EliminationBuffeting:ToResetEB|Timeing[18]     ; rawclock   ; rawclock ; None                        ; None                      ; 9.844 ns                ;
+; N/A                                     ; 94.76 MHz ( period = 10.553 ns )                    ; EliminationBuffeting:ToResetEB|Timeing[8]  ; EliminationBuffeting:ToResetEB|Timeing[19]     ; rawclock   ; rawclock ; None                        ; None                      ; 9.844 ns                ;
+; N/A                                     ; 94.76 MHz ( period = 10.553 ns )                    ; ClockDiv:C17K|count[0]                     ; ClockDiv:C17K|count[8]                         ; rawclock   ; rawclock ; None                        ; None                      ; 9.844 ns                ;
+; N/A                                     ; 94.88 MHz ( period = 10.540 ns )                    ; EliminationBuffeting:ToResetEB|Timeing[8]  ; EliminationBuffeting:ToResetEB|Timeing[20]     ; rawclock   ; rawclock ; None                        ; None                      ; 9.831 ns                ;
+; N/A                                     ; 95.08 MHz ( period = 10.518 ns )                    ; LEDCtrl:LEDP|BreathCount[7]                ; LEDCtrl:LEDP|BreathCount[4]                    ; rawclock   ; rawclock ; None                        ; None                      ; 9.809 ns                ;
+; N/A                                     ; 95.48 MHz ( period = 10.473 ns )                    ; LEDCtrl:LEDP|BreathCount[4]                ; LEDCtrl:LEDP|BreathCount[7]                    ; rawclock   ; rawclock ; None                        ; None                      ; 9.764 ns                ;
+; N/A                                     ; 95.48 MHz ( period = 10.473 ns )                    ; LEDCtrl:LEDP|BreathCount[4]                ; LEDCtrl:LEDP|BreathCount[8]                    ; rawclock   ; rawclock ; None                        ; None                      ; 9.764 ns                ;
+; N/A                                     ; 95.48 MHz ( period = 10.473 ns )                    ; LEDCtrl:LEDP|BreathCount[4]                ; LEDCtrl:LEDP|BreathCount[6]                    ; rawclock   ; rawclock ; None                        ; None                      ; 9.764 ns                ;
+; N/A                                     ; 95.48 MHz ( period = 10.473 ns )                    ; LEDCtrl:LEDP|BreathCount[4]                ; LEDCtrl:LEDP|BreathCount[5]                    ; rawclock   ; rawclock ; None                        ; None                      ; 9.764 ns                ;
+; N/A                                     ; 96.20 MHz ( period = 10.395 ns )                    ; LEDCtrl:LEDP|BreathCount[7]                ; LEDCtrl:LEDP|BreathCount[3]                    ; rawclock   ; rawclock ; None                        ; None                      ; 9.686 ns                ;
+; N/A                                     ; 96.38 MHz ( period = 10.376 ns )                    ; LEDCtrl:LEDP|BreathCount[2]                ; LEDCtrl:LEDP|BreathCount[4]                    ; rawclock   ; rawclock ; None                        ; None                      ; 9.667 ns                ;
+; N/A                                     ; 96.81 MHz ( period = 10.329 ns )                    ; LEDCtrl:LEDP|BreathCount[0]                ; LEDCtrl:LEDP|BreathCount[7]                    ; rawclock   ; rawclock ; None                        ; None                      ; 9.620 ns                ;
+; N/A                                     ; 96.81 MHz ( period = 10.329 ns )                    ; LEDCtrl:LEDP|BreathCount[0]                ; LEDCtrl:LEDP|BreathCount[8]                    ; rawclock   ; rawclock ; None                        ; None                      ; 9.620 ns                ;
+; N/A                                     ; 96.81 MHz ( period = 10.329 ns )                    ; LEDCtrl:LEDP|BreathCount[0]                ; LEDCtrl:LEDP|BreathCount[6]                    ; rawclock   ; rawclock ; None                        ; None                      ; 9.620 ns                ;
+; N/A                                     ; 96.81 MHz ( period = 10.329 ns )                    ; LEDCtrl:LEDP|BreathCount[0]                ; LEDCtrl:LEDP|BreathCount[5]                    ; rawclock   ; rawclock ; None                        ; None                      ; 9.620 ns                ;
+; N/A                                     ; 96.98 MHz ( period = 10.311 ns )                    ; LEDCtrl:LEDP|BreathCount[6]                ; LEDCtrl:LEDP|BreathCount[7]                    ; rawclock   ; rawclock ; None                        ; None                      ; 9.602 ns                ;
+; N/A                                     ; 96.98 MHz ( period = 10.311 ns )                    ; LEDCtrl:LEDP|BreathCount[6]                ; LEDCtrl:LEDP|BreathCount[8]                    ; rawclock   ; rawclock ; None                        ; None                      ; 9.602 ns                ;
+; N/A                                     ; 96.98 MHz ( period = 10.311 ns )                    ; LEDCtrl:LEDP|BreathCount[6]                ; LEDCtrl:LEDP|BreathCount[6]                    ; rawclock   ; rawclock ; None                        ; None                      ; 9.602 ns                ;
+; N/A                                     ; 96.98 MHz ( period = 10.311 ns )                    ; LEDCtrl:LEDP|BreathCount[6]                ; LEDCtrl:LEDP|BreathCount[5]                    ; rawclock   ; rawclock ; None                        ; None                      ; 9.602 ns                ;
+; N/A                                     ; 97.35 MHz ( period = 10.272 ns )                    ; LEDCtrl:LEDP|BreathCount[7]                ; LEDCtrl:LEDP|BreathCount[2]                    ; rawclock   ; rawclock ; None                        ; None                      ; 9.563 ns                ;
+; N/A                                     ; 97.53 MHz ( period = 10.253 ns )                    ; LEDCtrl:LEDP|BreathCount[2]                ; LEDCtrl:LEDP|BreathCount[3]                    ; rawclock   ; rawclock ; None                        ; None                      ; 9.544 ns                ;
+; N/A                                     ; 98.27 MHz ( period = 10.176 ns )                    ; LEDCtrl:LEDP|BreathCount[3]                ; LEDCtrl:LEDP|BreathCount[4]                    ; rawclock   ; rawclock ; None                        ; None                      ; 9.467 ns                ;
+; N/A                                     ; 98.33 MHz ( period = 10.170 ns )                    ; ClockDiv:C17K|count[10]                    ; ClockDiv:C17K|count[1]                         ; rawclock   ; rawclock ; None                        ; None                      ; 9.461 ns                ;
+; N/A                                     ; 98.36 MHz ( period = 10.167 ns )                    ; ClockDiv:C17K|count[10]                    ; ClockDiv:C17K|count[5]                         ; rawclock   ; rawclock ; None                        ; None                      ; 9.458 ns                ;
+; N/A                                     ; 98.43 MHz ( period = 10.160 ns )                    ; ClockDiv:C17K|count[10]                    ; ClockDiv:C17K|count[3]                         ; rawclock   ; rawclock ; None                        ; None                      ; 9.451 ns                ;
+; N/A                                     ; 98.47 MHz ( period = 10.155 ns )                    ; LEDCtrl:LEDP|BreathCount[1]                ; LEDCtrl:LEDP|BreathCount[4]                    ; rawclock   ; rawclock ; None                        ; None                      ; 9.446 ns                ;
+; N/A                                     ; 98.49 MHz ( period = 10.153 ns )                    ; ClockDiv:C17K|count[10]                    ; ClockDiv:C17K|count[10]                        ; rawclock   ; rawclock ; None                        ; None                      ; 9.444 ns                ;
+; N/A                                     ; 98.50 MHz ( period = 10.152 ns )                    ; ClockDiv:C17K|count[10]                    ; ClockDiv:C17K|count[7]                         ; rawclock   ; rawclock ; None                        ; None                      ; 9.443 ns                ;
+; N/A                                     ; 98.51 MHz ( period = 10.151 ns )                    ; ClockDiv:C17K|count[10]                    ; ClockDiv:C17K|count[8]                         ; rawclock   ; rawclock ; None                        ; None                      ; 9.442 ns                ;
+; N/A                                     ; 98.61 MHz ( period = 10.141 ns )                    ; LEDCtrl:LEDP|BreathCount[5]                ; LEDCtrl:LEDP|BreathCount[4]                    ; rawclock   ; rawclock ; None                        ; None                      ; 9.432 ns                ;
+; N/A                                     ; 98.64 MHz ( period = 10.138 ns )                    ; EliminationBuffeting:ToResetEB|Timeing[11] ; EliminationBuffeting:ToResetEB|Timeing[6]      ; rawclock   ; rawclock ; None                        ; None                      ; 9.429 ns                ;
+; N/A                                     ; 98.64 MHz ( period = 10.138 ns )                    ; EliminationBuffeting:ToResetEB|Timeing[11] ; EliminationBuffeting:ToResetEB|Timeing[5]      ; rawclock   ; rawclock ; None                        ; None                      ; 9.429 ns                ;
+; N/A                                     ; 98.64 MHz ( period = 10.138 ns )                    ; EliminationBuffeting:ToResetEB|Timeing[11] ; EliminationBuffeting:ToResetEB|Timeing[7]      ; rawclock   ; rawclock ; None                        ; None                      ; 9.429 ns                ;
+; N/A                                     ; 98.64 MHz ( period = 10.138 ns )                    ; EliminationBuffeting:ToResetEB|Timeing[11] ; EliminationBuffeting:ToResetEB|Timeing[8]      ; rawclock   ; rawclock ; None                        ; None                      ; 9.429 ns                ;
+; N/A                                     ; 98.64 MHz ( period = 10.138 ns )                    ; EliminationBuffeting:ToResetEB|Timeing[11] ; EliminationBuffeting:ToResetEB|Timeing[9]      ; rawclock   ; rawclock ; None                        ; None                      ; 9.429 ns                ;
+; N/A                                     ; 98.72 MHz ( period = 10.130 ns )                    ; LEDCtrl:LEDP|BreathCount[2]                ; LEDCtrl:LEDP|BreathCount[2]                    ; rawclock   ; rawclock ; None                        ; None                      ; 9.421 ns                ;
+; N/A                                     ; 98.77 MHz ( period = 10.125 ns )                    ; EliminationBuffeting:ToResetEB|Timeing[11] ; EliminationBuffeting:ToResetEB|Timeing[10]     ; rawclock   ; rawclock ; None                        ; None                      ; 9.416 ns                ;
+; N/A                                     ; 98.77 MHz ( period = 10.125 ns )                    ; EliminationBuffeting:ToResetEB|Timeing[11] ; EliminationBuffeting:ToResetEB|Timeing[11]     ; rawclock   ; rawclock ; None                        ; None                      ; 9.416 ns                ;
+; N/A                                     ; 98.77 MHz ( period = 10.125 ns )                    ; EliminationBuffeting:ToResetEB|Timeing[11] ; EliminationBuffeting:ToResetEB|Timeing[13]     ; rawclock   ; rawclock ; None                        ; None                      ; 9.416 ns                ;
+; N/A                                     ; 98.77 MHz ( period = 10.125 ns )                    ; EliminationBuffeting:ToResetEB|Timeing[11] ; EliminationBuffeting:ToResetEB|Timeing[12]     ; rawclock   ; rawclock ; None                        ; None                      ; 9.416 ns                ;
+; N/A                                     ; 98.77 MHz ( period = 10.125 ns )                    ; EliminationBuffeting:ToResetEB|Timeing[11] ; EliminationBuffeting:ToResetEB|Timeing[14]     ; rawclock   ; rawclock ; None                        ; None                      ; 9.416 ns                ;
+; N/A                                     ; 98.89 MHz ( period = 10.112 ns )                    ; ClockDiv:C170|count[14]                    ; ClockDiv:C170|count[5]                         ; rawclock   ; rawclock ; None                        ; None                      ; 9.403 ns                ;
+; N/A                                     ; 98.90 MHz ( period = 10.111 ns )                    ; ClockDiv:C170|count[14]                    ; ClockDiv:C170|count[6]                         ; rawclock   ; rawclock ; None                        ; None                      ; 9.402 ns                ;
+; N/A                                     ; 98.93 MHz ( period = 10.108 ns )                    ; ClockDiv:C170|count[14]                    ; ClockDiv:C170|count[9]                         ; rawclock   ; rawclock ; None                        ; None                      ; 9.399 ns                ;
+; N/A                                     ; 99.01 MHz ( period = 10.100 ns )                    ; ClockDiv:C17K|count[0]                     ; ClockDiv:C17K|count[4]                         ; rawclock   ; rawclock ; None                        ; None                      ; 9.391 ns                ;
+; N/A                                     ; 99.08 MHz ( period = 10.093 ns )                    ; ClockDiv:C17K|count[0]                     ; ClockDiv:C17K|count[2]                         ; rawclock   ; rawclock ; None                        ; None                      ; 9.384 ns                ;
+; N/A                                     ; 99.20 MHz ( period = 10.081 ns )                    ; ClockDiv:C17K|count[0]                     ; ClockDiv:C17K|output~reg0                      ; rawclock   ; rawclock ; None                        ; None                      ; 9.372 ns                ;
+; N/A                                     ; 99.47 MHz ( period = 10.053 ns )                    ; LEDCtrl:LEDP|BreathCount[3]                ; LEDCtrl:LEDP|BreathCount[3]                    ; rawclock   ; rawclock ; None                        ; None                      ; 9.344 ns                ;
+; N/A                                     ; 99.68 MHz ( period = 10.032 ns )                    ; LEDCtrl:LEDP|BreathCount[1]                ; LEDCtrl:LEDP|BreathCount[3]                    ; rawclock   ; rawclock ; None                        ; None                      ; 9.323 ns                ;
+; N/A                                     ; 99.74 MHz ( period = 10.026 ns )                    ; Sound:StartSound|CTC:CTCWaveGen|count[1]   ; Sound:StartSound|CTC:CTCWaveGen|CTCoutput~reg0 ; rawclock   ; rawclock ; None                        ; None                      ; 9.343 ns                ;
+; N/A                                     ; 99.82 MHz ( period = 10.018 ns )                    ; LEDCtrl:LEDP|BreathCount[5]                ; LEDCtrl:LEDP|BreathCount[3]                    ; rawclock   ; rawclock ; None                        ; None                      ; 9.309 ns                ;
+; N/A                                     ; 99.94 MHz ( period = 10.006 ns )                    ; LEDCtrl:LEDP|BreathCount[4]                ; LEDCtrl:LEDP|BreathCount[4]                    ; rawclock   ; rawclock ; None                        ; None                      ; 9.297 ns                ;
+; N/A                                     ; 100.32 MHz ( period = 9.968 ns )                    ; EliminationBuffeting:ToLeftEB|Timeing[3]   ; EliminationBuffeting:ToLeftEB|Timeing[6]       ; rawclock   ; rawclock ; None                        ; None                      ; 9.259 ns                ;
+; N/A                                     ; 100.32 MHz ( period = 9.968 ns )                    ; EliminationBuffeting:ToLeftEB|Timeing[3]   ; EliminationBuffeting:ToLeftEB|Timeing[4]       ; rawclock   ; rawclock ; None                        ; None                      ; 9.259 ns                ;
+; N/A                                     ; 100.32 MHz ( period = 9.968 ns )                    ; EliminationBuffeting:ToLeftEB|Timeing[3]   ; EliminationBuffeting:ToLeftEB|Timeing[5]       ; rawclock   ; rawclock ; None                        ; None                      ; 9.259 ns                ;
+; N/A                                     ; 100.42 MHz ( period = 9.958 ns )                    ; EliminationBuffeting:ToResetEB|Timeing[8]  ; EliminationBuffeting:ToResetEB|Timeing[6]      ; rawclock   ; rawclock ; None                        ; None                      ; 9.249 ns                ;
+; N/A                                     ; 100.42 MHz ( period = 9.958 ns )                    ; EliminationBuffeting:ToResetEB|Timeing[8]  ; EliminationBuffeting:ToResetEB|Timeing[5]      ; rawclock   ; rawclock ; None                        ; None                      ; 9.249 ns                ;
+; N/A                                     ; 100.42 MHz ( period = 9.958 ns )                    ; EliminationBuffeting:ToResetEB|Timeing[8]  ; EliminationBuffeting:ToResetEB|Timeing[7]      ; rawclock   ; rawclock ; None                        ; None                      ; 9.249 ns                ;
+; N/A                                     ; 100.42 MHz ( period = 9.958 ns )                    ; EliminationBuffeting:ToResetEB|Timeing[8]  ; EliminationBuffeting:ToResetEB|Timeing[8]      ; rawclock   ; rawclock ; None                        ; None                      ; 9.249 ns                ;
+; N/A                                     ; 100.42 MHz ( period = 9.958 ns )                    ; EliminationBuffeting:ToResetEB|Timeing[8]  ; EliminationBuffeting:ToResetEB|Timeing[9]      ; rawclock   ; rawclock ; None                        ; None                      ; 9.249 ns                ;
+; N/A                                     ; 100.55 MHz ( period = 9.945 ns )                    ; EliminationBuffeting:ToResetEB|Timeing[8]  ; EliminationBuffeting:ToResetEB|Timeing[10]     ; rawclock   ; rawclock ; None                        ; None                      ; 9.236 ns                ;
+; N/A                                     ; 100.55 MHz ( period = 9.945 ns )                    ; EliminationBuffeting:ToResetEB|Timeing[8]  ; EliminationBuffeting:ToResetEB|Timeing[11]     ; rawclock   ; rawclock ; None                        ; None                      ; 9.236 ns                ;
+; N/A                                     ; 100.55 MHz ( period = 9.945 ns )                    ; EliminationBuffeting:ToResetEB|Timeing[8]  ; EliminationBuffeting:ToResetEB|Timeing[13]     ; rawclock   ; rawclock ; None                        ; None                      ; 9.236 ns                ;
+; N/A                                     ; 100.55 MHz ( period = 9.945 ns )                    ; EliminationBuffeting:ToResetEB|Timeing[8]  ; EliminationBuffeting:ToResetEB|Timeing[12]     ; rawclock   ; rawclock ; None                        ; None                      ; 9.236 ns                ;
+; N/A                                     ; 100.55 MHz ( period = 9.945 ns )                    ; EliminationBuffeting:ToResetEB|Timeing[8]  ; EliminationBuffeting:ToResetEB|Timeing[14]     ; rawclock   ; rawclock ; None                        ; None                      ; 9.236 ns                ;
+; N/A                                     ; 100.70 MHz ( period = 9.930 ns )                    ; LEDCtrl:LEDP|BreathCount[3]                ; LEDCtrl:LEDP|BreathCount[2]                    ; rawclock   ; rawclock ; None                        ; None                      ; 9.221 ns                ;
+; N/A                                     ; 100.83 MHz ( period = 9.918 ns )                    ; ClockDiv:C170|count[7]                     ; ClockDiv:C170|count[5]                         ; rawclock   ; rawclock ; None                        ; None                      ; 9.209 ns                ;
+; N/A                                     ; 100.84 MHz ( period = 9.917 ns )                    ; ClockDiv:C170|count[7]                     ; ClockDiv:C170|count[6]                         ; rawclock   ; rawclock ; None                        ; None                      ; 9.208 ns                ;
+; N/A                                     ; 100.87 MHz ( period = 9.914 ns )                    ; ClockDiv:C170|count[7]                     ; ClockDiv:C170|count[9]                         ; rawclock   ; rawclock ; None                        ; None                      ; 9.205 ns                ;
+; N/A                                     ; 100.92 MHz ( period = 9.909 ns )                    ; LEDCtrl:LEDP|BreathCount[1]                ; LEDCtrl:LEDP|BreathCount[2]                    ; rawclock   ; rawclock ; None                        ; None                      ; 9.200 ns                ;
+; N/A                                     ; 101.06 MHz ( period = 9.895 ns )                    ; LEDCtrl:LEDP|BreathCount[5]                ; LEDCtrl:LEDP|BreathCount[2]                    ; rawclock   ; rawclock ; None                        ; None                      ; 9.186 ns                ;
+; N/A                                     ; 101.10 MHz ( period = 9.891 ns )                    ; ClockDiv:C17K|count[8]                     ; ClockDiv:C17K|count[1]                         ; rawclock   ; rawclock ; None                        ; None                      ; 9.182 ns                ;
+; N/A                                     ; 101.13 MHz ( period = 9.888 ns )                    ; ClockDiv:C17K|count[8]                     ; ClockDiv:C17K|count[5]                         ; rawclock   ; rawclock ; None                        ; None                      ; 9.179 ns                ;
+; N/A                                     ; 101.15 MHz ( period = 9.886 ns )                    ; EliminationBuffeting:ToResetEB|Timeing[10] ; EliminationBuffeting:ToResetEB|Timeing[4]      ; rawclock   ; rawclock ; None                        ; None                      ; 9.177 ns                ;
+; N/A                                     ; 101.18 MHz ( period = 9.883 ns )                    ; LEDCtrl:LEDP|BreathCount[4]                ; LEDCtrl:LEDP|BreathCount[3]                    ; rawclock   ; rawclock ; None                        ; None                      ; 9.174 ns                ;
+; N/A                                     ; 101.20 MHz ( period = 9.881 ns )                    ; ClockDiv:C17K|count[8]                     ; ClockDiv:C17K|count[3]                         ; rawclock   ; rawclock ; None                        ; None                      ; 9.172 ns                ;
+; N/A                                     ; 101.28 MHz ( period = 9.874 ns )                    ; ClockDiv:C17K|count[8]                     ; ClockDiv:C17K|count[10]                        ; rawclock   ; rawclock ; None                        ; None                      ; 9.165 ns                ;
+; N/A                                     ; 101.29 MHz ( period = 9.873 ns )                    ; ClockDiv:C17K|count[8]                     ; ClockDiv:C17K|count[7]                         ; rawclock   ; rawclock ; None                        ; None                      ; 9.164 ns                ;
+; N/A                                     ; 101.30 MHz ( period = 9.872 ns )                    ; ClockDiv:C17K|count[8]                     ; ClockDiv:C17K|count[8]                         ; rawclock   ; rawclock ; None                        ; None                      ; 9.163 ns                ;
+; N/A                                     ; 101.40 MHz ( period = 9.862 ns )                    ; LEDCtrl:LEDP|BreathCount[0]                ; LEDCtrl:LEDP|BreathCount[4]                    ; rawclock   ; rawclock ; None                        ; None                      ; 9.153 ns                ;
+; N/A                                     ; 101.45 MHz ( period = 9.857 ns )                    ; ClockDiv:C170|count[15]                    ; ClockDiv:C170|count[5]                         ; rawclock   ; rawclock ; None                        ; None                      ; 9.148 ns                ;
+; N/A                                     ; 101.46 MHz ( period = 9.856 ns )                    ; ClockDiv:C170|count[15]                    ; ClockDiv:C170|count[6]                         ; rawclock   ; rawclock ; None                        ; None                      ; 9.147 ns                ;
+; N/A                                     ; 101.49 MHz ( period = 9.853 ns )                    ; ClockDiv:C170|count[15]                    ; ClockDiv:C170|count[9]                         ; rawclock   ; rawclock ; None                        ; None                      ; 9.144 ns                ;
+; N/A                                     ; 101.58 MHz ( period = 9.844 ns )                    ; LEDCtrl:LEDP|BreathCount[6]                ; LEDCtrl:LEDP|BreathCount[4]                    ; rawclock   ; rawclock ; None                        ; None                      ; 9.135 ns                ;
+; N/A                                     ; 102.08 MHz ( period = 9.796 ns )                    ; EliminationBuffeting:ToResetEB|Timeing[9]  ; EliminationBuffeting:ToResetEB|Timeing[4]      ; rawclock   ; rawclock ; None                        ; None                      ; 9.087 ns                ;
+; N/A                                     ; 102.19 MHz ( period = 9.786 ns )                    ; EliminationBuffeting:ToResetEB|Timeing[13] ; EliminationBuffeting:ToResetEB|Timeing[15]     ; rawclock   ; rawclock ; None                        ; None                      ; 9.077 ns                ;
+; N/A                                     ; 102.19 MHz ( period = 9.786 ns )                    ; EliminationBuffeting:ToResetEB|Timeing[13] ; EliminationBuffeting:ToResetEB|Timeing[17]     ; rawclock   ; rawclock ; None                        ; None                      ; 9.077 ns                ;
+; N/A                                     ; 102.19 MHz ( period = 9.786 ns )                    ; EliminationBuffeting:ToResetEB|Timeing[13] ; EliminationBuffeting:ToResetEB|Timeing[16]     ; rawclock   ; rawclock ; None                        ; None                      ; 9.077 ns                ;
+; N/A                                     ; 102.19 MHz ( period = 9.786 ns )                    ; EliminationBuffeting:ToResetEB|Timeing[13] ; EliminationBuffeting:ToResetEB|Timeing[18]     ; rawclock   ; rawclock ; None                        ; None                      ; 9.077 ns                ;
+; N/A                                     ; 102.19 MHz ( period = 9.786 ns )                    ; EliminationBuffeting:ToResetEB|Timeing[13] ; EliminationBuffeting:ToResetEB|Timeing[19]     ; rawclock   ; rawclock ; None                        ; None                      ; 9.077 ns                ;
+; N/A                                     ; 102.29 MHz ( period = 9.776 ns )                    ; ClockDiv:C170|count[14]                    ; ClockDiv:C170|count[4]                         ; rawclock   ; rawclock ; None                        ; None                      ; 9.067 ns                ;
+; N/A                                     ; 102.32 MHz ( period = 9.773 ns )                    ; EliminationBuffeting:ToResetEB|Timeing[13] ; EliminationBuffeting:ToResetEB|Timeing[20]     ; rawclock   ; rawclock ; None                        ; None                      ; 9.064 ns                ;
+; N/A                                     ; 102.43 MHz ( period = 9.763 ns )                    ; EliminationBuffeting:ToResetEB|Timeing[10] ; EliminationBuffeting:ToResetEB|Timeing[3]      ; rawclock   ; rawclock ; None                        ; None                      ; 9.054 ns                ;
+; N/A                                     ; 102.45 MHz ( period = 9.761 ns )                    ; Sound:StartSound|CTC:CTCWaveGen|count[6]   ; Sound:StartSound|CTC:CTCWaveGen|CTCoutput~reg0 ; rawclock   ; rawclock ; None                        ; None                      ; 9.078 ns                ;
+; N/A                                     ; 102.46 MHz ( period = 9.760 ns )                    ; LEDCtrl:LEDP|BreathCount[4]                ; LEDCtrl:LEDP|BreathCount[2]                    ; rawclock   ; rawclock ; None                        ; None                      ; 9.051 ns                ;
+; N/A                                     ; 102.68 MHz ( period = 9.739 ns )                    ; LEDCtrl:LEDP|BreathCount[0]                ; LEDCtrl:LEDP|BreathCount[3]                    ; rawclock   ; rawclock ; None                        ; None                      ; 9.030 ns                ;
+; N/A                                     ; 102.87 MHz ( period = 9.721 ns )                    ; LEDCtrl:LEDP|BreathCount[6]                ; LEDCtrl:LEDP|BreathCount[3]                    ; rawclock   ; rawclock ; None                        ; None                      ; 9.012 ns                ;
+; N/A                                     ; 103.11 MHz ( period = 9.698 ns )                    ; ClockDiv:C17K|count[10]                    ; ClockDiv:C17K|count[4]                         ; rawclock   ; rawclock ; None                        ; None                      ; 8.989 ns                ;
+; N/A                                     ; 103.19 MHz ( period = 9.691 ns )                    ; ClockDiv:C17K|count[10]                    ; ClockDiv:C17K|count[2]                         ; rawclock   ; rawclock ; None                        ; None                      ; 8.982 ns                ;
+; N/A                                     ; 103.30 MHz ( period = 9.681 ns )                    ; LEDCtrl:LEDP|BreathCount[8]                ; LEDCtrl:LEDP|BreathCount[7]                    ; rawclock   ; rawclock ; None                        ; None                      ; 8.972 ns                ;
+; N/A                                     ; 103.30 MHz ( period = 9.681 ns )                    ; LEDCtrl:LEDP|BreathCount[8]                ; LEDCtrl:LEDP|BreathCount[8]                    ; rawclock   ; rawclock ; None                        ; None                      ; 8.972 ns                ;
+; N/A                                     ; 103.30 MHz ( period = 9.681 ns )                    ; LEDCtrl:LEDP|BreathCount[8]                ; LEDCtrl:LEDP|BreathCount[6]                    ; rawclock   ; rawclock ; None                        ; None                      ; 8.972 ns                ;
+; N/A                                     ; 103.30 MHz ( period = 9.681 ns )                    ; LEDCtrl:LEDP|BreathCount[8]                ; LEDCtrl:LEDP|BreathCount[5]                    ; rawclock   ; rawclock ; None                        ; None                      ; 8.972 ns                ;
+; N/A                                     ; 103.32 MHz ( period = 9.679 ns )                    ; ClockDiv:C17K|count[10]                    ; ClockDiv:C17K|output~reg0                      ; rawclock   ; rawclock ; None                        ; None                      ; 8.970 ns                ;
+; N/A                                     ; 103.38 MHz ( period = 9.673 ns )                    ; EliminationBuffeting:ToResetEB|Timeing[9]  ; EliminationBuffeting:ToResetEB|Timeing[3]      ; rawclock   ; rawclock ; None                        ; None                      ; 8.964 ns                ;
+; N/A                                     ; 103.43 MHz ( period = 9.668 ns )                    ; ClockDiv:C1K|count[13]                     ; ClockDiv:C1K|count[7]                          ; rawclock   ; rawclock ; None                        ; None                      ; 8.959 ns                ;
+; N/A                                     ; 103.44 MHz ( period = 9.667 ns )                    ; ClockDiv:C1K|count[13]                     ; ClockDiv:C1K|count[8]                          ; rawclock   ; rawclock ; None                        ; None                      ; 8.958 ns                ;
+; N/A                                     ; 103.73 MHz ( period = 9.640 ns )                    ; EliminationBuffeting:ToResetEB|Timeing[10] ; EliminationBuffeting:ToResetEB|Timeing[2]      ; rawclock   ; rawclock ; None                        ; None                      ; 8.931 ns                ;
+; N/A                                     ; 103.99 MHz ( period = 9.616 ns )                    ; LEDCtrl:LEDP|BreathCount[0]                ; LEDCtrl:LEDP|BreathCount[2]                    ; rawclock   ; rawclock ; None                        ; None                      ; 8.907 ns                ;
+; N/A                                     ; 104.19 MHz ( period = 9.598 ns )                    ; LEDCtrl:LEDP|BreathCount[6]                ; LEDCtrl:LEDP|BreathCount[2]                    ; rawclock   ; rawclock ; None                        ; None                      ; 8.889 ns                ;
+; N/A                                     ; 104.26 MHz ( period = 9.591 ns )                    ; ClockDiv:C170|count[17]                    ; ClockDiv:C170|count[5]                         ; rawclock   ; rawclock ; None                        ; None                      ; 8.882 ns                ;
+; N/A                                     ; 104.28 MHz ( period = 9.590 ns )                    ; ClockDiv:C170|count[17]                    ; ClockDiv:C170|count[6]                         ; rawclock   ; rawclock ; None                        ; None                      ; 8.881 ns                ;
+; N/A                                     ; 104.31 MHz ( period = 9.587 ns )                    ; ClockDiv:C170|count[17]                    ; ClockDiv:C170|count[9]                         ; rawclock   ; rawclock ; None                        ; None                      ; 8.878 ns                ;
+; N/A                                     ; 104.36 MHz ( period = 9.582 ns )                    ; ClockDiv:C170|count[7]                     ; ClockDiv:C170|count[4]                         ; rawclock   ; rawclock ; None                        ; None                      ; 8.873 ns                ;
+; N/A                                     ; 104.66 MHz ( period = 9.555 ns )                    ; EliminationBuffeting:ToResetEB|Timeing[6]  ; EliminationBuffeting:ToResetEB|Timeing[15]     ; rawclock   ; rawclock ; None                        ; None                      ; 8.846 ns                ;
+; N/A                                     ; 104.66 MHz ( period = 9.555 ns )                    ; EliminationBuffeting:ToResetEB|Timeing[6]  ; EliminationBuffeting:ToResetEB|Timeing[17]     ; rawclock   ; rawclock ; None                        ; None                      ; 8.846 ns                ;
+; N/A                                     ; 104.66 MHz ( period = 9.555 ns )                    ; EliminationBuffeting:ToResetEB|Timeing[6]  ; EliminationBuffeting:ToResetEB|Timeing[16]     ; rawclock   ; rawclock ; None                        ; None                      ; 8.846 ns                ;
+; N/A                                     ; 104.66 MHz ( period = 9.555 ns )                    ; EliminationBuffeting:ToResetEB|Timeing[6]  ; EliminationBuffeting:ToResetEB|Timeing[18]     ; rawclock   ; rawclock ; None                        ; None                      ; 8.846 ns                ;
+; N/A                                     ; 104.66 MHz ( period = 9.555 ns )                    ; EliminationBuffeting:ToResetEB|Timeing[6]  ; EliminationBuffeting:ToResetEB|Timeing[19]     ; rawclock   ; rawclock ; None                        ; None                      ; 8.846 ns                ;
+; N/A                                     ; 104.71 MHz ( period = 9.550 ns )                    ; EliminationBuffeting:ToResetEB|Timeing[9]  ; EliminationBuffeting:ToResetEB|Timeing[2]      ; rawclock   ; rawclock ; None                        ; None                      ; 8.841 ns                ;
+; N/A                                     ; 104.72 MHz ( period = 9.549 ns )                    ; EliminationBuffeting:ToResetEB|Timeing[18] ; EliminationBuffeting:ToResetEB|Timeing[17]     ; rawclock   ; rawclock ; None                        ; None                      ; 8.840 ns                ;
+; N/A                                     ; 104.72 MHz ( period = 9.549 ns )                    ; EliminationBuffeting:ToResetEB|Timeing[18] ; EliminationBuffeting:ToResetEB|Timeing[16]     ; rawclock   ; rawclock ; None                        ; None                      ; 8.840 ns                ;
+; N/A                                     ; 104.72 MHz ( period = 9.549 ns )                    ; EliminationBuffeting:ToResetEB|Timeing[18] ; EliminationBuffeting:ToResetEB|Timeing[18]     ; rawclock   ; rawclock ; None                        ; None                      ; 8.840 ns                ;
+; Timing analysis restricted to 200 rows. ; To change the limit use Settings (Assignments menu) ;                                            ;                                                ;            ;          ;                             ;                           ;                         ;
++-----------------------------------------+-----------------------------------------------------+--------------------------------------------+------------------------------------------------+------------+----------+-----------------------------+---------------------------+-------------------------+
+
+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Clock Setup: 'Echo'                                                                                                                                                                                                                                                                                                                              ;
++-------+------------------------------------------------+--------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------+------------+----------+-----------------------------+---------------------------+-------------------------+
+; Slack ; Actual fmax (period)                           ; From                                                                                 ; To                                                                                   ; From Clock ; To Clock ; Required Setup Relationship ; Required Longest P2P Time ; Actual Longest P2P Time ;
++-------+------------------------------------------------+--------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------+------------+----------+-----------------------------+---------------------------+-------------------------+
+; N/A   ; Restricted to 304.04 MHz ( period = 3.289 ns ) ; TimeCount:LEDTimeCount|UltrasonicRanging:UR|MeasureLevel:ML|DNum:D2|count[1]         ; TimeCount:LEDTimeCount|UltrasonicRanging:UR|MeasureLevel:ML|DNum:D2|c1               ; Echo       ; Echo     ; None                        ; None                      ; 2.527 ns                ;
+; N/A   ; Restricted to 304.04 MHz ( period = 3.289 ns ) ; TimeCount:LEDTimeCount|UltrasonicRanging:UR|MeasureLevel:ML|DNum:D0|count[0]         ; TimeCount:LEDTimeCount|UltrasonicRanging:UR|MeasureLevel:ML|DNum:D0|count[1]         ; Echo       ; Echo     ; None                        ; None                      ; 2.402 ns                ;
+; N/A   ; Restricted to 304.04 MHz ( period = 3.289 ns ) ; TimeCount:LEDTimeCount|UltrasonicRanging:UR|MeasureLevel:ML|DNum:D2|count[3]         ; TimeCount:LEDTimeCount|UltrasonicRanging:UR|MeasureLevel:ML|DNum:D2|count[3]         ; Echo       ; Echo     ; None                        ; None                      ; 2.376 ns                ;
+; N/A   ; Restricted to 304.04 MHz ( period = 3.289 ns ) ; TimeCount:LEDTimeCount|UltrasonicRanging:UR|MeasureLevel:ML|DNum:D2|count[3]         ; TimeCount:LEDTimeCount|UltrasonicRanging:UR|MeasureLevel:ML|DNum:D2|count[1]         ; Echo       ; Echo     ; None                        ; None                      ; 2.376 ns                ;
+; N/A   ; Restricted to 304.04 MHz ( period = 3.289 ns ) ; TimeCount:LEDTimeCount|UltrasonicRanging:UR|MeasureLevel:ML|DNum:D1|count[2]         ; TimeCount:LEDTimeCount|UltrasonicRanging:UR|MeasureLevel:ML|DNum:D1|count[1]         ; Echo       ; Echo     ; None                        ; None                      ; 2.244 ns                ;
+; N/A   ; Restricted to 304.04 MHz ( period = 3.289 ns ) ; TimeCount:LEDTimeCount|UltrasonicRanging:UR|MeasureLevel:ML|DNum:D1|count[2]         ; TimeCount:LEDTimeCount|UltrasonicRanging:UR|MeasureLevel:ML|DNum:D1|count[3]         ; Echo       ; Echo     ; None                        ; None                      ; 2.241 ns                ;
+; N/A   ; Restricted to 304.04 MHz ( period = 3.289 ns ) ; TimeCount:LEDTimeCount|UltrasonicRanging:UR|MeasureLevel:ML|DNum:D1|count[2]         ; TimeCount:LEDTimeCount|UltrasonicRanging:UR|MeasureLevel:ML|DNum:D1|count[2]         ; Echo       ; Echo     ; None                        ; None                      ; 2.236 ns                ;
+; N/A   ; Restricted to 304.04 MHz ( period = 3.289 ns ) ; TimeCount:LEDTimeCount|UltrasonicRanging:UR|MeasureLevel:ML|DNum:D2|count[2]         ; TimeCount:LEDTimeCount|UltrasonicRanging:UR|MeasureLevel:ML|DNum:D2|count[3]         ; Echo       ; Echo     ; None                        ; None                      ; 2.227 ns                ;
+; N/A   ; Restricted to 304.04 MHz ( period = 3.289 ns ) ; TimeCount:LEDTimeCount|UltrasonicRanging:UR|MeasureLevel:ML|DNum:D2|count[2]         ; TimeCount:LEDTimeCount|UltrasonicRanging:UR|MeasureLevel:ML|DNum:D2|count[1]         ; Echo       ; Echo     ; None                        ; None                      ; 2.227 ns                ;
+; N/A   ; Restricted to 304.04 MHz ( period = 3.289 ns ) ; TimeCount:LEDTimeCount|UltrasonicRanging:UR|MeasureLevel:ML|DNum:D2|count[1]         ; TimeCount:LEDTimeCount|UltrasonicRanging:UR|MeasureLevel:ML|DNum:D2|count[2]         ; Echo       ; Echo     ; None                        ; None                      ; 2.221 ns                ;
+; N/A   ; Restricted to 304.04 MHz ( period = 3.289 ns ) ; TimeCount:LEDTimeCount|UltrasonicRanging:UR|MeasureLevel:ML|DNum:D0|count[0]         ; TimeCount:LEDTimeCount|UltrasonicRanging:UR|MeasureLevel:ML|DNum:D0|c1               ; Echo       ; Echo     ; None                        ; None                      ; 2.196 ns                ;
+; N/A   ; Restricted to 304.04 MHz ( period = 3.289 ns ) ; TimeCount:LEDTimeCount|UltrasonicRanging:UR|MeasureLevel:ML|DNum:D0|count[0]         ; TimeCount:LEDTimeCount|UltrasonicRanging:UR|MeasureLevel:ML|DNum:D0|count[3]         ; Echo       ; Echo     ; None                        ; None                      ; 2.194 ns                ;
+; N/A   ; Restricted to 304.04 MHz ( period = 3.289 ns ) ; TimeCount:LEDTimeCount|UltrasonicRanging:UR|MeasureLevel:ML|DNum:D0|count[0]         ; TimeCount:LEDTimeCount|UltrasonicRanging:UR|MeasureLevel:ML|DNum:D0|count[2]         ; Echo       ; Echo     ; None                        ; None                      ; 2.179 ns                ;
+; N/A   ; Restricted to 304.04 MHz ( period = 3.289 ns ) ; TimeCount:LEDTimeCount|UltrasonicRanging:UR|MeasureLevel:ML|DNum:D1|count[3]         ; TimeCount:LEDTimeCount|UltrasonicRanging:UR|MeasureLevel:ML|DNum:D1|count[1]         ; Echo       ; Echo     ; None                        ; None                      ; 2.162 ns                ;
+; N/A   ; Restricted to 304.04 MHz ( period = 3.289 ns ) ; TimeCount:LEDTimeCount|UltrasonicRanging:UR|MeasureLevel:ML|DNum:D1|count[0]         ; TimeCount:LEDTimeCount|UltrasonicRanging:UR|MeasureLevel:ML|DNum:D1|count[2]         ; Echo       ; Echo     ; None                        ; None                      ; 2.160 ns                ;
+; N/A   ; Restricted to 304.04 MHz ( period = 3.289 ns ) ; TimeCount:LEDTimeCount|UltrasonicRanging:UR|MeasureLevel:ML|DNum:D1|count[3]         ; TimeCount:LEDTimeCount|UltrasonicRanging:UR|MeasureLevel:ML|DNum:D1|count[3]         ; Echo       ; Echo     ; None                        ; None                      ; 2.158 ns                ;
+; N/A   ; Restricted to 304.04 MHz ( period = 3.289 ns ) ; TimeCount:LEDTimeCount|UltrasonicRanging:UR|MeasureLevel:ML|DNum:D0|count[1]         ; TimeCount:LEDTimeCount|UltrasonicRanging:UR|MeasureLevel:ML|DNum:D0|count[1]         ; Echo       ; Echo     ; None                        ; None                      ; 2.158 ns                ;
+; N/A   ; Restricted to 304.04 MHz ( period = 3.289 ns ) ; TimeCount:LEDTimeCount|UltrasonicRanging:UR|MeasureLevel:ML|DNum:D2|count[1]         ; TimeCount:LEDTimeCount|UltrasonicRanging:UR|MeasureLevel:ML|DNum:D2|count[3]         ; Echo       ; Echo     ; None                        ; None                      ; 2.105 ns                ;
+; N/A   ; Restricted to 304.04 MHz ( period = 3.289 ns ) ; TimeCount:LEDTimeCount|UltrasonicRanging:UR|MeasureLevel:ML|DNum:D2|count[1]         ; TimeCount:LEDTimeCount|UltrasonicRanging:UR|MeasureLevel:ML|DNum:D2|count[1]         ; Echo       ; Echo     ; None                        ; None                      ; 2.103 ns                ;
+; N/A   ; Restricted to 304.04 MHz ( period = 3.289 ns ) ; TimeCount:LEDTimeCount|UltrasonicRanging:UR|MeasureLevel:ML|DNum:D3|count[3]         ; TimeCount:LEDTimeCount|UltrasonicRanging:UR|MeasureLevel:ML|DNum:D3|count[1]         ; Echo       ; Echo     ; None                        ; None                      ; 2.088 ns                ;
+; N/A   ; Restricted to 304.04 MHz ( period = 3.289 ns ) ; TimeCount:LEDTimeCount|UltrasonicRanging:UR|MeasureLevel:ML|DNum:D3|count[3]         ; TimeCount:LEDTimeCount|UltrasonicRanging:UR|MeasureLevel:ML|DNum:D3|count[3]         ; Echo       ; Echo     ; None                        ; None                      ; 2.087 ns                ;
+; N/A   ; Restricted to 304.04 MHz ( period = 3.289 ns ) ; TimeCount:LEDTimeCount|UltrasonicRanging:UR|MeasureLevel:ML|DNum:D1|count[0]         ; TimeCount:LEDTimeCount|UltrasonicRanging:UR|MeasureLevel:ML|DNum:D1|c1               ; Echo       ; Echo     ; None                        ; None                      ; 2.510 ns                ;
+; N/A   ; Restricted to 304.04 MHz ( period = 3.289 ns ) ; TimeCount:LEDTimeCount|UltrasonicRanging:UR|MeasureLevel:ML|DNum:D3|count[1]         ; TimeCount:LEDTimeCount|UltrasonicRanging:UR|MeasureLevel:ML|DNum:D3|count[2]         ; Echo       ; Echo     ; None                        ; None                      ; 2.059 ns                ;
+; N/A   ; Restricted to 304.04 MHz ( period = 3.289 ns ) ; TimeCount:LEDTimeCount|UltrasonicRanging:UR|MeasureLevel:ML|DNum:D3|count[1]         ; TimeCount:LEDTimeCount|UltrasonicRanging:UR|MeasureLevel:ML|DNum:D3|count[3]         ; Echo       ; Echo     ; None                        ; None                      ; 2.057 ns                ;
+; N/A   ; Restricted to 304.04 MHz ( period = 3.289 ns ) ; TimeCount:LEDTimeCount|UltrasonicRanging:UR|MeasureLevel:ML|DNum:D3|count[1]         ; TimeCount:LEDTimeCount|UltrasonicRanging:UR|MeasureLevel:ML|DNum:D3|count[1]         ; Echo       ; Echo     ; None                        ; None                      ; 2.055 ns                ;
+; N/A   ; Restricted to 304.04 MHz ( period = 3.289 ns ) ; TimeCount:LEDTimeCount|UltrasonicRanging:UR|MeasureLevel:ML|DNum:D2|count[0]         ; TimeCount:LEDTimeCount|UltrasonicRanging:UR|MeasureLevel:ML|DNum:D2|count[2]         ; Echo       ; Echo     ; None                        ; None                      ; 2.031 ns                ;
+; N/A   ; Restricted to 304.04 MHz ( period = 3.289 ns ) ; TimeCount:LEDTimeCount|UltrasonicRanging:UR|MeasureLevel:ML|DNum:D2|count[0]         ; TimeCount:LEDTimeCount|UltrasonicRanging:UR|MeasureLevel:ML|DNum:D2|c1               ; Echo       ; Echo     ; None                        ; None                      ; 2.029 ns                ;
+; N/A   ; Restricted to 304.04 MHz ( period = 3.289 ns ) ; TimeCount:LEDTimeCount|UltrasonicRanging:UR|MeasureLevel:ML|DNum:D0|count[3]         ; TimeCount:LEDTimeCount|UltrasonicRanging:UR|MeasureLevel:ML|DNum:D0|count[1]         ; Echo       ; Echo     ; None                        ; None                      ; 2.022 ns                ;
+; N/A   ; Restricted to 304.04 MHz ( period = 3.289 ns ) ; TimeCount:LEDTimeCount|UltrasonicRanging:UR|MeasureLevel:ML|DNum:D1|count[1]         ; TimeCount:LEDTimeCount|UltrasonicRanging:UR|MeasureLevel:ML|DNum:D1|count[3]         ; Echo       ; Echo     ; None                        ; None                      ; 2.020 ns                ;
+; N/A   ; Restricted to 304.04 MHz ( period = 3.289 ns ) ; TimeCount:LEDTimeCount|UltrasonicRanging:UR|MeasureLevel:ML|DNum:D0|count[3]         ; TimeCount:LEDTimeCount|UltrasonicRanging:UR|MeasureLevel:ML|DNum:D0|c1               ; Echo       ; Echo     ; None                        ; None                      ; 2.016 ns                ;
+; N/A   ; Restricted to 304.04 MHz ( period = 3.289 ns ) ; TimeCount:LEDTimeCount|UltrasonicRanging:UR|MeasureLevel:ML|DNum:D1|count[1]         ; TimeCount:LEDTimeCount|UltrasonicRanging:UR|MeasureLevel:ML|DNum:D1|count[1]         ; Echo       ; Echo     ; None                        ; None                      ; 2.015 ns                ;
+; N/A   ; Restricted to 304.04 MHz ( period = 3.289 ns ) ; TimeCount:LEDTimeCount|UltrasonicRanging:UR|MeasureLevel:ML|DNum:D0|count[3]         ; TimeCount:LEDTimeCount|UltrasonicRanging:UR|MeasureLevel:ML|DNum:D0|count[3]         ; Echo       ; Echo     ; None                        ; None                      ; 2.014 ns                ;
+; N/A   ; Restricted to 304.04 MHz ( period = 3.289 ns ) ; TimeCount:LEDTimeCount|UltrasonicRanging:UR|MeasureLevel:ML|DNum:D1|count[3]         ; TimeCount:LEDTimeCount|UltrasonicRanging:UR|MeasureLevel:ML|DNum:D1|c1               ; Echo       ; Echo     ; None                        ; None                      ; 2.370 ns                ;
+; N/A   ; Restricted to 304.04 MHz ( period = 3.289 ns ) ; TimeCount:LEDTimeCount|UltrasonicRanging:UR|MeasureLevel:ML|DNum:D0|count[2]         ; TimeCount:LEDTimeCount|UltrasonicRanging:UR|MeasureLevel:ML|DNum:D0|c1               ; Echo       ; Echo     ; None                        ; None                      ; 1.863 ns                ;
+; N/A   ; Restricted to 304.04 MHz ( period = 3.289 ns ) ; TimeCount:LEDTimeCount|UltrasonicRanging:UR|MeasureLevel:ML|DNum:D0|count[2]         ; TimeCount:LEDTimeCount|UltrasonicRanging:UR|MeasureLevel:ML|DNum:D0|count[3]         ; Echo       ; Echo     ; None                        ; None                      ; 1.862 ns                ;
+; N/A   ; Restricted to 304.04 MHz ( period = 3.289 ns ) ; TimeCount:LEDTimeCount|UltrasonicRanging:UR|MeasureLevel:ML|DNum:D0|count[2]         ; TimeCount:LEDTimeCount|UltrasonicRanging:UR|MeasureLevel:ML|DNum:D0|count[1]         ; Echo       ; Echo     ; None                        ; None                      ; 1.850 ns                ;
+; N/A   ; Restricted to 304.04 MHz ( period = 3.289 ns ) ; TimeCount:LEDTimeCount|UltrasonicRanging:UR|MeasureLevel:ML|DNum:D0|count[0]         ; TimeCount:LEDTimeCount|UltrasonicRanging:UR|MeasureLevel:ML|DNum:D0|count[0]         ; Echo       ; Echo     ; None                        ; None                      ; 1.843 ns                ;
+; N/A   ; Restricted to 304.04 MHz ( period = 3.289 ns ) ; TimeCount:LEDTimeCount|UltrasonicRanging:UR|MeasureLevel:ML|DNum:D0|count[2]         ; TimeCount:LEDTimeCount|UltrasonicRanging:UR|MeasureLevel:ML|DNum:D0|count[2]         ; Echo       ; Echo     ; None                        ; None                      ; 1.843 ns                ;
+; N/A   ; Restricted to 304.04 MHz ( period = 3.289 ns ) ; TimeCount:LEDTimeCount|UltrasonicRanging:UR|MeasureLevel:ML|DNum:D3|count[2]         ; TimeCount:LEDTimeCount|UltrasonicRanging:UR|MeasureLevel:ML|DNum:D3|count[1]         ; Echo       ; Echo     ; None                        ; None                      ; 1.822 ns                ;
+; N/A   ; Restricted to 304.04 MHz ( period = 3.289 ns ) ; TimeCount:LEDTimeCount|UltrasonicRanging:UR|MeasureLevel:ML|DNum:D3|count[2]         ; TimeCount:LEDTimeCount|UltrasonicRanging:UR|MeasureLevel:ML|DNum:D3|count[3]         ; Echo       ; Echo     ; None                        ; None                      ; 1.820 ns                ;
+; N/A   ; Restricted to 304.04 MHz ( period = 3.289 ns ) ; TimeCount:LEDTimeCount|UltrasonicRanging:UR|MeasureLevel:ML|DNum:D3|count[2]         ; TimeCount:LEDTimeCount|UltrasonicRanging:UR|MeasureLevel:ML|DNum:D3|count[2]         ; Echo       ; Echo     ; None                        ; None                      ; 1.815 ns                ;
+; N/A   ; Restricted to 304.04 MHz ( period = 3.289 ns ) ; TimeCount:LEDTimeCount|UltrasonicRanging:UR|MeasureLevel:ML|DNum:D2|count[3]         ; TimeCount:LEDTimeCount|UltrasonicRanging:UR|MeasureLevel:ML|DNum:D2|c1               ; Echo       ; Echo     ; None                        ; None                      ; 1.792 ns                ;
+; N/A   ; Restricted to 304.04 MHz ( period = 3.289 ns ) ; TimeCount:LEDTimeCount|UltrasonicRanging:UR|MeasureLevel:ML|DNum:D1|count[1]         ; TimeCount:LEDTimeCount|UltrasonicRanging:UR|MeasureLevel:ML|DNum:D1|c1               ; Echo       ; Echo     ; None                        ; None                      ; 2.166 ns                ;
+; N/A   ; Restricted to 304.04 MHz ( period = 3.289 ns ) ; TimeCount:LEDTimeCount|UltrasonicRanging:UR|MeasureLevel:ML|DNum:D3|count[0]         ; TimeCount:LEDTimeCount|UltrasonicRanging:UR|MeasureLevel:ML|DNum:D3|count[2]         ; Echo       ; Echo     ; None                        ; None                      ; 1.617 ns                ;
+; N/A   ; Restricted to 304.04 MHz ( period = 3.289 ns ) ; TimeCount:LEDTimeCount|UltrasonicRanging:UR|MeasureLevel:ML|DNum:D3|count[0]         ; TimeCount:LEDTimeCount|UltrasonicRanging:UR|MeasureLevel:ML|DNum:D3|count[3]         ; Echo       ; Echo     ; None                        ; None                      ; 1.616 ns                ;
+; N/A   ; Restricted to 304.04 MHz ( period = 3.289 ns ) ; TimeCount:LEDTimeCount|UltrasonicRanging:UR|MeasureLevel:ML|DNum:D3|count[0]         ; TimeCount:LEDTimeCount|UltrasonicRanging:UR|MeasureLevel:ML|DNum:D3|count[1]         ; Echo       ; Echo     ; None                        ; None                      ; 1.614 ns                ;
+; N/A   ; Restricted to 304.04 MHz ( period = 3.289 ns ) ; TimeCount:LEDTimeCount|UltrasonicRanging:UR|MeasureLevel:ML|DNum:D3|count[0]         ; TimeCount:LEDTimeCount|UltrasonicRanging:UR|MeasureLevel:ML|DNum:D3|count[0]         ; Echo       ; Echo     ; None                        ; None                      ; 1.601 ns                ;
+; N/A   ; Restricted to 304.04 MHz ( period = 3.289 ns ) ; TimeCount:LEDTimeCount|UltrasonicRanging:UR|MeasureLevel:ML|DNum:D0|count[1]         ; TimeCount:LEDTimeCount|UltrasonicRanging:UR|MeasureLevel:ML|DNum:D0|c1               ; Echo       ; Echo     ; None                        ; None                      ; 1.589 ns                ;
+; N/A   ; Restricted to 304.04 MHz ( period = 3.289 ns ) ; TimeCount:LEDTimeCount|UltrasonicRanging:UR|MeasureLevel:ML|DNum:D0|count[1]         ; TimeCount:LEDTimeCount|UltrasonicRanging:UR|MeasureLevel:ML|DNum:D0|count[3]         ; Echo       ; Echo     ; None                        ; None                      ; 1.588 ns                ;
+; N/A   ; Restricted to 304.04 MHz ( period = 3.289 ns ) ; TimeCount:LEDTimeCount|UltrasonicRanging:UR|MeasureLevel:ML|DNum:D1|count[0]         ; TimeCount:LEDTimeCount|UltrasonicRanging:UR|MeasureLevel:ML|DNum:D1|count[1]         ; Echo       ; Echo     ; None                        ; None                      ; 1.585 ns                ;
+; N/A   ; Restricted to 304.04 MHz ( period = 3.289 ns ) ; TimeCount:LEDTimeCount|UltrasonicRanging:UR|MeasureLevel:ML|DNum:D1|count[0]         ; TimeCount:LEDTimeCount|UltrasonicRanging:UR|MeasureLevel:ML|DNum:D1|count[3]         ; Echo       ; Echo     ; None                        ; None                      ; 1.582 ns                ;
+; N/A   ; Restricted to 304.04 MHz ( period = 3.289 ns ) ; TimeCount:LEDTimeCount|UltrasonicRanging:UR|MeasureLevel:ML|DNum:D1|count[0]         ; TimeCount:LEDTimeCount|UltrasonicRanging:UR|MeasureLevel:ML|DNum:D1|count[0]         ; Echo       ; Echo     ; None                        ; None                      ; 1.581 ns                ;
+; N/A   ; Restricted to 304.04 MHz ( period = 3.289 ns ) ; TimeCount:LEDTimeCount|UltrasonicRanging:UR|MeasureLevel:ML|DNum:D0|count[1]         ; TimeCount:LEDTimeCount|UltrasonicRanging:UR|MeasureLevel:ML|DNum:D0|count[2]         ; Echo       ; Echo     ; None                        ; None                      ; 1.581 ns                ;
+; N/A   ; Restricted to 304.04 MHz ( period = 3.289 ns ) ; TimeCount:LEDTimeCount|UltrasonicRanging:UR|MeasureLevel:ML|DNum:D2|count[0]         ; TimeCount:LEDTimeCount|UltrasonicRanging:UR|MeasureLevel:ML|DNum:D2|count[1]         ; Echo       ; Echo     ; None                        ; None                      ; 1.562 ns                ;
+; N/A   ; Restricted to 304.04 MHz ( period = 3.289 ns ) ; TimeCount:LEDTimeCount|UltrasonicRanging:UR|MeasureLevel:ML|DNum:D2|count[0]         ; TimeCount:LEDTimeCount|UltrasonicRanging:UR|MeasureLevel:ML|DNum:D2|count[3]         ; Echo       ; Echo     ; None                        ; None                      ; 1.561 ns                ;
+; N/A   ; Restricted to 304.04 MHz ( period = 3.289 ns ) ; TimeCount:LEDTimeCount|UltrasonicRanging:UR|MeasureLevel:ML|DNum:D2|count[0]         ; TimeCount:LEDTimeCount|UltrasonicRanging:UR|MeasureLevel:ML|DNum:D2|count[0]         ; Echo       ; Echo     ; None                        ; None                      ; 1.557 ns                ;
+; N/A   ; Restricted to 304.04 MHz ( period = 3.289 ns ) ; TimeCount:LEDTimeCount|UltrasonicRanging:UR|MeasureLevel:ML|DNum:D1|count[1]         ; TimeCount:LEDTimeCount|UltrasonicRanging:UR|MeasureLevel:ML|DNum:D1|count[2]         ; Echo       ; Echo     ; None                        ; None                      ; 1.554 ns                ;
+; N/A   ; Restricted to 304.04 MHz ( period = 3.289 ns ) ; TimeCount:LEDTimeCount|UltrasonicRanging:UR|MeasureLevel:ML|DNum:D2|count[2]         ; TimeCount:LEDTimeCount|UltrasonicRanging:UR|MeasureLevel:ML|DNum:D2|c1               ; Echo       ; Echo     ; None                        ; None                      ; 1.518 ns                ;
+; N/A   ; Restricted to 304.04 MHz ( period = 3.289 ns ) ; TimeCount:LEDTimeCount|UltrasonicRanging:UR|MeasureLevel:ML|DNum:D2|count[2]         ; TimeCount:LEDTimeCount|UltrasonicRanging:UR|MeasureLevel:ML|DNum:D2|count[2]         ; Echo       ; Echo     ; None                        ; None                      ; 1.514 ns                ;
+; N/A   ; Restricted to 304.04 MHz ( period = 3.289 ns ) ; TimeCount:LEDTimeCount|UltrasonicRanging:UR|MeasureLevel:ML|EdgeToLevel:ToUpLevel|Si ; TimeCount:LEDTimeCount|UltrasonicRanging:UR|MeasureLevel:ML|EdgeToLevel:ToUpLevel|Si ; Echo       ; Echo     ; None                        ; None                      ; 1.513 ns                ;
+; N/A   ; Restricted to 304.04 MHz ( period = 3.289 ns ) ; TimeCount:LEDTimeCount|UltrasonicRanging:UR|MeasureLevel:ML|DNum:D1|count[2]         ; TimeCount:LEDTimeCount|UltrasonicRanging:UR|MeasureLevel:ML|DNum:D1|c1               ; Echo       ; Echo     ; None                        ; None                      ; 1.910 ns                ;
++-------+------------------------------------------------+--------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------+------------+----------+-----------------------------+---------------------------+-------------------------+
+
+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Clock Hold: 'rawclock'                                                                                                                                                                                                                                            ;
++------------------------------------------+------------------------------------------------------+----------------------------------------------------+------------+----------+----------------------------+----------------------------+--------------------------+
+; Minimum Slack                            ; From                                                 ; To                                                 ; From Clock ; To Clock ; Required Hold Relationship ; Required Shortest P2P Time ; Actual Shortest P2P Time ;
++------------------------------------------+------------------------------------------------------+----------------------------------------------------+------------+----------+----------------------------+----------------------------+--------------------------+
+; Not operational: Clock Skew > Data Delay ; LEDCtrl:LEDP|BreathCount[7]                          ; LEDCtrl:LEDP|LEDRefresh:LEDPoint|PWM:PWMGen|output ; rawclock   ; rawclock ; None                       ; None                       ; 3.069 ns                 ;
+; Not operational: Clock Skew > Data Delay ; LEDCtrl:LEDP|LEDRefresh:LEDPoint|PWM:PWMGen|count[7] ; LEDCtrl:LEDP|LEDRefresh:LEDPoint|PWM:PWMGen|output ; rawclock   ; rawclock ; None                       ; None                       ; 4.666 ns                 ;
+; Not operational: Clock Skew > Data Delay ; LEDCtrl:LEDP|LEDRefresh:LEDPoint|PWM:PWMGen|count[5] ; LEDCtrl:LEDP|LEDRefresh:LEDPoint|PWM:PWMGen|output ; rawclock   ; rawclock ; None                       ; None                       ; 5.541 ns                 ;
+; Not operational: Clock Skew > Data Delay ; LEDCtrl:LEDP|BreathCount[6]                          ; LEDCtrl:LEDP|LEDRefresh:LEDPoint|PWM:PWMGen|output ; rawclock   ; rawclock ; None                       ; None                       ; 4.478 ns                 ;
+; Not operational: Clock Skew > Data Delay ; LEDCtrl:LEDP|LEDRefresh:LEDPoint|PWM:PWMGen|count[3] ; LEDCtrl:LEDP|LEDRefresh:LEDPoint|PWM:PWMGen|output ; rawclock   ; rawclock ; None                       ; None                       ; 5.817 ns                 ;
+; Not operational: Clock Skew > Data Delay ; LEDCtrl:LEDP|LEDRefresh:LEDPoint|PWM:PWMGen|count[1] ; LEDCtrl:LEDP|LEDRefresh:LEDPoint|PWM:PWMGen|output ; rawclock   ; rawclock ; None                       ; None                       ; 5.972 ns                 ;
+; Not operational: Clock Skew > Data Delay ; LEDCtrl:LEDP|BreathCount[5]                          ; LEDCtrl:LEDP|LEDRefresh:LEDPoint|PWM:PWMGen|output ; rawclock   ; rawclock ; None                       ; None                       ; 4.758 ns                 ;
+; Not operational: Clock Skew > Data Delay ; LEDCtrl:LEDP|BreathCount[4]                          ; LEDCtrl:LEDP|LEDRefresh:LEDPoint|PWM:PWMGen|output ; rawclock   ; rawclock ; None                       ; None                       ; 4.839 ns                 ;
+; Not operational: Clock Skew > Data Delay ; LEDCtrl:LEDP|LEDRefresh:LEDPoint|PWM:PWMGen|count[2] ; LEDCtrl:LEDP|LEDRefresh:LEDPoint|PWM:PWMGen|output ; rawclock   ; rawclock ; None                       ; None                       ; 6.161 ns                 ;
+; Not operational: Clock Skew > Data Delay ; LEDCtrl:LEDP|LEDRefresh:LEDPoint|PWM:PWMGen|count[0] ; LEDCtrl:LEDP|LEDRefresh:LEDPoint|PWM:PWMGen|output ; rawclock   ; rawclock ; None                       ; None                       ; 6.166 ns                 ;
+; Not operational: Clock Skew > Data Delay ; LEDCtrl:LEDP|BreathCount[2]                          ; LEDCtrl:LEDP|LEDRefresh:LEDPoint|PWM:PWMGen|output ; rawclock   ; rawclock ; None                       ; None                       ; 5.019 ns                 ;
+; Not operational: Clock Skew > Data Delay ; LEDCtrl:LEDP|LEDRefresh:LEDPoint|PWM:PWMGen|count[4] ; LEDCtrl:LEDP|LEDRefresh:LEDPoint|PWM:PWMGen|output ; rawclock   ; rawclock ; None                       ; None                       ; 6.425 ns                 ;
+; Not operational: Clock Skew > Data Delay ; LEDCtrl:LEDP|BreathCount[1]                          ; LEDCtrl:LEDP|LEDRefresh:LEDPoint|PWM:PWMGen|output ; rawclock   ; rawclock ; None                       ; None                       ; 5.291 ns                 ;
+; Not operational: Clock Skew > Data Delay ; LEDCtrl:LEDP|BreathCount[0]                          ; LEDCtrl:LEDP|LEDRefresh:LEDPoint|PWM:PWMGen|output ; rawclock   ; rawclock ; None                       ; None                       ; 5.411 ns                 ;
+; Not operational: Clock Skew > Data Delay ; LEDCtrl:LEDP|BreathCount[3]                          ; LEDCtrl:LEDP|LEDRefresh:LEDPoint|PWM:PWMGen|output ; rawclock   ; rawclock ; None                       ; None                       ; 5.593 ns                 ;
+; Not operational: Clock Skew > Data Delay ; LEDCtrl:LEDP|LEDRefresh:LEDPoint|PWM:PWMGen|count[6] ; LEDCtrl:LEDP|LEDRefresh:LEDPoint|PWM:PWMGen|output ; rawclock   ; rawclock ; None                       ; None                       ; 7.274 ns                 ;
++------------------------------------------+------------------------------------------------------+----------------------------------------------------+------------+----------+----------------------------+----------------------------+--------------------------+
+
+
++-------------------------------------------------------------------------------------------------------+
+; tsu                                                                                                   ;
++-------+--------------+------------+-----------+--------------------------------------------+----------+
+; Slack ; Required tsu ; Actual tsu ; From      ; To                                         ; To Clock ;
++-------+--------------+------------+-----------+--------------------------------------------+----------+
+; N/A   ; None         ; 4.361 ns   ; userreset ; EliminationBuffeting:ToResetEB|Timeing[0]  ; rawclock ;
+; N/A   ; None         ; 4.361 ns   ; userreset ; EliminationBuffeting:ToResetEB|Timeing[1]  ; rawclock ;
+; N/A   ; None         ; 4.361 ns   ; userreset ; EliminationBuffeting:ToResetEB|Timeing[2]  ; rawclock ;
+; N/A   ; None         ; 4.361 ns   ; userreset ; EliminationBuffeting:ToResetEB|Timeing[3]  ; rawclock ;
+; N/A   ; None         ; 4.361 ns   ; userreset ; EliminationBuffeting:ToResetEB|Timeing[4]  ; rawclock ;
+; N/A   ; None         ; 3.749 ns   ; userreset ; EliminationBuffeting:ToResetEB|Timeing[6]  ; rawclock ;
+; N/A   ; None         ; 3.749 ns   ; userreset ; EliminationBuffeting:ToResetEB|Timeing[5]  ; rawclock ;
+; N/A   ; None         ; 3.749 ns   ; userreset ; EliminationBuffeting:ToResetEB|Timeing[7]  ; rawclock ;
+; N/A   ; None         ; 3.749 ns   ; userreset ; EliminationBuffeting:ToResetEB|Timeing[8]  ; rawclock ;
+; N/A   ; None         ; 3.749 ns   ; userreset ; EliminationBuffeting:ToResetEB|Timeing[9]  ; rawclock ;
+; N/A   ; None         ; 3.749 ns   ; userreset ; EliminationBuffeting:ToResetEB|Timeing[10] ; rawclock ;
+; N/A   ; None         ; 3.749 ns   ; userreset ; EliminationBuffeting:ToResetEB|Timeing[11] ; rawclock ;
+; N/A   ; None         ; 3.749 ns   ; userreset ; EliminationBuffeting:ToResetEB|Timeing[13] ; rawclock ;
+; N/A   ; None         ; 3.749 ns   ; userreset ; EliminationBuffeting:ToResetEB|Timeing[12] ; rawclock ;
+; N/A   ; None         ; 3.749 ns   ; userreset ; EliminationBuffeting:ToResetEB|Timeing[14] ; rawclock ;
+; N/A   ; None         ; 3.364 ns   ; userreset ; EliminationBuffeting:ToResetEB|Timeing[20] ; rawclock ;
+; N/A   ; None         ; 3.364 ns   ; userreset ; EliminationBuffeting:ToResetEB|Timeing[15] ; rawclock ;
+; N/A   ; None         ; 3.364 ns   ; userreset ; EliminationBuffeting:ToResetEB|Timeing[17] ; rawclock ;
+; N/A   ; None         ; 3.364 ns   ; userreset ; EliminationBuffeting:ToResetEB|Timeing[16] ; rawclock ;
+; N/A   ; None         ; 3.364 ns   ; userreset ; EliminationBuffeting:ToResetEB|Timeing[18] ; rawclock ;
+; N/A   ; None         ; 3.364 ns   ; userreset ; EliminationBuffeting:ToResetEB|Timeing[19] ; rawclock ;
+; N/A   ; None         ; 1.929 ns   ; userreset ; EliminationBuffeting:ToResetEB|Output~reg0 ; rawclock ;
+; N/A   ; None         ; -0.924 ns  ; Stop      ; EliminationBuffeting:ToStopEB|Timeing[0]   ; rawclock ;
+; N/A   ; None         ; -0.924 ns  ; Stop      ; EliminationBuffeting:ToStopEB|Timeing[5]   ; rawclock ;
+; N/A   ; None         ; -0.924 ns  ; Stop      ; EliminationBuffeting:ToStopEB|Timeing[6]   ; rawclock ;
+; N/A   ; None         ; -0.924 ns  ; Stop      ; EliminationBuffeting:ToStopEB|Timeing[4]   ; rawclock ;
+; N/A   ; None         ; -0.924 ns  ; Stop      ; EliminationBuffeting:ToStopEB|Timeing[1]   ; rawclock ;
+; N/A   ; None         ; -0.924 ns  ; Stop      ; EliminationBuffeting:ToStopEB|Timeing[2]   ; rawclock ;
+; N/A   ; None         ; -0.924 ns  ; Stop      ; EliminationBuffeting:ToStopEB|Timeing[3]   ; rawclock ;
+; N/A   ; None         ; -1.020 ns  ; TurnLeft  ; EliminationBuffeting:ToLeftEB|Timeing[0]   ; rawclock ;
+; N/A   ; None         ; -1.020 ns  ; TurnLeft  ; EliminationBuffeting:ToLeftEB|Timeing[6]   ; rawclock ;
+; N/A   ; None         ; -1.020 ns  ; TurnLeft  ; EliminationBuffeting:ToLeftEB|Timeing[4]   ; rawclock ;
+; N/A   ; None         ; -1.020 ns  ; TurnLeft  ; EliminationBuffeting:ToLeftEB|Timeing[5]   ; rawclock ;
+; N/A   ; None         ; -1.020 ns  ; TurnLeft  ; EliminationBuffeting:ToLeftEB|Timeing[1]   ; rawclock ;
+; N/A   ; None         ; -1.020 ns  ; TurnLeft  ; EliminationBuffeting:ToLeftEB|Timeing[2]   ; rawclock ;
+; N/A   ; None         ; -1.020 ns  ; TurnLeft  ; EliminationBuffeting:ToLeftEB|Timeing[3]   ; rawclock ;
+; N/A   ; None         ; -2.534 ns  ; TurnRight ; EliminationBuffeting:ToRightEB|Timeing[0]  ; rawclock ;
+; N/A   ; None         ; -2.534 ns  ; TurnRight ; EliminationBuffeting:ToRightEB|Timeing[6]  ; rawclock ;
+; N/A   ; None         ; -2.534 ns  ; TurnRight ; EliminationBuffeting:ToRightEB|Timeing[4]  ; rawclock ;
+; N/A   ; None         ; -2.534 ns  ; TurnRight ; EliminationBuffeting:ToRightEB|Timeing[5]  ; rawclock ;
+; N/A   ; None         ; -2.534 ns  ; TurnRight ; EliminationBuffeting:ToRightEB|Timeing[1]  ; rawclock ;
+; N/A   ; None         ; -2.534 ns  ; TurnRight ; EliminationBuffeting:ToRightEB|Timeing[2]  ; rawclock ;
+; N/A   ; None         ; -2.534 ns  ; TurnRight ; EliminationBuffeting:ToRightEB|Timeing[3]  ; rawclock ;
+; N/A   ; None         ; -2.731 ns  ; Night     ; LEDCtrl:LEDP|LEDRefresh:LEDPoint|lcount[2] ; rawclock ;
+; N/A   ; None         ; -3.607 ns  ; TurnLeft  ; EliminationBuffeting:ToLeftEB|Output~reg0  ; rawclock ;
+; N/A   ; None         ; -4.485 ns  ; TurnRight ; EliminationBuffeting:ToRightEB|Output~reg0 ; rawclock ;
+; N/A   ; None         ; -4.909 ns  ; Stop      ; EliminationBuffeting:ToStopEB|Output~reg0  ; rawclock ;
+; N/A   ; None         ; -5.888 ns  ; Night     ; LEDCtrl:LEDP|LEDRefresh:LEDPoint|lcount[1] ; rawclock ;
+; N/A   ; None         ; -6.195 ns  ; Night     ; LEDCtrl:LEDP|LEDRefresh:LEDPoint|lcount[0] ; rawclock ;
++-------+--------------+------------+-----------+--------------------------------------------+----------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; tco                                                                                                                                                                                                                    ;
++-----------------------------------------+-----------------------------------------------------+------------+------------------------------------------------------------------------------+---------------+------------+
+; Slack                                   ; Required tco                                        ; Actual tco ; From                                                                         ; To            ; From Clock ;
++-----------------------------------------+-----------------------------------------------------+------------+------------------------------------------------------------------------------+---------------+------------+
+; N/A                                     ; None                                                ; 30.492 ns  ; TimeCount:LEDTimeCount|UltrasonicRanging:UR|MeasureLevel:ML|DNum:D3|count[3] ; LEDData[7]    ; rawclock   ;
+; N/A                                     ; None                                                ; 30.266 ns  ; LEDCtrl:LEDP|LEDRefresh:LEDPoint|lcount[2]                                   ; LEDColumn[11] ; rawclock   ;
+; N/A                                     ; None                                                ; 30.266 ns  ; LEDCtrl:LEDP|IMGSel[1]                                                       ; LEDColumn[1]  ; rawclock   ;
+; N/A                                     ; None                                                ; 30.220 ns  ; LEDCtrl:LEDP|LEDRefresh:LEDPoint|lcount[1]                                   ; LEDColumn[11] ; rawclock   ;
+; N/A                                     ; None                                                ; 30.063 ns  ; LEDCtrl:LEDP|LEDRefresh:LEDPoint|lcount[2]                                   ; LEDColumn[1]  ; rawclock   ;
+; N/A                                     ; None                                                ; 29.898 ns  ; LEDCtrl:LEDP|IMGSel[1]                                                       ; LEDColumn[11] ; rawclock   ;
+; N/A                                     ; None                                                ; 29.835 ns  ; LEDCtrl:LEDP|IMGSel[2]                                                       ; LEDColumn[15] ; rawclock   ;
+; N/A                                     ; None                                                ; 29.832 ns  ; TimeCount:LEDTimeCount|UltrasonicRanging:UR|MeasureLevel:ML|DNum:D3|count[2] ; LEDData[7]    ; rawclock   ;
+; N/A                                     ; None                                                ; 29.755 ns  ; LEDCtrl:LEDP|IMGSel[0]                                                       ; LEDColumn[1]  ; rawclock   ;
+; N/A                                     ; None                                                ; 29.719 ns  ; LEDCtrl:LEDP|LEDRefresh:LEDPoint|PWM:PWMGen|output                           ; LEDColumn[1]  ; rawclock   ;
+; N/A                                     ; None                                                ; 29.694 ns  ; TimeCount:LEDTimeCount|UltrasonicRanging:UR|MeasureLevel:ML|DNum:D3|count[0] ; LEDData[7]    ; rawclock   ;
+; N/A                                     ; None                                                ; 29.691 ns  ; LEDCtrl:LEDP|LEDRefresh:LEDPoint|lcount[1]                                   ; LEDColumn[1]  ; rawclock   ;
+; N/A                                     ; None                                                ; 29.644 ns  ; LEDCtrl:LEDP|IMGSel[2]                                                       ; LEDColumn[11] ; rawclock   ;
+; N/A                                     ; None                                                ; 29.610 ns  ; LEDCtrl:LEDP|LEDRefresh:LEDPoint|lcount[0]                                   ; LEDColumn[1]  ; rawclock   ;
+; N/A                                     ; None                                                ; 29.605 ns  ; LEDCtrl:LEDP|IMGSel[1]                                                       ; LEDColumn[15] ; rawclock   ;
+; N/A                                     ; None                                                ; 29.575 ns  ; LEDCtrl:LEDP|IMGSel[0]                                                       ; LEDColumn[11] ; rawclock   ;
+; N/A                                     ; None                                                ; 29.467 ns  ; LEDCtrl:LEDP|LEDRefresh:LEDPoint|lcount[2]                                   ; LEDColumn[9]  ; rawclock   ;
+; N/A                                     ; None                                                ; 29.448 ns  ; LEDCtrl:LEDP|LEDRefresh:LEDPoint|lcount[2]                                   ; LEDColumn[4]  ; rawclock   ;
+; N/A                                     ; None                                                ; 29.421 ns  ; LEDCtrl:LEDP|LEDRefresh:LEDPoint|lcount[1]                                   ; LEDColumn[9]  ; rawclock   ;
+; N/A                                     ; None                                                ; 29.372 ns  ; LEDCtrl:LEDP|LEDRefresh:LEDPoint|lcount[2]                                   ; LEDColumn[8]  ; rawclock   ;
+; N/A                                     ; None                                                ; 29.329 ns  ; TimeCount:LEDTimeCount|DNum:D1|count[0]                                      ; LEDData[7]    ; rawclock   ;
+; N/A                                     ; None                                                ; 29.318 ns  ; TimeCount:LEDTimeCount|DNum:D0|count[3]                                      ; LEDData[7]    ; rawclock   ;
+; N/A                                     ; None                                                ; 29.314 ns  ; LEDCtrl:LEDP|IMGSel[1]                                                       ; LEDColumn[6]  ; rawclock   ;
+; N/A                                     ; None                                                ; 29.256 ns  ; LEDCtrl:LEDP|IMGSel[1]                                                       ; LEDColumn[10] ; rawclock   ;
+; N/A                                     ; None                                                ; 29.237 ns  ; LEDCtrl:LEDP|LEDRefresh:LEDPoint|lcount[1]                                   ; LEDColumn[15] ; rawclock   ;
+; N/A                                     ; None                                                ; 29.234 ns  ; LEDCtrl:LEDP|IMGSel[2]                                                       ; LEDColumn[1]  ; rawclock   ;
+; N/A                                     ; None                                                ; 29.223 ns  ; LEDCtrl:LEDP|LEDRefresh:LEDPoint|lcount[2]                                   ; LEDColumn[0]  ; rawclock   ;
+; N/A                                     ; None                                                ; 29.221 ns  ; LEDCtrl:LEDP|LEDRefresh:LEDPoint|lcount[0]                                   ; LEDColumn[11] ; rawclock   ;
+; N/A                                     ; None                                                ; 29.172 ns  ; LEDCtrl:LEDP|IMGSel[1]                                                       ; LEDColumn[8]  ; rawclock   ;
+; N/A                                     ; None                                                ; 29.158 ns  ; TimeCount:LEDTimeCount|UltrasonicRanging:UR|MeasureLevel:ML|DNum:D3|count[1] ; LEDData[7]    ; rawclock   ;
+; N/A                                     ; None                                                ; 29.140 ns  ; LEDCtrl:LEDP|IMGSel[0]                                                       ; LEDColumn[4]  ; rawclock   ;
+; N/A                                     ; None                                                ; 29.139 ns  ; TimeCount:LEDTimeCount|UltrasonicRanging:UR|MeasureLevel:ML|DNum:D3|count[3] ; LEDData[6]    ; rawclock   ;
+; N/A                                     ; None                                                ; 29.126 ns  ; LEDCtrl:LEDP|IMGSel[1]                                                       ; LEDColumn[14] ; rawclock   ;
+; N/A                                     ; None                                                ; 29.122 ns  ; LEDCtrl:LEDP|LEDRefresh:LEDPoint|lcount[2]                                   ; LEDColumn[15] ; rawclock   ;
+; N/A                                     ; None                                                ; 29.099 ns  ; LEDCtrl:LEDP|IMGSel[1]                                                       ; LEDColumn[9]  ; rawclock   ;
+; N/A                                     ; None                                                ; 29.087 ns  ; LEDCtrl:LEDP|LEDRefresh:LEDPoint|lcount[2]                                   ; LEDColumn[6]  ; rawclock   ;
+; N/A                                     ; None                                                ; 29.076 ns  ; LEDCtrl:LEDP|LEDRefresh:LEDPoint|lcount[1]                                   ; LEDColumn[4]  ; rawclock   ;
+; N/A                                     ; None                                                ; 29.070 ns  ; TimeCount:LEDTimeCount|UltrasonicRanging:UR|MeasureLevel:ML|DNum:D3|count[3] ; LEDData[1]    ; rawclock   ;
+; N/A                                     ; None                                                ; 29.067 ns  ; LEDCtrl:LEDP|IMGSel[0]                                                       ; LEDColumn[14] ; rawclock   ;
+; N/A                                     ; None                                                ; 29.066 ns  ; TimeCount:LEDTimeCount|DNum:D1|count[2]                                      ; LEDData[7]    ; rawclock   ;
+; N/A                                     ; None                                                ; 29.062 ns  ; LEDCtrl:LEDP|IMGSel[0]                                                       ; LEDColumn[10] ; rawclock   ;
+; N/A                                     ; None                                                ; 29.052 ns  ; LEDCtrl:LEDP|IMGSel[2]                                                       ; LEDColumn[12] ; rawclock   ;
+; N/A                                     ; None                                                ; 29.049 ns  ; LEDCtrl:LEDP|IMGSel[2]                                                       ; LEDColumn[8]  ; rawclock   ;
+; N/A                                     ; None                                                ; 29.047 ns  ; TimeCount:LEDTimeCount|UltrasonicRanging:UR|MeasureLevel:ML|DNum:D3|count[3] ; LEDData[3]    ; rawclock   ;
+; N/A                                     ; None                                                ; 29.040 ns  ; TimeCount:LEDTimeCount|UltrasonicRanging:UR|MeasureLevel:ML|DNum:D3|count[3] ; LEDData[2]    ; rawclock   ;
+; N/A                                     ; None                                                ; 29.040 ns  ; TimeCount:LEDTimeCount|UltrasonicRanging:UR|MeasureLevel:ML|DNum:D3|count[3] ; LEDData[0]    ; rawclock   ;
+; N/A                                     ; None                                                ; 29.021 ns  ; TimeCount:LEDTimeCount|DNum:D1|count[3]                                      ; LEDData[7]    ; rawclock   ;
+; N/A                                     ; None                                                ; 29.009 ns  ; LEDCtrl:LEDP|LEDRefresh:LEDPoint|lcount[2]                                   ; LEDColumn[10] ; rawclock   ;
+; N/A                                     ; None                                                ; 28.999 ns  ; LEDCtrl:LEDP|LEDRefresh:LEDPoint|lcount[2]                                   ; LEDColumn[7]  ; rawclock   ;
+; N/A                                     ; None                                                ; 28.965 ns  ; LEDCtrl:LEDP|IMGSel[1]                                                       ; LEDColumn[4]  ; rawclock   ;
+; N/A                                     ; None                                                ; 28.964 ns  ; LEDCtrl:LEDP|IMGSel[2]                                                       ; LEDColumn[10] ; rawclock   ;
+; N/A                                     ; None                                                ; 28.925 ns  ; LEDCtrl:LEDP|LEDRefresh:LEDPoint|lcount[2]                                   ; LEDColumn[14] ; rawclock   ;
+; N/A                                     ; None                                                ; 28.915 ns  ; LEDCtrl:LEDP|IMGSel[0]                                                       ; LEDColumn[0]  ; rawclock   ;
+; N/A                                     ; None                                                ; 28.913 ns  ; LEDCtrl:LEDP|LEDRefresh:LEDPoint|lcount[1]                                   ; LEDColumn[8]  ; rawclock   ;
+; N/A                                     ; None                                                ; 28.879 ns  ; LEDCtrl:LEDP|LEDRefresh:LEDPoint|lcount[1]                                   ; LEDColumn[14] ; rawclock   ;
+; N/A                                     ; None                                                ; 28.874 ns  ; LEDCtrl:LEDP|LEDRefresh:LEDPoint|lcount[1]                                   ; LEDColumn[10] ; rawclock   ;
+; N/A                                     ; None                                                ; 28.854 ns  ; LEDCtrl:LEDP|LEDRefresh:LEDPoint|PWM:PWMGen|output                           ; LEDColumn[8]  ; rawclock   ;
+; N/A                                     ; None                                                ; 28.851 ns  ; LEDCtrl:LEDP|LEDRefresh:LEDPoint|lcount[1]                                   ; LEDColumn[0]  ; rawclock   ;
+; N/A                                     ; None                                                ; 28.834 ns  ; LEDCtrl:LEDP|IMGSel[2]                                                       ; LEDColumn[14] ; rawclock   ;
+; N/A                                     ; None                                                ; 28.822 ns  ; LEDCtrl:LEDP|IMGSel[1]                                                       ; LEDColumn[12] ; rawclock   ;
+; N/A                                     ; None                                                ; 28.817 ns  ; LEDCtrl:LEDP|IMGSel[1]                                                       ; LEDColumn[2]  ; rawclock   ;
+; N/A                                     ; None                                                ; 28.800 ns  ; LEDCtrl:LEDP|IMGSel[0]                                                       ; LEDColumn[15] ; rawclock   ;
+; N/A                                     ; None                                                ; 28.785 ns  ; TimeCount:LEDTimeCount|DNum:D1|count[1]                                      ; LEDData[7]    ; rawclock   ;
+; N/A                                     ; None                                                ; 28.779 ns  ; LEDCtrl:LEDP|IMGSel[0]                                                       ; LEDColumn[6]  ; rawclock   ;
+; N/A                                     ; None                                                ; 28.776 ns  ; LEDCtrl:LEDP|IMGSel[0]                                                       ; LEDColumn[9]  ; rawclock   ;
+; N/A                                     ; None                                                ; 28.759 ns  ; LEDCtrl:LEDP|IMGSel[0]                                                       ; LEDColumn[12] ; rawclock   ;
+; N/A                                     ; None                                                ; 28.753 ns  ; LEDCtrl:LEDP|LEDRefresh:LEDPoint|PWM:PWMGen|output                           ; LEDColumn[6]  ; rawclock   ;
+; N/A                                     ; None                                                ; 28.753 ns  ; LEDCtrl:LEDP|LEDRefresh:LEDPoint|lcount[0]                                   ; LEDColumn[4]  ; rawclock   ;
+; N/A                                     ; None                                                ; 28.745 ns  ; LEDCtrl:LEDP|IMGSel[1]                                                       ; LEDColumn[7]  ; rawclock   ;
+; N/A                                     ; None                                                ; 28.726 ns  ; LEDCtrl:LEDP|LEDRefresh:LEDPoint|lcount[2]                                   ; LEDColumn[12] ; rawclock   ;
+; N/A                                     ; None                                                ; 28.715 ns  ; LEDCtrl:LEDP|LEDRefresh:LEDPoint|lcount[1]                                   ; LEDColumn[6]  ; rawclock   ;
+; N/A                                     ; None                                                ; 28.713 ns  ; LEDCtrl:LEDP|LEDRefresh:LEDPoint|lcount[0]                                   ; LEDColumn[14] ; rawclock   ;
+; N/A                                     ; None                                                ; 28.708 ns  ; LEDCtrl:LEDP|LEDRefresh:LEDPoint|lcount[0]                                   ; LEDColumn[10] ; rawclock   ;
+; N/A                                     ; None                                                ; 28.699 ns  ; LEDCtrl:LEDP|IMGSel[1]                                                       ; LEDColumn[0]  ; rawclock   ;
+; N/A                                     ; None                                                ; 28.691 ns  ; LEDCtrl:LEDP|IMGSel[0]                                                       ; LEDColumn[7]  ; rawclock   ;
+; N/A                                     ; None                                                ; 28.681 ns  ; LEDCtrl:LEDP|LEDRefresh:LEDPoint|lcount[2]                                   ; LEDColumn[13] ; rawclock   ;
+; N/A                                     ; None                                                ; 28.681 ns  ; LEDCtrl:LEDP|IMGSel[0]                                                       ; LEDColumn[8]  ; rawclock   ;
+; N/A                                     ; None                                                ; 28.660 ns  ; LEDCtrl:LEDP|IMGSel[2]                                                       ; LEDColumn[9]  ; rawclock   ;
+; N/A                                     ; None                                                ; 28.659 ns  ; LEDCtrl:LEDP|LEDRefresh:LEDPoint|lcount[1]                                   ; LEDColumn[13] ; rawclock   ;
+; N/A                                     ; None                                                ; 28.658 ns  ; LEDCtrl:LEDP|LEDRefresh:LEDPoint|lcount[0]                                   ; LEDColumn[6]  ; rawclock   ;
+; N/A                                     ; None                                                ; 28.637 ns  ; LEDCtrl:LEDP|LEDRefresh:LEDPoint|lcount[2]                                   ; LEDColumn[3]  ; rawclock   ;
+; N/A                                     ; None                                                ; 28.630 ns  ; LEDCtrl:LEDP|LEDRefresh:LEDPoint|lcount[2]                                   ; LEDColumn[2]  ; rawclock   ;
+; N/A                                     ; None                                                ; 28.627 ns  ; LEDCtrl:LEDP|LEDRefresh:LEDPoint|lcount[1]                                   ; LEDColumn[7]  ; rawclock   ;
+; N/A                                     ; None                                                ; 28.625 ns  ; LEDCtrl:LEDP|LEDRefresh:LEDPoint|PWM:PWMGen|output                           ; LEDColumn[2]  ; rawclock   ;
+; N/A                                     ; None                                                ; 28.615 ns  ; LEDCtrl:LEDP|IMGSel[2]                                                       ; LEDColumn[13] ; rawclock   ;
+; N/A                                     ; None                                                ; 28.604 ns  ; TimeCount:LEDTimeCount|DNum:D1|count[2]                                      ; LEDData[6]    ; rawclock   ;
+; N/A                                     ; None                                                ; 28.587 ns  ; LEDCtrl:LEDP|IMGSel[0]                                                       ; LEDColumn[13] ; rawclock   ;
+; N/A                                     ; None                                                ; 28.571 ns  ; LEDCtrl:LEDP|LEDRefresh:LEDPoint|lcount[1]                                   ; LEDColumn[12] ; rawclock   ;
+; N/A                                     ; None                                                ; 28.535 ns  ; TimeCount:LEDTimeCount|DNum:D1|count[2]                                      ; LEDData[1]    ; rawclock   ;
+; N/A                                     ; None                                                ; 28.528 ns  ; LEDCtrl:LEDP|LEDRefresh:LEDPoint|lcount[0]                                   ; LEDColumn[0]  ; rawclock   ;
+; N/A                                     ; None                                                ; 28.518 ns  ; LEDCtrl:LEDP|LEDRefresh:LEDPoint|PWM:PWMGen|output                           ; LEDColumn[4]  ; rawclock   ;
+; N/A                                     ; None                                                ; 28.512 ns  ; TimeCount:LEDTimeCount|DNum:D0|count[1]                                      ; LEDData[7]    ; rawclock   ;
+; N/A                                     ; None                                                ; 28.512 ns  ; TimeCount:LEDTimeCount|DNum:D1|count[2]                                      ; LEDData[3]    ; rawclock   ;
+; N/A                                     ; None                                                ; 28.511 ns  ; LEDCtrl:LEDP|IMGSel[1]                                                       ; LEDColumn[13] ; rawclock   ;
+; N/A                                     ; None                                                ; 28.510 ns  ; LEDCtrl:LEDP|LEDRefresh:LEDPoint|lcount[1]                                   ; LEDColumn[2]  ; rawclock   ;
+; N/A                                     ; None                                                ; 28.505 ns  ; TimeCount:LEDTimeCount|DNum:D1|count[2]                                      ; LEDData[2]    ; rawclock   ;
+; N/A                                     ; None                                                ; 28.505 ns  ; TimeCount:LEDTimeCount|DNum:D1|count[2]                                      ; LEDData[0]    ; rawclock   ;
+; N/A                                     ; None                                                ; 28.479 ns  ; TimeCount:LEDTimeCount|UltrasonicRanging:UR|MeasureLevel:ML|DNum:D3|count[2] ; LEDData[6]    ; rawclock   ;
+; N/A                                     ; None                                                ; 28.460 ns  ; LEDCtrl:LEDP|LEDRefresh:LEDPoint|lcount[0]                                   ; LEDColumn[2]  ; rawclock   ;
+; N/A                                     ; None                                                ; 28.422 ns  ; LEDCtrl:LEDP|LEDRefresh:LEDPoint|lcount[0]                                   ; LEDColumn[9]  ; rawclock   ;
+; N/A                                     ; None                                                ; 28.417 ns  ; LEDCtrl:LEDP|LEDRefresh:LEDPoint|PWM:PWMGen|output                           ; LEDColumn[14] ; rawclock   ;
+; N/A                                     ; None                                                ; 28.412 ns  ; LEDCtrl:LEDP|IMGSel[2]                                                       ; LEDColumn[4]  ; rawclock   ;
+; N/A                                     ; None                                                ; 28.410 ns  ; TimeCount:LEDTimeCount|UltrasonicRanging:UR|MeasureLevel:ML|DNum:D3|count[2] ; LEDData[1]    ; rawclock   ;
+; N/A                                     ; None                                                ; 28.405 ns  ; LEDCtrl:LEDP|LEDRefresh:LEDPoint|lcount[0]                                   ; LEDColumn[12] ; rawclock   ;
+; N/A                                     ; None                                                ; 28.399 ns  ; LEDCtrl:LEDP|LEDRefresh:LEDPoint|PWM:PWMGen|output                           ; LEDColumn[10] ; rawclock   ;
+; N/A                                     ; None                                                ; 28.387 ns  ; TimeCount:LEDTimeCount|UltrasonicRanging:UR|MeasureLevel:ML|DNum:D3|count[2] ; LEDData[3]    ; rawclock   ;
+; N/A                                     ; None                                                ; 28.380 ns  ; TimeCount:LEDTimeCount|UltrasonicRanging:UR|MeasureLevel:ML|DNum:D3|count[2] ; LEDData[2]    ; rawclock   ;
+; N/A                                     ; None                                                ; 28.380 ns  ; TimeCount:LEDTimeCount|UltrasonicRanging:UR|MeasureLevel:ML|DNum:D3|count[2] ; LEDData[0]    ; rawclock   ;
+; N/A                                     ; None                                                ; 28.341 ns  ; TimeCount:LEDTimeCount|UltrasonicRanging:UR|MeasureLevel:ML|DNum:D3|count[0] ; LEDData[6]    ; rawclock   ;
+; N/A                                     ; None                                                ; 28.329 ns  ; LEDCtrl:LEDP|IMGSel[0]                                                       ; LEDColumn[3]  ; rawclock   ;
+; N/A                                     ; None                                                ; 28.327 ns  ; LEDCtrl:LEDP|LEDRefresh:LEDPoint|lcount[0]                                   ; LEDColumn[8]  ; rawclock   ;
+; N/A                                     ; None                                                ; 28.322 ns  ; LEDCtrl:LEDP|IMGSel[0]                                                       ; LEDColumn[2]  ; rawclock   ;
+; N/A                                     ; None                                                ; 28.298 ns  ; LEDCtrl:LEDP|LEDRefresh:LEDPoint|PWM:PWMGen|output                           ; LEDColumn[7]  ; rawclock   ;
+; N/A                                     ; None                                                ; 28.272 ns  ; TimeCount:LEDTimeCount|UltrasonicRanging:UR|MeasureLevel:ML|DNum:D3|count[0] ; LEDData[1]    ; rawclock   ;
+; N/A                                     ; None                                                ; 28.265 ns  ; LEDCtrl:LEDP|IMGSel[1]                                                       ; LEDColumn[5]  ; rawclock   ;
+; N/A                                     ; None                                                ; 28.265 ns  ; LEDCtrl:LEDP|LEDRefresh:LEDPoint|lcount[1]                                   ; LEDColumn[3]  ; rawclock   ;
+; N/A                                     ; None                                                ; 28.264 ns  ; LEDCtrl:LEDP|LEDRefresh:LEDPoint|lcount[2]                                   ; LEDColumn[5]  ; rawclock   ;
+; N/A                                     ; None                                                ; 28.259 ns  ; LEDCtrl:LEDP|LEDRefresh:LEDPoint|PWM:PWMGen|output                           ; LEDColumn[5]  ; rawclock   ;
+; N/A                                     ; None                                                ; 28.258 ns  ; LEDCtrl:LEDP|IMGSel[2]                                                       ; LEDColumn[6]  ; rawclock   ;
+; N/A                                     ; None                                                ; 28.255 ns  ; LEDCtrl:LEDP|LEDRefresh:LEDPoint|PWM:PWMGen|output                           ; LEDColumn[9]  ; rawclock   ;
+; N/A                                     ; None                                                ; 28.249 ns  ; TimeCount:LEDTimeCount|UltrasonicRanging:UR|MeasureLevel:ML|DNum:D3|count[0] ; LEDData[3]    ; rawclock   ;
+; N/A                                     ; None                                                ; 28.242 ns  ; TimeCount:LEDTimeCount|UltrasonicRanging:UR|MeasureLevel:ML|DNum:D3|count[0] ; LEDData[2]    ; rawclock   ;
+; N/A                                     ; None                                                ; 28.242 ns  ; TimeCount:LEDTimeCount|UltrasonicRanging:UR|MeasureLevel:ML|DNum:D3|count[0] ; LEDData[0]    ; rawclock   ;
+; N/A                                     ; None                                                ; 28.233 ns  ; LEDCtrl:LEDP|LEDRefresh:LEDPoint|lcount[0]                                   ; LEDColumn[13] ; rawclock   ;
+; N/A                                     ; None                                                ; 28.228 ns  ; LEDCtrl:LEDP|LEDRefresh:LEDPoint|lcount[0]                                   ; LEDColumn[7]  ; rawclock   ;
+; N/A                                     ; None                                                ; 28.208 ns  ; LEDCtrl:LEDP|LEDRefresh:LEDPoint|PWM:PWMGen|output                           ; LEDColumn[12] ; rawclock   ;
+; N/A                                     ; None                                                ; 28.187 ns  ; LEDCtrl:LEDP|IMGSel[2]                                                       ; LEDColumn[0]  ; rawclock   ;
+; N/A                                     ; None                                                ; 28.170 ns  ; LEDCtrl:LEDP|IMGSel[2]                                                       ; LEDColumn[7]  ; rawclock   ;
+; N/A                                     ; None                                                ; 28.144 ns  ; LEDCtrl:LEDP|LEDRefresh:LEDPoint|lcount[1]                                   ; LEDColumn[5]  ; rawclock   ;
+; N/A                                     ; None                                                ; 28.131 ns  ; LEDCtrl:LEDP|IMGSel[1]                                                       ; LEDColumn[3]  ; rawclock   ;
+; N/A                                     ; None                                                ; 28.094 ns  ; LEDCtrl:LEDP|LEDRefresh:LEDPoint|lcount[0]                                   ; LEDColumn[5]  ; rawclock   ;
+; N/A                                     ; None                                                ; 28.089 ns  ; TimeCount:LEDTimeCount|UltrasonicRanging:UR|MeasureLevel:ML|DNum:D3|count[3] ; LEDData[7]    ; Echo       ;
+; N/A                                     ; None                                                ; 28.077 ns  ; LEDCtrl:LEDP|LEDRefresh:LEDPoint|lcount[0]                                   ; LEDColumn[15] ; rawclock   ;
+; N/A                                     ; None                                                ; 28.057 ns  ; TimeCount:LEDTimeCount|DNum:D1|count[0]                                      ; LEDData[6]    ; rawclock   ;
+; N/A                                     ; None                                                ; 28.016 ns  ; LEDCtrl:LEDP|LEDRefresh:LEDPoint|PWM:PWMGen|output                           ; LEDColumn[13] ; rawclock   ;
+; N/A                                     ; None                                                ; 27.968 ns  ; TimeCount:LEDTimeCount|DNum:D1|count[0]                                      ; LEDData[1]    ; rawclock   ;
+; N/A                                     ; None                                                ; 27.967 ns  ; TimeCount:LEDTimeCount|DNum:D1|count[0]                                      ; LEDData[2]    ; rawclock   ;
+; N/A                                     ; None                                                ; 27.957 ns  ; LEDCtrl:LEDP|LEDRefresh:LEDPoint|PWM:PWMGen|output                           ; LEDColumn[15] ; rawclock   ;
+; N/A                                     ; None                                                ; 27.956 ns  ; LEDCtrl:LEDP|IMGSel[0]                                                       ; LEDColumn[5]  ; rawclock   ;
+; N/A                                     ; None                                                ; 27.955 ns  ; TimeCount:LEDTimeCount|UltrasonicRanging:UR|MeasureLevel:ML|DNum:D2|count[3] ; LEDData[7]    ; rawclock   ;
+; N/A                                     ; None                                                ; 27.954 ns  ; TimeCount:LEDTimeCount|DNum:D1|count[0]                                      ; LEDData[0]    ; rawclock   ;
+; N/A                                     ; None                                                ; 27.946 ns  ; TimeCount:LEDTimeCount|UltrasonicRanging:UR|MeasureLevel:ML|DNum:D3|count[3] ; LEDData[5]    ; rawclock   ;
+; N/A                                     ; None                                                ; 27.944 ns  ; LEDCtrl:LEDP|LEDRefresh:LEDPoint|lcount[0]                                   ; LEDColumn[3]  ; rawclock   ;
+; N/A                                     ; None                                                ; 27.943 ns  ; TimeCount:LEDTimeCount|UltrasonicRanging:UR|MeasureLevel:ML|DNum:D3|count[3] ; LEDData[4]    ; rawclock   ;
+; N/A                                     ; None                                                ; 27.940 ns  ; TimeCount:LEDTimeCount|DNum:D1|count[0]                                      ; LEDData[3]    ; rawclock   ;
+; N/A                                     ; None                                                ; 27.908 ns  ; LEDCtrl:LEDP|LEDRefresh:LEDPoint|PWM:PWMGen|output                           ; LEDColumn[0]  ; rawclock   ;
+; N/A                                     ; None                                                ; 27.892 ns  ; TimeCount:LEDTimeCount|count[1]                                              ; LEDData[7]    ; rawclock   ;
+; N/A                                     ; None                                                ; 27.892 ns  ; TimeCount:LEDTimeCount|DNum:D0|count[0]                                      ; LEDData[7]    ; rawclock   ;
+; N/A                                     ; None                                                ; 27.880 ns  ; UREnable                                                                     ; LEDData[7]    ; rawclock   ;
+; N/A                                     ; None                                                ; 27.871 ns  ; TimeCount:LEDTimeCount|UltrasonicRanging:UR|MeasureLevel:ML|DNum:D2|count[1] ; LEDData[7]    ; rawclock   ;
+; N/A                                     ; None                                                ; 27.805 ns  ; TimeCount:LEDTimeCount|UltrasonicRanging:UR|MeasureLevel:ML|DNum:D3|count[1] ; LEDData[6]    ; rawclock   ;
+; N/A                                     ; None                                                ; 27.792 ns  ; LEDCtrl:LEDP|LEDRefresh:LEDPoint|PWM:PWMGen|output                           ; LEDColumn[11] ; rawclock   ;
+; N/A                                     ; None                                                ; 27.740 ns  ; LEDCtrl:LEDP|LEDRefresh:LEDPoint|RollGate:GreenLEDP|RollCount[0]             ; LEDColumn[1]  ; rawclock   ;
+; N/A                                     ; None                                                ; 27.736 ns  ; TimeCount:LEDTimeCount|UltrasonicRanging:UR|MeasureLevel:ML|DNum:D3|count[1] ; LEDData[1]    ; rawclock   ;
+; N/A                                     ; None                                                ; 27.713 ns  ; TimeCount:LEDTimeCount|UltrasonicRanging:UR|MeasureLevel:ML|DNum:D3|count[1] ; LEDData[3]    ; rawclock   ;
+; N/A                                     ; None                                                ; 27.706 ns  ; TimeCount:LEDTimeCount|UltrasonicRanging:UR|MeasureLevel:ML|DNum:D3|count[1] ; LEDData[2]    ; rawclock   ;
+; N/A                                     ; None                                                ; 27.706 ns  ; TimeCount:LEDTimeCount|UltrasonicRanging:UR|MeasureLevel:ML|DNum:D3|count[1] ; LEDData[0]    ; rawclock   ;
+; N/A                                     ; None                                                ; 27.684 ns  ; LEDCtrl:LEDP|LEDRefresh:LEDPoint|PWM:PWMGen|output                           ; LEDColumn[3]  ; rawclock   ;
+; N/A                                     ; None                                                ; 27.603 ns  ; LEDCtrl:LEDP|IMGSel[2]                                                       ; LEDColumn[2]  ; rawclock   ;
+; N/A                                     ; None                                                ; 27.601 ns  ; LEDCtrl:LEDP|IMGSel[2]                                                       ; LEDColumn[3]  ; rawclock   ;
+; N/A                                     ; None                                                ; 27.429 ns  ; TimeCount:LEDTimeCount|UltrasonicRanging:UR|MeasureLevel:ML|DNum:D3|count[2] ; LEDData[7]    ; Echo       ;
+; N/A                                     ; None                                                ; 27.411 ns  ; TimeCount:LEDTimeCount|DNum:D1|count[2]                                      ; LEDData[5]    ; rawclock   ;
+; N/A                                     ; None                                                ; 27.408 ns  ; TimeCount:LEDTimeCount|DNum:D1|count[2]                                      ; LEDData[4]    ; rawclock   ;
+; N/A                                     ; None                                                ; 27.357 ns  ; TimeCount:LEDTimeCount|DNum:D0|count[3]                                      ; LEDData[6]    ; rawclock   ;
+; N/A                                     ; None                                                ; 27.322 ns  ; TimeCount:LEDTimeCount|count[0]                                              ; LEDData[7]    ; rawclock   ;
+; N/A                                     ; None                                                ; 27.291 ns  ; TimeCount:LEDTimeCount|UltrasonicRanging:UR|MeasureLevel:ML|DNum:D3|count[0] ; LEDData[7]    ; Echo       ;
+; N/A                                     ; None                                                ; 27.289 ns  ; TimeCount:LEDTimeCount|DNum:D0|count[3]                                      ; LEDData[1]    ; rawclock   ;
+; N/A                                     ; None                                                ; 27.286 ns  ; TimeCount:LEDTimeCount|UltrasonicRanging:UR|MeasureLevel:ML|DNum:D3|count[2] ; LEDData[5]    ; rawclock   ;
+; N/A                                     ; None                                                ; 27.283 ns  ; TimeCount:LEDTimeCount|UltrasonicRanging:UR|MeasureLevel:ML|DNum:D3|count[2] ; LEDData[4]    ; rawclock   ;
+; N/A                                     ; None                                                ; 27.265 ns  ; TimeCount:LEDTimeCount|DNum:D0|count[3]                                      ; LEDData[3]    ; rawclock   ;
+; N/A                                     ; None                                                ; 27.262 ns  ; TimeCount:LEDTimeCount|DNum:D0|count[3]                                      ; LEDData[2]    ; rawclock   ;
+; N/A                                     ; None                                                ; 27.258 ns  ; TimeCount:LEDTimeCount|DNum:D0|count[3]                                      ; LEDData[0]    ; rawclock   ;
+; N/A                                     ; None                                                ; 27.237 ns  ; LEDCtrl:LEDP|IMGSel[2]                                                       ; LEDColumn[5]  ; rawclock   ;
+; N/A                                     ; None                                                ; 27.200 ns  ; LEDCtrl:LEDP|LEDRefresh:LEDPoint|RollGate:GreenLEDP|RollCount[0]             ; LEDColumn[15] ; rawclock   ;
+; N/A                                     ; None                                                ; 27.190 ns  ; LEDCtrl:LEDP|LEDRefresh:LEDPoint|RollGate:GreenLEDP|RollCount[0]             ; LEDColumn[11] ; rawclock   ;
+; N/A                                     ; None                                                ; 27.148 ns  ; TimeCount:LEDTimeCount|UltrasonicRanging:UR|MeasureLevel:ML|DNum:D3|count[0] ; LEDData[5]    ; rawclock   ;
+; N/A                                     ; None                                                ; 27.145 ns  ; TimeCount:LEDTimeCount|UltrasonicRanging:UR|MeasureLevel:ML|DNum:D3|count[0] ; LEDData[4]    ; rawclock   ;
+; N/A                                     ; None                                                ; 27.100 ns  ; LEDCtrl:LEDP|LEDRefresh:LEDPoint|RollGate:GreenLEDP|RollCount[0]             ; LEDColumn[10] ; rawclock   ;
+; N/A                                     ; None                                                ; 27.086 ns  ; TimeCount:LEDTimeCount|count[2]                                              ; LEDData[7]    ; rawclock   ;
+; N/A                                     ; None                                                ; 27.067 ns  ; LEDCtrl:LEDP|LEDRefresh:LEDPoint|RollGate:GreenLEDP|RollCount[0]             ; LEDColumn[4]  ; rawclock   ;
+; N/A                                     ; None                                                ; 27.060 ns  ; TimeCount:LEDTimeCount|DNum:D1|count[3]                                      ; LEDData[6]    ; rawclock   ;
+; N/A                                     ; None                                                ; 27.016 ns  ; LEDCtrl:LEDP|LEDRefresh:LEDPoint|RollGate:GreenLEDP|RollCount[0]             ; LEDColumn[8]  ; rawclock   ;
+; N/A                                     ; None                                                ; 26.992 ns  ; TimeCount:LEDTimeCount|DNum:D1|count[3]                                      ; LEDData[1]    ; rawclock   ;
+; N/A                                     ; None                                                ; 26.970 ns  ; LEDCtrl:LEDP|LEDRefresh:LEDPoint|RollGate:GreenLEDP|RollCount[0]             ; LEDColumn[14] ; rawclock   ;
+; N/A                                     ; None                                                ; 26.968 ns  ; TimeCount:LEDTimeCount|DNum:D1|count[3]                                      ; LEDData[3]    ; rawclock   ;
+; N/A                                     ; None                                                ; 26.965 ns  ; TimeCount:LEDTimeCount|DNum:D1|count[3]                                      ; LEDData[2]    ; rawclock   ;
+; N/A                                     ; None                                                ; 26.961 ns  ; TimeCount:LEDTimeCount|DNum:D1|count[3]                                      ; LEDData[0]    ; rawclock   ;
+; N/A                                     ; None                                                ; 26.960 ns  ; LEDCtrl:LEDP|LEDRefresh:LEDPoint|RollGate:GreenLEDP|RollCount[0]             ; LEDColumn[9]  ; rawclock   ;
+; N/A                                     ; None                                                ; 26.873 ns  ; TimeCount:LEDTimeCount|DNum:D1|count[0]                                      ; LEDData[5]    ; rawclock   ;
+; N/A                                     ; None                                                ; 26.866 ns  ; TimeCount:LEDTimeCount|DNum:D1|count[0]                                      ; LEDData[4]    ; rawclock   ;
+; N/A                                     ; None                                                ; 26.842 ns  ; LEDCtrl:LEDP|LEDRefresh:LEDPoint|RollGate:GreenLEDP|RollCount[0]             ; LEDColumn[0]  ; rawclock   ;
+; N/A                                     ; None                                                ; 26.788 ns  ; LEDCtrl:LEDP|LEDRefresh:LEDPoint|RollGate:GreenLEDP|RollCount[0]             ; LEDColumn[6]  ; rawclock   ;
+; N/A                                     ; None                                                ; 26.755 ns  ; TimeCount:LEDTimeCount|UltrasonicRanging:UR|MeasureLevel:ML|DNum:D3|count[1] ; LEDData[7]    ; Echo       ;
+; N/A                                     ; None                                                ; 26.736 ns  ; TimeCount:LEDTimeCount|UltrasonicRanging:UR|MeasureLevel:ML|DNum:D3|count[3] ; LEDData[6]    ; Echo       ;
+; N/A                                     ; None                                                ; 26.667 ns  ; TimeCount:LEDTimeCount|UltrasonicRanging:UR|MeasureLevel:ML|DNum:D3|count[3] ; LEDData[1]    ; Echo       ;
+; N/A                                     ; None                                                ; 26.644 ns  ; TimeCount:LEDTimeCount|UltrasonicRanging:UR|MeasureLevel:ML|DNum:D3|count[3] ; LEDData[3]    ; Echo       ;
+; N/A                                     ; None                                                ; 26.637 ns  ; TimeCount:LEDTimeCount|UltrasonicRanging:UR|MeasureLevel:ML|DNum:D3|count[3] ; LEDData[2]    ; Echo       ;
+; N/A                                     ; None                                                ; 26.637 ns  ; TimeCount:LEDTimeCount|UltrasonicRanging:UR|MeasureLevel:ML|DNum:D3|count[3] ; LEDData[0]    ; Echo       ;
+; N/A                                     ; None                                                ; 26.620 ns  ; TimeCount:LEDTimeCount|count[1]                                              ; LEDData[6]    ; rawclock   ;
+; N/A                                     ; None                                                ; 26.620 ns  ; TimeCount:LEDTimeCount|DNum:D0|count[0]                                      ; LEDData[6]    ; rawclock   ;
+; Timing analysis restricted to 200 rows. ; To change the limit use Settings (Assignments menu) ;            ;                                                                              ;               ;            ;
++-----------------------------------------+-----------------------------------------------------+------------+------------------------------------------------------------------------------+---------------+------------+
+
+
++---------------------------------------------------------------------+
+; tpd                                                                 ;
++-------+-------------------+-----------------+-------+---------------+
+; Slack ; Required P2P Time ; Actual P2P Time ; From  ; To            ;
++-------+-------------------+-----------------+-------+---------------+
+; N/A   ; None              ; 15.356 ns       ; Night ; LEDColumn[1]  ;
+; N/A   ; None              ; 14.918 ns       ; Night ; LEDColumn[7]  ;
+; N/A   ; None              ; 14.873 ns       ; Night ; LEDColumn[9]  ;
+; N/A   ; None              ; 14.860 ns       ; Night ; LEDColumn[15] ;
+; N/A   ; None              ; 14.748 ns       ; Night ; LEDColumn[8]  ;
+; N/A   ; None              ; 14.716 ns       ; Night ; LEDColumn[12] ;
+; N/A   ; None              ; 14.698 ns       ; Night ; LEDColumn[11] ;
+; N/A   ; None              ; 14.420 ns       ; Night ; LEDColumn[5]  ;
+; N/A   ; None              ; 14.390 ns       ; Night ; LEDColumn[6]  ;
+; N/A   ; None              ; 14.319 ns       ; Night ; LEDColumn[10] ;
+; N/A   ; None              ; 14.301 ns       ; Night ; LEDColumn[13] ;
+; N/A   ; None              ; 14.281 ns       ; Night ; LEDColumn[3]  ;
+; N/A   ; None              ; 14.262 ns       ; Night ; LEDColumn[2]  ;
+; N/A   ; None              ; 14.155 ns       ; Night ; LEDColumn[4]  ;
+; N/A   ; None              ; 14.054 ns       ; Night ; LEDColumn[14] ;
+; N/A   ; None              ; 13.634 ns       ; Night ; LEDColumn[0]  ;
+; N/A   ; None              ; 13.281 ns       ; Night ; LEDLineSel[3] ;
+; N/A   ; None              ; 13.272 ns       ; Night ; LEDLineSel[4] ;
+; N/A   ; None              ; 13.225 ns       ; Night ; LEDLineSel[0] ;
+; N/A   ; None              ; 13.079 ns       ; Night ; LEDLineSel[7] ;
+; N/A   ; None              ; 13.071 ns       ; Night ; LEDLineSel[5] ;
+; N/A   ; None              ; 13.033 ns       ; Night ; LEDLineSel[1] ;
+; N/A   ; None              ; 10.131 ns       ; Night ; LEDLineSel[2] ;
+; N/A   ; None              ; 9.477 ns        ; Night ; LEDLineSel[6] ;
++-------+-------------------+-----------------+-------+---------------+
+
+
++-------------------------------------------------------------------------------------------------------------+
+; th                                                                                                          ;
++---------------+-------------+-----------+-----------+--------------------------------------------+----------+
+; Minimum Slack ; Required th ; Actual th ; From      ; To                                         ; To Clock ;
++---------------+-------------+-----------+-----------+--------------------------------------------+----------+
+; N/A           ; None        ; 6.749 ns  ; Night     ; LEDCtrl:LEDP|LEDRefresh:LEDPoint|lcount[0] ; rawclock ;
+; N/A           ; None        ; 6.442 ns  ; Night     ; LEDCtrl:LEDP|LEDRefresh:LEDPoint|lcount[1] ; rawclock ;
+; N/A           ; None        ; 5.463 ns  ; Stop      ; EliminationBuffeting:ToStopEB|Output~reg0  ; rawclock ;
+; N/A           ; None        ; 5.039 ns  ; TurnRight ; EliminationBuffeting:ToRightEB|Output~reg0 ; rawclock ;
+; N/A           ; None        ; 4.161 ns  ; TurnLeft  ; EliminationBuffeting:ToLeftEB|Output~reg0  ; rawclock ;
+; N/A           ; None        ; 3.285 ns  ; Night     ; LEDCtrl:LEDP|LEDRefresh:LEDPoint|lcount[2] ; rawclock ;
+; N/A           ; None        ; 3.088 ns  ; TurnRight ; EliminationBuffeting:ToRightEB|Timeing[0]  ; rawclock ;
+; N/A           ; None        ; 3.088 ns  ; TurnRight ; EliminationBuffeting:ToRightEB|Timeing[6]  ; rawclock ;
+; N/A           ; None        ; 3.088 ns  ; TurnRight ; EliminationBuffeting:ToRightEB|Timeing[4]  ; rawclock ;
+; N/A           ; None        ; 3.088 ns  ; TurnRight ; EliminationBuffeting:ToRightEB|Timeing[5]  ; rawclock ;
+; N/A           ; None        ; 3.088 ns  ; TurnRight ; EliminationBuffeting:ToRightEB|Timeing[1]  ; rawclock ;
+; N/A           ; None        ; 3.088 ns  ; TurnRight ; EliminationBuffeting:ToRightEB|Timeing[2]  ; rawclock ;
+; N/A           ; None        ; 3.088 ns  ; TurnRight ; EliminationBuffeting:ToRightEB|Timeing[3]  ; rawclock ;
+; N/A           ; None        ; 1.574 ns  ; TurnLeft  ; EliminationBuffeting:ToLeftEB|Timeing[0]   ; rawclock ;
+; N/A           ; None        ; 1.574 ns  ; TurnLeft  ; EliminationBuffeting:ToLeftEB|Timeing[6]   ; rawclock ;
+; N/A           ; None        ; 1.574 ns  ; TurnLeft  ; EliminationBuffeting:ToLeftEB|Timeing[4]   ; rawclock ;
+; N/A           ; None        ; 1.574 ns  ; TurnLeft  ; EliminationBuffeting:ToLeftEB|Timeing[5]   ; rawclock ;
+; N/A           ; None        ; 1.574 ns  ; TurnLeft  ; EliminationBuffeting:ToLeftEB|Timeing[1]   ; rawclock ;
+; N/A           ; None        ; 1.574 ns  ; TurnLeft  ; EliminationBuffeting:ToLeftEB|Timeing[2]   ; rawclock ;
+; N/A           ; None        ; 1.574 ns  ; TurnLeft  ; EliminationBuffeting:ToLeftEB|Timeing[3]   ; rawclock ;
+; N/A           ; None        ; 1.478 ns  ; Stop      ; EliminationBuffeting:ToStopEB|Timeing[0]   ; rawclock ;
+; N/A           ; None        ; 1.478 ns  ; Stop      ; EliminationBuffeting:ToStopEB|Timeing[5]   ; rawclock ;
+; N/A           ; None        ; 1.478 ns  ; Stop      ; EliminationBuffeting:ToStopEB|Timeing[6]   ; rawclock ;
+; N/A           ; None        ; 1.478 ns  ; Stop      ; EliminationBuffeting:ToStopEB|Timeing[4]   ; rawclock ;
+; N/A           ; None        ; 1.478 ns  ; Stop      ; EliminationBuffeting:ToStopEB|Timeing[1]   ; rawclock ;
+; N/A           ; None        ; 1.478 ns  ; Stop      ; EliminationBuffeting:ToStopEB|Timeing[2]   ; rawclock ;
+; N/A           ; None        ; 1.478 ns  ; Stop      ; EliminationBuffeting:ToStopEB|Timeing[3]   ; rawclock ;
+; N/A           ; None        ; -1.375 ns ; userreset ; EliminationBuffeting:ToResetEB|Output~reg0 ; rawclock ;
+; N/A           ; None        ; -2.810 ns ; userreset ; EliminationBuffeting:ToResetEB|Timeing[20] ; rawclock ;
+; N/A           ; None        ; -2.810 ns ; userreset ; EliminationBuffeting:ToResetEB|Timeing[15] ; rawclock ;
+; N/A           ; None        ; -2.810 ns ; userreset ; EliminationBuffeting:ToResetEB|Timeing[17] ; rawclock ;
+; N/A           ; None        ; -2.810 ns ; userreset ; EliminationBuffeting:ToResetEB|Timeing[16] ; rawclock ;
+; N/A           ; None        ; -2.810 ns ; userreset ; EliminationBuffeting:ToResetEB|Timeing[18] ; rawclock ;
+; N/A           ; None        ; -2.810 ns ; userreset ; EliminationBuffeting:ToResetEB|Timeing[19] ; rawclock ;
+; N/A           ; None        ; -3.195 ns ; userreset ; EliminationBuffeting:ToResetEB|Timeing[6]  ; rawclock ;
+; N/A           ; None        ; -3.195 ns ; userreset ; EliminationBuffeting:ToResetEB|Timeing[5]  ; rawclock ;
+; N/A           ; None        ; -3.195 ns ; userreset ; EliminationBuffeting:ToResetEB|Timeing[7]  ; rawclock ;
+; N/A           ; None        ; -3.195 ns ; userreset ; EliminationBuffeting:ToResetEB|Timeing[8]  ; rawclock ;
+; N/A           ; None        ; -3.195 ns ; userreset ; EliminationBuffeting:ToResetEB|Timeing[9]  ; rawclock ;
+; N/A           ; None        ; -3.195 ns ; userreset ; EliminationBuffeting:ToResetEB|Timeing[10] ; rawclock ;
+; N/A           ; None        ; -3.195 ns ; userreset ; EliminationBuffeting:ToResetEB|Timeing[11] ; rawclock ;
+; N/A           ; None        ; -3.195 ns ; userreset ; EliminationBuffeting:ToResetEB|Timeing[13] ; rawclock ;
+; N/A           ; None        ; -3.195 ns ; userreset ; EliminationBuffeting:ToResetEB|Timeing[12] ; rawclock ;
+; N/A           ; None        ; -3.195 ns ; userreset ; EliminationBuffeting:ToResetEB|Timeing[14] ; rawclock ;
+; N/A           ; None        ; -3.807 ns ; userreset ; EliminationBuffeting:ToResetEB|Timeing[0]  ; rawclock ;
+; N/A           ; None        ; -3.807 ns ; userreset ; EliminationBuffeting:ToResetEB|Timeing[1]  ; rawclock ;
+; N/A           ; None        ; -3.807 ns ; userreset ; EliminationBuffeting:ToResetEB|Timeing[2]  ; rawclock ;
+; N/A           ; None        ; -3.807 ns ; userreset ; EliminationBuffeting:ToResetEB|Timeing[3]  ; rawclock ;
+; N/A           ; None        ; -3.807 ns ; userreset ; EliminationBuffeting:ToResetEB|Timeing[4]  ; rawclock ;
++---------------+-------------+-----------+-----------+--------------------------------------------+----------+
+
+
++--------------------------+
+; Timing Analyzer Messages ;
++--------------------------+
+Info: *******************************************************************
+Info: Running Quartus II Classic Timing Analyzer
+    Info: Version 9.0 Build 235 06/17/2009 Service Pack 2 SJ Web Edition
+    Info: Processing started: Tue Nov 14 10:29:11 2017
+Info: Command: quartus_tan --read_settings_files=off --write_settings_files=off Core -c Core
+Info: Started post-fitting delay annotation
+Info: Delay annotation completed successfully
+Warning: Timing Analysis is analyzing one or more combinational loops as latches
+    Warning: Node "TimeCount:LEDTimeCount|UltrasonicRanging:UR|MeasureLevel:ML|EdgeToLevel:ToUpLevel|Output$latch" is a latch
+    Warning: Node "TimeCount:LEDTimeCount|UltrasonicRanging:UR|MeasureLevel:ML|EdgeToLevel:ToUpLevel|So" is a latch
+    Warning: Node "EdgeToLevel:ToStopLevel|Output$latch" is a latch
+    Warning: Node "EdgeToLevel:ToLeftLevel|Output$latch" is a latch
+    Warning: Node "EdgeToLevel:ToRightLevel|Output$latch" is a latch
+    Warning: Node "EdgeToLevel:ToStopLevel|So" is a latch
+    Warning: Node "EdgeToLevel:ToLeftLevel|So" is a latch
+    Warning: Node "EdgeToLevel:ToRightLevel|So" is a latch
+    Warning: Node "TimeCount:LEDTimeCount|UltrasonicRanging:UR|MeasureLevel:ML|EdgeToLevel:ToUpLevel|St" is a latch
+    Warning: Node "EdgeToLevel:ToStopLevel|St" is a latch
+    Warning: Node "EdgeToLevel:ToLeftLevel|St" is a latch
+    Warning: Node "EdgeToLevel:ToRightLevel|St" is a latch
+Warning: Found pins functioning as undefined clocks and/or memory enables
+    Info: Assuming node "rawclock" is an undefined clock
+    Info: Assuming node "Echo" is an undefined clock
+Warning: Found 20 node(s) in clock paths which may be acting as ripple and/or gated clocks -- node(s) analyzed as buffer(s) resulting in clock skew
+    Info: Detected ripple clock "EliminationBuffeting:ToRightEB|Output~reg0" as buffer
+    Info: Detected ripple clock "EliminationBuffeting:ToLeftEB|Output~reg0" as buffer
+    Info: Detected ripple clock "EliminationBuffeting:ToStopEB|Output~reg0" as buffer
+    Info: Detected ripple clock "ClockDiv:C4|output~reg0" as buffer
+    Info: Detected ripple clock "ClockDiv:C100K|output~reg0" as buffer
+    Info: Detected ripple clock "ClockDiv:C170|output~reg0" as buffer
+    Info: Detected ripple clock "LEDCtrl:LEDP|RsvCount" as buffer
+    Info: Detected ripple clock "ClockDiv:C1M|output~reg0" as buffer
+    Info: Detected ripple clock "ClockDiv:C8|output~reg0" as buffer
+    Info: Detected ripple clock "ClockDiv:C1|output~reg0" as buffer
+    Info: Detected ripple clock "TimeCount:LEDTimeCount|DNum:D0|c1" as buffer
+    Info: Detected ripple clock "ClockDiv:C17K|output~reg0" as buffer
+    Info: Detected gated clock "TimeCount:LEDTimeCount|UltrasonicRanging:UR|MeasureLevel:ML|DNumclock" as buffer
+    Info: Detected ripple clock "TimeCount:LEDTimeCount|UltrasonicRanging:UR|MeasureLevel:ML|DNum:D0|c1" as buffer
+    Info: Detected ripple clock "TimeCount:LEDTimeCount|UltrasonicRanging:UR|MeasureLevel:ML|DNum:D1|c1" as buffer
+    Info: Detected ripple clock "TimeCount:LEDTimeCount|UltrasonicRanging:UR|MeasureLevel:ML|DNum:D2|c1" as buffer
+    Info: Detected ripple clock "ClockDiv:C1K|output~reg0" as buffer
+    Info: Detected ripple clock "EliminationBuffeting:ToResetEB|Output~reg0" as buffer
+    Info: Detected ripple clock "OnOff" as buffer
+    Info: Detected ripple clock "ClockDiv:C500|output~reg0" as buffer
+Info: Clock "rawclock" has Internal fmax of 53.76 MHz between source register "OnOff" and destination register "ClockDiv:C1K|output~reg0" (period= 18.602 ns)
+    Info: + Longest register to register delay is 4.742 ns
+        Info: 1: + IC(0.000 ns) + CELL(0.000 ns) = 0.000 ns; Loc. = LC_X9_Y5_N1; Fanout = 167; REG Node = 'OnOff'
+        Info: 2: + IC(2.834 ns) + CELL(1.908 ns) = 4.742 ns; Loc. = LC_X11_Y6_N7; Fanout = 10; REG Node = 'ClockDiv:C1K|output~reg0'
+        Info: Total cell delay = 1.908 ns ( 40.24 % )
+        Info: Total interconnect delay = 2.834 ns ( 59.76 % )
+    Info: - Smallest clock skew is -3.850 ns
+        Info: + Shortest clock path from clock "rawclock" to destination register is 3.819 ns
+            Info: 1: + IC(0.000 ns) + CELL(1.163 ns) = 1.163 ns; Loc. = PIN_18; Fanout = 74; CLK Node = 'rawclock'
+            Info: 2: + IC(1.738 ns) + CELL(0.918 ns) = 3.819 ns; Loc. = LC_X11_Y6_N7; Fanout = 10; REG Node = 'ClockDiv:C1K|output~reg0'
+            Info: Total cell delay = 2.081 ns ( 54.49 % )
+            Info: Total interconnect delay = 1.738 ns ( 45.51 % )
+        Info: - Longest clock path from clock "rawclock" to source register is 7.669 ns
+            Info: 1: + IC(0.000 ns) + CELL(1.163 ns) = 1.163 ns; Loc. = PIN_18; Fanout = 74; CLK Node = 'rawclock'
+            Info: 2: + IC(1.738 ns) + CELL(1.294 ns) = 4.195 ns; Loc. = LC_X13_Y4_N8; Fanout = 3; REG Node = 'EliminationBuffeting:ToResetEB|Output~reg0'
+            Info: 3: + IC(2.556 ns) + CELL(0.918 ns) = 7.669 ns; Loc. = LC_X9_Y5_N1; Fanout = 167; REG Node = 'OnOff'
+            Info: Total cell delay = 3.375 ns ( 44.01 % )
+            Info: Total interconnect delay = 4.294 ns ( 55.99 % )
+    Info: + Micro clock to output delay of source is 0.376 ns
+    Info: + Micro setup delay of destination is 0.333 ns
+    Info: Delay path is controlled by inverted clocks -- if clock duty cycle is 50%, fmax is divided by two
+Info: Clock "Echo" Internal fmax is restricted to 304.04 MHz between source register "TimeCount:LEDTimeCount|UltrasonicRanging:UR|MeasureLevel:ML|DNum:D2|count[1]" and destination register "TimeCount:LEDTimeCount|UltrasonicRanging:UR|MeasureLevel:ML|DNum:D2|c1"
+    Info: fmax restricted to clock pin edge rate 3.289 ns. Expand message to see actual delay path.
+        Info: + Longest register to register delay is 2.527 ns
+            Info: 1: + IC(0.000 ns) + CELL(0.000 ns) = 0.000 ns; Loc. = LC_X14_Y4_N5; Fanout = 5; REG Node = 'TimeCount:LEDTimeCount|UltrasonicRanging:UR|MeasureLevel:ML|DNum:D2|count[1]'
+            Info: 2: + IC(1.344 ns) + CELL(1.183 ns) = 2.527 ns; Loc. = LC_X14_Y4_N8; Fanout = 4; REG Node = 'TimeCount:LEDTimeCount|UltrasonicRanging:UR|MeasureLevel:ML|DNum:D2|c1'
+            Info: Total cell delay = 1.183 ns ( 46.81 % )
+            Info: Total interconnect delay = 1.344 ns ( 53.19 % )
+        Info: - Smallest clock skew is 0.000 ns
+            Info: + Shortest clock path from clock "Echo" to destination register is 11.355 ns
+                Info: 1: + IC(0.000 ns) + CELL(1.163 ns) = 1.163 ns; Loc. = PIN_89; Fanout = 2; CLK Node = 'Echo'
+                Info: 2: + IC(2.516 ns) + CELL(0.914 ns) = 4.593 ns; Loc. = LC_X15_Y4_N7; Fanout = 5; COMB Node = 'TimeCount:LEDTimeCount|UltrasonicRanging:UR|MeasureLevel:ML|DNumclock'
+                Info: 3: + IC(1.088 ns) + CELL(1.294 ns) = 6.975 ns; Loc. = LC_X15_Y4_N0; Fanout = 5; REG Node = 'TimeCount:LEDTimeCount|UltrasonicRanging:UR|MeasureLevel:ML|DNum:D0|c1'
+                Info: 4: + IC(1.284 ns) + CELL(1.294 ns) = 9.553 ns; Loc. = LC_X14_Y4_N4; Fanout = 5; REG Node = 'TimeCount:LEDTimeCount|UltrasonicRanging:UR|MeasureLevel:ML|DNum:D1|c1'
+                Info: 5: + IC(0.884 ns) + CELL(0.918 ns) = 11.355 ns; Loc. = LC_X14_Y4_N8; Fanout = 4; REG Node = 'TimeCount:LEDTimeCount|UltrasonicRanging:UR|MeasureLevel:ML|DNum:D2|c1'
+                Info: Total cell delay = 5.583 ns ( 49.17 % )
+                Info: Total interconnect delay = 5.772 ns ( 50.83 % )
+            Info: - Longest clock path from clock "Echo" to source register is 11.355 ns
+                Info: 1: + IC(0.000 ns) + CELL(1.163 ns) = 1.163 ns; Loc. = PIN_89; Fanout = 2; CLK Node = 'Echo'
+                Info: 2: + IC(2.516 ns) + CELL(0.914 ns) = 4.593 ns; Loc. = LC_X15_Y4_N7; Fanout = 5; COMB Node = 'TimeCount:LEDTimeCount|UltrasonicRanging:UR|MeasureLevel:ML|DNumclock'
+                Info: 3: + IC(1.088 ns) + CELL(1.294 ns) = 6.975 ns; Loc. = LC_X15_Y4_N0; Fanout = 5; REG Node = 'TimeCount:LEDTimeCount|UltrasonicRanging:UR|MeasureLevel:ML|DNum:D0|c1'
+                Info: 4: + IC(1.284 ns) + CELL(1.294 ns) = 9.553 ns; Loc. = LC_X14_Y4_N4; Fanout = 5; REG Node = 'TimeCount:LEDTimeCount|UltrasonicRanging:UR|MeasureLevel:ML|DNum:D1|c1'
+                Info: 5: + IC(0.884 ns) + CELL(0.918 ns) = 11.355 ns; Loc. = LC_X14_Y4_N5; Fanout = 5; REG Node = 'TimeCount:LEDTimeCount|UltrasonicRanging:UR|MeasureLevel:ML|DNum:D2|count[1]'
+                Info: Total cell delay = 5.583 ns ( 49.17 % )
+                Info: Total interconnect delay = 5.772 ns ( 50.83 % )
+        Info: + Micro clock to output delay of source is 0.376 ns
+        Info: + Micro setup delay of destination is 0.333 ns
+Warning: Circuit may not operate. Detected 16 non-operational path(s) clocked by clock "rawclock" with clock skew larger than data delay. See Compilation Report for details.
+Info: Found hold time violation between source  pin or register "LEDCtrl:LEDP|BreathCount[7]" and destination pin or register "LEDCtrl:LEDP|LEDRefresh:LEDPoint|PWM:PWMGen|output" for clock "rawclock" (Hold time is 4.116 ns)
+    Info: + Largest clock skew is 7.340 ns
+        Info: + Longest clock path from clock "rawclock" to destination register is 14.945 ns
+            Info: 1: + IC(0.000 ns) + CELL(1.163 ns) = 1.163 ns; Loc. = PIN_18; Fanout = 74; CLK Node = 'rawclock'
+            Info: 2: + IC(1.738 ns) + CELL(1.294 ns) = 4.195 ns; Loc. = LC_X10_Y9_N2; Fanout = 15; REG Node = 'ClockDiv:C1M|output~reg0'
+            Info: 3: + IC(9.832 ns) + CELL(0.918 ns) = 14.945 ns; Loc. = LC_X11_Y7_N9; Fanout = 1; REG Node = 'LEDCtrl:LEDP|LEDRefresh:LEDPoint|PWM:PWMGen|output'
+            Info: Total cell delay = 3.375 ns ( 22.58 % )
+            Info: Total interconnect delay = 11.570 ns ( 77.42 % )
+        Info: - Shortest clock path from clock "rawclock" to source register is 7.605 ns
+            Info: 1: + IC(0.000 ns) + CELL(1.163 ns) = 1.163 ns; Loc. = PIN_18; Fanout = 74; CLK Node = 'rawclock'
+            Info: 2: + IC(1.738 ns) + CELL(1.294 ns) = 4.195 ns; Loc. = LC_X4_Y7_N0; Fanout = 12; REG Node = 'ClockDiv:C170|output~reg0'
+            Info: 3: + IC(2.492 ns) + CELL(0.918 ns) = 7.605 ns; Loc. = LC_X10_Y7_N7; Fanout = 7; REG Node = 'LEDCtrl:LEDP|BreathCount[7]'
+            Info: Total cell delay = 3.375 ns ( 44.38 % )
+            Info: Total interconnect delay = 4.230 ns ( 55.62 % )
+    Info: - Micro clock to output delay of source is 0.376 ns
+    Info: - Shortest register to register delay is 3.069 ns
+        Info: 1: + IC(0.000 ns) + CELL(0.000 ns) = 0.000 ns; Loc. = LC_X10_Y7_N7; Fanout = 7; REG Node = 'LEDCtrl:LEDP|BreathCount[7]'
+        Info: 2: + IC(1.288 ns) + CELL(0.200 ns) = 1.488 ns; Loc. = LC_X11_Y7_N7; Fanout = 1; COMB Node = 'LEDCtrl:LEDP|LEDRefresh:LEDPoint|PWM:PWMGen|LessThan0~0'
+        Info: 3: + IC(0.777 ns) + CELL(0.804 ns) = 3.069 ns; Loc. = LC_X11_Y7_N9; Fanout = 1; REG Node = 'LEDCtrl:LEDP|LEDRefresh:LEDPoint|PWM:PWMGen|output'
+        Info: Total cell delay = 1.004 ns ( 32.71 % )
+        Info: Total interconnect delay = 2.065 ns ( 67.29 % )
+    Info: + Micro hold delay of destination is 0.221 ns
+    Info: Delay path is controlled by inverted clocks -- if clock duty cycle is 50%, fmax is divided by two
+Info: tsu for register "EliminationBuffeting:ToResetEB|Timeing[0]" (data pin = "userreset", clock pin = "rawclock") is 4.361 ns
+    Info: + Longest pin to register delay is 7.847 ns
+        Info: 1: + IC(0.000 ns) + CELL(1.132 ns) = 1.132 ns; Loc. = PIN_61; Fanout = 2; PIN Node = 'userreset'
+        Info: 2: + IC(2.519 ns) + CELL(0.740 ns) = 4.391 ns; Loc. = LC_X13_Y4_N9; Fanout = 21; COMB Node = 'EliminationBuffeting:ToResetEB|Timeing~105'
+        Info: 3: + IC(1.696 ns) + CELL(1.760 ns) = 7.847 ns; Loc. = LC_X11_Y4_N5; Fanout = 4; REG Node = 'EliminationBuffeting:ToResetEB|Timeing[0]'
+        Info: Total cell delay = 3.632 ns ( 46.29 % )
+        Info: Total interconnect delay = 4.215 ns ( 53.71 % )
+    Info: + Micro setup delay of destination is 0.333 ns
+    Info: - Shortest clock path from clock "rawclock" to destination register is 3.819 ns
+        Info: 1: + IC(0.000 ns) + CELL(1.163 ns) = 1.163 ns; Loc. = PIN_18; Fanout = 74; CLK Node = 'rawclock'
+        Info: 2: + IC(1.738 ns) + CELL(0.918 ns) = 3.819 ns; Loc. = LC_X11_Y4_N5; Fanout = 4; REG Node = 'EliminationBuffeting:ToResetEB|Timeing[0]'
+        Info: Total cell delay = 2.081 ns ( 54.49 % )
+        Info: Total interconnect delay = 1.738 ns ( 45.51 % )
+Info: tco from clock "rawclock" to destination pin "LEDData[7]" through register "TimeCount:LEDTimeCount|UltrasonicRanging:UR|MeasureLevel:ML|DNum:D3|count[3]" is 30.492 ns
+    Info: + Longest clock path from clock "rawclock" to source register is 16.930 ns
+        Info: 1: + IC(0.000 ns) + CELL(1.163 ns) = 1.163 ns; Loc. = PIN_18; Fanout = 74; CLK Node = 'rawclock'
+        Info: 2: + IC(1.738 ns) + CELL(1.294 ns) = 4.195 ns; Loc. = LC_X12_Y5_N9; Fanout = 3; REG Node = 'ClockDiv:C17K|output~reg0'
+        Info: 3: + IC(2.601 ns) + CELL(0.200 ns) = 6.996 ns; Loc. = LC_X15_Y4_N7; Fanout = 5; COMB Node = 'TimeCount:LEDTimeCount|UltrasonicRanging:UR|MeasureLevel:ML|DNumclock'
+        Info: 4: + IC(1.088 ns) + CELL(1.294 ns) = 9.378 ns; Loc. = LC_X15_Y4_N0; Fanout = 5; REG Node = 'TimeCount:LEDTimeCount|UltrasonicRanging:UR|MeasureLevel:ML|DNum:D0|c1'
+        Info: 5: + IC(1.284 ns) + CELL(1.294 ns) = 11.956 ns; Loc. = LC_X14_Y4_N4; Fanout = 5; REG Node = 'TimeCount:LEDTimeCount|UltrasonicRanging:UR|MeasureLevel:ML|DNum:D1|c1'
+        Info: 6: + IC(0.884 ns) + CELL(1.294 ns) = 14.134 ns; Loc. = LC_X14_Y4_N8; Fanout = 4; REG Node = 'TimeCount:LEDTimeCount|UltrasonicRanging:UR|MeasureLevel:ML|DNum:D2|c1'
+        Info: 7: + IC(1.878 ns) + CELL(0.918 ns) = 16.930 ns; Loc. = LC_X10_Y4_N8; Fanout = 3; REG Node = 'TimeCount:LEDTimeCount|UltrasonicRanging:UR|MeasureLevel:ML|DNum:D3|count[3]'
+        Info: Total cell delay = 7.457 ns ( 44.05 % )
+        Info: Total interconnect delay = 9.473 ns ( 55.95 % )
+    Info: + Micro clock to output delay of source is 0.376 ns
+    Info: + Longest register to pin delay is 13.186 ns
+        Info: 1: + IC(0.000 ns) + CELL(0.000 ns) = 0.000 ns; Loc. = LC_X10_Y4_N8; Fanout = 3; REG Node = 'TimeCount:LEDTimeCount|UltrasonicRanging:UR|MeasureLevel:ML|DNum:D3|count[3]'
+        Info: 2: + IC(2.029 ns) + CELL(0.511 ns) = 2.540 ns; Loc. = LC_X10_Y4_N2; Fanout = 4; COMB Node = 'TimeCount:LEDTimeCount|Equal0~0'
+        Info: 3: + IC(0.798 ns) + CELL(0.200 ns) = 3.538 ns; Loc. = LC_X10_Y4_N5; Fanout = 2; COMB Node = 'TimeCount:LEDTimeCount|LEDNum[3]~14'
+        Info: 4: + IC(0.810 ns) + CELL(0.511 ns) = 4.859 ns; Loc. = LC_X10_Y4_N7; Fanout = 8; COMB Node = 'TimeCount:LEDTimeCount|LEDNum[3]~23'
+        Info: 5: + IC(1.856 ns) + CELL(0.914 ns) = 7.629 ns; Loc. = LC_X9_Y5_N8; Fanout = 1; COMB Node = 'TimeCount:LEDTimeCount|LedShowe:LED|Mux0~1'
+        Info: 6: + IC(1.256 ns) + CELL(0.200 ns) = 9.085 ns; Loc. = LC_X8_Y5_N9; Fanout = 1; COMB Node = 'TimeCount:LEDTimeCount|LedShowe:LED|Mux0~2'
+        Info: 7: + IC(1.779 ns) + CELL(2.322 ns) = 13.186 ns; Loc. = PIN_51; Fanout = 0; PIN Node = 'LEDData[7]'
+        Info: Total cell delay = 4.658 ns ( 35.33 % )
+        Info: Total interconnect delay = 8.528 ns ( 64.67 % )
+Info: Longest tpd from source pin "Night" to destination pin "LEDColumn[1]" is 15.356 ns
+    Info: 1: + IC(0.000 ns) + CELL(1.132 ns) = 1.132 ns; Loc. = PIN_125; Fanout = 12; PIN Node = 'Night'
+    Info: 2: + IC(2.821 ns) + CELL(0.200 ns) = 4.153 ns; Loc. = LC_X6_Y9_N2; Fanout = 24; COMB Node = 'LEDCtrl:LEDP|LEDRefresh:LEDPoint|RollGate:RedLEDP|Mux1~0'
+    Info: 3: + IC(2.120 ns) + CELL(0.511 ns) = 6.784 ns; Loc. = LC_X7_Y7_N7; Fanout = 4; COMB Node = 'LEDCtrl:LEDP|LEDRefresh:LEDPoint|RollGate:RedLEDP|Mux2~1'
+    Info: 4: + IC(2.665 ns) + CELL(0.511 ns) = 9.960 ns; Loc. = LC_X8_Y9_N4; Fanout = 1; COMB Node = 'LEDCtrl:LEDP|LEDRefresh:LEDPoint|RollGate:RedLEDP|output[1]~11'
+    Info: 5: + IC(3.074 ns) + CELL(2.322 ns) = 15.356 ns; Loc. = PIN_12; Fanout = 0; PIN Node = 'LEDColumn[1]'
+    Info: Total cell delay = 4.676 ns ( 30.45 % )
+    Info: Total interconnect delay = 10.680 ns ( 69.55 % )
+Info: th for register "LEDCtrl:LEDP|LEDRefresh:LEDPoint|lcount[0]" (data pin = "Night", clock pin = "rawclock") is 6.749 ns
+    Info: + Longest clock path from clock "rawclock" to destination register is 11.564 ns
+        Info: 1: + IC(0.000 ns) + CELL(1.163 ns) = 1.163 ns; Loc. = PIN_18; Fanout = 74; CLK Node = 'rawclock'
+        Info: 2: + IC(1.738 ns) + CELL(1.294 ns) = 4.195 ns; Loc. = LC_X11_Y6_N7; Fanout = 10; REG Node = 'ClockDiv:C1K|output~reg0'
+        Info: 3: + IC(2.129 ns) + CELL(1.294 ns) = 7.618 ns; Loc. = LC_X12_Y3_N2; Fanout = 37; REG Node = 'ClockDiv:C500|output~reg0'
+        Info: 4: + IC(3.028 ns) + CELL(0.918 ns) = 11.564 ns; Loc. = LC_X7_Y10_N3; Fanout = 32; REG Node = 'LEDCtrl:LEDP|LEDRefresh:LEDPoint|lcount[0]'
+        Info: Total cell delay = 4.669 ns ( 40.38 % )
+        Info: Total interconnect delay = 6.895 ns ( 59.62 % )
+    Info: + Micro hold delay of destination is 0.221 ns
+    Info: - Shortest pin to register delay is 5.036 ns
+        Info: 1: + IC(0.000 ns) + CELL(1.132 ns) = 1.132 ns; Loc. = PIN_125; Fanout = 12; PIN Node = 'Night'
+        Info: 2: + IC(2.721 ns) + CELL(1.183 ns) = 5.036 ns; Loc. = LC_X7_Y10_N3; Fanout = 32; REG Node = 'LEDCtrl:LEDP|LEDRefresh:LEDPoint|lcount[0]'
+        Info: Total cell delay = 2.315 ns ( 45.97 % )
+        Info: Total interconnect delay = 2.721 ns ( 54.03 % )
+Info: Quartus II Classic Timing Analyzer was successful. 0 errors, 16 warnings
+    Info: Peak virtual memory: 231 megabytes
+    Info: Processing ended: Tue Nov 14 10:29:13 2017
+    Info: Elapsed time: 00:00:02
+    Info: Total CPU time (on all processors): 00:00:01
+
+

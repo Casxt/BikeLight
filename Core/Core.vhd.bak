@@ -1,0 +1,214 @@
+LIBRARY IEEE;
+USE IEEE.STD_LOGIC_1164.ALL;
+USE IEEE.STD_LOGIC_UNSIGNED.ALL;
+USE IEEE.STD_LOGIC_ARITH.ALL;
+ENTITY Core IS
+	PORT(rawclock:IN STD_LOGIC;                         --原始时钟信号
+        userreset:IN STD_LOGIC;                         --复位信号
+        TurnRight:IN STD_LOGIC;                         --右转信号
+        TurnLeft:IN STD_LOGIC;                          --左转信号
+        Stop:IN STD_LOGIC;                              --停车信号
+        Night:IN STD_LOGIC;                             --光照信号,有光高电平，无光低电平
+        LEDSel:OUT STD_LOGIC_VECTOR(7 DOWNTO 0);        --数码管选择信号
+		LEDData:OUT STD_LOGIC_VECTOR(7 DOWNTO 0);       --数码管显示信号
+        LEDLineSel: OUT STD_LOGIC_VECTOR(7 DOWNTO 0);   --LED行选
+        LEDColumn: OUT STD_LOGIC_VECTOR(15 DOWNTO 0);   --LED列数据
+        Echo:IN STD_LOGIC;                              --电平读入
+        Tri:OUT STD_LOGIC;                              --触发
+        SoundOut:OUT STD_LOGIC);                        --音频输出信号
+END Core;
+
+ARCHITECTURE main OF Core IS
+	COMPONENT TimeCount
+        PORT(Timeclock:IN STD_LOGIC;                        --严格为1Hz
+            Freshclock:IN STD_LOGIC;                        --建议500Hz
+            Triclock:IN STD_LOGIC;                          --建议为20Hz
+            Countclock:IN STD_LOGIC;                        --建议2941分频
+            UREnable:IN STD_LOGIC;
+            reset:IN STD_LOGIC;                             --重置
+            Echo:IN STD_LOGIC;                              --电平读入
+            Tri:OUT STD_LOGIC;                              --触发
+            LEDSel:OUT STD_LOGIC_VECTOR(7 DOWNTO 0);
+            LEDData:OUT STD_LOGIC_VECTOR(7 DOWNTO 0));
+	END COMPONENT;
+    COMPONENT ClockDiv
+        GENERIC (div:INTEGER);          --分频比 只允许双数分频比
+        PORT(clock:IN STD_LOGIC;        --输入时钟
+            reset:IN STD_LOGIC;         --复位
+            output:OUT STD_LOGIC);      --输出
+    END COMPONENT;
+    COMPONENT Sound
+        GENERIC (SoundNum:INTEGER := 2;n:INTEGER:= 255);--曲数,划分范围
+        PORT(Soundclock:IN STD_LOGIC;                   --严格为8Hz
+            CTCclock:IN STD_LOGIC;                      --严格为100KHz，10us
+            reset:IN STD_LOGIC;                         --复位
+            enable:IN STD_LOGIC;                        --使能
+            SoundSel:IN INTEGER RANGE 0 TO SoundNum-1;  --选曲
+            Soundout:OUT STD_LOGIC);                    --输出
+    END COMPONENT;
+    COMPONENT LEDCtrl
+        PORT(PWMclock:IN STD_LOGIC;                         --PWM计数频率(应为其输出波形频率的256倍，计划256KHz以上)
+            Switchclock:IN STD_LOGIC;                       --行扫描频率(应大于刷新率的8倍，计划160Hz以上)
+            Breathclock:IN STD_LOGIC;                       --呼吸步进频率(严格为170Hz)
+            Rollclock:IN STD_LOGIC;                         --循环时钟
+            LEDEnable:IN STD_LOGIC;                         --点阵使能
+            State:IN INTEGER  RANGE 0 TO 3;                 --0:左 1:右 2:停 3:正常
+            reset:IN STD_LOGIC;                             --复位
+            Lineout: OUT STD_LOGIC_VECTOR(7 DOWNTO 0);      --输出行控信号
+            Columnout: OUT STD_LOGIC_VECTOR(15 DOWNTO 0));  --输出列控信号
+    END COMPONENT;
+    COMPONENT EdgeToLevel
+        PORT(reset:IN STD_LOGIC;    --重置
+            Input:IN STD_LOGIC;     --输入信号(上升沿有效)                     
+            Output:OUT STD_LOGIC);  --输出信号(电平有效) 
+    END COMPONENT;
+    COMPONENT EliminationBuffeting IS
+    GENERIC (CountRange : INTEGER);--32
+	PORT(reset:IN STD_LOGIC;        --重置
+        clock:IN STD_LOGIC;         --严格为50M
+		Input:IN STD_LOGIC;    
+        Output:INOUT STD_LOGIC);
+    END COMPONENT;
+    --<\各频率时钟
+    SIGNAL C1MHz:STD_LOGIC;
+    SIGNAL C100KHz:STD_LOGIC;
+    SIGNAL C17KHz:STD_LOGIC; -- 17001.0200612Hz
+    SIGNAL C1KHz:STD_LOGIC;
+    SIGNAL C500Hz:STD_LOGIC;
+    SIGNAL C500HzEB:STD_LOGIC;
+    SIGNAL C170Hz:STD_LOGIC;--169.999796Hz
+    SIGNAL C4Hz:STD_LOGIC;
+    SIGNAL C8Hz:STD_LOGIC;
+    SIGNAL C1Hz:STD_LOGIC;
+    --各频率时钟/>
+    SIGNAL SoundEnable:STD_LOGIC;--声音使能
+    SIGNAL SoundSel:INTEGER RANGE 0 TO 1;--音效选择
+    SIGNAL SoundCount:INTEGER RANGE 0 TO 7;--声音倒计时
+    SIGNAL StateEnable:STD_LOGIC;--状态切换使能
+    SIGNAL LEDCount:INTEGER RANGE 0 TO 10;--LED转向5S倒计时
+    SIGNAL State:INTEGER RANGE 0 TO 3;--LED使能
+    --输入消抖
+    SIGNAL RightEB:STD_LOGIC;--右转电平
+    SIGNAL LeftEB:STD_LOGIC;--右转电平
+    SIGNAL StopEB:STD_LOGIC;--右转电平
+    --输入沿转电平
+    SIGNAL RightLevel:STD_LOGIC;--右转电平
+    SIGNAL LeftLevel:STD_LOGIC;--右转电平
+    SIGNAL StopLevel:STD_LOGIC;--右转电平
+    --复位
+    SIGNAL userresetEB:STD_LOGIC;--复位键消抖后
+    SIGNAL OnOff:STD_LOGIC;--开关电平
+    SIGNAL reset:STD_LOGIC;--综合复位电平
+    --超声波测距使能
+    SIGNAL UREnable:STD_LOGIC;
+BEGIN
+    --ClockCenter
+    C1M : ClockDiv GENERIC MAP (div=>50)
+    PORT MAP (clock=>rawclock,reset=>reset,output=>C1MHz);
+    C100K : ClockDiv GENERIC MAP (div=>10)
+    PORT MAP (clock=>C1MHz,reset=>reset,output=>C100KHz);
+    C17K : ClockDiv GENERIC MAP (div=>2941)  -- 17001.0200612Hz
+    PORT MAP (clock=>rawclock,reset=>reset,output=>C17KHz);
+    C1K : ClockDiv GENERIC MAP (div=>50000)
+    PORT MAP (clock=>rawclock,reset=>reset,output=>C1KHz);
+    C500 : ClockDiv GENERIC MAP (div=>2)
+    PORT MAP (clock=>C1KHz,reset=>reset,output=>C500Hz);
+    C170 : ClockDiv GENERIC MAP (div=>294118)--169.999796Hz
+    PORT MAP (clock=>rawclock,reset=>reset,output=>C170Hz);
+    C4 : ClockDiv GENERIC MAP (div=>125)
+    PORT MAP (clock=>C500Hz,reset=>reset,output=>C4Hz);
+    C8 : ClockDiv GENERIC MAP (div=>125)
+    PORT MAP (clock=>C1KHz,reset=>reset,output=>C8Hz);
+    C1 : ClockDiv GENERIC MAP (div=>8) 
+    PORT MAP (clock=>C8Hz,reset=>reset,output=>C1Hz);
+    --TimeCount
+	LEDTimeCount : TimeCount PORT MAP (Timeclock=>C1Hz,Freshclock=>C500Hz,Triclock=>C1Hz,
+    Countclock=>C17KHz,UREnable=>UREnable,reset=>reset,Echo=>Echo,Tri=>Tri,LEDSel=>LEDSel,LEDData=>LEDData);
+    --Sound
+    StartSound : Sound PORT MAP (Soundclock=>C4Hz,CTCclock=>C100KHz,
+    reset=>reset,enable=>SoundEnable,SoundSel=>SoundSel,Soundout=>SoundOut);
+    --LEDPoint
+    LEDP : LEDCtrl PORT MAP (PWMclock=>C1MHz,Switchclock=>C500Hz,Breathclock=>C170Hz,Rollclock=>C8Hz,
+    LEDEnable=>Night,State=>State,reset=>reset,Lineout=>LEDLineSel,Columnout=>LEDColumn);
+    --EliminationBuffeting
+    ToRightEB : EliminationBuffeting GENERIC MAP (CountRange=>64) 
+    PORT MAP (reset=>reset,clock=>C500Hz, Input=>TurnRight, Output=>RightEB);
+    ToLeftEB : EliminationBuffeting GENERIC MAP (CountRange=>64) 
+    PORT MAP (reset=>reset,clock=>C500Hz, Input=>TurnLeft, Output=>LeftEB);
+    ToStopEB : EliminationBuffeting GENERIC MAP (CountRange=>64) 
+    PORT MAP (reset=>reset,clock=>C500Hz, Input=>Stop, Output=>StopEB);
+    ToResetEB : EliminationBuffeting GENERIC MAP (CountRange=>1500000) 
+    PORT MAP (reset=>'0',clock=>rawclock, Input=>userreset, Output=>userresetEB);--这个消抖不受reset影响
+    --EdgeToLevel
+    ToRightLevel : EdgeToLevel PORT MAP (reset=>reset, Input=>RightEB, Output=>RightLevel);
+    ToLeftLevel : EdgeToLevel PORT MAP (reset=>reset, Input=>LeftEB, Output=>LeftLevel);
+    ToStopLevel : EdgeToLevel PORT MAP (reset=>reset, Input=>StopEB, Output=>StopLevel);
+    --复位控制
+    reset <= (NOT OnOff);-- OR (NOT Night)
+	PROCESS(userresetEB,userreset)
+	BEGIN
+		IF(userresetEB'event AND userresetEB='1')THEN
+			OnOff <= NOT OnOff;
+		END IF;
+	END PROCESS;
+    --开机5S音乐
+	PROCESS(C1Hz,reset,SoundCount,SoundEnable)
+	BEGIN
+		IF(reset='1')THEN
+            SoundEnable<='1';
+            SoundSel<=0;
+            StateEnable <= '0';
+            SoundCount<=0;
+            UREnable<='0';
+		ELSE
+			IF(C1Hz'event AND C1Hz='0')THEN
+				IF(SoundCount=5)THEN
+					SoundEnable<='0';
+                    StateEnable <= '1';
+				ELSIF(SoundCount=4)THEN
+                    UREnable<='1';
+					StateEnable <= '1';
+					SoundCount<=SoundCount+1;
+				ELSE
+                    StateEnable <= '0';
+					SoundCount<=SoundCount+1;
+					SoundEnable<='1';
+					SoundSel<=0;
+				END IF;
+			END IF;
+		END IF;
+	END PROCESS;
+    --刷新State
+	PROCESS(State,StateEnable,C1Hz,RightLevel,LeftLevel,StopLevel,reset)
+	BEGIN
+        IF(reset='1' OR StateEnable='0')THEN
+            State <= 3;
+            LEDCount <= 0;
+        ELSE
+            IF(C1Hz'event AND C1Hz='0')THEN
+                IF(State=2 AND LEDCount=4)THEN
+                    State <= 3;
+                    LEDCount <= 0;
+                ELSIF(State=1 AND LEDCount=9)THEN
+                    State <= 3;
+                    LEDCount <= 0;
+                ELSIF(State=0 AND LEDCount=9)THEN
+                    State <= 3;
+                    LEDCount <= 0;  
+                ELSE
+					LEDCount <= LEDCount+1;
+				END IF;
+			END IF;
+			IF(StopLevel='1')THEN
+				State <= 2;
+				LEDCount <= 0;
+			ELSIF(RightLevel='1')THEN
+				State <= 1;
+				LEDCount <= 0;
+			ELSIF(LeftLevel='1')THEN
+				State <= 0;
+				LEDCount <= 0;
+			END IF;
+        END IF;
+	END PROCESS;
+END main;

@@ -1,0 +1,20 @@
+|EliminationBuffeting
+reset => Output~reg0.ACLR
+reset => Timeing[0].ENA
+reset => Timeing[5].ENA
+reset => Timeing[4].ENA
+reset => Timeing[3].ENA
+reset => Timeing[2].ENA
+reset => Timeing[1].ENA
+clock => Output~reg0.CLK
+clock => Timeing[5].CLK
+clock => Timeing[4].CLK
+clock => Timeing[3].CLK
+clock => Timeing[2].CLK
+clock => Timeing[1].CLK
+clock => Timeing[0].CLK
+Input => process_0~0.IN1
+Input => process_0~1.IN1
+Output <= comb~1
+
+

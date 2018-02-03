@@ -1,0 +1,268 @@
+// Copyright (C) 1991-2009 Altera Corporation
+// Your use of Altera Corporation's design tools, logic functions 
+// and other software and tools, and its AMPP partner logic 
+// functions, and any output files from any of the foregoing 
+// (including device programming or simulation files), and any 
+// associated documentation or information are expressly subject 
+// to the terms and conditions of the Altera Program License 
+// Subscription Agreement, Altera MegaCore Function License 
+// Agreement, or other applicable license agreement, including, 
+// without limitation, that your use is for the sole purpose of 
+// programming logic devices manufactured by Altera and sold by 
+// Altera or its authorized distributors.  Please refer to the 
+// applicable agreement for further details.
+
+// VENDOR "Altera"
+// PROGRAM "Quartus II"
+// VERSION "Version 9.0 Build 235 06/17/2009 Service Pack 2 SJ Web Edition"
+
+// DATE "11/08/2017 21:49:42"
+
+// 
+// Device: Altera EPM1270T144C5 Package TQFP144
+// 
+
+// 
+// This Verilog file should be used for Active-HDL (Verilog) only
+// 
+
+`timescale 1 ps/ 1 ps
+
+module EdgeToLevel (
+	reset,
+	\Input ,
+	\Output );
+input 	reset;
+input 	\Input ;
+inout 	\Output ;
+
+wire gnd = 1'b0;
+wire vcc = 1'b1;
+
+tri1 devclrn;
+tri1 devpor;
+tri1 devoe;
+// synopsys translate_off
+initial $sdf_annotate("EdgeToLevel_v.sdo");
+// synopsys translate_on
+
+wire \Input~combout ;
+wire \reset~combout ;
+wire \Si~regout ;
+wire \St~combout ;
+wire \So~combout ;
+wire \Output~0_combout ;
+wire \Output$latch~combout ;
+
+
+// atom is at PIN_4
+maxii_io \Input~I (
+	.datain(gnd),
+	.oe(gnd),
+	.combout(\Input~combout ),
+	.padio(\Input ));
+// synopsys translate_off
+defparam \Input~I .operation_mode = "input";
+// synopsys translate_on
+
+// atom is at PIN_18
+maxii_io \reset~I (
+	.datain(gnd),
+	.oe(gnd),
+	.combout(\reset~combout ),
+	.padio(reset));
+// synopsys translate_off
+defparam \reset~I .operation_mode = "input";
+// synopsys translate_on
+
+// atom is at LC_X1_Y9_N9
+maxii_lcell Si(
+// Equation(s):
+// \Si~regout  = DFFEAS(!\Si~regout , \Input~combout , !GLOBAL(\reset~combout ), , , , , , )
+
+	.clk(\Input~combout ),
+	.dataa(vcc),
+	.datab(vcc),
+	.datac(vcc),
+	.datad(\Si~regout ),
+	.aclr(\reset~combout ),
+	.aload(gnd),
+	.sclr(gnd),
+	.sload(gnd),
+	.ena(vcc),
+	.cin(gnd),
+	.cin0(gnd),
+	.cin1(vcc),
+	.inverta(gnd),
+	.regcascin(gnd),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(),
+	.regout(\Si~regout ),
+	.cout(),
+	.cout0(),
+	.cout1());
+// synopsys translate_off
+defparam Si.lut_mask = "00ff";
+defparam Si.operation_mode = "normal";
+defparam Si.output_mode = "reg_only";
+defparam Si.register_cascade_mode = "off";
+defparam Si.sum_lutc_input = "datac";
+defparam Si.synch_mode = "off";
+// synopsys translate_on
+
+// atom is at LC_X1_Y9_N7
+maxii_lcell St(
+// Equation(s):
+// \St~combout  = GLOBAL(\reset~combout ) & (\St~combout ) # !GLOBAL(\reset~combout ) & \Si~regout 
+
+	.clk(gnd),
+	.dataa(vcc),
+	.datab(\Si~regout ),
+	.datac(\St~combout ),
+	.datad(\reset~combout ),
+	.aclr(gnd),
+	.aload(gnd),
+	.sclr(gnd),
+	.sload(gnd),
+	.ena(vcc),
+	.cin(gnd),
+	.cin0(gnd),
+	.cin1(vcc),
+	.inverta(gnd),
+	.regcascin(gnd),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(\St~combout ),
+	.regout(),
+	.cout(),
+	.cout0(),
+	.cout1());
+// synopsys translate_off
+defparam St.lut_mask = "f0cc";
+defparam St.operation_mode = "normal";
+defparam St.output_mode = "comb_only";
+defparam St.register_cascade_mode = "off";
+defparam St.sum_lutc_input = "datac";
+defparam St.synch_mode = "off";
+// synopsys translate_on
+
+// atom is at LC_X1_Y9_N2
+maxii_lcell So(
+// Equation(s):
+// \So~combout  = GLOBAL(\reset~combout ) & \So~combout  # !GLOBAL(\reset~combout ) & (\St~combout )
+
+	.clk(gnd),
+	.dataa(vcc),
+	.datab(\So~combout ),
+	.datac(\St~combout ),
+	.datad(\reset~combout ),
+	.aclr(gnd),
+	.aload(gnd),
+	.sclr(gnd),
+	.sload(gnd),
+	.ena(vcc),
+	.cin(gnd),
+	.cin0(gnd),
+	.cin1(vcc),
+	.inverta(gnd),
+	.regcascin(gnd),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(\So~combout ),
+	.regout(),
+	.cout(),
+	.cout0(),
+	.cout1());
+// synopsys translate_off
+defparam So.lut_mask = "ccf0";
+defparam So.operation_mode = "normal";
+defparam So.output_mode = "comb_only";
+defparam So.register_cascade_mode = "off";
+defparam So.sum_lutc_input = "datac";
+defparam So.synch_mode = "off";
+// synopsys translate_on
+
+// atom is at LC_X1_Y9_N3
+maxii_lcell \Output~0 (
+// Equation(s):
+// \Output~0_combout  = \Si~regout  $ (\So~combout )
+
+	.clk(gnd),
+	.dataa(vcc),
+	.datab(\Si~regout ),
+	.datac(vcc),
+	.datad(\So~combout ),
+	.aclr(gnd),
+	.aload(gnd),
+	.sclr(gnd),
+	.sload(gnd),
+	.ena(vcc),
+	.cin(gnd),
+	.cin0(gnd),
+	.cin1(vcc),
+	.inverta(gnd),
+	.regcascin(gnd),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(\Output~0_combout ),
+	.regout(),
+	.cout(),
+	.cout0(),
+	.cout1());
+// synopsys translate_off
+defparam \Output~0 .lut_mask = "33cc";
+defparam \Output~0 .operation_mode = "normal";
+defparam \Output~0 .output_mode = "comb_only";
+defparam \Output~0 .register_cascade_mode = "off";
+defparam \Output~0 .sum_lutc_input = "datac";
+defparam \Output~0 .synch_mode = "off";
+// synopsys translate_on
+
+// atom is at LC_X1_Y9_N4
+maxii_lcell Output$latch(
+// Equation(s):
+// \Output$latch~combout  = GLOBAL(\reset~combout ) & \Output$latch~combout  # !GLOBAL(\reset~combout ) & (\Output~0_combout )
+
+	.clk(gnd),
+	.dataa(vcc),
+	.datab(\reset~combout ),
+	.datac(\Output$latch~combout ),
+	.datad(\Output~0_combout ),
+	.aclr(gnd),
+	.aload(gnd),
+	.sclr(gnd),
+	.sload(gnd),
+	.ena(vcc),
+	.cin(gnd),
+	.cin0(gnd),
+	.cin1(vcc),
+	.inverta(gnd),
+	.regcascin(gnd),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(\Output$latch~combout ),
+	.regout(),
+	.cout(),
+	.cout0(),
+	.cout1());
+// synopsys translate_off
+defparam Output$latch.lut_mask = "f3c0";
+defparam Output$latch.operation_mode = "normal";
+defparam Output$latch.output_mode = "comb_only";
+defparam Output$latch.register_cascade_mode = "off";
+defparam Output$latch.sum_lutc_input = "datac";
+defparam Output$latch.synch_mode = "off";
+// synopsys translate_on
+
+// atom is at PIN_5
+maxii_io \Output~I (
+	.datain(\Output$latch~combout ),
+	.oe(vcc),
+	.combout(),
+	.padio(\Output ));
+// synopsys translate_off
+defparam \Output~I .operation_mode = "bidir";
+// synopsys translate_on
+
+endmodule
